@@ -7,7 +7,7 @@ Pod::Spec.new do |spec|
   spec.summary      = 'Applidium\'s utily classes for templater'
   spec.platform     = 'ios', '8.1'
   spec.license      = { :type => 'Commercial', :text => 'Created and licensed by Applidium. Copyright 2014 Applidium. All rights reserved.' }
-  spec.source       = { :git => 'git@scm.applidium.net:ADUtils_iOS.git', :tag => "v#{spec.version}" }
+  spec.source       = { :git => 'ssh://git@gerrit.applidium.net:29418/ADUtils_iOS.git', :tag => "v#{spec.version}" }
   spec.source_files = 'Modules/ADUtils/*.{h,m,swift}'
   spec.framework    = 'Foundation', 'UIKit'
   spec.requires_arc = true
