@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logLevel</key>
+	<integer>6</integer>
+	<key>colors</key>
+	<dict>
+		<key>applidium_blue1</key>
+		<string>1b80b3</string>
+		<key>applidium_blue2</key>
+		<string>135b80</string>
+		<key>applidium_blue3</key>
+		<string>0b374d</string>
+		<key>applidium_blue4</key>
+		<string>03384e</string>
+	</dict>
+</dict>
+</plist>
