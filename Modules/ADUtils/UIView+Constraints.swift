@@ -8,17 +8,13 @@
 
 import Foundation
 
-typealias UIEdgeMargins = UIEdgeInsets
-
-let UIEdgeMarginsZero = UIEdgeInsetsZero
-
 extension UIView {
 
     /**
      * Add view to itself, pinning edges to margins
      */
 
-    func ad_addSubview(view: UIView, withMargins margins: UIEdgeMargins) {
+    public func ad_addSubview(view: UIView, withMargins margins: UIEdgeInsets) {
         let viewBindings = ["view" : view]
         view.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(view)
