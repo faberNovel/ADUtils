@@ -10,12 +10,12 @@ import Foundation
 
 // http://stackoverflow.com/a/26326006/900937
 extension UIView {
-    class func ad_fromNib<T : UIView>(nibNameOrNil: String? = nil) -> T {
+    public class func ad_fromNib<T : UIView>(nibNameOrNil: String? = nil) -> T {
         let v: T? = ad_fromNib(nibNameOrNil)
         return v!
     }
 
-    class func ad_fromNib<T : UIView>(nibNameOrNil: String? = nil) -> T? {
+    public class func ad_fromNib<T : UIView>(nibNameOrNil: String? = nil) -> T? {
         var view: T?
         let name: String
         if let nibName = nibNameOrNil {
