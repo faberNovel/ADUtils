@@ -34,6 +34,7 @@
 		ECB626F91DE333D100951346 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB626F81DE333D100951346 /* TestView.xib */; };
 		ECB626FC1DE333F800951346 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB626FB1DE333F800951346 /* TestView.swift */; };
 		ECB626FE1DE3344A00951346 /* NibLoaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */; };
+		ECB627001DE3395100951346 /* ChildInsertionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB626FF1DE3395100951346 /* ChildInsertionTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		ECB626F81DE333D100951346 /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestView.xib; path = Defaults/TestView.xib; sourceTree = "<group>"; };
 		ECB626FB1DE333F800951346 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoaderTest.swift; sourceTree = "<group>"; };
+		ECB626FF1DE3395100951346 /* ChildInsertionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInsertionTest.swift; sourceTree = "<group>"; };
 		F58BBA250BE675C419ED2946 /* Pods-ADUtilsTests.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.preproduction.xcconfig"; sourceTree = "<group>"; };
 		F83B92161A7A8CCF009E7ADF /* Defaults-Info_Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Defaults.plist"; sourceTree = "<group>"; };
 		F83B92171A7A8CCF009E7ADF /* Defaults-Info_Distribution.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Distribution.plist"; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				49B1F7801CE4B3DB00A29BFE /* ADUtilsTests.swift */,
 				49B1F7821CE4B3DB00A29BFE /* Info.plist */,
 				ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */,
+				ECB626FF1DE3395100951346 /* ChildInsertionTest.swift */,
 			);
 			path = ADUtilsTests;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECB626FE1DE3344A00951346 /* NibLoaderTest.swift in Sources */,
+				ECB627001DE3395100951346 /* ChildInsertionTest.swift in Sources */,
 				49B1F7811CE4B3DB00A29BFE /* ADUtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
