@@ -20,6 +20,7 @@ target 'ADUtilsTests' do
   pod 'Nimble-Snapshots', '4.1.0'
   pod 'OCMock', '~> 3.3'
   pod 'FBSnapshotTestCase', '~> 2.1'
+  pod 'ADUtils', :path => './'
 end
 
 post_install do |installer|

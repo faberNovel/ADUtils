@@ -1,6 +1,7 @@
 PODS:
   - ADDynamicLogLevel (1.1.1):
     - CocoaLumberjack (~> 2.0)
+  - ADUtils (0.0.1)
   - Alamofire (3.5.1)
   - Cleanse (0.1.0)
   - CocoaLumberjack (2.4.0):
@@ -30,6 +31,7 @@ PODS:
 
 DEPENDENCIES:
   - ADDynamicLogLevel (~> 1.1)
+  - ADUtils (from `./`)
   - Alamofire (~> 3.5)
   - Cleanse (~> 0.1.0)
   - CocoaLumberjack/Swift (~> 2.0)
@@ -41,8 +43,13 @@ DEPENDENCIES:
   - Quick (~> 0.9.3)
   - Watchdog (~> 1.0)
 
+EXTERNAL SOURCES:
+  ADUtils:
+    :path: "./"
+
 SPEC CHECKSUMS:
   ADDynamicLogLevel: f5a853a09f4c71ab57af7d7e7b4c5c967a93537f
+  ADUtils: 5c6fc16c0c5469a516f67c91cddd463dca0932a5
   Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
   Cleanse: 892a766c1f5ec2336bdb0e9c9c38afd095f8b76c
   CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
@@ -54,6 +61,6 @@ SPEC CHECKSUMS:
   Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
   Watchdog: 61e39a5ba9296e3517b2489edc2d67901b944044
 
-PODFILE CHECKSUM: 43ebdbd2880ee75059f175a7d85c602a425f2db1
+PODFILE CHECKSUM: db6aaf284712aa61450a4c9982df57b850588c83
 
 COCOAPODS: 1.1.1
