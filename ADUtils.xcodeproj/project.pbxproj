@@ -17,7 +17,6 @@
 		495911641D7D535A0057C974 /* ComponentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495911631D7D535A0057C974 /* ComponentManager.swift */; };
 		495911661D7D53750057C974 /* ApplicationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495911651D7D53750057C974 /* ApplicationModule.swift */; };
 		49595DCE1D93E11D003F1816 /* TargetSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49595DCD1D93E11D003F1816 /* TargetSettings.swift */; };
-		49B1F7811CE4B3DB00A29BFE /* ADUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B1F7801CE4B3DB00A29BFE /* ADUtilsTests.swift */; };
 		49F7C9F51D0EDE6300086054 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C9F41D0EDE6300086054 /* Logger.swift */; };
 		49F7C9F81D0EDE7100086054 /* ADFileLoggerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C9F71D0EDE7100086054 /* ADFileLoggerFormatter.m */; };
 		57C59D681BB1478A003798DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C59D671BB1478A003798DF /* Images.xcassets */; };
@@ -35,6 +34,7 @@
 		ECB626FC1DE333F800951346 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB626FB1DE333F800951346 /* TestView.swift */; };
 		ECB626FE1DE3344A00951346 /* NibLoaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */; };
 		ECB627001DE3395100951346 /* ChildInsertionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB626FF1DE3395100951346 /* ChildInsertionTest.swift */; };
+		ECB627021DE33C1100951346 /* ViewInsertionWithMarginTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB627011DE33C1100951346 /* ViewInsertionWithMarginTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,6 @@
 		495911651D7D53750057C974 /* ApplicationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationModule.swift; sourceTree = "<group>"; };
 		49595DCD1D93E11D003F1816 /* TargetSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetSettings.swift; sourceTree = "<group>"; };
 		49B1F77E1CE4B3DB00A29BFE /* ADUtilsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADUtilsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		49B1F7801CE4B3DB00A29BFE /* ADUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADUtilsTests.swift; sourceTree = "<group>"; };
 		49B1F7821CE4B3DB00A29BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49F7C9F41D0EDE6300086054 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		49F7C9F61D0EDE7100086054 /* ADFileLoggerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFileLoggerFormatter.h; sourceTree = "<group>"; };
@@ -89,6 +88,7 @@
 		ECB626FB1DE333F800951346 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoaderTest.swift; sourceTree = "<group>"; };
 		ECB626FF1DE3395100951346 /* ChildInsertionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInsertionTest.swift; sourceTree = "<group>"; };
+		ECB627011DE33C1100951346 /* ViewInsertionWithMarginTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewInsertionWithMarginTest.swift; sourceTree = "<group>"; };
 		F58BBA250BE675C419ED2946 /* Pods-ADUtilsTests.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.preproduction.xcconfig"; sourceTree = "<group>"; };
 		F83B92161A7A8CCF009E7ADF /* Defaults-Info_Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Defaults.plist"; sourceTree = "<group>"; };
 		F83B92171A7A8CCF009E7ADF /* Defaults-Info_Distribution.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Distribution.plist"; sourceTree = "<group>"; };
@@ -205,10 +205,10 @@
 		49B1F77F1CE4B3DB00A29BFE /* ADUtilsTests */ = {
 			isa = PBXGroup;
 			children = (
-				49B1F7801CE4B3DB00A29BFE /* ADUtilsTests.swift */,
 				49B1F7821CE4B3DB00A29BFE /* Info.plist */,
 				ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */,
 				ECB626FF1DE3395100951346 /* ChildInsertionTest.swift */,
+				ECB627011DE33C1100951346 /* ViewInsertionWithMarginTest.swift */,
 			);
 			path = ADUtilsTests;
 			sourceTree = "<group>";
@@ -654,9 +654,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECB627021DE33C1100951346 /* ViewInsertionWithMarginTest.swift in Sources */,
 				ECB626FE1DE3344A00951346 /* NibLoaderTest.swift in Sources */,
 				ECB627001DE3395100951346 /* ChildInsertionTest.swift in Sources */,
-				49B1F7811CE4B3DB00A29BFE /* ADUtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
