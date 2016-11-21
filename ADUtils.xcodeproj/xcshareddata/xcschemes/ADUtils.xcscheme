@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7A0EC64E1535D8ED00E5F54A"
-               BuildableName = "ADUtils.app"
-               BlueprintName = "ADUtils"
+               BuildableName = "ADUtilsApp.app"
+               BlueprintName = "ADUtilsApp"
                ReferencedContainer = "container:ADUtils.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7A0EC64E1535D8ED00E5F54A"
-            BuildableName = "ADUtils.app"
-            BlueprintName = "ADUtils"
+            BuildableName = "ADUtilsApp.app"
+            BlueprintName = "ADUtilsApp"
             ReferencedContainer = "container:ADUtils.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,8 +66,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7A0EC64E1535D8ED00E5F54A"
-            BuildableName = "ADUtils.app"
-            BlueprintName = "ADUtils"
+            BuildableName = "ADUtilsApp.app"
+            BlueprintName = "ADUtilsApp"
             ReferencedContainer = "container:ADUtils.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -123,8 +123,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7A0EC64E1535D8ED00E5F54A"
-            BuildableName = "ADUtils.app"
-            BlueprintName = "ADUtils"
+            BuildableName = "ADUtilsApp.app"
+            BlueprintName = "ADUtilsApp"
             ReferencedContainer = "container:ADUtils.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

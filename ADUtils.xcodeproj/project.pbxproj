@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1EB7042B108C1E9E8CE74DCE /* Pods_ADUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08411AEAF625777CD0D6A123 /* Pods_ADUtils.framework */; };
+		42CDDA9C8179B9F9824C64F2 /* Pods_ADUtilsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EFE73855C87585926C10E6 /* Pods_ADUtilsApp.framework */; };
 		47E17214F9A4009CF12359D7 /* Pods_ADUtilsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */; };
 		4959115A1D7D4FE70057C974 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495911591D7D4FE70057C974 /* Coordinator.swift */; };
 		4959115C1D7D4FFE0057C974 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959115B1D7D4FFE0057C974 /* ApplicationCoordinator.swift */; };
@@ -31,6 +31,9 @@
 		7A0EC6541535D8ED00E5F54A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6531535D8ED00E5F54A /* UIKit.framework */; };
 		7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6551535D8ED00E5F54A /* Foundation.framework */; };
 		7A0EC6581535D8ED00E5F54A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */; };
+		ECB626F91DE333D100951346 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB626F81DE333D100951346 /* TestView.xib */; };
+		ECB626FC1DE333F800951346 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB626FB1DE333F800951346 /* TestView.swift */; };
+		ECB626FE1DE3344A00951346 /* NibLoaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08411AEAF625777CD0D6A123 /* Pods_ADUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		147C172E570244B76E9A8609 /* Pods-ADUtils.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtils.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtils/Pods-ADUtils.preproduction.xcconfig"; sourceTree = "<group>"; };
+		0DA2083431F4C16E69ED219E /* Pods-ADUtilsApp.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.preproduction.xcconfig"; sourceTree = "<group>"; };
+		28EFE73855C87585926C10E6 /* Pods_ADUtilsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADUtilsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D3D6308F00B6B8059A24E8 /* Pods-ADUtilsTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.production.xcconfig"; sourceTree = "<group>"; };
 		4131DA2D9333046F6E9F313E /* Pods-ADUtilsTests.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.distribution.xcconfig"; sourceTree = "<group>"; };
 		495911591D7D4FE70057C974 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -62,7 +65,7 @@
 		49F7C9F41D0EDE6300086054 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		49F7C9F61D0EDE7100086054 /* ADFileLoggerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFileLoggerFormatter.h; sourceTree = "<group>"; };
 		49F7C9F71D0EDE7100086054 /* ADFileLoggerFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFileLoggerFormatter.m; sourceTree = "<group>"; };
-		4A08E56FF1A2E6E1D873D90F /* Pods-ADUtils.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtils.production.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtils/Pods-ADUtils.production.xcconfig"; sourceTree = "<group>"; };
+		4C8B60A08D066BFD9DDA1251 /* Pods-ADUtilsApp.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.distribution.xcconfig"; sourceTree = "<group>"; };
 		57C59D671BB1478A003798DF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57C59D691BB1486B003798DF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57E1CD271C884F1C00A7DFFB /* SharedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
@@ -72,14 +75,18 @@
 		57E1CD4C1C8890CA00A7DFFB /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		57F7ECC31BB0042D0095AEEC /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		57F7ECC51BB004500095AEEC /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
-		6E6A3AE8E44734C6530AC046 /* Pods-ADUtils.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtils.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtils/Pods-ADUtils.distribution.xcconfig"; sourceTree = "<group>"; };
-		7A0EC64F1535D8ED00E5F54A /* ADUtils.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADUtils.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DE795FD4906461A70860D2B /* Pods-ADUtilsApp.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.production.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.production.xcconfig"; sourceTree = "<group>"; };
+		7A0EC64F1535D8ED00E5F54A /* ADUtilsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADUtilsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0EC6531535D8ED00E5F54A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7A0EC6551535D8ED00E5F54A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7A189F921535FD5C00A22149 /* ADUtils-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ADUtils-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		836A694BE9CF460F6BF35DC5 /* Pods-ADUtilsApp.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.stubs.xcconfig"; sourceTree = "<group>"; };
 		9C9220CDCE8C495437E023DB /* Pods-ADUtilsTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.stubs.xcconfig"; sourceTree = "<group>"; };
 		D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADUtilsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECB626F81DE333D100951346 /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestView.xib; path = Defaults/TestView.xib; sourceTree = "<group>"; };
+		ECB626FB1DE333F800951346 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoaderTest.swift; sourceTree = "<group>"; };
 		F58BBA250BE675C419ED2946 /* Pods-ADUtilsTests.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.preproduction.xcconfig"; sourceTree = "<group>"; };
 		F83B92161A7A8CCF009E7ADF /* Defaults-Info_Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Defaults.plist"; sourceTree = "<group>"; };
 		F83B92171A7A8CCF009E7ADF /* Defaults-Info_Distribution.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Distribution.plist"; sourceTree = "<group>"; };
@@ -92,7 +99,6 @@
 		F83B921F1A7A8CCF009E7ADF /* ADUtils-Info_Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ADUtils-Info_Production.plist"; sourceTree = "<group>"; };
 		F83B92201A7A8CCF009E7ADF /* ADUtils-Info_Stubs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ADUtils-Info_Stubs.plist"; sourceTree = "<group>"; };
 		F83B922D1A7A8D04009E7ADF /* ADUtils-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ADUtils-Info.plist"; sourceTree = "<group>"; };
-		FBD4BCB796711E590FFB6FC9 /* Pods-ADUtils.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtils.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtils/Pods-ADUtils.stubs.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +117,7 @@
 				7A0EC6541535D8ED00E5F54A /* UIKit.framework in Frameworks */,
 				7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */,
 				7A0EC6581535D8ED00E5F54A /* CoreGraphics.framework in Frameworks */,
-				1EB7042B108C1E9E8CE74DCE /* Pods_ADUtils.framework in Frameworks */,
+				42CDDA9C8179B9F9824C64F2 /* Pods_ADUtilsApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +180,7 @@
 		495911561D7D4F1D0057C974 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				ECB626FA1DE333EC00951346 /* View */,
 				57E1CD271C884F1C00A7DFFB /* SharedViewController.swift */,
 			);
 			name = UI;
@@ -198,6 +205,7 @@
 			children = (
 				49B1F7801CE4B3DB00A29BFE /* ADUtilsTests.swift */,
 				49B1F7821CE4B3DB00A29BFE /* Info.plist */,
+				ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */,
 			);
 			path = ADUtilsTests;
 			sourceTree = "<group>";
@@ -224,14 +232,14 @@
 		6C0000BCAC8752038EA18DDB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FBD4BCB796711E590FFB6FC9 /* Pods-ADUtils.stubs.xcconfig */,
-				147C172E570244B76E9A8609 /* Pods-ADUtils.preproduction.xcconfig */,
-				4A08E56FF1A2E6E1D873D90F /* Pods-ADUtils.production.xcconfig */,
-				6E6A3AE8E44734C6530AC046 /* Pods-ADUtils.distribution.xcconfig */,
 				9C9220CDCE8C495437E023DB /* Pods-ADUtilsTests.stubs.xcconfig */,
 				F58BBA250BE675C419ED2946 /* Pods-ADUtilsTests.preproduction.xcconfig */,
 				32D3D6308F00B6B8059A24E8 /* Pods-ADUtilsTests.production.xcconfig */,
 				4131DA2D9333046F6E9F313E /* Pods-ADUtilsTests.distribution.xcconfig */,
+				836A694BE9CF460F6BF35DC5 /* Pods-ADUtilsApp.stubs.xcconfig */,
+				0DA2083431F4C16E69ED219E /* Pods-ADUtilsApp.preproduction.xcconfig */,
+				5DE795FD4906461A70860D2B /* Pods-ADUtilsApp.production.xcconfig */,
+				4C8B60A08D066BFD9DDA1251 /* Pods-ADUtilsApp.distribution.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -254,7 +262,7 @@
 		7A0EC6501535D8ED00E5F54A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7A0EC64F1535D8ED00E5F54A /* ADUtils.app */,
+				7A0EC64F1535D8ED00E5F54A /* ADUtilsApp.app */,
 				49B1F77E1CE4B3DB00A29BFE /* ADUtilsTests.xctest */,
 			);
 			name = Products;
@@ -266,8 +274,8 @@
 				7A0EC6531535D8ED00E5F54A /* UIKit.framework */,
 				7A0EC6551535D8ED00E5F54A /* Foundation.framework */,
 				7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */,
-				08411AEAF625777CD0D6A123 /* Pods_ADUtils.framework */,
 				D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */,
+				28EFE73855C87585926C10E6 /* Pods_ADUtilsApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -301,6 +309,7 @@
 			children = (
 				F83B922B1A7A8CE1009E7ADF /* Defaults */,
 				F83B922C1A7A8CE1009E7ADF /* ADUtils */,
+				ECB626F81DE333D100951346 /* TestView.xib */,
 			);
 			name = Resources;
 			path = Ressources;
@@ -313,6 +322,14 @@
 				49595DCD1D93E11D003F1816 /* TargetSettings.swift */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		ECB626FA1DE333EC00951346 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ECB626FB1DE333F800951346 /* TestView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		F83B92141A7A8CCF009E7ADF /* Configuration */ = {
@@ -391,9 +408,9 @@
 			productReference = 49B1F77E1CE4B3DB00A29BFE /* ADUtilsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7A0EC64E1535D8ED00E5F54A /* ADUtils */ = {
+		7A0EC64E1535D8ED00E5F54A /* ADUtilsApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7A0EC6671535D8ED00E5F54A /* Build configuration list for PBXNativeTarget "ADUtils" */;
+			buildConfigurationList = 7A0EC6671535D8ED00E5F54A /* Build configuration list for PBXNativeTarget "ADUtilsApp" */;
 			buildPhases = (
 				CECB1C1E7B071D6D281D3BC0 /* [CP] Check Pods Manifest.lock */,
 				7A0EC66A1535D91400E5F54A /* Inject git informations in Info.plist */,
@@ -410,9 +427,9 @@
 			);
 			dependencies = (
 			);
-			name = ADUtils;
+			name = ADUtilsApp;
 			productName = ADUtils;
-			productReference = 7A0EC64F1535D8ED00E5F54A /* ADUtils.app */;
+			productReference = 7A0EC64F1535D8ED00E5F54A /* ADUtilsApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -450,7 +467,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7A0EC64E1535D8ED00E5F54A /* ADUtils */,
+				7A0EC64E1535D8ED00E5F54A /* ADUtilsApp */,
 				49B1F77D1CE4B3DB00A29BFE /* ADUtilsTests */,
 			);
 		};
@@ -470,6 +487,7 @@
 			files = (
 				57C59D681BB1478A003798DF /* Images.xcassets in Resources */,
 				57C59D6A1BB1486B003798DF /* LaunchScreen.storyboard in Resources */,
+				ECB626F91DE333D100951346 /* TestView.xib in Resources */,
 				57F7ECC41BB0042D0095AEEC /* Localizable.strings in Resources */,
 				57F7ECC61BB004510095AEEC /* InfoPlist.strings in Resources */,
 			);
@@ -578,7 +596,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ADUtils/Pods-ADUtils-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CECB1C1E7B071D6D281D3BC0 /* [CP] Check Pods Manifest.lock */ = {
@@ -623,7 +641,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ADUtils/Pods-ADUtils-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -633,6 +651,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECB626FE1DE3344A00951346 /* NibLoaderTest.swift in Sources */,
 				49B1F7811CE4B3DB00A29BFE /* ADUtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,6 +666,7 @@
 				49F7C9F81D0EDE7100086054 /* ADFileLoggerFormatter.m in Sources */,
 				495911661D7D53750057C974 /* ApplicationModule.swift in Sources */,
 				495911641D7D535A0057C974 /* ComponentManager.swift in Sources */,
+				ECB626FC1DE333F800951346 /* TestView.swift in Sources */,
 				495911601D7D52D50057C974 /* RepositoryManagerComponent.swift in Sources */,
 				49F7C9F51D0EDE6300086054 /* Logger.swift in Sources */,
 				57E1CD491C884F8900A7DFFB /* AppDelegate.swift in Sources */,
@@ -663,7 +683,7 @@
 /* Begin PBXTargetDependency section */
 		49B1F7841CE4B3DB00A29BFE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7A0EC64E1535D8ED00E5F54A /* ADUtils */;
+			target = 7A0EC64E1535D8ED00E5F54A /* ADUtilsApp */;
 			targetProxy = 49B1F7831CE4B3DB00A29BFE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -696,7 +716,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtils.app/ADUtils";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Stubs;
 		};
@@ -727,7 +747,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtils.app/ADUtils";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Preproduction;
 		};
@@ -758,7 +778,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtils.app/ADUtils";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Production;
 		};
@@ -788,7 +808,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = applidium.ADUtilsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtils.app/ADUtils";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Distribution;
 		};
@@ -836,13 +856,14 @@
 		};
 		7A0EC6681535D8ED00E5F54A /* Stubs */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FBD4BCB796711E590FFB6FC9 /* Pods-ADUtils.stubs.xcconfig */;
+			baseConfigurationReference = 836A694BE9CF460F6BF35DC5 /* Pods-ADUtilsApp.stubs.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = U5M7X5V6ZG;
+				ENABLE_TESTABILITY = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ADUtils-Prefix.pch";
 				INFOPLIST_FILE = "Configuration/ADUtils/ADUtils-Info.plist";
@@ -900,13 +921,14 @@
 		};
 		7A6BEEF81536FE3D0075E2A7 /* Distribution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E6A3AE8E44734C6530AC046 /* Pods-ADUtils.distribution.xcconfig */;
+			baseConfigurationReference = 4C8B60A08D066BFD9DDA1251 /* Pods-ADUtilsApp.distribution.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = U5M7X5V6ZG;
+				ENABLE_TESTABILITY = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ADUtils-Prefix.pch";
 				INFOPLIST_FILE = "Configuration/ADUtils/ADUtils-Info.plist";
@@ -964,13 +986,14 @@
 		};
 		F88C93CF1A66D9D8009EB642 /* Preproduction */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 147C172E570244B76E9A8609 /* Pods-ADUtils.preproduction.xcconfig */;
+			baseConfigurationReference = 0DA2083431F4C16E69ED219E /* Pods-ADUtilsApp.preproduction.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = U5M7X5V6ZG;
+				ENABLE_TESTABILITY = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ADUtils-Prefix.pch";
 				INFOPLIST_FILE = "Configuration/ADUtils/ADUtils-Info.plist";
@@ -1029,13 +1052,14 @@
 		};
 		F88C93D11A66DA0D009EB642 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A08E56FF1A2E6E1D873D90F /* Pods-ADUtils.production.xcconfig */;
+			baseConfigurationReference = 5DE795FD4906461A70860D2B /* Pods-ADUtilsApp.production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = U5M7X5V6ZG;
+				ENABLE_TESTABILITY = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ADUtils-Prefix.pch";
 				INFOPLIST_FILE = "Configuration/ADUtils/ADUtils-Info.plist";
@@ -1076,7 +1100,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Distribution;
 		};
-		7A0EC6671535D8ED00E5F54A /* Build configuration list for PBXNativeTarget "ADUtils" */ = {
+		7A0EC6671535D8ED00E5F54A /* Build configuration list for PBXNativeTarget "ADUtilsApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7A0EC6681535D8ED00E5F54A /* Stubs */,

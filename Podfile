@@ -7,7 +7,7 @@ use_frameworks!
 pod 'CocoaLumberjack/Swift', '~>  2.0', :inhibit_warnings => true
 pod 'ADDynamicLogLevel', '~>  1.1', :inhibit_warnings => true
 
-target 'ADUtils' do
+target 'ADUtilsApp' do
   pod 'Alamofire', '~> 3.5'
   pod 'HockeySDK', '~> 3.8', :subspecs => ['CrashOnlyLib']
   pod 'Watchdog', '~> 1.0'
