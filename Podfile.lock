@@ -1,7 +1,7 @@
 PODS:
   - ADDynamicLogLevel (1.1.1):
     - CocoaLumberjack (~> 2.0)
-  - ADUtils (0.0.1)
+  - ADUtils (1.0.1)
   - Alamofire (3.5.1)
   - Cleanse (0.1.0)
   - CocoaLumberjack (2.4.0):
@@ -49,7 +49,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ADDynamicLogLevel: f5a853a09f4c71ab57af7d7e7b4c5c967a93537f
-  ADUtils: 5c6fc16c0c5469a516f67c91cddd463dca0932a5
+  ADUtils: 440b404de1db20d9d4ea859650f861d8268ced79
   Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
   Cleanse: 892a766c1f5ec2336bdb0e9c9c38afd095f8b76c
   CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
