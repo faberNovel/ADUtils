@@ -27,37 +27,37 @@ import UIKit
  *
  */
 
-protocol ClassIdentifiable {
+public protocol ClassIdentifiable {
     static func identifier() -> String
 }
 
 extension NSObject : ClassIdentifiable {
-    static func identifier() -> String {
+    public static func identifier() -> String {
         return String(self)
     }
 }
 
-enum RegisterableView {
+public enum RegisterableView {
     case Nib(AnyClass)
     case Class(AnyClass)
 }
 
-extension RegisterableView {
-    var nib: UINib? {
+public extension RegisterableView {
+    public var nib: UINib? {
         switch self {
         case let .Nib(cellClass): return UINib(nibName: String(cellClass), bundle: nil)
         default: return nil
         }
     }
 
-    var identifier: String {
+    public var identifier: String {
         switch self {
         case let .Nib(cellClass): return cellClass.identifier()
         case let .Class(cellClass): return cellClass.identifier()
         }
     }
 
-    var cellClass: AnyClass? {
+    public var cellClass: AnyClass? {
         switch self {
         case let .Class(cellClass): return cellClass
         default: return nil
@@ -65,28 +65,28 @@ extension RegisterableView {
     }
 }
 
-protocol CollectionView {
+public protocol CollectionView {
     func registerCell(cell: RegisterableView)
     func registerHeader(header: RegisterableView)
     func registerFooter(footer: RegisterableView)
 }
 
-extension CollectionView {
-    func registerCells(cells: [RegisterableView]) {
+public extension CollectionView {
+    public func registerCells(cells: [RegisterableView]) {
         cells.forEach(registerCell)
     }
 
-    func registerHeaders(headers: [RegisterableView]) {
+    public func registerHeaders(headers: [RegisterableView]) {
         headers.forEach(registerHeader)
     }
 
-    func registerFooters(footers: [RegisterableView]) {
+    public func registerFooters(footers: [RegisterableView]) {
         footers.forEach(registerFooter)
     }
 }
 
 extension UITableView : CollectionView {
-    func registerCell(cell: RegisterableView) {
+    public func registerCell(cell: RegisterableView) {
         switch cell {
         case .Nib:
             registerNib(cell.nib, forCellReuseIdentifier: cell.identifier)
@@ -95,7 +95,7 @@ extension UITableView : CollectionView {
         }
     }
 
-    func registerHeader(header: RegisterableView) {
+    public func registerHeader(header: RegisterableView) {
         switch header {
         case .Nib:
             registerNib(header.nib, forHeaderFooterViewReuseIdentifier: header.identifier)
@@ -104,13 +104,13 @@ extension UITableView : CollectionView {
         }
     }
 
-    func registerFooter(footer: RegisterableView) {
+    public func registerFooter(footer: RegisterableView) {
         registerHeader(footer)
     }
 }
 
 extension UICollectionView : CollectionView {
-    func registerCell(cell: RegisterableView) {
+    public func registerCell(cell: RegisterableView) {
         switch cell {
         case .Nib:
             registerNib(cell.nib, forCellWithReuseIdentifier: cell.identifier)
@@ -119,11 +119,11 @@ extension UICollectionView : CollectionView {
         }
     }
 
-    func registerHeader(header: RegisterableView) {
+    public func registerHeader(header: RegisterableView) {
         registerSupplementaryView(header, kind: UICollectionElementKindSectionHeader)
     }
 
-    func registerFooter(footer: RegisterableView) {
+    public func registerFooter(footer: RegisterableView) {
         registerSupplementaryView(footer, kind: UICollectionElementKindSectionFooter)
     }
 
@@ -138,21 +138,29 @@ extension UICollectionView : CollectionView {
 }
 
 extension UITableView {
-    func dequeueCellAtIndexPath<U: ClassIdentifiable>(indexPath: NSIndexPath) -> U {
+    public func dequeueCellAtIndexPath<U: ClassIdentifiable>(indexPath: NSIndexPath) -> U {
         return dequeueReusableCellWithIdentifier(U.identifier(), forIndexPath: indexPath) as! U
+    }
+
+    public func dequeueHeader<U: ClassIdentifiable>() -> U {
+        return dequeueReusableHeaderFooterViewWithIdentifier(U.identifier()) as! U
+    }
+
+    public func dequeueFooter<U: ClassIdentifiable>() -> U {
+        return dequeueHeader()
     }
 }
 
 extension UICollectionView {
-    func dequeueCellAtIndexPath<U: ClassIdentifiable>(indexPath: NSIndexPath) -> U {
+    public func dequeueCellAtIndexPath<U: ClassIdentifiable>(indexPath: NSIndexPath) -> U {
         return dequeueReusableCellWithReuseIdentifier(U.identifier(), forIndexPath: indexPath) as! U
     }
 
-    func dequeueHeaderAtIndexPath<U: ClassIdentifiable>(indexPath: NSIndexPath) -> U {
+    public func dequeueHeaderAtIndexPath<U: ClassIdentifiable>(indexPath: NSIndexPath) -> U {
         return dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: U.identifier(), forIndexPath: indexPath) as! U
     }
 
-    func dequeueFooterAtIndexPath<U: ClassIdentifiable>(indexPath: NSIndexPath) -> U {
+    public func dequeueFooterAtIndexPath<U: ClassIdentifiable>(indexPath: NSIndexPath) -> U {
         return dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: U.identifier(), forIndexPath: indexPath) as! U
     }
 }
