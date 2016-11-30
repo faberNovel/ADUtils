@@ -16,7 +16,7 @@ extension UIViewController {
      * viewController's view is inserted wihtout margins
      */
 
-    public func ad_insertChild(_ viewController: UIViewController, inSubview subview: UIView) {
+    public func ad_insert(child viewController: UIViewController, in subview: UIView) {
         guard subview.isDescendant(of: view) else { return }
         addChildViewController(viewController)
         let viewControllerView: UIView = viewController.view
@@ -29,7 +29,7 @@ extension UIViewController {
      * Remove viewController from parent view controller if self is its parent
      */
 
-    public func ad_removeChild(_ viewController: UIViewController) {
+    public func ad_remove(child viewController: UIViewController) {
         guard viewController.parent == self else { return }
         viewController.willMove(toParentViewController: nil)
         viewController.view.removeFromSuperview()
