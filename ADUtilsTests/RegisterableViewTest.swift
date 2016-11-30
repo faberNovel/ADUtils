@@ -34,9 +34,9 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
      */
 
     func registerCells(_ collectionView: UICollectionView) {
-        collectionView.registerCell(.class(UICollectionViewCell.self))
-        collectionView.registerHeader(.class(CollectionViewHeader.self))
-        collectionView.registerFooter(.class(CollectionViewFooter.self))
+        collectionView.register(cell: .class(UICollectionViewCell.self))
+        collectionView.register(header: .class(CollectionViewHeader.self))
+        collectionView.register(footer: .class(CollectionViewFooter.self))
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -48,17 +48,17 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell = collectionView.dequeueCellAtIndexPath(indexPath)
+        let cell: UICollectionViewCell = collectionView.dequeueCellAt(indexPath: indexPath)
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
-            let header: CollectionViewHeader = collectionView.dequeueHeaderAtIndexPath(indexPath)
+            let header: CollectionViewHeader = collectionView.dequeueHeaderAt(indexPath: indexPath)
             return header
         case UICollectionElementKindSectionFooter:
-            let footer: CollectionViewFooter = collectionView.dequeueFooterAtIndexPath(indexPath)
+            let footer: CollectionViewFooter = collectionView.dequeueFooterAt(indexPath: indexPath)
             return footer
         default:
             return UICollectionReusableView()
@@ -86,15 +86,15 @@ class RegisterableViewTest: QuickSpec {
 
             it("Should register cell class and get not nil instance back") {
                 let registerableView = RegisterableView.class(UITableViewCell.self)
-                tableView.registerCell(registerableView)
+                tableView.register(cell: registerableView)
 
-                let cell: UITableViewCell = tableView.dequeueCellAtIndexPath(indexPath)
+                let cell: UITableViewCell = tableView.dequeueCellAt(indexPath: indexPath)
                 expect(cell).toNot(beNil())
             }
 
             it("Should register header class and get not nil instance back") {
-                tableView.registerHeader(.class(TableViewHeader.self))
-                tableView.registerFooter(.class(TableViewFooter.self))
+                tableView.register(header: .class(TableViewHeader.self))
+                tableView.register(footer: .class(TableViewFooter.self))
 
                 let header: TableViewHeader = tableView.dequeueHeader()
                 let footer: TableViewFooter = tableView.dequeueFooter()
