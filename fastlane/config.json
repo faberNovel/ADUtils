@@ -6,7 +6,7 @@
     "slack_hook_url": "TODO_OR_REMOVE"
   },
   "apps": [{
-    "target": "ADUtils",
+    "target": "ADUtilsApp",
     "inhouse": false,
     "bundles": {
       "main_app": "com.yourclient.appname",
