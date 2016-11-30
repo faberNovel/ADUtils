@@ -11,7 +11,7 @@ import Foundation
 class TargetSettings : NSObject {
 
     // Config
-    private(set) var logLevel: DDLogLevel = .All
+    private(set) var logLevel: DDLogLevel = .all
     private(set) var hockeyAppId: String = ""
     private(set) var useWatchdog: Bool = false
     private(set) var useFileLogger: Bool = false
@@ -28,7 +28,7 @@ class TargetSettings : NSObject {
 
     override init() {
         super.init()
-        guard let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist"),
+        guard let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
             let dictionary = NSDictionary(contentsOfFile: path) as? [String : AnyObject] else {
                 fatalError("Cannot find Info.plist")
         }
@@ -47,7 +47,7 @@ class TargetSettings : NSObject {
 
             let capitalizedKey = key.firstLetterCapitalized()
             let valueIsString = value is String
-            if respondsToSelector(NSSelectorFromString("set\(capitalizedKey):")) &&
+            if responds(to: NSSelectorFromString("set\(capitalizedKey):")) &&
                 (!valueIsString || (valueIsString && !(value as! String).isEmpty)) {
                 setValue(value, forKey: key)
             } else if let subDictionary = dictionary[key] as? [String: AnyObject] {
@@ -56,8 +56,8 @@ class TargetSettings : NSObject {
         }
     }
 
-    private func setLogLevelFromPlist(logLevel: Int) {
-        let logLevels: [DDLogLevel] = [.Off, .Error, .Warning, .Info, .Debug, .Verbose, .All]
+    private func setLogLevelFromPlist(_ logLevel: Int) {
+        let logLevels: [DDLogLevel] = [.off, .error, .warning, .info, .debug, .verbose, .all]
         guard logLevel >= 0 && logLevel < logLevels.count else {
             return
         }
@@ -68,7 +68,7 @@ class TargetSettings : NSObject {
 private extension String {
     func firstLetterCapitalized() -> String {
         guard !isEmpty else { return "" }
-        let index = startIndex.advancedBy(1)
-        return substringToIndex(index).capitalizedString + substringFromIndex(index)
+        let index = characters.index(startIndex, offsetBy: 1)
+        return substring(to: index).capitalized + substring(from: index)
     }
 }

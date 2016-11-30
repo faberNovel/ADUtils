@@ -14,9 +14,9 @@ import Foundation
  */
 
 public protocol DeselectableView: class {
-    var selectedIndexPaths: [NSIndexPath]? { get }
-    func deselect(atIndexPath indexPath: NSIndexPath, animated: Bool)
-    func select(atIndexPath indexPath: NSIndexPath, animated: Bool)
+    var selectedIndexPaths: [IndexPath]? { get }
+    func deselect(atIndexPath indexPath: IndexPath, animated: Bool)
+    func select(atIndexPath indexPath: IndexPath, animated: Bool)
 }
 
 public extension DeselectableView where Self: UIView {
@@ -41,11 +41,11 @@ public extension DeselectableView where Self: UIView {
             return
         }
 
-        coordinator.animateAlongsideTransitionInView(self, animation: { [weak self] (context: UIViewControllerTransitionCoordinatorContext) in
+        coordinator.animateAlongsideTransition(in: self, animation: { [weak self] (context: UIViewControllerTransitionCoordinatorContext) in
             self?.deselect(atIndexPaths: selectedIndexPaths, animated: true)
         })
         { [weak self] (context : UIViewControllerTransitionCoordinatorContext) in
-            guard context.isCancelled() else {
+            guard context.isCancelled else {
                 return
             }
             self?.select(atIndexPaths: selectedIndexPaths, animated: false)
@@ -54,13 +54,13 @@ public extension DeselectableView where Self: UIView {
 
     //MARK: - Private
 
-    private  func select(atIndexPaths indexPaths: [NSIndexPath], animated: Bool) {
+    private  func select(atIndexPaths indexPaths: [IndexPath], animated: Bool) {
         for indexPath in indexPaths {
             select(atIndexPath: indexPath, animated: animated)
         }
     }
 
-    private  func deselect(atIndexPaths indexPaths: [NSIndexPath], animated: Bool) {
+    private  func deselect(atIndexPaths indexPaths: [IndexPath], animated: Bool) {
         for indexPath in indexPaths {
             deselect(atIndexPath: indexPath, animated: animated)
         }
@@ -69,30 +69,30 @@ public extension DeselectableView where Self: UIView {
 
 extension UITableView: DeselectableView {
 
-    public var selectedIndexPaths: [NSIndexPath]? {
+    public var selectedIndexPaths: [IndexPath]? {
         return indexPathsForSelectedRows
     }
 
-    public func deselect(atIndexPath indexPath: NSIndexPath, animated: Bool) {
-        deselectRowAtIndexPath(indexPath, animated: animated)
+    public func deselect(atIndexPath indexPath: IndexPath, animated: Bool) {
+        deselectRow(at: indexPath, animated: animated)
     }
 
-    public func select(atIndexPath indexPath: NSIndexPath, animated: Bool) {
-        selectRowAtIndexPath(indexPath, animated: animated, scrollPosition: .None)
+    public func select(atIndexPath indexPath: IndexPath, animated: Bool) {
+        selectRow(at: indexPath, animated: animated, scrollPosition: .none)
     }
 }
 
 extension UICollectionView: DeselectableView {
 
-    public var selectedIndexPaths: [NSIndexPath]? {
-        return indexPathsForSelectedItems()
+    public var selectedIndexPaths: [IndexPath]? {
+        return indexPathsForSelectedItems
     }
 
-    public func deselect(atIndexPath indexPath: NSIndexPath, animated: Bool) {
-        deselectItemAtIndexPath(indexPath, animated: animated)
+    public func deselect(atIndexPath indexPath: IndexPath, animated: Bool) {
+        deselectItem(at: indexPath, animated: animated)
     }
 
-    public func select(atIndexPath indexPath: NSIndexPath, animated: Bool) {
-        selectItemAtIndexPath(indexPath, animated: animated, scrollPosition: .None)
+    public func select(atIndexPath indexPath: IndexPath, animated: Bool) {
+        selectItem(at: indexPath, animated: animated, scrollPosition: .top)
     }
 }

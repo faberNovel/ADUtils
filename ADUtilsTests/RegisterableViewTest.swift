@@ -12,11 +12,11 @@ import Nimble
 import ADUtils
 
 class TableViewDataSource : NSObject, UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
 }
@@ -33,26 +33,26 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
      *
      */
 
-    func registerCells(collectionView: UICollectionView) {
-        collectionView.registerCell(.Class(UICollectionViewCell.self))
-        collectionView.registerHeader(.Class(CollectionViewHeader.self))
-        collectionView.registerFooter(.Class(CollectionViewFooter.self))
+    func registerCells(_ collectionView: UICollectionView) {
+        collectionView.registerCell(.class(UICollectionViewCell.self))
+        collectionView.registerHeader(.class(CollectionViewHeader.self))
+        collectionView.registerFooter(.class(CollectionViewFooter.self))
     }
 
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
 
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: UICollectionViewCell = collectionView.dequeueCellAtIndexPath(indexPath)
         return cell
     }
 
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
             let header: CollectionViewHeader = collectionView.dequeueHeaderAtIndexPath(indexPath)
@@ -77,7 +77,7 @@ class RegisterableViewTest: QuickSpec {
 
             let simpleDataSource = TableViewDataSource()
             var tableView = UITableView()
-            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            let indexPath = IndexPath(row: 0, section: 0)
 
             beforeEach {
                 tableView = UITableView()
@@ -85,7 +85,7 @@ class RegisterableViewTest: QuickSpec {
             }
 
             it("Should register cell class and get not nil instance back") {
-                let registerableView = RegisterableView.Class(UITableViewCell.self)
+                let registerableView = RegisterableView.class(UITableViewCell.self)
                 tableView.registerCell(registerableView)
 
                 let cell: UITableViewCell = tableView.dequeueCellAtIndexPath(indexPath)
@@ -93,8 +93,8 @@ class RegisterableViewTest: QuickSpec {
             }
 
             it("Should register header class and get not nil instance back") {
-                tableView.registerHeader(.Class(TableViewHeader.self))
-                tableView.registerFooter(.Class(TableViewFooter.self))
+                tableView.registerHeader(.class(TableViewHeader.self))
+                tableView.registerFooter(.class(TableViewFooter.self))
 
                 let header: TableViewHeader = tableView.dequeueHeader()
                 let footer: TableViewFooter = tableView.dequeueFooter()

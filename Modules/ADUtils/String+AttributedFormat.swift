@@ -30,8 +30,8 @@ extension String {
                                                differentFormatAttributes: [[String: AnyObject]]) -> NSAttributedString? {
         guard arguments.count == differentFormatAttributes.count else { return nil }
         do {
-            let regex = try NSRegularExpression(pattern: "%(\\d\\$)?@", options: .CaseInsensitive)
-            let result = regex.matchesInString(self, options: .ReportProgress, range: NSMakeRange(0, self.characters.count))
+            let regex = try NSRegularExpression(pattern: "%(\\d\\$)?@", options: .caseInsensitive)
+            let result = regex.matches(in: self, options: .reportProgress, range: NSMakeRange(0, self.characters.count))
             let mutableAttributedString = NSMutableAttributedString(string: self, attributes: defaultAttributes)
             var locationOffset = 0
             for index in (0..<min(result.count, arguments.count)) {
@@ -41,9 +41,9 @@ extension String {
                 )
                 let unmodifiedRange = result[index].range
                 let range = NSMakeRange(unmodifiedRange.location + locationOffset, unmodifiedRange.length)
-                mutableAttributedString.replaceCharactersInRange(
-                    range,
-                    withAttributedString: attributedArgument
+                mutableAttributedString.replaceCharacters(
+                    in: range,
+                    with: attributedArgument
                 )
                 locationOffset += attributedArgument.length - unmodifiedRange.length
             }

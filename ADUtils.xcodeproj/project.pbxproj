@@ -11,11 +11,6 @@
 		47E17214F9A4009CF12359D7 /* Pods_ADUtilsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */; };
 		4959115A1D7D4FE70057C974 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495911591D7D4FE70057C974 /* Coordinator.swift */; };
 		4959115C1D7D4FFE0057C974 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959115B1D7D4FFE0057C974 /* ApplicationCoordinator.swift */; };
-		4959115E1D7D524A0057C974 /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959115D1D7D524A0057C974 /* RepositoryManager.swift */; };
-		495911601D7D52D50057C974 /* RepositoryManagerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959115F1D7D52D50057C974 /* RepositoryManagerComponent.swift */; };
-		495911621D7D533D0057C974 /* PresenterInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495911611D7D533D0057C974 /* PresenterInjector.swift */; };
-		495911641D7D535A0057C974 /* ComponentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495911631D7D535A0057C974 /* ComponentManager.swift */; };
-		495911661D7D53750057C974 /* ApplicationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495911651D7D53750057C974 /* ApplicationModule.swift */; };
 		49595DCE1D93E11D003F1816 /* TargetSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49595DCD1D93E11D003F1816 /* TargetSettings.swift */; };
 		49EE98A21DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */; };
 		49EE98A41DE6CAE100DE1CB8 /* RegisterableViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE98A31DE6CAE100DE1CB8 /* RegisterableViewTest.swift */; };
@@ -57,17 +52,12 @@
 		4131DA2D9333046F6E9F313E /* Pods-ADUtilsTests.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.distribution.xcconfig"; sourceTree = "<group>"; };
 		495911591D7D4FE70057C974 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4959115B1D7D4FFE0057C974 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
-		4959115D1D7D524A0057C974 /* RepositoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryManager.swift; sourceTree = "<group>"; };
-		4959115F1D7D52D50057C974 /* RepositoryManagerComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryManagerComponent.swift; sourceTree = "<group>"; };
-		495911611D7D533D0057C974 /* PresenterInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresenterInjector.swift; sourceTree = "<group>"; };
-		495911631D7D535A0057C974 /* ComponentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentManager.swift; sourceTree = "<group>"; };
-		495911651D7D53750057C974 /* ApplicationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationModule.swift; sourceTree = "<group>"; };
-		49595DCD1D93E11D003F1816 /* TargetSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetSettings.swift; sourceTree = "<group>"; };
+		49595DCD1D93E11D003F1816 /* TargetSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TargetSettings.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		49B1F77E1CE4B3DB00A29BFE /* ADUtilsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADUtilsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B1F7821CE4B3DB00A29BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsTest.swift; sourceTree = "<group>"; };
 		49EE98A31DE6CAE100DE1CB8 /* RegisterableViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterableViewTest.swift; sourceTree = "<group>"; };
-		49F7C9F41D0EDE6300086054 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		49F7C9F41D0EDE6300086054 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Logger.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		49F7C9F61D0EDE7100086054 /* ADFileLoggerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFileLoggerFormatter.h; sourceTree = "<group>"; };
 		49F7C9F71D0EDE7100086054 /* ADFileLoggerFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFileLoggerFormatter.m; sourceTree = "<group>"; };
 		4C8B60A08D066BFD9DDA1251 /* Pods-ADUtilsApp.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.distribution.xcconfig"; sourceTree = "<group>"; };
@@ -75,8 +65,8 @@
 		57C59D691BB1486B003798DF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57E1CD271C884F1C00A7DFFB /* SharedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
 		57E1CD291C884F3000A7DFFB /* ADUtils-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ADUtils-Bridging-Header.h"; path = "Classes/ADUtils-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		57E1CD481C884F8900A7DFFB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		57E1CD4A1C8852FC00A7DFFB /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		57E1CD481C884F8900A7DFFB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		57E1CD4A1C8852FC00A7DFFB /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Color.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		57E1CD4C1C8890CA00A7DFFB /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		57F7ECC31BB0042D0095AEEC /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		57F7ECC51BB004500095AEEC /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -168,11 +158,6 @@
 		495911541D7D4F020057C974 /* DI */ = {
 			isa = PBXGroup;
 			children = (
-				495911611D7D533D0057C974 /* PresenterInjector.swift */,
-				4959115D1D7D524A0057C974 /* RepositoryManager.swift */,
-				4959115F1D7D52D50057C974 /* RepositoryManagerComponent.swift */,
-				495911651D7D53750057C974 /* ApplicationModule.swift */,
-				495911631D7D535A0057C974 /* ComponentManager.swift */,
 			);
 			name = DI;
 			sourceTree = "<group>";
@@ -457,12 +442,12 @@
 					49B1F77D1CE4B3DB00A29BFE = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 2C897PS7YH;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0810;
 						TestTargetID = 7A0EC64E1535D8ED00E5F54A;
 					};
 					7A0EC64E1535D8ED00E5F54A = {
 						DevelopmentTeam = U5M7X5V6ZG;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -676,21 +661,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				495911621D7D533D0057C974 /* PresenterInjector.swift in Sources */,
 				4959115A1D7D4FE70057C974 /* Coordinator.swift in Sources */,
 				57E1CD4D1C8890CA00A7DFFB /* Fonts.swift in Sources */,
 				49F7C9F81D0EDE7100086054 /* ADFileLoggerFormatter.m in Sources */,
-				495911661D7D53750057C974 /* ApplicationModule.swift in Sources */,
-				495911641D7D535A0057C974 /* ComponentManager.swift in Sources */,
 				ECB626FC1DE333F800951346 /* TestView.swift in Sources */,
-				495911601D7D52D50057C974 /* RepositoryManagerComponent.swift in Sources */,
 				49F7C9F51D0EDE6300086054 /* Logger.swift in Sources */,
 				57E1CD491C884F8900A7DFFB /* AppDelegate.swift in Sources */,
 				4959115C1D7D4FFE0057C974 /* ApplicationCoordinator.swift in Sources */,
 				57E1CD4B1C8852FC00A7DFFB /* Color.swift in Sources */,
 				57E1CD281C884F1C00A7DFFB /* SharedViewController.swift in Sources */,
 				49595DCE1D93E11D003F1816 /* TargetSettings.swift in Sources */,
-				4959115E1D7D524A0057C974 /* RepositoryManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,7 +711,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = applidium.ADUtilsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Stubs;
@@ -762,7 +741,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = applidium.ADUtilsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Preproduction;
@@ -793,7 +771,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = applidium.ADUtilsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Production;
@@ -823,7 +800,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = applidium.ADUtilsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Distribution;
@@ -890,7 +866,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/ADUtils-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Stubs;
@@ -954,7 +929,6 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/ADUtils-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -1020,7 +994,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/ADUtils-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Preproduction;
@@ -1086,7 +1059,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/ADUtils-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Production;

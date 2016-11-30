@@ -17,10 +17,10 @@ extension UIColor {
         return colorWithString(TargetSettings.sharedSettings.applidium_blue1)
     }
 
-    private static func colorWithString(hexColor: String) -> UIColor {
+    private static func colorWithString(_ hexColor: String) -> UIColor {
         var color:CUnsignedInt = 0
-        let scanner = NSScanner(string: hexColor)
-        scanner.scanHexInt(&color)
+        let scanner = Scanner(string: hexColor)
+        scanner.scanHexInt32(&color)
         let divider:Float = 255
         return UIColor(red: CGFloat(((Float)((color & 0xFF0000) >> 16)) / divider),
             green: CGFloat(((Float)((color & 0xFF00) >> 8)) / divider),

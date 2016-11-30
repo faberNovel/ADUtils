@@ -16,22 +16,22 @@ extension UIViewController {
      * viewController's view is inserted wihtout margins
      */
 
-    public func ad_insertChild(viewController: UIViewController, inSubview subview: UIView) {
-        guard subview.isDescendantOfView(view) else { return }
+    public func ad_insertChild(_ viewController: UIViewController, inSubview subview: UIView) {
+        guard subview.isDescendant(of: view) else { return }
         addChildViewController(viewController)
         let viewControllerView: UIView = viewController.view
         viewControllerView.translatesAutoresizingMaskIntoConstraints = false
-        subview.ad_addSubview(viewControllerView, withMargins: UIEdgeInsetsZero)
-        viewController.didMoveToParentViewController(self)
+        subview.ad_addSubview(viewControllerView, withMargins: UIEdgeInsets.zero)
+        viewController.didMove(toParentViewController: self)
     }
 
     /**
      * Remove viewController from parent view controller if self is its parent
      */
 
-    public func ad_removeChild(viewController: UIViewController) {
-        guard viewController.parentViewController == self else { return }
-        viewController.willMoveToParentViewController(nil)
+    public func ad_removeChild(_ viewController: UIViewController) {
+        guard viewController.parent == self else { return }
+        viewController.willMove(toParentViewController: nil)
         viewController.view.removeFromSuperview()
         viewController.removeFromParentViewController()
     }

@@ -1,18 +1,17 @@
 PODS:
-  - ADDynamicLogLevel (1.1.1):
-    - CocoaLumberjack (~> 2.0)
-  - ADUtils (1.0.3)
-  - Alamofire (3.5.1)
-  - Cleanse (0.1.0)
-  - CocoaLumberjack (2.4.0):
-    - CocoaLumberjack/Default (= 2.4.0)
-    - CocoaLumberjack/Extensions (= 2.4.0)
-  - CocoaLumberjack/Core (2.4.0)
-  - CocoaLumberjack/Default (2.4.0):
+  - ADDynamicLogLevel (2.0.0):
+    - CocoaLumberjack (~> 3.0)
+  - ADUtils (1.0.5)
+  - Alamofire (4.2.0)
+  - CocoaLumberjack (3.0.0):
+    - CocoaLumberjack/Default (= 3.0.0)
+    - CocoaLumberjack/Extensions (= 3.0.0)
+  - CocoaLumberjack/Core (3.0.0)
+  - CocoaLumberjack/Default (3.0.0):
     - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (2.4.0):
+  - CocoaLumberjack/Extensions (3.0.0):
     - CocoaLumberjack/Default
-  - CocoaLumberjack/Swift (2.4.0):
+  - CocoaLumberjack/Swift (3.0.0):
     - CocoaLumberjack/Extensions
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
@@ -20,47 +19,47 @@ PODS:
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
   - HockeySDK/CrashOnlyLib (3.8.6)
-  - Nimble (4.1.0)
-  - Nimble-Snapshots (4.1.0):
+  - Nimble (5.1.1)
+  - Nimble-Snapshots (4.3.0):
+    - Nimble-Snapshots/Core (= 4.3.0)
+  - Nimble-Snapshots/Core (4.3.0):
     - FBSnapshotTestCase (~> 2.0)
     - Nimble
     - Quick
   - OCMock (3.3.1)
-  - Quick (0.9.3)
-  - Watchdog (1.1)
+  - Quick (1.0.0)
+  - Watchdog (3.0)
 
 DEPENDENCIES:
-  - ADDynamicLogLevel (~> 1.1)
+  - ADDynamicLogLevel (~> 2.0)
   - ADUtils (from `./`)
-  - Alamofire (~> 3.5)
-  - Cleanse (~> 0.1.0)
-  - CocoaLumberjack/Swift (~> 2.0)
+  - Alamofire (~> 4.0)
+  - CocoaLumberjack/Swift (~> 3.0)
   - FBSnapshotTestCase (~> 2.1)
   - HockeySDK/CrashOnlyLib (~> 3.8)
-  - Nimble (~> 4.0)
-  - Nimble-Snapshots (= 4.1.0)
+  - Nimble (~> 5.0)
+  - Nimble-Snapshots (= 4.3.0)
   - OCMock (~> 3.3)
-  - Quick (~> 0.9.3)
-  - Watchdog (~> 1.0)
+  - Quick (~> 1.0)
+  - Watchdog (~> 3.0)
 
 EXTERNAL SOURCES:
   ADUtils:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADDynamicLogLevel: f5a853a09f4c71ab57af7d7e7b4c5c967a93537f
-  ADUtils: 824367183a95a50820e6b3ebf20aacf680124d0a
-  Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
-  Cleanse: 892a766c1f5ec2336bdb0e9c9c38afd095f8b76c
-  CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
+  ADDynamicLogLevel: 434d0c73c113e481a3a1136678b926f9731c7a5c
+  ADUtils: d451cb160a4531f5ee2bbf573331cde1663cd56e
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   HockeySDK: ab68303eec6680f6b539de65d747742dd276e934
-  Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
-  Nimble-Snapshots: 2da4d2ec829b458d6886c06812c52493fce284c9
+  Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
+  Nimble-Snapshots: 4ba722c35b73a680cbd856e4bc22076dfb8085d4
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
-  Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
-  Watchdog: 61e39a5ba9296e3517b2489edc2d67901b944044
+  Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
+  Watchdog: 141185b6b3a332a9f5721ea42dfa9681cf2d7c6b
 
-PODFILE CHECKSUM: 87e7e0e03a78c63b1ff5c895df4faa125074e1d7
+PODFILE CHECKSUM: 6684c785cbb551ec788add55274cf7971fe84cfe
 
 COCOAPODS: 1.1.1

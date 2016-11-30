@@ -12,7 +12,7 @@ import Foundation
  * Exectute the given block using the lock as lock for mutex
  */
 
-public func synchronize<T>(lock: AnyObject, block: () -> T) -> T {
+public func synchronize<T>(_ lock: Any, block: () -> T) -> T {
     let returnValue: T
     objc_sync_enter(lock)
     returnValue = block()

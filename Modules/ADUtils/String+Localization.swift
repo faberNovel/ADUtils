@@ -16,9 +16,9 @@ extension String {
 
     public var ad_localizedUppercaseString: String {
         guard #available(iOS 9, *) else {
-            return uppercaseStringWithLocale(NSLocale.currentLocale())
+            return uppercased(with: Locale.current)
         }
-        return localizedUppercaseString
+        return localizedUppercase
     }
 
     public func localized() -> String {
