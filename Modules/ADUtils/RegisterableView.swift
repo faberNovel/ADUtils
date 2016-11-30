@@ -13,15 +13,15 @@ import UIKit
  * Usage example:
  *
  * To register a cell class :
- *    tableView.registerCell(.Class(UITableViewCell.self))
+ *    tableView.register(cell: .class(UITableViewCell.self))
  * To register a cell nib :
- *    tableView.registerCell(.Nib(ADTableViewCell.self))
+ *    tableView.register(cell: .nib(ADTableViewCell.self))
  *
- * Note that there is a handy method tableView.registerCells([]) that allow
+ * Note that there is a handy method tableView.register(cells: []) that allow
  * to register mutiple cells at once
  *
  * To dequeue a cell use :
- *    let cell: UITableViewCell = tableView.dequeueCellAtIndexPath(indexPath)
+ *    let cell: UITableViewCell = tableView.dequeueCellAt(indexPath: indexPath)
  *
  * Same methods can be used on UITableView or UICollectionView.
  *

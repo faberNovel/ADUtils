@@ -9,13 +9,13 @@
 import Foundation
 
 extension UIViewController {
-
     /**
-     * Inset viewController as a child, inserting its view inside subview
-     * subview has to be a subView of view
-     * viewController's view is inserted wihtout margins
-     */
+     Insert a view controller as child of current view controller
 
+     - parameter child: UIViewController to insert as child. Its view is inserted without margins
+
+     - parameter subview: UIView where child's view is inserted
+     */
     public func ad_insert(child viewController: UIViewController, in subview: UIView) {
         guard subview.isDescendant(of: view) else { return }
         addChildViewController(viewController)
@@ -26,9 +26,10 @@ extension UIViewController {
     }
 
     /**
-     * Remove viewController from parent view controller if self is its parent
-     */
+     Remove child viewController from current view controller
 
+     - parameter child: child UIViewController to remove. Its view is removed from its superview
+     */
     public func ad_remove(child viewController: UIViewController) {
         guard viewController.parent == self else { return }
         viewController.willMove(toParentViewController: nil)

@@ -11,9 +11,12 @@ import Foundation
 extension UIView {
 
     /**
-     * Add view to itself, pinning edges to margins
-     */
+     Add view to itself, pinning edges to margins
 
+     - parameter view: UIView to insert as subview
+
+     - parameter margins: UIEdgeInsets to apply to subview
+     */
     public func ad_addSubview(_ view: UIView, withMargins margins: UIEdgeInsets) {
         let viewBindings = ["view" : view]
         view.translatesAutoresizingMaskIntoConstraints = false

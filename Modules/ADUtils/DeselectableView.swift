@@ -24,16 +24,19 @@ public extension DeselectableView where Self: UIView {
     //MARK: - DeselectableView
 
     /**
-    * Smootly deselects item in DeselectableView (ie Table/Collection view) along coordinator's transition
-    * Should be used inside viewWillAppear :
+     Smootly deselects item in DeselectableView (ie UITableView/UICollectionView) along coordinator's transition
 
-    * override func viewWillAppear(animated: Bool) {
-    *     super.viewWillAppear(animated)
-    *     collectionView.smoothlyDeselectItems(withCoordinator: transitionCoordinator())
-    * }
+     Should be used inside viewWillAppear :
 
-    */
+     ```
+     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.smoothlyDeselectItems(in: transitionCoordinator())
+     }
+     ```
 
+     - parameter coordinator: UIViewControllerTransitionCoordinator
+     */
     public func smoothlyDeselectItems(in coordinator: UIViewControllerTransitionCoordinator?) {
         guard let selectedIndexPaths = selectedIndexPaths else { return }
         guard let coordinator = coordinator else {
