@@ -9,29 +9,30 @@
 import Foundation
 
 extension UIViewController {
-
     /**
-     * Inset viewController as a child, inserting its view inside subview
-     * subview has to be a subView of view
-     * viewController's view is inserted wihtout margins
-     */
+     Insert a view controller as child of current view controller
 
-    public func ad_insertChild(viewController: UIViewController, inSubview subview: UIView) {
-        guard subview.isDescendantOfView(view) else { return }
+     - parameter child: UIViewController to insert as child. Its view is inserted without margins
+
+     - parameter subview: UIView where child's view is inserted
+     */
+    public func ad_insert(child viewController: UIViewController, in subview: UIView) {
+        guard subview.isDescendant(of: view) else { return }
         addChildViewController(viewController)
         let viewControllerView: UIView = viewController.view
         viewControllerView.translatesAutoresizingMaskIntoConstraints = false
-        subview.ad_addSubview(viewControllerView, withMargins: UIEdgeInsetsZero)
-        viewController.didMoveToParentViewController(self)
+        subview.ad_addSubview(viewControllerView, withMargins: UIEdgeInsets.zero)
+        viewController.didMove(toParentViewController: self)
     }
 
     /**
-     * Remove viewController from parent view controller if self is its parent
-     */
+     Remove child viewController from current view controller
 
-    public func ad_removeChild(viewController: UIViewController) {
-        guard viewController.parentViewController == self else { return }
-        viewController.willMoveToParentViewController(nil)
+     - parameter child: child UIViewController to remove. Its view is removed from its superview
+     */
+    public func ad_remove(child viewController: UIViewController) {
+        guard viewController.parent == self else { return }
+        viewController.willMove(toParentViewController: nil)
         viewController.view.removeFromSuperview()
         viewController.removeFromParentViewController()
     }

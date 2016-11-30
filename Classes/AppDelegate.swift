@@ -17,14 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BITHockeyManagerDelegate 
     var watchdog: Watchdog?
     var applicationCoordinator: ApplicationCoordinator?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         setupLogger()
         setupHockeyApp()
         setupWatchdog()
 
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.backgroundColor = UIColor.whiteColor()
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = UIColor.white
 
         applicationCoordinator = ApplicationCoordinator(window: window!)
         applicationCoordinator?.start()
@@ -35,10 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BITHockeyManagerDelegate 
 
     //MARK: - BITHockeyManagerDelegate
 
-    func attachmentForCrashManager(crashManager: BITCrashManager!) -> BITHockeyAttachment! {
+    func attachment(for crashManager: BITCrashManager!) -> BITHockeyAttachment! {
         return BITHockeyAttachment(
             filename: "report",
-            hockeyAttachmentData: Logger.sharedInstance.fileLogs(),
+            hockeyAttachmentData: Logger.sharedInstance.fileLogs() as Data!,
             contentType: "text/plain"
         )
     }
@@ -56,21 +56,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BITHockeyManagerDelegate 
         guard !TargetSettings.sharedSettings.hockeyAppId.isEmpty else {
             return
         }
-        BITHockeyManager.sharedHockeyManager().configureWithIdentifier(TargetSettings.sharedSettings.hockeyAppId)
-        BITHockeyManager.sharedHockeyManager().crashManager.crashManagerStatus = .AutoSend
-        BITHockeyManager.sharedHockeyManager().crashManager.enableAppNotTerminatingCleanlyDetection = true
+        BITHockeyManager.shared().configure(withIdentifier: TargetSettings.sharedSettings.hockeyAppId)
+        BITHockeyManager.shared().crashManager.crashManagerStatus = .autoSend
+        BITHockeyManager.shared().crashManager.isAppNotTerminatingCleanlyDetectionEnabled = true
         if TargetSettings.sharedSettings.useFileLogger {
-            BITHockeyManager.sharedHockeyManager().delegate = self
+            BITHockeyManager.shared().delegate = self
         }
-        BITHockeyManager.sharedHockeyManager().startManager()
+        BITHockeyManager.shared().start()
     }
 
     private func setupWatchdog() {
         guard TargetSettings.sharedSettings.useWatchdog else {
             return;
         }
-        watchdog = Watchdog(threshold: 0.2, handler: { (duration) -> () in
-            DDLogWarn("[Watchdog] Block main thread for \(duration)s");
-        })
+        watchdog = Watchdog(threshold: 0.2) {
+            DDLogWarn("[Watchdog] Block main thread for 0.2s");
+        }
     }
 }

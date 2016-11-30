@@ -22,25 +22,25 @@ class AttributedStringTest: QuickSpec {
         let stringTest = { (string: String, arguments: [String], imageName: String) -> Void in
 
             let attributes = [
-                NSForegroundColorAttributeName: UIColor.redColor(),
-                NSFontAttributeName: UIFont.systemFontOfSize(12.0)
+                NSForegroundColorAttributeName: UIColor.red,
+                NSFontAttributeName: UIFont.systemFont(ofSize: 12.0)
             ]
             let attributes1 = [
-                NSForegroundColorAttributeName: UIColor.greenColor(),
-                NSFontAttributeName: UIFont.systemFontOfSize(12.0)
+                NSForegroundColorAttributeName: UIColor.green,
+                NSFontAttributeName: UIFont.systemFont(ofSize: 12.0)
             ]
             let attributes2 = [
-                NSForegroundColorAttributeName: UIColor.blueColor(),
-                NSFontAttributeName: UIFont.systemFontOfSize(24.0)
+                NSForegroundColorAttributeName: UIColor.blue,
+                NSFontAttributeName: UIFont.systemFont(ofSize: 24.0)
             ]
 
-            let differentFormatAttributes = arguments.enumerate().map({ (index, _) -> [String: AnyObject] in
+            let differentFormatAttributes = arguments.enumerated().map({ (index, _) -> [String: AnyObject] in
                 return [attributes1, attributes2][index % 2]
             })
 
 
             let attributedString = string.attributedString(
-                withArguments: arguments,
+                arguments: arguments,
                 defaultAttributes: attributes,
                 differentFormatAttributes: differentFormatAttributes
             )
