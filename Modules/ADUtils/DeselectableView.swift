@@ -34,7 +34,7 @@ public extension DeselectableView where Self: UIView {
 
     */
 
-    public func smoothlyDeselectItems(withCoordinator coordinator: UIViewControllerTransitionCoordinator?) {
+    public func smoothlyDeselectItems(in coordinator: UIViewControllerTransitionCoordinator?) {
         guard let selectedIndexPaths = selectedIndexPaths else { return }
         guard let coordinator = coordinator else {
             deselect(atIndexPaths: selectedIndexPaths, animated: false)
