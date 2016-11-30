@@ -40,7 +40,7 @@ class AttributedStringTest: QuickSpec {
 
 
             let attributedString = string.attributedString(
-                withArguments: arguments,
+                arguments: arguments,
                 defaultAttributes: attributes,
                 differentFormatAttributes: differentFormatAttributes
             )

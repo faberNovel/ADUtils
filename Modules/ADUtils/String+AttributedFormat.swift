@@ -10,11 +10,11 @@ import Foundation
 
 extension String {
 
-    public func attributedString(withArguments arguments: [String],
-                                               defaultAttributes: [String: AnyObject],
-                                               formatAttributes: [String: AnyObject]) -> NSAttributedString? {
+    public func attributedString(arguments: [String],
+                                 defaultAttributes: [String: Any],
+                                 formatAttributes: [String: Any]) -> NSAttributedString? {
         return attributedString(
-            withArguments: arguments,
+            arguments: arguments,
             defaultAttributes: defaultAttributes,
             differentFormatAttributes: arguments.map{ _ in return formatAttributes }
         )
@@ -25,9 +25,9 @@ extension String {
      * default attributes are used for self, while differentFormatAttributes are matched to arguments with the same index
      */
 
-    public func attributedString(withArguments arguments: [String],
-                                               defaultAttributes: [String: AnyObject],
-                                               differentFormatAttributes: [[String: AnyObject]]) -> NSAttributedString? {
+    public func attributedString(arguments: [String],
+                                 defaultAttributes: [String: Any],
+                                 differentFormatAttributes: [[String: Any]]) -> NSAttributedString? {
         guard arguments.count == differentFormatAttributes.count else { return nil }
         do {
             let regex = try NSRegularExpression(pattern: "%(\\d\\$)?@", options: .caseInsensitive)
