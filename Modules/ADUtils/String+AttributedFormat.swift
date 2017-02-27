@@ -30,26 +30,55 @@ extension String {
                                                differentFormatAttributes: [[String: AnyObject]]) -> NSAttributedString? {
         guard arguments.count == differentFormatAttributes.count else { return nil }
         do {
-            let regex = try NSRegularExpression(pattern: "%(\\d\\$)?@", options: .CaseInsensitive)
-            let result = regex.matchesInString(self, options: .ReportProgress, range: NSMakeRange(0, self.characters.count))
-            let mutableAttributedString = NSMutableAttributedString(string: self, attributes: defaultAttributes)
+            var attributedString = NSMutableAttributedString(
+                string: self,
+                attributes: defaultAttributes
+            )
             var locationOffset = 0
-            for index in (0..<min(result.count, arguments.count)) {
-                let attributedArgument = NSAttributedString(
-                    string: arguments[index],
-                    attributes: differentFormatAttributes[index]
+            try patternMatches().forEach({ (match) in
+                let matchIndex = self.parameterIndex(for: match)
+                let argument = arguments[matchIndex]
+                let format = differentFormatAttributes[matchIndex]
+                let attributedArgument = NSMutableAttributedString(
+                    string: argument,
+                    attributes: format
                 )
-                let unmodifiedRange = result[index].range
-                let range = NSMakeRange(unmodifiedRange.location + locationOffset, unmodifiedRange.length)
-                mutableAttributedString.replaceCharactersInRange(
-                    range,
+                let matchRange = match.range
+                attributedString.replaceCharactersInRange(
+                    NSMakeRange(matchRange.location + locationOffset, matchRange.length),
                     withAttributedString: attributedArgument
                 )
-                locationOffset += attributedArgument.length - unmodifiedRange.length
-            }
-            return NSAttributedString(attributedString: mutableAttributedString)
+                locationOffset += attributedArgument.length - matchRange.length
+            })
+            return NSAttributedString(attributedString: attributedString)
         } catch {
             return nil
         }
+    }
+
+    //MARK: - Private
+
+    private func patternRegularExpression() throws -> NSRegularExpression  {
+        return try NSRegularExpression(pattern: "%(\\d\\$)?@", options: .CaseInsensitive)
+    }
+
+    private func patternMatches() throws -> [NSTextCheckingResult] {
+        let patternMatches = try patternRegularExpression().matchesInString(
+            self,
+            options: [],
+            range: NSMakeRange(0, self.characters.count)
+        )
+        return patternMatches
+    }
+
+    private func parameterIndex(for patternMatch: NSTextCheckingResult) -> Int {
+        let matchRange = patternMatch.rangeAtIndex(1)
+        guard matchRange.location != NSNotFound && matchRange.length > 1 else {
+            return 0
+        }
+        let startIndex = self.startIndex.advancedBy(matchRange.location)
+        let endIndex = startIndex.advancedBy(matchRange.length-1)
+        let parameterString = self[startIndex..<endIndex]
+        return (Int(parameterString) ?? 0)-1
     }
 }
