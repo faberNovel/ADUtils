@@ -16,7 +16,7 @@ extension UIViewController {
 
      - parameter subview: UIView where child's view is inserted
      */
-    public func ad_insert(child viewController: UIViewController, in subview: UIView) {
+    @objc(ad_insertChild:in:) public func ad_insert(child viewController: UIViewController, in subview: UIView) {
         guard subview.isDescendant(of: view) else { return }
         addChildViewController(viewController)
         let viewControllerView: UIView = viewController.view
@@ -31,7 +31,7 @@ extension UIViewController {
 
      - parameter child: child UIViewController to remove. Its view is removed from its superview
      */
-    public func ad_remove(child viewController: UIViewController) {
+     @objc(ad_removeChild:) public func ad_remove(child viewController: UIViewController) {
         guard viewController.parent == self else { return }
         viewController.willMove(toParentViewController: nil)
         viewController.view.removeFromSuperview()
