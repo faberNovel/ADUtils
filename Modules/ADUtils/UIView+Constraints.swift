@@ -17,7 +17,19 @@ extension UIView {
 
      - parameter insets: UIEdgeInsets to apply for each edge
      */
-    public func ad_pinToSuperview(edges: UIRectEdge = .all, insets: UIEdgeInsets = UIEdgeInsets.zero) {
+    @objc(ad_pinToSuperview) public func ad_pinToSuperview() {
+        ad_pinToSuperview(edges: .all, insets: .zero)
+    }
+
+    @objc(ad_pinToSuperviewWithEdges:) public func ad_pinToSuperview(edges: UIRectEdge) {
+        ad_pinToSuperview(edges: edges, insets: .zero)
+    }
+
+    @objc(ad_pinToSuperviewWithInsets:) public func ad_pinToSuperview(insets: UIEdgeInsets) {
+        ad_pinToSuperview(edges: .all, insets: insets)
+    }
+
+    @objc(ad_pinToSuperviewWithEdges:insets:) public func ad_pinToSuperview(edges: UIRectEdge, insets: UIEdgeInsets) {
         guard let superview = self.superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
         if edges.contains(.top) {
@@ -33,6 +45,8 @@ extension UIView {
             ad_pinTo(view: superview, attribute: .right, constant: -insets.right)
         }
     }
+
+    //MARK: - Private
 
     private func ad_pinTo(view: UIView, attribute: NSLayoutAttribute, constant: CGFloat) {
         view.addConstraint(
