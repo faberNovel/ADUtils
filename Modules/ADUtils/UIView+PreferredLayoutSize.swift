@@ -8,6 +8,16 @@
 
 import Foundation
 
+public struct LayoutOrientation: OptionSet {
+
+    public let rawValue: Int
+
+    public init(rawValue: Int) { self.rawValue = rawValue }
+
+    public static let horizontal = LayoutOrientation(rawValue: 1 << 0)
+    public static let vertical = LayoutOrientation(rawValue: 1 << 1)
+}
+
 public extension UIView {
 
     /**
@@ -19,46 +29,46 @@ public extension UIView {
      */
     public func ad_preferredLayoutSize(
         fittingSize targetSize: CGSize,
-        lockWidth: Bool = false
+        lockDirections: LayoutOrientation? = nil
         ) -> CGSize {
         let previousTranslatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
         translatesAutoresizingMaskIntoConstraints = false
-        var widthConstraints: [NSLayoutConstraint]?
-        if lockWidth {
-            widthConstraints = self.lockView(to: targetSize.width)
+        var lockConstraints: [NSLayoutConstraint] = []
+        if lockDirections?.contains(LayoutOrientation.horizontal) ?? false {
+            lockConstraints.append(contentsOf: lockView(.width, to:targetSize.width))
+        }
+        if lockDirections?.contains(LayoutOrientation.vertical) ?? false {
+            lockConstraints.append(contentsOf: lockView(.height, to:targetSize.height))
         }
         layoutIfNeeded()
-
         let height = ceil(systemLayoutSizeFitting(UILayoutFittingCompressedSize).height)
-        if let widthConstraints = widthConstraints {
-            self.removeConstraints(widthConstraints)
-        }
+        self.removeConstraints(lockConstraints)
         translatesAutoresizingMaskIntoConstraints = previousTranslatesAutoresizingMaskIntoConstraints
         return CGSize(width: targetSize.width, height: height)
     }
 
     //MARK: - Private
 
-    private func lockView(to maximalWidth: CGFloat) -> [NSLayoutConstraint] {
+    private func lockView(_ attribute: NSLayoutAttribute, to value: CGFloat) -> [NSLayoutConstraint] {
         let equalConstraint = NSLayoutConstraint(
             item: self,
-            attribute: .width,
+            attribute: attribute,
             relatedBy: .equal,
             toItem: nil,
             attribute: .notAnAttribute,
             multiplier: 1.0,
-            constant: maximalWidth
+            constant: value
         )
         //???: (Benjamin Lavialle) 2017-05-04 Do not use required in case there is an other width constraint
         equalConstraint.priority = UILayoutPriorityRequired - 1
         let maxConstraint = NSLayoutConstraint(
             item: self,
-            attribute: .width,
+            attribute: attribute,
             relatedBy: .lessThanOrEqual,
             toItem: nil,
             attribute: .notAnAttribute,
             multiplier: 1.0,
-            constant: maximalWidth
+            constant: value
         )
         maxConstraint.priority = UILayoutPriorityRequired
         let constraints = [equalConstraint, maxConstraint]

@@ -34,7 +34,7 @@ class ViewLayout: QuickSpec {
             it("should compute height") {
                 let size = view.ad_preferredLayoutSize(
                     fittingSize: CGSize(width: width, height: 10000.0),
-                    lockWidth: true
+                    lockDirections: [LayoutOrientation.horizontal]
                 )
                 expect(size.height).to(equal(CGFloat(1218.0)))
             }
