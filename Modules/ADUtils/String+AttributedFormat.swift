@@ -22,8 +22,8 @@ extension String {
      - returns: NSAttributedString with same attributes for each argument
      */
     public func attributedString(arguments: [String],
-                                 defaultAttributes: [String: Any],
-                                 formatAttributes: [String: Any]) -> NSAttributedString? {
+                                 defaultAttributes: [NSAttributedStringKey: Any],
+                                 formatAttributes: [NSAttributedStringKey: Any]) -> NSAttributedString? {
         return attributedString(
             arguments: arguments,
             defaultAttributes: defaultAttributes,
@@ -45,8 +45,8 @@ extension String {
      - returns: NSAttributedString with differents attributes for each argument
      */
     public func attributedString(arguments: [String],
-                                 defaultAttributes: [String: Any],
-                                 differentFormatAttributes: [[String: Any]]) -> NSAttributedString? {
+                                 defaultAttributes: [NSAttributedStringKey: Any],
+                                 differentFormatAttributes: [[NSAttributedStringKey: Any]]) -> NSAttributedString? {
         guard arguments.count == differentFormatAttributes.count else { return nil }
         do {
             let attributedString = NSMutableAttributedString(
@@ -91,7 +91,7 @@ extension String {
     }
 
     private func parameterIndex(for patternMatch: NSTextCheckingResult) -> Int {
-        let matchRange = patternMatch.rangeAt(1)
+        let matchRange = patternMatch.range(at: 1)
         guard matchRange.location != NSNotFound && matchRange.length > 1 else {
             return 0
         }

@@ -1,7 +1,7 @@
 source 'git@scm.applidium.net:CocoaPodsSpecs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '8.1'
+platform :ios, '9.0'
 use_frameworks!
 
 pod 'CocoaLumberjack/Swift', '~>  3.0', :inhibit_warnings => true
@@ -25,6 +25,13 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
+
+      # TODO: (Pierre Felgines) 29/08/2017 Remove this line as soon as pods are in Swift 4!
+      if target.name == "ADUtils" || target.name == "ADUtilsTests" || target.name == "ADUtilsApp"
+          config.build_settings['SWIFT_VERSION'] = '4.0'
+      else
+          config.build_settings['SWIFT_VERSION'] = '3.2'
+      end
 
       # Change the Optimization level for each target/configuration
       if !config.name.include?("Distribution")

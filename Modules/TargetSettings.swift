@@ -8,67 +8,41 @@
 
 import Foundation
 
-class TargetSettings : NSObject {
+struct TargetSettings : Decodable {
 
-    // Config
-    private(set) var logLevel: DDLogLevel = .all
-    private(set) var hockeyAppId: String = ""
-    private(set) var useWatchdog: Bool = false
-    private(set) var useFileLogger: Bool = false
-    // Colors
-    private(set) var applidium_blue1: String = ""
-    private(set) var applidium_blue2: String = ""
-    private(set) var applidium_blue3: String = ""
-    private(set) var applidium_blue4: String = ""
+    static var shared: TargetSettings = {
+        let decoder = TargetSettingsDecoder()
+        return decoder.decode()
+    }()
 
-
-    static let sharedSettings = TargetSettings()
-
-    //MARK: - NSObject
-
-    override init() {
-        super.init()
-        guard let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
-            let dictionary = NSDictionary(contentsOfFile: path) as? [String : AnyObject] else {
-                fatalError("Cannot find Info.plist")
-        }
-        extract(from: dictionary)
+    struct Colors: Decodable {
+        var applidium_blue1: String = ""
+        var applidium_blue2: String = ""
+        var applidium_blue3: String = ""
+        var applidium_blue4: String = ""
     }
 
-    //MARK: - Private
+    private var logLevel: Int = 0
+    var hockeyAppId: String = ""
+    var useWatchdog: Bool = false
+    var useFileLogger: Bool = false
+    var colors = Colors()
 
-    private func extract(from dictionary: [String: AnyObject]) {
-        for (key, value) in dictionary {
+    //MARK: - Computed
 
-            if key == "logLevel", let value = value as? Int {
-                setLogLevelFromPlist(value)
-                continue
-            }
-
-            let capitalizedKey = key.firstLetterCapitalized()
-            let valueIsString = value is String
-            if responds(to: NSSelectorFromString("set\(capitalizedKey):")) &&
-                (!valueIsString || (valueIsString && !(value as! String).isEmpty)) {
-                setValue(value, forKey: key)
-            } else if let subDictionary = dictionary[key] as? [String: AnyObject] {
-                extract(from: subDictionary)
-            }
-        }
-    }
-
-    private func setLogLevelFromPlist(_ logLevel: Int) {
-        let logLevels: [DDLogLevel] = [.off, .error, .warning, .info, .debug, .verbose, .all]
+    var ddLogLevel: DDLogLevel {
+        let logLevels: [DDLogLevel] = [
+            .off,
+            .error,
+            .warning,
+            .info,
+            .debug,
+            .verbose,
+            .all,
+            ]
         guard logLevel >= 0 && logLevel < logLevels.count else {
-            return
+            return .off
         }
-        self.logLevel = logLevels[logLevel]
-    }
-}
-
-private extension String {
-    func firstLetterCapitalized() -> String {
-        guard !isEmpty else { return "" }
-        let index = characters.index(startIndex, offsetBy: 1)
-        return substring(to: index).capitalized + substring(from: index)
+        return logLevels[logLevel]
     }
 }

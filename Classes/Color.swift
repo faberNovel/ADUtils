@@ -14,7 +14,7 @@ extension UIColor {
     // (e.g. ad_lightTextColor())
 
     class func ad_mainApplidiumColor() -> UIColor {
-        return colorWithString(TargetSettings.sharedSettings.applidium_blue1)
+        return colorWithString(TargetSettings.shared.colors.applidium_blue1)
     }
 
     private static func colorWithString(_ hexColor: String) -> UIColor {

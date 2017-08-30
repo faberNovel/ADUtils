@@ -7,8 +7,6 @@
 //
 
 import Foundation
-
-import Foundation
 import Nimble
 import Nimble_Snapshots
 import Quick
@@ -26,20 +24,21 @@ class AttributedStringTest: QuickSpec {
                     fail("Font HelveticaNeue do not exists")
                     return
             }
-            let attributes = [
-                NSForegroundColorAttributeName: UIColor.red,
-                NSFontAttributeName: smallFont
+            let attributes: [NSAttributedStringKey: Any] = [
+                .foregroundColor: UIColor.red,
+                .font: smallFont
             ]
-            let attributes1 = [
-                NSForegroundColorAttributeName: UIColor.green,
-                NSFontAttributeName: smallFont
+            let attributes1: [NSAttributedStringKey: Any] = [
+                .foregroundColor: UIColor.green,
+                .font: smallFont
             ]
-            let attributes2 = [
-                NSForegroundColorAttributeName: UIColor.blue,
-                NSFontAttributeName: bigFont
+            let attributes2: [NSAttributedStringKey: Any] = [
+                .foregroundColor: UIColor.blue,
+                .font: bigFont
             ]
 
-            let differentFormatAttributes = arguments.enumerated().map({ (index, _) -> [String: AnyObject] in
+            let differentFormatAttributes = arguments.enumerated().map({ (arg) -> [NSAttributedStringKey: Any] in
+                let (index, _) = arg
                 return [attributes1, attributes2][index % 2]
             })
 
