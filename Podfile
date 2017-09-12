@@ -14,8 +14,8 @@ target 'ADUtilsApp' do
 end
 
 target 'ADUtilsTests' do
-  pod 'Quick', '~> 1.0'
-  pod 'Nimble', '~> 5.0'
+  pod 'Quick', '~> 1.1.0'
+  pod 'Nimble', '~> 7.0'
   pod 'Nimble-Snapshots', '4.3.0'
   pod 'OCMock', '~> 3.3'
   pod 'FBSnapshotTestCase', '~> 2.1'
@@ -35,7 +35,6 @@ post_install do |installer|
       config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
       config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
       config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
-      config.build_settings['SWIFT_VERSION'] = '3.0'
     end
   end
 end

@@ -20,24 +20,28 @@ class AttributedStringTest: QuickSpec {
     override func spec() {
 
         let stringTest = { (string: String, arguments: [String], imageName: String) -> Void in
-
+            guard
+                let smallFont = UIFont(name: "HelveticaNeue", size: 12.0),
+                let bigFont = UIFont(name: "HelveticaNeue", size: 24.0) else {
+                    fail("Font HelveticaNeue do not exists")
+                    return
+            }
             let attributes = [
                 NSForegroundColorAttributeName: UIColor.red,
-                NSFontAttributeName: UIFont.systemFont(ofSize: 12.0)
+                NSFontAttributeName: smallFont
             ]
             let attributes1 = [
                 NSForegroundColorAttributeName: UIColor.green,
-                NSFontAttributeName: UIFont.systemFont(ofSize: 12.0)
+                NSFontAttributeName: smallFont
             ]
             let attributes2 = [
                 NSForegroundColorAttributeName: UIColor.blue,
-                NSFontAttributeName: UIFont.systemFont(ofSize: 24.0)
+                NSFontAttributeName: bigFont
             ]
 
             let differentFormatAttributes = arguments.enumerated().map({ (index, _) -> [String: AnyObject] in
                 return [attributes1, attributes2][index % 2]
             })
-
 
             let attributedString = string.attributedString(
                 arguments: arguments,
