@@ -21,8 +21,7 @@ class Logger {
         return logger
     }()
 
-    func setup() {
-        let logLevel = TargetSettings.sharedSettings.logLevel
+    func setup(logLevel: DDLogLevel, useFileLogger: Bool) {
         if let xCodeConsoleLogger = DDTTYLogger.sharedInstance {
             xCodeConsoleLogger.colorsEnabled = true
             DDLog.add(xCodeConsoleLogger, with: logLevel)
@@ -30,7 +29,7 @@ class Logger {
         if let appleSystemLogger = DDASLLogger.sharedInstance {
             DDLog.add(appleSystemLogger, with: logLevel)
         }
-        if let fileLogger = fileLogger {
+        if useFileLogger, let fileLogger = fileLogger {
             DDLog.add(fileLogger, with: DDLogLevel.all)
         }
     }

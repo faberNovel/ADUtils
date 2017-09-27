@@ -46,27 +46,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BITHockeyManagerDelegate 
     //MARK: - Private
 
     private func setupLogger() {
-        guard TargetSettings.sharedSettings.useFileLogger else {
-            return
-        }
-        Logger.sharedInstance.setup()
+        Logger.sharedInstance.setup(
+            logLevel: TargetSettings.shared.ddLogLevel,
+            useFileLogger: TargetSettings.shared.useFileLogger
+        )
     }
 
     private func setupHockeyApp() {
-        guard !TargetSettings.sharedSettings.hockeyAppId.isEmpty else {
+        guard !TargetSettings.shared.hockeyAppId.isEmpty else {
             return
         }
-        BITHockeyManager.shared().configure(withIdentifier: TargetSettings.sharedSettings.hockeyAppId)
+        BITHockeyManager.shared().configure(withIdentifier: TargetSettings.shared.hockeyAppId)
         BITHockeyManager.shared().crashManager.crashManagerStatus = .autoSend
         BITHockeyManager.shared().crashManager.isAppNotTerminatingCleanlyDetectionEnabled = true
-        if TargetSettings.sharedSettings.useFileLogger {
+        if TargetSettings.shared.useFileLogger {
             BITHockeyManager.shared().delegate = self
         }
         BITHockeyManager.shared().start()
     }
 
     private func setupWatchdog() {
-        guard TargetSettings.sharedSettings.useWatchdog else {
+        guard TargetSettings.shared.useWatchdog else {
             return;
         }
         watchdog = Watchdog(threshold: 0.2) {

@@ -38,8 +38,8 @@ extension NSObject : ClassIdentifiable {
 }
 
 public enum RegisterableView {
-    case nib(AnyClass)
-    case `class`(AnyClass)
+    case nib(NSObject.Type)
+    case `class`(NSObject.Type)
 }
 
 public extension RegisterableView {
