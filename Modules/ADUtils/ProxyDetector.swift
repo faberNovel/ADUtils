@@ -16,6 +16,14 @@ public class ProxyDetector {
         return proxyName != nil
     }
 
+    public func handleProxyNotification(after delay: TimeInterval) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
+            //???: (Benjamin Lavialle) 2017-10-03 Do not weak self, we need to keep self to complete action
+            guard let topMostViewController = self.topMostViewController else { return }
+            self.notifyIfProxyActivated(in: topMostViewController)
+        })
+    }
+
     public func notifyIfProxyActivated(in viewController: UIViewController) {
         guard isProxyActivated else { return }
         let alertController = UIAlertController(
@@ -39,5 +47,13 @@ public class ProxyDetector {
         let httpProxy = networkProxySettings?["HTTPProxy"] as? String
         let httpsProxy = networkProxySettings?["HTTPSProxy"] as? String
         return httpProxy ?? httpsProxy
+    }
+
+    private var topMostViewController: UIViewController? {
+        var viewController = UIApplication.shared.delegate?.window??.rootViewController
+        while let presentedViewController = viewController?.presentedViewController {
+            viewController = presentedViewController
+        }
+        return viewController
     }
 }
