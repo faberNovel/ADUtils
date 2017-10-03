@@ -10,13 +10,10 @@
     "inhouse": false,
     "bundles": {
       "main_app": "com.yourclient.appname",
-      "extensions": [{
-        "id": 0,
-        "bundle": "com.yourclient.appname.watchkitapp"
-      }, {
-        "id": 1,
-        "bundle": "com.yourclient.appname.watchkitextension"
-      }]
+      "extensions": [
+      "com.yourclient.appname.watchkitapp",
+      "com.yourclient.appname.watchkitextension"
+      ]
     },
     "code_signing": {
       "apple_id": "emailToLoginToYourClientAppleDev",
@@ -42,20 +39,14 @@
     },
     "applidium_bundles": {
       "main_app": "com.applidium.ADUtils",
-      "extensions": [{
-        "id": 0,
-        "bundle": "com.applidium.ADUtils.watchkitapp"
-      }, {
-        "id": 1,
-        "bundle": "com.applidium.ADUtils.watchkitextension"
-      }]
+      "extensions": [
+      "com.applidium.ADUtils.watchkitapp",
+      "com.applidium.ADUtils.watchkitextension"
+      ]
     }
   }],
-  "extensions": [{
-    "id": 0,
-    "name": "TODO Watchkit App Demo"
-  }, {
-    "id": 1,
-    "name": "TODO Watchkit Ext Demo"
-  }]
+  "extensions": [
+  "TODO Watchkit App Demo",
+  "TODO Watchkit Ext Demo"
+  ]
 }
