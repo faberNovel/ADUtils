@@ -17,10 +17,11 @@ public struct DynamicFont: DynamicFontProvider {
 
     //MARK: - DynamicFont
 
-    public init(fontName: String? = nil) {
+    public init(fontName: String? = nil) throws {
         //TODO: (Benjamin Lavialle) 2017-10-20 Improve that
         if let fontName = fontName {
-            provider = CustomFontDynamicFontProvider()
+            let fontDescription = try FontDescription(fontName: fontName)
+            provider = CustomFontDynamicFontProvider(fontDescription: fontDescription)
         } else {
             provider = DefaultDynamicFontProvider()
         }
@@ -42,6 +43,8 @@ private struct DefaultDynamicFontProvider: DynamicFontProvider {
 }
 
 private struct CustomFontDynamicFontProvider: DynamicFontProvider {
+
+    let fontDescription: FontDescription
 
     //MARK: - DynamicFontProvider
 
