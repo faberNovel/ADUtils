@@ -11,6 +11,7 @@ private typealias FontDescriptionDictionary = [UIFontTextStyle.RawValue: FontSty
 
 struct FontDescription {
 
+    let name: String
     private let dictionary: FontDescriptionDictionary
 
     //MARK: - FontDescription
@@ -22,6 +23,7 @@ struct FontDescription {
         let data = try Data(contentsOf: url)
         let decoder = PropertyListDecoder()
         dictionary = try decoder.decode(FontDescriptionDictionary.self, from: data)
+        name = fontName
     }
 
     func fontStyleDescription(for fontTextStyle: UIFontTextStyle) throws -> FontStyleDescription {
