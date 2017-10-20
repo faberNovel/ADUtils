@@ -40,6 +40,8 @@ struct FontStyleDescription: Decodable {
 }
 
 enum FontDescriptionError: Error {
+
     case styleForFontUnavailable
     case plistMissing
+    case fontMissing
 }

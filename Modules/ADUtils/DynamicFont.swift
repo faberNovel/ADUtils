@@ -49,6 +49,26 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
     //MARK: - DynamicFontProvider
 
     func font(forTextStyle textStyle: UIFontTextStyle) -> UIFont {
-        return UIFont.preferredFont(forTextStyle: textStyle) //TODO: (Benjamin Lavialle) 2017-10-20 Implement it
+        do {
+            return try throwingFont(forTextStyle: textStyle)
+        } catch {
+            assertionFailure("Missing font for \(fontDescription.name) with style : \(textStyle)")
+            return UIFont.preferredFont(forTextStyle: textStyle)
+        }
+    }
+
+    //MARK: - Private
+
+    private func throwingFont(forTextStyle textStyle: UIFontTextStyle) throws -> UIFont {
+        let styleDescription = try fontDescription.fontStyleDescription(for: textStyle)
+        if #available(iOS 11.0, tvOS 11.0, *) {
+            guard let font = UIFont(name: styleDescription.name, size: styleDescription.size) else {
+                throw FontDescriptionError.fontMissing
+            }
+            let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
+            return fontMetrics.scaledFont(for: font)
+        } else {
+            return UIFont.preferredFont(forTextStyle: textStyle) //TODO: (Benjamin Lavialle) 2017-10-20 Implement it
+        }
     }
 }
