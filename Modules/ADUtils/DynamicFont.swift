@@ -52,7 +52,7 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
         do {
             return try throwingFont(forTextStyle: textStyle)
         } catch {
-            assertionFailure("Missing font for \(fontDescription.name) with style : \(textStyle)")
+            assertionFailure("[DynamicFont] Missing font for \(fontDescription.name) with style : \(textStyle)")
             return UIFont.preferredFont(forTextStyle: textStyle)
         }
     }
