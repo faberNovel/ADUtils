@@ -45,6 +45,7 @@ private struct DefaultDynamicFontProvider: DynamicFontProvider {
 private struct CustomFontDynamicFontProvider: DynamicFontProvider {
 
     let fontDescription: FontDescription
+    private let fontSizeHelper = FontSizeHelper()
 
     //MARK: - DynamicFontProvider
 
@@ -59,6 +60,17 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
 
     //MARK: - Private
 
+    private var currentSpecifiedContentSizeCategory: UIContentSizeCategory {
+        var currentContentSizeCategory = UIApplication.shared.preferredContentSizeCategory
+        if #available(iOS 10.0, tvOS 10.0, *) {
+            if currentContentSizeCategory == .unspecified {
+                //???: (Benjamin Lavialle) 2017-10-20 fallback on default category
+                currentContentSizeCategory = .large
+            }
+        }
+        return currentContentSizeCategory
+    }
+
     private func throwingFont(forTextStyle textStyle: UIFontTextStyle) throws -> UIFont {
         let styleDescription = try fontDescription.fontStyleDescription(for: textStyle)
         if #available(iOS 11.0, tvOS 11.0, *) {
@@ -68,7 +80,14 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
             let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
             return fontMetrics.scaledFont(for: font)
         } else {
-            return UIFont.preferredFont(forTextStyle: textStyle) //TODO: (Benjamin Lavialle) 2017-10-20 Implement it
+            let currentContentSizeCategory = currentSpecifiedContentSizeCategory
+            let size = fontSizeHelper.fontSize(
+                matchingSize: styleDescription.size,
+                withStyle: textStyle,
+                contentSizeCategory: currentContentSizeCategory
+            )
+            let descriptor = UIFontDescriptor(name: styleDescription.name, size: size)
+            return UIFont(descriptor: descriptor, size: 0.0)
         }
     }
 }
