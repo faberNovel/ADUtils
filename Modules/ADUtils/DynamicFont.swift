@@ -17,8 +17,8 @@ public struct DynamicFont: DynamicFontProvider {
 
     //MARK: - DynamicFont
 
-    public init(fontName: String) throws {
-        let fontDescription = try FontDescription(fontName: fontName)
+    public init(fontName: String, in bundle: Bundle = Bundle.main) throws {
+        let fontDescription = try FontDescription(fontName: fontName, in: bundle)
         provider = CustomFontDynamicFontProvider(fontDescription: fontDescription)
     }
 

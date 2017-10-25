@@ -16,8 +16,8 @@ struct FontDescription {
 
     //MARK: - FontDescription
 
-    init(fontName: String) throws {
-        guard let url = Bundle.main.url(forResource: fontName, withExtension: "plist") else {
+    init(fontName: String, in bundle: Bundle) throws {
+        guard let url = bundle.url(forResource: fontName, withExtension: "plist") else {
             throw FontDescriptionError.plistMissing
         }
         let data = try Data(contentsOf: url)
