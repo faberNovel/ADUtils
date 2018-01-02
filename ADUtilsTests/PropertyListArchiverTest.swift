@@ -11,7 +11,7 @@ import Quick
 import Nimble
 import ADUtils
 
-struct User {
+struct User : Codable {
     let name: String
     let age: Int
 }
@@ -62,14 +62,72 @@ class PropertyListArchiverTest: QuickSpec {
             defaults = UserDefaults()
             archiver = PropertyListArchiver(defaults: defaults)
         }
+        let oneUserKey = "user"
+        let multipleUsersKey = "users"
+
+        it("should save and read one codable value") {
+            do {
+                // Given
+                let user = User(name: "Georges", age: 40)
+
+                // When
+                try archiver.set(user, forKey: oneUserKey)
+                let readUser = try archiver.value(User.self, forKey: oneUserKey)
+
+                // Then
+                expect(readUser).toNot(beNil())
+                if let readUser = readUser {
+                    expect(readUser).to(equal(user))
+                }
+            } catch {
+                fail()
+            }
+        }
+
+        it("should delete one codable value") {
+            do {
+                // Given
+                let user = User(name: "Georges", age: 40)
+
+                // When
+                try archiver.set(user, forKey: oneUserKey)
+                archiver.deleteValue(forKey: oneUserKey)
+                let readUser: User? = try archiver.value(forKey: oneUserKey)
+
+                // Then
+                expect(readUser).to(beNil())
+            } catch {
+                fail()
+            }
+        }
+
+        it("should save and read multiple codable values") {
+            do {
+                // Given
+                let users = [
+                    User(name: "Georges", age: 40),
+                    User(name: "Abitbol", age: 39)
+                ]
+
+                // When
+                try archiver.set(users, forKey: multipleUsersKey)
+                let readUsers: [User] = try archiver.value(forKey: multipleUsersKey) ?? []
+
+                // Then
+                expect(readUsers.count).to(equal(2))
+                expect(readUsers).to(equal(users))
+            } catch {
+                fail()
+            }
+        }
 
         it("should save and read one value") {
             // Given
             let user = User(name: "Georges", age: 40)
 
             // When
-            archiver.save(value: user, forKey: "user")
-            let readUser: User? = archiver.readValue(forKey: "user")
+            archiver.save(value: user, forKey: oneUserKey)
+            let readUser: User? = archiver.readValue(forKey: oneUserKey)
 
             // Then
             expect(readUser).toNot(beNil())
@@ -77,7 +135,7 @@ class PropertyListArchiverTest: QuickSpec {
                 expect(readUser).to(equal(user))
             }
 
-            let defaultValue: Any? = defaults.value(forKey: "user")
+            let defaultValue: Any? = defaults.value(forKey: oneUserKey)
             expect(defaultValue).toNot(beNil())
         }
 
@@ -89,14 +147,14 @@ class PropertyListArchiverTest: QuickSpec {
             ]
 
             // When
-            archiver.save(values: users, forKey: "users")
-            let readUsers: [User] = archiver.readValues(forKey: "users")
+            archiver.save(values: users, forKey: multipleUsersKey)
+            let readUsers: [User] = archiver.readValues(forKey: multipleUsersKey)
 
             // Then
             expect(readUsers.count).to(equal(2))
             expect(readUsers).to(equal(users))
 
-            let defaultValue: Any? = defaults.value(forKey: "users")
+            let defaultValue: Any? = defaults.value(forKey: multipleUsersKey)
             expect(defaultValue).toNot(beNil())
         }
 
@@ -105,14 +163,14 @@ class PropertyListArchiverTest: QuickSpec {
             let user = User(name: "Georges", age: 40)
 
             // When
-            archiver.save(value: user, forKey: "user")
-            archiver.deleteValue(forKey: "user")
-            let readUser: User? = archiver.readValue(forKey: "user")
+            archiver.save(value: user, forKey: oneUserKey)
+            archiver.deleteValue(forKey: oneUserKey)
+            let readUser: User? = archiver.readValue(forKey: oneUserKey)
 
             // Then
             expect(readUser).to(beNil())
 
-            let defaultValue: Any? = defaults.value(forKey: "user")
+            let defaultValue: Any? = defaults.value(forKey: oneUserKey)
             expect(defaultValue).to(beNil())
         }
 
