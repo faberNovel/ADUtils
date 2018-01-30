@@ -7,8 +7,31 @@
 //
 
 import Foundation
+import UIKit
 
 extension UIView {
+
+    /**
+     Add constraints to center self in the superview along specified axes
+
+     - parameter axis: Axis to center the view along in its superview
+
+     */
+    @objc(ad_centerInSuperview) public func ad_centerInSuperview() {
+        ad_centerInSuperview(along: .horizontal)
+        ad_centerInSuperview(along: .vertical)
+    }
+
+    @objc(ad_centerInSuperviewAlongAxis:) public func ad_centerInSuperview(along axis: UILayoutConstraintAxis) {
+        guard let superview = self.superview else { return }
+        translatesAutoresizingMaskIntoConstraints = false
+        switch axis {
+        case .horizontal:
+            ad_pinTo(view: superview, attribute: .centerX, constant: 0.0)
+        case .vertical:
+            ad_pinTo(view: superview, attribute: .centerY, constant: 0.0)
+        }
+    }
 
     /**
      Add constraints to pin self in superview
