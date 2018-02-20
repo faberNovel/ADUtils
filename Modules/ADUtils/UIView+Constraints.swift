@@ -12,6 +12,24 @@ import UIKit
 extension UIView {
 
     /**
+     Add constraints to width and height anchors with size parameters as constants
+
+     - parameter size: Size applied to the view
+
+     - parameter priority: The layout priority used for the constraint created (default value is Required)
+
+     */
+    @objc(ad_constraintToSize:withPriority:) public func ad_constraint(to size: CGSize, with priority: UILayoutPriority) {
+        translatesAutoresizingMaskIntoConstraints = false
+        ad_pinTo(view: self, attribute: .height, constant: size.height, priority: priority)
+        ad_pinTo(view: self, attribute: .width, constant: size.width, priority: priority)
+    }
+
+    @objc(ad_constraintToSize:) public func ad_constraint(to size: CGSize) {
+        ad_constraint(to: size, with: UILayoutPriority.required)
+    }
+
+    /**
      Add constraints to center self in the superview along specified axes
 
      - parameter axis: Axis to center the view along in its superview
