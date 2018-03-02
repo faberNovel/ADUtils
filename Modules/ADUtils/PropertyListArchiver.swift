@@ -49,6 +49,15 @@ public class PropertyListArchiver {
     }
 
     /**
+     Read the values for a specific key in the user defaults.
+     - parameter key: The key to read in the user defaults.
+     - returns: The array associated to the key if it exists or an empty array
+     */
+    public func array<C : Codable>(forKey key: String) throws -> [C] {
+        return try value(forKey: key) ?? []
+    }
+
+    /**
      Save a value for a specific key in the user defaults.
      - parameter value: The object to store in the user defaults.
      - parameter key: The key to use in the user defaults.
