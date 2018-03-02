@@ -72,7 +72,7 @@ class PropertyListArchiverTest: QuickSpec {
 
                 // When
                 try archiver.set(user, forKey: oneUserKey)
-                let readUser = try archiver.value(User.self, forKey: oneUserKey)
+                let readUser: User? = try archiver.value(forKey: oneUserKey)
 
                 // Then
                 expect(readUser).toNot(beNil())
