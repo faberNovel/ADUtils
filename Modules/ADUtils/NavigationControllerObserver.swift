@@ -115,13 +115,11 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
                 return
         }
 
-        if let wrappedDelegate = viewControllersToDelegates[fromViewController] {
-            let delegate = wrappedDelegate.value
-            delegate?.navigationControllerObserver(self, didObservePopTransitionFor: fromViewController)
-            viewControllersToDelegates.removeValue(forKey: fromViewController)
-        }
-
+        // Clean up state before calling delegate method
+        let delegateToCall = viewControllersToDelegates[fromViewController]?.value
+        viewControllersToDelegates.removeValue(forKey: fromViewController)
         cleanOutdatedViewControllers()
+        delegateToCall?.navigationControllerObserver(self, didObservePopTransitionFor: fromViewController)
     }
 
     //MARK: - Private
