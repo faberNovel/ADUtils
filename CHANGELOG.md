@@ -18,6 +18,7 @@ All notable changes to this project will be documented in this file.
 
 - Unit tests: Fix `PropertyListArchiver` unit tests
 - Do not notify proxy on simulator
+- `NavigationControllerObserver`: fix a bug where bookeeping was done too late and view controller was not observed anymore
 
 ## [4.3.0]
 
