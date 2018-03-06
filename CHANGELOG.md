@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
-## [4.3.1]
+## [4.4.0]
 
 ### Added
 - Layout: `ad_centerInSuperview(along axis:UILayoutConstraintAxis)` creates a constraint between centerX/Y anchors of a view and its superView
