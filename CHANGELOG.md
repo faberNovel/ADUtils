@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.5.0]
+
+### Added
+- Add `ad_localizedUppercaseString` and `localized` for Objective-C files
+
 ## [4.4.0]
 
 ### Added
