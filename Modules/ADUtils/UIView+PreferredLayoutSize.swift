@@ -38,13 +38,18 @@ public extension UIView {
             lockConstraints.append(contentsOf: lockView(.width, to:targetSize.width))
         }
         if lockDirections?.contains(LayoutOrientation.vertical) ?? false {
+            // TODO: (Pierre Felgines) 18/04/2018 Someone with a real life test case should handle the layout
+            NSLog("[ADUtils] WARNING, argument LayoutOrientation.vertical is not handled yet...")
             lockConstraints.append(contentsOf: lockView(.height, to:targetSize.height))
         }
         layoutIfNeeded()
-        let height = ceil(systemLayoutSizeFitting(UILayoutFittingCompressedSize).height)
+        let computedSize = systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         self.removeConstraints(lockConstraints)
         translatesAutoresizingMaskIntoConstraints = previousTranslatesAutoresizingMaskIntoConstraints
-        return CGSize(width: targetSize.width, height: height)
+        return CGSize(
+            width: ceil(computedSize.width),
+            height: ceil(computedSize.height)
+        )
     }
 
     //MARK: - Private
