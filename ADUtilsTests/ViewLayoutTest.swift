@@ -34,12 +34,8 @@ class ViewLayout: QuickSpec {
             }
 
             it("should compute height") {
-                let size = view.ad_preferredLayoutSize(
-                    fittingSize: CGSize(width: width, height: 10000.0),
-                    lockDirections: [LayoutOrientation.horizontal]
-                )
-                expect(size.width).to(equal(width))
-                expect(size.height).to(equal(CGFloat(1218.0)))
+                let height = view.ad_preferredLayoutHeight(fittingWidth: width)
+                expect(height).to(equal(CGFloat(1218.0)))
             }
         }
 
@@ -59,9 +55,7 @@ class ViewLayout: QuickSpec {
             }
 
             it("should compute height") {
-                let height = view.ad_preferredLayoutHeight(
-                    fittingSize: CGSize(width: width, height: 10000.0)
-                )
+                let height = view.ad_preferredCellLayoutHeight(fittingWidth: width)
                 expect(height).to(equal(CGFloat(1218.0)))
             }
         }

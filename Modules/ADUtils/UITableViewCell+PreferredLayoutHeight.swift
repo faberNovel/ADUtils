@@ -12,11 +12,11 @@ public extension UITableViewCell {
     /**
      Provides the preferred layout height for the table view cell, this is the smallest height the view and its content can fit. You should populate the view before calling this method.
 
-     - parameter targetSize: The biggest size the view can get
+     - parameter fittingWidth: The biggest width the view can get
      */
-    public func ad_preferredLayoutHeight(fittingSize targetSize: CGSize) -> CGFloat {
+    public func ad_preferredCellLayoutHeight(fittingWidth: CGFloat) -> CGFloat {
         var bounds = self.bounds
-        bounds.size.width = targetSize.width
+        bounds.size.width = fittingWidth
         self.bounds = bounds
         let views = ["contentView": contentView]
         let visualFormats = ["H:|[contentView]|", "V:|[contentView]|"]
@@ -31,11 +31,8 @@ public extension UITableViewCell {
             }
             .flatMap { $0 }
         addConstraints(constraints)
-        let size = contentView.ad_preferredLayoutSize(
-            fittingSize: targetSize,
-            lockDirections: [.horizontal]
-        )
+        let height = contentView.ad_preferredLayoutHeight(fittingWidth: fittingWidth)
         removeConstraints(constraints)
-        return size.height
+        return height
     }
 }
