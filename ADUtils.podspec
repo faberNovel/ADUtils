@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'ADUtils'
-  spec.version      = '5.0.1'
+  spec.version      = '5.1.0'
   spec.authors      = 'Applidium'
   spec.license      = 'none'
   spec.homepage     = 'http://applidium.com'
