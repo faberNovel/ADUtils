@@ -2,6 +2,19 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.1.0]
+
+### Added
+
+- PropertyListArchiver: the PropertyListArchiver enables to set primitive types values for a given key and read them as well
+
+## [5.0.1]
+
+### Fixed
+
+- Layout: `ad_constraint(to size: CGSize)` second item is now nil as supposed to for height and width constraints
+- Layout: `ad_constraint(to size: CGSize)` second attribute is now notAnAttribute as supposed to for height and width constraint
+
 ## [5.0.0]
 
 ### Added
