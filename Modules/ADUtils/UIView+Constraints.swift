@@ -127,7 +127,7 @@ extension UIView {
     //MARK: - Private
 
     private func ad_pinTo(view: UIView, attribute: NSLayoutAttribute, constant: CGFloat, priority: UILayoutPriority = .required) {
-        var constraint = NSLayoutConstraint(
+        let constraint = NSLayoutConstraint(
             item: self,
             attribute: attribute,
             relatedBy: .equal,
