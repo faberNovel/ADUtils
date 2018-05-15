@@ -85,7 +85,7 @@ extension String {
         let patternMatches = try patternRegularExpression().matches(
             in: self,
             options: [],
-            range: NSMakeRange(0, self.characters.count)
+            range: NSMakeRange(0, self.count)
         )
         return patternMatches
     }
