@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.1.1]
+
+### Updated
+
+- Fixed some deprecation warnings
+
 ## [5.1.0]
 
 ### Added
