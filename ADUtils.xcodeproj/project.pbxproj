@@ -13,6 +13,7 @@
 		4959115C1D7D4FFE0057C974 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959115B1D7D4FFE0057C974 /* ApplicationCoordinator.swift */; };
 		49595DCE1D93E11D003F1816 /* TargetSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49595DCD1D93E11D003F1816 /* TargetSettings.swift */; };
 		49B5B1731F59862100432D55 /* TargetSettingsDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B5B1721F59862100432D55 /* TargetSettingsDecoder.swift */; };
+		49CC380120C048F800CFEDDB /* ArrayFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC380020C048F800CFEDDB /* ArrayFilterTests.swift */; };
 		49CEC4A51EFA484900675EC4 /* NavigationControllerObserverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CEC4A41EFA484900675EC4 /* NavigationControllerObserverTest.swift */; };
 		49D85E021E1E6F5300233A3F /* PropertyListArchiverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D85E011E1E6F5300233A3F /* PropertyListArchiverTest.swift */; };
 		49EE98A21DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */; };
@@ -65,6 +66,7 @@
 		49B1F77E1CE4B3DB00A29BFE /* ADUtilsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADUtilsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B1F7821CE4B3DB00A29BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49B5B1721F59862100432D55 /* TargetSettingsDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetSettingsDecoder.swift; sourceTree = "<group>"; };
+		49CC380020C048F800CFEDDB /* ArrayFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayFilterTests.swift; sourceTree = "<group>"; };
 		49CEC4A41EFA484900675EC4 /* NavigationControllerObserverTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerObserverTest.swift; sourceTree = "<group>"; };
 		49D85E011E1E6F5300233A3F /* PropertyListArchiverTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListArchiverTest.swift; sourceTree = "<group>"; };
 		49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsTest.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				49CEC4A41EFA484900675EC4 /* NavigationControllerObserverTest.swift */,
 				EC626C6A1FA06DB4001C332C /* DynamicFontTest.swift */,
 				E7F92DA71FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift */,
+				49CC380020C048F800CFEDDB /* ArrayFilterTests.swift */,
 				EC626C6C1FA07281001C332C /* HelveticaNeue.plist */,
 			);
 			path = ADUtilsTests;
@@ -722,6 +725,7 @@
 				49EE98A21DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift in Sources */,
 				ECB626FE1DE3344A00951346 /* NibLoaderTest.swift in Sources */,
 				ECBFF2381E365F99007C9680 /* EnumCollectionTest.swift in Sources */,
+				49CC380120C048F800CFEDDB /* ArrayFilterTests.swift in Sources */,
 				ECB627001DE3395100951346 /* ChildInsertionTest.swift in Sources */,
 				49CEC4A51EFA484900675EC4 /* NavigationControllerObserverTest.swift in Sources */,
 			);
