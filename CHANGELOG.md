@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.2.0]
+
+### Added
+- Utils: `ad_filter(query: String, for keyPaths: [KeyPath<Element, String>])` to filter an array with a query (e.g search bar content) for specified keypaths.
+
 ## [5.1.1]
 
 ### Updated
