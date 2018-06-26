@@ -1,12 +1,12 @@
 PODS:
   - ADDynamicLogLevel (2.0.0):
     - CocoaLumberjack (~> 3.0)
-  - ADUtils (5.1.1):
-    - ADUtils/objc (= 5.1.1)
-    - ADUtils/Swift (= 5.1.1)
-  - ADUtils/objc (5.1.1):
+  - ADUtils (6.0.0):
+    - ADUtils/objc (= 6.0.0)
+    - ADUtils/Swift (= 6.0.0)
+  - ADUtils/objc (6.0.0):
     - ADUtils/Swift
-  - ADUtils/Swift (5.1.1)
+  - ADUtils/Swift (6.0.0)
   - Alamofire (4.2.0)
   - CocoaLumberjack (3.2.1):
     - CocoaLumberjack/Default (= 3.2.1)
@@ -46,13 +46,27 @@ DEPENDENCIES:
   - Quick (~> 1.1.0)
   - Watchdog (~> 3.0)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - CocoaLumberjack
+    - FBSnapshotTestCase
+    - HockeySDK
+    - Nimble
+    - Nimble-Snapshots
+    - OCMock
+    - Quick
+    - Watchdog
+  "ssh://git@codereview.technologies.fabernovel.com:29418/CocoaPodsSpecs":
+    - ADDynamicLogLevel
+
 EXTERNAL SOURCES:
   ADUtils:
-    :path: ./
+    :path: "./"
 
 SPEC CHECKSUMS:
   ADDynamicLogLevel: 446f21d2c807ad898bd6868513ac9f7b21253066
-  ADUtils: 133bdfa9e3fad534a106a87e5c175f8839f29dec
+  ADUtils: 838fd4507049ed47c83ecdbd2405817d525b7631
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   CocoaLumberjack: 2800c03334042fe80589423c8d80e582dcaec482
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
@@ -65,4 +79,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 52d78dc29304f1ae10e9db3fb88798363308984a
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
