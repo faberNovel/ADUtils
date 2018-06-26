@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.0.0]
+
+### Updated
+- `ad_fromNib` type inference comes from the calling class instead of the generic return type
+
 ## [5.2.0]
 
 ### Added
