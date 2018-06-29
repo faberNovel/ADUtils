@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [7.0.0]
+
+### Updated
+- `ad_fromNib` is not optionnal anymore, meaning we do not have to specify the return type
+
 ## [6.0.0]
 
 ### Updated
