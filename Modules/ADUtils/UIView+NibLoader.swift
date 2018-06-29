@@ -22,7 +22,9 @@ extension NibLoadable where Self: NibLoadable {
         return v!
     }
 
-    public static func ad_fromNib(_ nibNameOrNil: String? = nil,
+    // MARK: - Private
+
+    private static func ad_fromNib(_ nibNameOrNil: String? = nil,
                                   owner: AnyObject? = nil,
                                   bundle: Bundle = Bundle.main) -> Self? {
         var view: Self?
