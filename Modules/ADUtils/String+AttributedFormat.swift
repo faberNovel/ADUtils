@@ -85,7 +85,7 @@ extension String {
         let patternMatches = try patternRegularExpression().matches(
             in: self,
             options: [],
-            range: NSRange(location: 0, length: self.count)
+            range: NSRange(location: 0, length: count)
         )
         return patternMatches
     }
