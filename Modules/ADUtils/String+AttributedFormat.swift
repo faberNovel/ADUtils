@@ -78,7 +78,7 @@ extension String {
     //MARK: - Private
 
     private func patternRegularExpression() throws -> NSRegularExpression  {
-        return try NSRegularExpression(pattern: "%(\\d\\$)?@", options: .caseInsensitive)
+        return try NSRegularExpression(pattern: "%(([1-9][0-9]*)\\$)?@", options: .caseInsensitive)
     }
 
     private func patternMatches() throws -> [NSTextCheckingResult] {
