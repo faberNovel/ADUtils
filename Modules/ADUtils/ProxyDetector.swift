@@ -8,14 +8,23 @@
 import Foundation
 import UIKit
 
+/// ProxyDetector check on proxy use and display notification if in use
 public class ProxyDetector {
 
     public init() {}
 
+    /// Defines if a proxy is currently in use on the device
     public var isProxyActivated: Bool {
         return proxyName != nil
     }
 
+    /**
+     Check on proxy use and display an alert view if activated
+     - parameter time interval before check, it may be usefull if you want to check on proxy at application start, but after launchscreen presentation
+     - note: Does not check on proxy on simulator
+     - note: The alert view is presented on the application top most view controller
+     - note: The alert view is dismissed on its own after one second
+     */
     public func handleProxyNotification(after delay: TimeInterval) {
         guard TARGET_OS_SIMULATOR == 0 else {
             //???: (Benjamin Lavialle) 2018-01-18 Do not notify proxy on simulator
@@ -28,6 +37,11 @@ public class ProxyDetector {
         })
     }
 
+    /**
+     Check on proxy use and display an alert view if activated
+     - parameter viewController: the view controller presenting the alert view
+     - note: The alert view is dismissed on its own after one second
+     */
     public func notifyIfProxyActivated(in viewController: UIViewController) {
         guard isProxyActivated else { return }
         let alertController = UIAlertController(
