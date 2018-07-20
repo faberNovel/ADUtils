@@ -7,21 +7,43 @@
 
 import Foundation
 
+/**
+ The DynamicFontProvider protocol provides a font depending on parameters
+ */
 public protocol DynamicFontProvider {
+
+    /**
+     Provides a font for the given textStyle
+     - parameter textStyle: The font text style
+     */
     func font(forTextStyle textStyle: UIFontTextStyle) -> UIFont
 }
 
+/**
+ The DynamicFont provides an implemementation of DynamicFontProvider depending on a plist resource
+ and/or a default implementation, meaning providing the system preferred font for each font
+ */
 public struct DynamicFont: DynamicFontProvider {
 
     private let provider: DynamicFontProvider
 
     //MARK: - DynamicFont
 
+    /**
+     Create a DynamicFont use the fontName plist in the given bundle
+     - parameter fontName: plist name
+     - parameter bundle: plist bundle
+     - Note:
+     The plist is then used to create a FontDescription, it has to respect the FontDescription plist format
+     */
     public init(fontName: String, in bundle: Bundle = Bundle.main) throws {
         let fontDescription = try FontDescription(fontName: fontName, in: bundle)
         provider = CustomFontDynamicFontProvider(fontDescription: fontDescription)
     }
 
+    /**
+     Create a DynamicFont with the system preferred font for each style
+     */
     public init() {
         provider = DefaultDynamicFontProvider()
     }
