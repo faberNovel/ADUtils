@@ -8,20 +8,20 @@
 
 import Foundation
 
-/*
- * EnumCollection protocol is implementable by enums, and provides allValues var
- *
- * https://theswiftdev.com/2017/01/05/18-swift-gist-generic-allvalues-for-enums/
- *
- * It is not only for RawRepresentable enums, and is based on the fact that enum values are created contiguously
- *
- * Example :
- *
- * enum Alpha: String, EnumCollection {
- *     case a, b, c, d, e
- * }
- *
- * Alpha.allValues
+/**
+ EnumCollection protocol is implementable by enums, and provides allValues var
+ Implementation comes form :
+ https://theswiftdev.com/2017/01/05/18-swift-gist-generic-allvalues-for-enums/
+ It is not only for RawRepresentable enums, and is based on the fact that enum values are created contiguously
+
+ Example :
+ ```
+ enum Alpha: String, EnumCollection {
+     case a, b, c, d, e
+ }
+
+ Alpha.allValues
+ ```
  */
 
 public protocol EnumCollection: Hashable {
