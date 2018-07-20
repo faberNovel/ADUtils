@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [7.2.1]
+
+### Fixed
+- `ad_filter(query:keyPath:)` now performs search insensitively to diacritics on iOS9+
+
 ## [7.2.0]
 
 - `NavigationControllerObserver`: add methods to stop observing view controllers

@@ -24,6 +24,7 @@ class ArrayFilterTests: QuickSpec {
                 Vendor(name: "John", address: "Street 100"),
                 Vendor(name: "Brian", address: "John Boulevard 23"),
                 Vendor(name: "Jordan", address: "Avenue 67"),
+                Vendor(name: "Hervé", address: "Street 4"),
             ]
 
             let keyPaths = [
@@ -39,6 +40,12 @@ class ArrayFilterTests: QuickSpec {
             results = vendors.ad_filter(query: "john", for: keyPaths)
             expect(results.count).to(equal(2))
             expect(results.map { $0.name }).to(equal(["John", "Brian"]))
+
+            if #available(iOS 9.0, *) {
+                results = vendors.ad_filter(query: "rve", for: keyPaths)
+                expect(results.count).to(equal(1))
+                expect(results.map { $0.name }).to(equal(["Hervé"]))
+            }
         }
     }
 }
