@@ -1,16 +1,10 @@
-source 'ssh://git@codereview.technologies.fabernovel.com:29418/CocoaPodsSpecs'
 source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '9.0'
 use_frameworks!
 
-pod 'CocoaLumberjack/Swift', '~>  3.0', :inhibit_warnings => true
-pod 'ADDynamicLogLevel', '~>  2.0', :inhibit_warnings => true
 
 target 'ADUtilsApp' do
-  pod 'Alamofire', '~> 4.0'
-  pod 'HockeySDK', '~> 3.8', :subspecs => ['CrashOnlyLib']
-  pod 'Watchdog', '~> 3.0'
 end
 
 target 'ADUtilsTests' do

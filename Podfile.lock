@@ -1,27 +1,15 @@
 PODS:
-  - ADDynamicLogLevel (2.0.0):
-    - CocoaLumberjack (~> 3.0)
-  - ADUtils (7.0.0):
-    - ADUtils/objc (= 7.0.0)
-    - ADUtils/Swift (= 7.0.0)
-  - ADUtils/objc (7.0.0):
+  - ADUtils (7.0.1):
+    - ADUtils/objc (= 7.0.1)
+    - ADUtils/Swift (= 7.0.1)
+  - ADUtils/objc (7.0.1):
     - ADUtils/Swift
-  - ADUtils/Swift (7.0.0)
-  - Alamofire (4.2.0)
-  - CocoaLumberjack (3.2.1):
-    - CocoaLumberjack/Default (= 3.2.1)
-    - CocoaLumberjack/Extensions (= 3.2.1)
-  - CocoaLumberjack/Default (3.2.1)
-  - CocoaLumberjack/Extensions (3.2.1):
-    - CocoaLumberjack/Default
-  - CocoaLumberjack/Swift (3.2.1):
-    - CocoaLumberjack/Default
+  - ADUtils/Swift (7.0.1)
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - HockeySDK/CrashOnlyLib (3.8.6)
   - Nimble (7.0.1)
   - Nimble-Snapshots (4.3.0):
     - Nimble-Snapshots/Core (= 4.3.0)
@@ -31,52 +19,35 @@ PODS:
     - Quick
   - OCMock (3.3.1)
   - Quick (1.1.0)
-  - Watchdog (3.0)
 
 DEPENDENCIES:
-  - ADDynamicLogLevel (~> 2.0)
   - ADUtils (from `./`)
-  - Alamofire (~> 4.0)
-  - CocoaLumberjack/Swift (~> 3.0)
   - FBSnapshotTestCase (~> 2.1)
-  - HockeySDK/CrashOnlyLib (~> 3.8)
   - Nimble (~> 7.0)
   - Nimble-Snapshots (= 4.3.0)
   - OCMock (~> 3.3)
   - Quick (~> 1.1.0)
-  - Watchdog (~> 3.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - Alamofire
-    - CocoaLumberjack
+  https://github.com/cocoapods/specs.git:
     - FBSnapshotTestCase
-    - HockeySDK
     - Nimble
     - Nimble-Snapshots
     - OCMock
     - Quick
-    - Watchdog
-  "ssh://git@codereview.technologies.fabernovel.com:29418/CocoaPodsSpecs":
-    - ADDynamicLogLevel
 
 EXTERNAL SOURCES:
   ADUtils:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADDynamicLogLevel: 446f21d2c807ad898bd6868513ac9f7b21253066
-  ADUtils: 3f5af3bb21cd6eea1c0bc46fe4bcb69011c3d602
-  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
-  CocoaLumberjack: 2800c03334042fe80589423c8d80e582dcaec482
+  ADUtils: 385fccea77a496c97b58312f6ea688a878775c48
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  HockeySDK: ab68303eec6680f6b539de65d747742dd276e934
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
   Nimble-Snapshots: 4ba722c35b73a680cbd856e4bc22076dfb8085d4
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
-  Watchdog: 141185b6b3a332a9f5721ea42dfa9681cf2d7c6b
 
-PODFILE CHECKSUM: 52d78dc29304f1ae10e9db3fb88798363308984a
+PODFILE CHECKSUM: 580dc725fea22ee3cf6a1c31552ba67f54555de4
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
