@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ Protocol NavigationControllerObserverDelegate provides methods to observe `NavigationControllerObserver` actions
+ */
 public protocol NavigationControllerObserverDelegate : class {
     /**
      Callback when a `viewController` is popped from the `navigationController` stack
