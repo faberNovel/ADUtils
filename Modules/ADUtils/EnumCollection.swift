@@ -24,6 +24,7 @@ import Foundation
  ```
  */
 
+@available(swift, obsoleted: 4.2, message: "Use CaseIterable")
 public protocol EnumCollection: Hashable {
     static var allValues: [Self] { get }
 }
