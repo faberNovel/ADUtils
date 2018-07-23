@@ -22,7 +22,7 @@ post_install do |installer|
 
       # TODO: (Pierre Felgines) 29/08/2017 Remove this line as soon as pods are in Swift 4!
       if target.name == "ADUtils" || target.name == "ADUtilsTests" || target.name == "ADUtilsApp"
-          config.build_settings['SWIFT_VERSION'] = '4.0'
+          config.build_settings['SWIFT_VERSION'] = '4.2'
       else
           config.build_settings['SWIFT_VERSION'] = '3.2'
       end

@@ -13,8 +13,8 @@ import Foundation
 extension NSString {
 
     @objc public func adobjc_attributedString(arguments: [String],
-                                        defaultAttributes: [NSAttributedStringKey: Any],
-                                        formatAttributes: [NSAttributedStringKey: Any]) -> NSAttributedString? {
+                                        defaultAttributes: [NSAttributedString.Key: Any],
+                                        formatAttributes: [NSAttributedString.Key: Any]) -> NSAttributedString? {
         return (self as String).attributedString(
             arguments: arguments,
             defaultAttributes: defaultAttributes,
@@ -23,8 +23,8 @@ extension NSString {
     }
 
     @objc public func adobjc_attributedString(arguments: [String],
-                                        defaultAttributes: [NSAttributedStringKey: Any],
-                                        differentFormatAttributes: [[NSAttributedStringKey: Any]]) -> NSAttributedString? {
+                                        defaultAttributes: [NSAttributedString.Key: Any],
+                                        differentFormatAttributes: [[NSAttributedString.Key: Any]]) -> NSAttributedString? {
         return (self as String).attributedString(
             arguments: arguments,
             defaultAttributes: defaultAttributes,

@@ -16,7 +16,7 @@ public protocol DynamicFontProvider {
      Provides a font for the given textStyle
      - parameter textStyle: The font text style
      */
-    func font(forTextStyle textStyle: UIFontTextStyle) -> UIFont
+    func font(forTextStyle textStyle: UIFont.TextStyle) -> UIFont
 }
 
 /**
@@ -50,7 +50,7 @@ public struct DynamicFont: DynamicFontProvider {
 
     //MARK: - DynamicFontProvider
 
-    public func font(forTextStyle textStyle: UIFontTextStyle) -> UIFont {
+    public func font(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
         return provider.font(forTextStyle: textStyle)
     }
 }
@@ -59,7 +59,7 @@ private struct DefaultDynamicFontProvider: DynamicFontProvider {
 
     //MARK: - DynamicFontProvider
 
-    func font(forTextStyle textStyle: UIFontTextStyle) -> UIFont {
+    func font(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
         return UIFont.preferredFont(forTextStyle: textStyle)
     }
 }
@@ -71,7 +71,7 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
 
     //MARK: - DynamicFontProvider
 
-    func font(forTextStyle textStyle: UIFontTextStyle) -> UIFont {
+    func font(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
         do {
             return try throwingFont(forTextStyle: textStyle)
         } catch {
@@ -93,7 +93,7 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
         return currentContentSizeCategory
     }
 
-    private func throwingFont(forTextStyle textStyle: UIFontTextStyle) throws -> UIFont {
+    private func throwingFont(forTextStyle textStyle: UIFont.TextStyle) throws -> UIFont {
         let styleDescription = try fontDescription.fontStyleDescription(for: textStyle)
         let customFont = UIFont(name: styleDescription.name, size: styleDescription.size)
         if #available(iOS 11.0, tvOS 11.0, *) {
@@ -159,7 +159,7 @@ private struct FontSizeHelper {
 
     //???: (Benjamin Lavialle) 2017-10-20 Provides a font size according to the Apple default font size for categories
     func fontSize(matchingSize size: CGFloat,
-                  withStyle style: UIFontTextStyle,
+                  withStyle style: UIFont.TextStyle,
                   contentSizeCategory: UIContentSizeCategory) -> CGFloat {
         guard
             let contentSizeSizes = fontSizeMatrix[style] else {
@@ -177,10 +177,10 @@ private struct FontSizeHelper {
     }
 
     //???: (Benjamin Lavialle) 2017-10-20 Font sizes from Apple system font
-    private let fontSizeMatrix: [UIFontTextStyle: [UIContentSizeCategory: CGFloat]] = FontSizeHelper.createFontSizeMatrix()
+    private let fontSizeMatrix: [UIFont.TextStyle: [UIContentSizeCategory: CGFloat]] = FontSizeHelper.createFontSizeMatrix()
 
-    private static func createFontSizeMatrix() -> [UIFontTextStyle: [UIContentSizeCategory: CGFloat]] {
-        var fontSizeMatrix: [UIFontTextStyle: [UIContentSizeCategory: CGFloat]] = [
+    private static func createFontSizeMatrix() -> [UIFont.TextStyle: [UIContentSizeCategory: CGFloat]] {
+        var fontSizeMatrix: [UIFont.TextStyle: [UIContentSizeCategory: CGFloat]] = [
             .headline: [
                 .accessibilityExtraExtraExtraLarge: 53.0,
                 .accessibilityExtraExtraLarge: 47.0,

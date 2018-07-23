@@ -66,11 +66,11 @@ extension UIView {
         ad_centerInSuperview(along: .vertical, with: priority)
     }
 
-    @objc(ad_centerInSuperviewAlongAxis:) public func ad_centerInSuperview(along axis: UILayoutConstraintAxis) {
+    @objc(ad_centerInSuperviewAlongAxis:) public func ad_centerInSuperview(along axis: NSLayoutConstraint.Axis) {
         ad_centerInSuperview(along: axis, with: UILayoutPriority.required)
     }
 
-    @objc(ad_centerInSuperviewAlongAxis:withPriority:) public func ad_centerInSuperview(along axis: UILayoutConstraintAxis, with priority: UILayoutPriority) {
+    @objc(ad_centerInSuperviewAlongAxis:withPriority:) public func ad_centerInSuperview(along axis: NSLayoutConstraint.Axis, with priority: UILayoutPriority) {
         guard let superview = self.superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
         switch axis {
@@ -126,7 +126,7 @@ extension UIView {
 
     //MARK: - Private
 
-    private func ad_pinTo(view: UIView, attribute: NSLayoutAttribute, constant: CGFloat, priority: UILayoutPriority = .required) {
+    private func ad_pinTo(view: UIView, attribute: NSLayoutConstraint.Attribute, constant: CGFloat, priority: UILayoutPriority = .required) {
         let constraint = NSLayoutConstraint(
             item: self,
             attribute: attribute,

@@ -54,10 +54,10 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
-        case UICollectionElementKindSectionHeader:
+        case UICollectionView.elementKindSectionHeader:
             let header: CollectionViewHeader = collectionView.dequeueHeader(at: indexPath)
             return header
-        case UICollectionElementKindSectionFooter:
+        case UICollectionView.elementKindSectionFooter:
             let footer: CollectionViewFooter = collectionView.dequeueFooter(at: indexPath)
             return footer
         default:

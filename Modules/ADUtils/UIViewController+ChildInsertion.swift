@@ -18,12 +18,12 @@ extension UIViewController {
      */
     @objc(ad_insertChild:in:) public func ad_insert(child viewController: UIViewController, in subview: UIView) {
         guard subview.isDescendant(of: view) else { return }
-        addChildViewController(viewController)
+        addChild(viewController)
         let viewControllerView: UIView = viewController.view
         viewControllerView.translatesAutoresizingMaskIntoConstraints = false
         subview.addSubview(viewControllerView)
         viewControllerView.ad_pinToSuperview()
-        viewController.didMove(toParentViewController: self)
+        viewController.didMove(toParent: self)
     }
 
     /**
@@ -33,8 +33,8 @@ extension UIViewController {
      */
      @objc(ad_removeChild:) public func ad_remove(child viewController: UIViewController) {
         guard viewController.parent == self else { return }
-        viewController.willMove(toParentViewController: nil)
+        viewController.willMove(toParent: nil)
         viewController.view.removeFromSuperview()
-        viewController.removeFromParentViewController()
+        viewController.removeFromParent()
     }
 }

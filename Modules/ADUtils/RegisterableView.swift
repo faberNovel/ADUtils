@@ -120,11 +120,11 @@ extension UICollectionView : CollectionView {
     }
 
     public func register(header: RegisterableView) {
-        register(supplementaryView: header, kind: UICollectionElementKindSectionHeader)
+        register(supplementaryView: header, kind: UICollectionView.elementKindSectionHeader)
     }
 
     public func register(footer: RegisterableView) {
-        register(supplementaryView: footer, kind: UICollectionElementKindSectionFooter)
+        register(supplementaryView: footer, kind: UICollectionView.elementKindSectionFooter)
     }
 
     private func register(supplementaryView view: RegisterableView, kind: String) {
@@ -157,10 +157,10 @@ extension UICollectionView {
     }
 
     public func dequeueHeader<U: ClassIdentifiable>(at indexPath: IndexPath) -> U {
-        return dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: U.identifier(), for: indexPath) as! U
+        return dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: U.identifier(), for: indexPath) as! U
     }
 
     public func dequeueFooter<U: ClassIdentifiable>(at indexPath: IndexPath) -> U {
-        return dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: U.identifier(), for: indexPath) as! U
+        return dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: U.identifier(), for: indexPath) as! U
     }
 }

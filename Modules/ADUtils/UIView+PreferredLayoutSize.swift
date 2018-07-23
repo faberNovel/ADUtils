@@ -62,7 +62,7 @@ public extension UIView {
             lockConstraints.append(contentsOf: lockView(.height, to:targetSize.height))
         }
         layoutIfNeeded()
-        let computedSize = systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        let computedSize = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         self.removeConstraints(lockConstraints)
         translatesAutoresizingMaskIntoConstraints = previousTranslatesAutoresizingMaskIntoConstraints
         return CGSize(
@@ -71,7 +71,7 @@ public extension UIView {
         )
     }
 
-    private func lockView(_ attribute: NSLayoutAttribute, to value: CGFloat) -> [NSLayoutConstraint] {
+    private func lockView(_ attribute: NSLayoutConstraint.Attribute, to value: CGFloat) -> [NSLayoutConstraint] {
         let equalConstraint = NSLayoutConstraint(
             item: self,
             attribute: attribute,

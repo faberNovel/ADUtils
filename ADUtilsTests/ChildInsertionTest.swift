@@ -20,7 +20,7 @@ class ChildInsertionTest: QuickSpec {
             let child = UIViewController()
             viewController.ad_insert(child: child, in: viewController.view)
 
-            expect(viewController.childViewControllers).to(equal([child]))
+            expect(viewController.children).to(equal([child]))
             let viewControllerSubviews: [UIView] = viewController.view.subviews
             let views: [UIView] = [child.view]
             expect(viewControllerSubviews).to(equal(views))
@@ -32,9 +32,8 @@ class ChildInsertionTest: QuickSpec {
 
             viewController.ad_remove(child: child)
 
-            expect(viewController.childViewControllers).to(beEmpty())
+            expect(viewController.children).to(beEmpty())
             expect(viewController.view.subviews).to(beEmpty())
         }
     }
-    
 }
