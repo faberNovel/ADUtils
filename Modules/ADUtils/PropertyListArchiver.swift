@@ -34,6 +34,60 @@ public class PropertyListArchiver {
      - parameter value: The object to store in the user defaults.
      - parameter key: The key to use in the user defaults.
      */
+    public func set(_ value: URL?, forKey key: String) {
+        defaults.set(value, forKey: key)
+    }
+
+    /**
+     Set a value for a specific key in the user defaults.
+     - parameter value: The object to store in the user defaults.
+     - parameter key: The key to use in the user defaults.
+     */
+    public func set(_ value: Bool, forKey key: String) {
+        defaults.set(value, forKey: key)
+    }
+
+    /**
+     Set a value for a specific key in the user defaults.
+     - parameter value: The object to store in the user defaults.
+     - parameter key: The key to use in the user defaults.
+     */
+    public func set(_ value: String, forKey key: String) {
+        defaults.set(value, forKey: key)
+    }
+
+    /**
+     Set a value for a specific key in the user defaults.
+     - parameter value: The object to store in the user defaults.
+     - parameter key: The key to use in the user defaults.
+     */
+    public func set(_ value: Float, forKey key: String) {
+        defaults.set(value, forKey: key)
+    }
+
+    /**
+     Set a value for a specific key in the user defaults.
+     - parameter value: The object to store in the user defaults.
+     - parameter key: The key to use in the user defaults.
+     */
+    public func set(_ value: Double, forKey key: String) {
+        defaults.set(value, forKey: key)
+    }
+
+    /**
+     Set a value for a specific key in the user defaults.
+     - parameter value: The object to store in the user defaults.
+     - parameter key: The key to use in the user defaults.
+     */
+    public func set(_ value: Int, forKey key: String) {
+        defaults.set(value, forKey: key)
+    }
+
+    /**
+     Set a value for a specific key in the user defaults.
+     - parameter value: The object to store in the user defaults.
+     - parameter key: The key to use in the user defaults.
+     */
     public func set<C : Codable>(_ value: C, forKey key: String) throws {
         let data = try encoder.encode(value)
         defaults.set(data, forKey: key)
@@ -46,6 +100,60 @@ public class PropertyListArchiver {
      */
     public func value<C : Codable>(forKey key: String) throws -> C? {
         return try defaults.data(forKey: key).flatMap { try decoder.decode(C.self, from: $0) }
+    }
+
+    /**
+     Read the value for a specific key in the user defaults.
+     - parameter key: The key to read in the user defaults.
+     - returns: The value associated to the key
+     */
+    public func value(forKey key: String) -> Bool {
+        return defaults.bool(forKey: key)
+    }
+
+    /**
+     Read the value for a specific key in the user defaults.
+     - parameter key: The key to read in the user defaults.
+     - returns: The value associated to the key
+     */
+    public func value(forKey key: String) -> String? {
+        return defaults.string(forKey: key)
+    }
+
+    /**
+     Read the value for a specific key in the user defaults.
+     - parameter key: The key to read in the user defaults.
+     - returns: The value associated to the key
+     */
+    public func value(forKey key: String) -> Int {
+        return defaults.integer(forKey: key)
+    }
+
+    /**
+     Read the value for a specific key in the user defaults.
+     - parameter key: The key to read in the user defaults.
+     - returns: The value associated to the key
+     */
+    public func value(forKey key: String) -> Float {
+        return defaults.float(forKey: key)
+    }
+
+    /**
+     Read the value for a specific key in the user defaults.
+     - parameter key: The key to read in the user defaults.
+     - returns: The value associated to the key
+     */
+    public func value(forKey key: String) -> Double {
+        return defaults.double(forKey: key)
+    }
+
+    /**
+     Read the value for a specific key in the user defaults.
+     - parameter key: The key to read in the user defaults.
+     - returns: The value associated to the key
+     */
+    public func value(forKey key: String) -> URL? {
+        return defaults.url(forKey: key)
     }
 
     /**
