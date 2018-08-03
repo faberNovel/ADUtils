@@ -64,7 +64,7 @@ extension String {
                 )
                 let matchRange = match.range
                 attributedString.replaceCharacters(
-                    in: NSMakeRange(matchRange.location + locationOffset, matchRange.length),
+                    in: NSRange(location: matchRange.location + locationOffset, length: matchRange.length),
                     with: attributedArgument
                 )
                 locationOffset += attributedArgument.length - matchRange.length
@@ -85,7 +85,7 @@ extension String {
         let patternMatches = try patternRegularExpression().matches(
             in: self,
             options: [],
-            range: NSMakeRange(0, self.characters.count)
+            range: NSRange(location: 0, length: self.count)
         )
         return patternMatches
     }
