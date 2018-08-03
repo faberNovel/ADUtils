@@ -21,8 +21,28 @@ extension UIView {
      */
     @objc(ad_constraintToSize:withPriority:) public func ad_constraint(to size: CGSize, with priority: UILayoutPriority) {
         translatesAutoresizingMaskIntoConstraints = false
-        ad_pinTo(view: self, attribute: .height, constant: size.height, priority: priority)
-        ad_pinTo(view: self, attribute: .width, constant: size.width, priority: priority)
+        let constraints = [
+            NSLayoutConstraint(
+                item: self,
+                attribute: .height,
+                relatedBy: .equal,
+                toItem: nil,
+                attribute: .notAnAttribute,
+                multiplier: 1.0,
+                constant: size.height
+            ),
+            NSLayoutConstraint(
+                item: self,
+                attribute: .width,
+                relatedBy: .equal,
+                toItem: nil,
+                attribute: .notAnAttribute,
+                multiplier: 1.0,
+                constant: size.width
+            ),
+        ]
+        constraints.forEach { $0.priority = priority }
+        addConstraints(constraints)
     }
 
     @objc(ad_constraintToSize:) public func ad_constraint(to size: CGSize) {
