@@ -11,30 +11,40 @@ import Foundation
 extension UIView {
 
     /**
-     Add view to itself, pinning edges to margins
+     Add constraints to pin self in superview
 
-     - parameter view: UIView to insert as subview
+     - parameter edges: Edges to pin the view in its superview
 
-     - parameter margins: UIEdgeInsets to apply to subview
+     - parameter insets: UIEdgeInsets to apply for each edge
      */
-    public func ad_addSubview(_ view: UIView, withMargins margins: UIEdgeInsets) {
-        let viewBindings = ["view" : view]
-        view.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(view)
+    public func ad_pinToSuperview(edges: UIRectEdge = .all, insets: UIEdgeInsets = UIEdgeInsets.zero) {
+        guard let superview = self.superview else { return }
+        translatesAutoresizingMaskIntoConstraints = false
+        if edges.contains(.top) {
+            ad_pinTo(view: superview, attribute: .top, constant: insets.top)
+        }
+        if edges.contains(.left) {
+            ad_pinTo(view: superview, attribute: .left, constant: insets.left)
+        }
+        if edges.contains(.bottom) {
+            ad_pinTo(view: superview, attribute: .bottom, constant: -insets.bottom)
+        }
+        if edges.contains(.right) {
+            ad_pinTo(view: superview, attribute: .right, constant: -insets.right)
+        }
+    }
 
-        let metrics = ["top" : margins.top, "right" : margins.right, "bottom" : margins.bottom, "left" : margins.left]
-        let hConstraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:|-left-[view]-right-|",
-            options: NSLayoutFormatOptions(rawValue:0),
-            metrics: metrics, views: viewBindings
+    private func ad_pinTo(view: UIView, attribute: NSLayoutAttribute, constant: CGFloat) {
+        view.addConstraint(
+            NSLayoutConstraint(
+                item: self,
+                attribute: attribute,
+                relatedBy: .equal,
+                toItem: view,
+                attribute: attribute,
+                multiplier: 1.0,
+                constant: constant
+            )
         )
-
-        let vConstraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-top-[view]-bottom-|",
-            options: NSLayoutFormatOptions(rawValue:0),
-            metrics: metrics, views: viewBindings
-        )
-        self.addConstraints(hConstraints)
-        self.addConstraints(vConstraints)
     }
 }

@@ -21,7 +21,8 @@ extension UIViewController {
         addChildViewController(viewController)
         let viewControllerView: UIView = viewController.view
         viewControllerView.translatesAutoresizingMaskIntoConstraints = false
-        subview.ad_addSubview(viewControllerView, withMargins: UIEdgeInsets.zero)
+        subview.addSubview(viewControllerView)
+        viewControllerView.ad_pinToSuperview()
         viewController.didMove(toParentViewController: self)
     }
 

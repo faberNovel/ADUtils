@@ -138,7 +138,7 @@ extension UICollectionView : CollectionView {
 }
 
 extension UITableView {
-    public func dequeueCellAt<U: ClassIdentifiable>(indexPath: IndexPath) -> U {
+    public func dequeueCell<U: ClassIdentifiable>(at indexPath: IndexPath) -> U {
         return dequeueReusableCell(withIdentifier: U.identifier(), for: indexPath) as! U
     }
 
@@ -152,15 +152,15 @@ extension UITableView {
 }
 
 extension UICollectionView {
-    public func dequeueCellAt<U: ClassIdentifiable>(indexPath: IndexPath) -> U {
+    public func dequeueCell<U: ClassIdentifiable>(at indexPath: IndexPath) -> U {
         return dequeueReusableCell(withReuseIdentifier: U.identifier(), for: indexPath) as! U
     }
 
-    public func dequeueHeaderAt<U: ClassIdentifiable>(indexPath: IndexPath) -> U {
+    public func dequeueHeader<U: ClassIdentifiable>(at indexPath: IndexPath) -> U {
         return dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: U.identifier(), for: indexPath) as! U
     }
 
-    public func dequeueFooterAt<U: ClassIdentifiable>(indexPath: IndexPath) -> U {
+    public func dequeueFooter<U: ClassIdentifiable>(at indexPath: IndexPath) -> U {
         return dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: U.identifier(), for: indexPath) as! U
     }
 }

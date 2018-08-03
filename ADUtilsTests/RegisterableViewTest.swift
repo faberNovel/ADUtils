@@ -48,17 +48,17 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell = collectionView.dequeueCellAt(indexPath: indexPath)
+        let cell: UICollectionViewCell = collectionView.dequeueCell(at: indexPath)
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
-            let header: CollectionViewHeader = collectionView.dequeueHeaderAt(indexPath: indexPath)
+            let header: CollectionViewHeader = collectionView.dequeueHeader(at: indexPath)
             return header
         case UICollectionElementKindSectionFooter:
-            let footer: CollectionViewFooter = collectionView.dequeueFooterAt(indexPath: indexPath)
+            let footer: CollectionViewFooter = collectionView.dequeueFooter(at: indexPath)
             return footer
         default:
             return UICollectionReusableView()
@@ -88,7 +88,7 @@ class RegisterableViewTest: QuickSpec {
                 let registerableView = RegisterableView.class(UITableViewCell.self)
                 tableView.register(cell: registerableView)
 
-                let cell: UITableViewCell = tableView.dequeueCellAt(indexPath: indexPath)
+                let cell: UITableViewCell = tableView.dequeueCell(at: indexPath)
                 expect(cell).toNot(beNil())
             }
 
