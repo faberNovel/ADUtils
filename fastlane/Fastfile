@@ -1,0 +1,3 @@
+import_from_git(url: ENV['FASTLANE_URL'],
+               path: 'iospods/fastlane/Fastfile',
+               branch: ‘pods_v2.0.+’)
