@@ -7,8 +7,6 @@
 //
 
 import Foundation
-
-import Foundation
 import Nimble
 import Nimble_Snapshots
 import Quick
@@ -20,24 +18,29 @@ class AttributedStringTest: QuickSpec {
     override func spec() {
 
         let stringTest = { (string: String, arguments: [String], imageName: String) -> Void in
+            guard
+                let smallFont = UIFont(name: "HelveticaNeue", size: 12.0),
+                let bigFont = UIFont(name: "HelveticaNeue", size: 24.0) else {
+                    fail("Font HelveticaNeue do not exists")
+                    return
+            }
+            let attributes: [NSAttributedStringKey: Any] = [
+                .foregroundColor: UIColor.red,
+                .font: smallFont
+            ]
+            let attributes1: [NSAttributedStringKey: Any] = [
+                .foregroundColor: UIColor.green,
+                .font: smallFont
+            ]
+            let attributes2: [NSAttributedStringKey: Any] = [
+                .foregroundColor: UIColor.blue,
+                .font: bigFont
+            ]
 
-            let attributes = [
-                NSForegroundColorAttributeName: UIColor.red,
-                NSFontAttributeName: UIFont.systemFont(ofSize: 12.0)
-            ]
-            let attributes1 = [
-                NSForegroundColorAttributeName: UIColor.green,
-                NSFontAttributeName: UIFont.systemFont(ofSize: 12.0)
-            ]
-            let attributes2 = [
-                NSForegroundColorAttributeName: UIColor.blue,
-                NSFontAttributeName: UIFont.systemFont(ofSize: 24.0)
-            ]
-
-            let differentFormatAttributes = arguments.enumerated().map({ (index, _) -> [String: AnyObject] in
+            let differentFormatAttributes = arguments.enumerated().map({ (arg) -> [NSAttributedStringKey: Any] in
+                let (index, _) = arg
                 return [attributes1, attributes2][index % 2]
             })
-
 
             let attributedString = string.attributedString(
                 arguments: arguments,

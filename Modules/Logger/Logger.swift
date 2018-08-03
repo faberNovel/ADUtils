@@ -21,17 +21,17 @@ class Logger {
         return logger
     }()
 
-    func setup() {
-        let logLevel = TargetSettings.sharedSettings.logLevel
-
-        let xCodeConsoleLogger = DDTTYLogger.sharedInstance()
-        xCodeConsoleLogger?.colorsEnabled = true
-
-        let appleSystemLogger = DDASLLogger.sharedInstance()
-
-        DDLog.add(xCodeConsoleLogger, with: logLevel)
-        DDLog.add(appleSystemLogger, with: logLevel)
-        DDLog.add(fileLogger, with: DDLogLevel.all)
+    func setup(logLevel: DDLogLevel, useFileLogger: Bool) {
+        if let xCodeConsoleLogger = DDTTYLogger.sharedInstance {
+            xCodeConsoleLogger.colorsEnabled = true
+            DDLog.add(xCodeConsoleLogger, with: logLevel)
+        }
+        if let appleSystemLogger = DDASLLogger.sharedInstance {
+            DDLog.add(appleSystemLogger, with: logLevel)
+        }
+        if useFileLogger, let fileLogger = fileLogger {
+            DDLog.add(fileLogger, with: DDLogLevel.all)
+        }
     }
 
     func fileLogs() -> Data {

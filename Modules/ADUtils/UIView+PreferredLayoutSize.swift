@@ -60,7 +60,7 @@ public extension UIView {
             constant: value
         )
         //???: (Benjamin Lavialle) 2017-05-04 Do not use required in case there is an other width constraint
-        equalConstraint.priority = UILayoutPriorityRequired - 1
+        equalConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.required.rawValue - 1)
         let maxConstraint = NSLayoutConstraint(
             item: self,
             attribute: attribute,
@@ -70,7 +70,7 @@ public extension UIView {
             multiplier: 1.0,
             constant: value
         )
-        maxConstraint.priority = UILayoutPriorityRequired
+        maxConstraint.priority = UILayoutPriority.required
         let constraints = [equalConstraint, maxConstraint]
         addConstraints(constraints)
         return constraints
