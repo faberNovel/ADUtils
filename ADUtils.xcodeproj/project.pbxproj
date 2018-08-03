@@ -28,6 +28,8 @@
 		7A0EC6541535D8ED00E5F54A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6531535D8ED00E5F54A /* UIKit.framework */; };
 		7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6551535D8ED00E5F54A /* Foundation.framework */; };
 		7A0EC6581535D8ED00E5F54A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */; };
+		EC368BC41EDF13DA00661556 /* OptionalUnwrapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC368BC31EDF13DA00661556 /* OptionalUnwrapTest.swift */; };
+		EC7953421ECB5C7B00404857 /* ViewLayoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7953411ECB5C7B00404857 /* ViewLayoutTest.swift */; };
 		ECB626F91DE333D100951346 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB626F81DE333D100951346 /* TestView.xib */; };
 		ECB626FC1DE333F800951346 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB626FB1DE333F800951346 /* TestView.swift */; };
 		ECB626FE1DE3344A00951346 /* NibLoaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */; };
@@ -82,6 +84,8 @@
 		836A694BE9CF460F6BF35DC5 /* Pods-ADUtilsApp.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.stubs.xcconfig"; sourceTree = "<group>"; };
 		9C9220CDCE8C495437E023DB /* Pods-ADUtilsTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.stubs.xcconfig"; sourceTree = "<group>"; };
 		D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADUtilsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC368BC31EDF13DA00661556 /* OptionalUnwrapTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalUnwrapTest.swift; sourceTree = "<group>"; };
+		EC7953411ECB5C7B00404857 /* ViewLayoutTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLayoutTest.swift; sourceTree = "<group>"; };
 		ECB626F81DE333D100951346 /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestView.xib; path = Defaults/TestView.xib; sourceTree = "<group>"; };
 		ECB626FB1DE333F800951346 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoaderTest.swift; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 				49EE98A31DE6CAE100DE1CB8 /* RegisterableViewTest.swift */,
 				49D85E011E1E6F5300233A3F /* PropertyListArchiverTest.swift */,
 				ECBFF2371E365F99007C9680 /* EnumCollectionTest.swift */,
+				EC7953411ECB5C7B00404857 /* ViewLayoutTest.swift */,
+				EC368BC31EDF13DA00661556 /* OptionalUnwrapTest.swift */,
 			);
 			path = ADUtilsTests;
 			sourceTree = "<group>";
@@ -655,6 +661,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECB627061DE33F2200951346 /* AttributedStringTest.swift in Sources */,
+				EC7953421ECB5C7B00404857 /* ViewLayoutTest.swift in Sources */,
+				EC368BC41EDF13DA00661556 /* OptionalUnwrapTest.swift in Sources */,
 				49EE98A41DE6CAE100DE1CB8 /* RegisterableViewTest.swift in Sources */,
 				ECB627021DE33C1100951346 /* ViewInsertionWithMarginTest.swift in Sources */,
 				49D85E021E1E6F5300233A3F /* PropertyListArchiverTest.swift in Sources */,
