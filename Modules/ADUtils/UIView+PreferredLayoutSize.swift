@@ -8,46 +8,68 @@
 
 import Foundation
 
-public struct LayoutOrientation: OptionSet {
-
-    public let rawValue: Int
-
-    public init(rawValue: Int) { self.rawValue = rawValue }
-
-    public static let horizontal = LayoutOrientation(rawValue: 1 << 0)
-    public static let vertical = LayoutOrientation(rawValue: 1 << 1)
+private enum LayoutOrientation {
+    case horizontal
+    case vertical
 }
 
 public extension UIView {
+
+    /**
+     Provides the preferred layout height for the view, this is the smallest height the view and its content can fit. You should populate the view before calling this method.
+
+     - parameter fittingWidth: The biggest width the view can get
+     */
+    public func ad_preferredLayoutHeight(fittingWidth: CGFloat) -> CGFloat {
+        return ad_preferredLayoutSize(
+            fittingSize: CGSize(width: fittingWidth, height: 0),
+            lockDirection: .horizontal
+        ).height
+    }
+
+    /**
+     Provides the preferred layout width for the view, this is the smallest width the view and its content can fit. You should populate the view before calling this method.
+
+     - parameter fittingHeight: The biggest height the view can get
+     */
+    public func ad_preferredLayoutWidth(fittingHeight: CGFloat) -> CGFloat {
+        return ad_preferredLayoutSize(
+            fittingSize: CGSize(width: 0, height: fittingHeight),
+            lockDirection: .vertical
+        ).width
+    }
+
+    // MARK: - Private
 
     /**
      Provides the preferred layout size for the view, this is the smallest size the view and its content can fit. You should populate the view before calling this method.
 
      - parameter targetSize: The biggest size the view can get
 
-     - parameter lockWidth: Defines if the view's width should be locked while getting the size
+     - parameter lockDirection: Defines if the view's direction that should be locked while getting the size
      */
-    public func ad_preferredLayoutSize(
-        fittingSize targetSize: CGSize,
-        lockDirections: LayoutOrientation? = nil
-        ) -> CGSize {
+    private func ad_preferredLayoutSize(fittingSize targetSize: CGSize,
+                                        lockDirection: LayoutOrientation) -> CGSize {
         let previousTranslatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
         translatesAutoresizingMaskIntoConstraints = false
         var lockConstraints: [NSLayoutConstraint] = []
-        if lockDirections?.contains(LayoutOrientation.horizontal) ?? false {
+        switch lockDirection {
+        case .horizontal:
             lockConstraints.append(contentsOf: lockView(.width, to:targetSize.width))
-        }
-        if lockDirections?.contains(LayoutOrientation.vertical) ?? false {
+        case .vertical:
+            // TODO: (Pierre Felgines) 18/04/2018 Someone with a real life test case should handle the layout
+            NSLog("[ADUtils] WARNING, argument LayoutOrientation.vertical is not handled yet...")
             lockConstraints.append(contentsOf: lockView(.height, to:targetSize.height))
         }
         layoutIfNeeded()
-        let height = ceil(systemLayoutSizeFitting(UILayoutFittingCompressedSize).height)
+        let computedSize = systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         self.removeConstraints(lockConstraints)
         translatesAutoresizingMaskIntoConstraints = previousTranslatesAutoresizingMaskIntoConstraints
-        return CGSize(width: targetSize.width, height: height)
+        return CGSize(
+            width: ceil(computedSize.width),
+            height: ceil(computedSize.height)
+        )
     }
-
-    //MARK: - Private
 
     private func lockView(_ attribute: NSLayoutAttribute, to value: CGFloat) -> [NSLayoutConstraint] {
         let equalConstraint = NSLayoutConstraint(

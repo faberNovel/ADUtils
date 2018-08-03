@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.0.0]
+
+### Added
+- Layout: `UITableViewCell.ad_preferredCellLayoutHeight(fittingWidth: CGFloat)` calculates the height of the cell content view
+- Layout: `UIView.ad_preferredLayoutHeight(fittingWidth:)` and `UIView.ad_preferredLayoutWidth(fittingHeight:)`
+
+### Removed
+- `UIView.ad_preferredLayoutSize(fittingSize:lockDirections:)`
+
 ## [4.5.1]
 
 ### Added
