@@ -9,6 +9,10 @@ import Foundation
 
 private typealias FontDescriptionDictionary = [UIFontTextStyle.RawValue: FontStyleDescription]
 
+// ???: (Benjamin Lavialle) 2018-03-15 name describes the font, it can be:
+// - the full font name, HelveticaNeue-Light, for example
+// - the system font weight, thin (or Thin), for example
+
 struct FontDescription {
 
     let name: String

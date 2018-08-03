@@ -73,10 +73,9 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
 
     private func throwingFont(forTextStyle textStyle: UIFontTextStyle) throws -> UIFont {
         let styleDescription = try fontDescription.fontStyleDescription(for: textStyle)
+        let customFont = UIFont(name: styleDescription.name, size: styleDescription.size)
         if #available(iOS 11.0, tvOS 11.0, *) {
-            guard let font = UIFont(name: styleDescription.name, size: styleDescription.size) else {
-                throw FontDescriptionError.fontMissing
-            }
+            let font = try (customFont ?? systemFont(weightName: styleDescription.name, size: styleDescription.size))
             let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
             return fontMetrics.scaledFont(for: font)
         } else {
@@ -86,8 +85,50 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
                 withStyle: textStyle,
                 contentSizeCategory: currentContentSizeCategory
             )
+            guard customFont != nil else {
+                // TODO: (Benjamin Lavialle) 2018-03-15 Check custom font existency, otherwise fallback to system font
+                return try systemFont(weightName: styleDescription.name, size: size)
+            }
             let descriptor = UIFontDescriptor(name: styleDescription.name, size: size)
             return UIFont(descriptor: descriptor, size: 0.0)
+        }
+    }
+
+    private func systemFont(weightName: String, size: CGFloat) throws -> UIFont {
+        guard
+            #available(iOS 8.2, *),
+            let weight = UIFont.Weight(name: weightName) else {
+                throw FontDescriptionError.fontMissing
+        }
+        return UIFont.systemFont(ofSize: size, weight: weight)
+    }
+}
+
+@available(iOS 8.2, *)
+private extension UIFont.Weight {
+
+    init?(name: String) {
+        switch name.lowercased() {
+        case "black":
+            self = .black
+        case "bold":
+            self = .bold
+        case "heavy":
+            self = .heavy
+        case "light":
+            self = .light
+        case "medium":
+            self = .medium
+        case "regular":
+            self = .regular
+        case "semibold":
+            self = .semibold
+        case "thin":
+            self = .thin
+        case "ultralight":
+            self = .ultraLight
+        default:
+            return nil
         }
     }
 }

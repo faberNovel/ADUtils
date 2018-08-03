@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.5.1]
+
+### Added
+- `DynamicFont` is now able to use system font inside `FontDescription`
+
 ## [4.5.0]
 
 ### Added
