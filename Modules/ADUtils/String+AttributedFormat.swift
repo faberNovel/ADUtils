@@ -49,7 +49,7 @@ extension String {
                                  differentFormatAttributes: [[String: Any]]) -> NSAttributedString? {
         guard arguments.count == differentFormatAttributes.count else { return nil }
         do {
-            var attributedString = NSMutableAttributedString(
+            let attributedString = NSMutableAttributedString(
                 string: self,
                 attributes: defaultAttributes
             )
