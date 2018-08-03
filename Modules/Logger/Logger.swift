@@ -13,11 +13,11 @@ class Logger {
 
     static let sharedInstance = Logger()
 
-    private lazy var fileLogger: DDFileLogger = {
+    private lazy var fileLogger: DDFileLogger? = {
         let logger = DDFileLogger()
-        logger.rollingFrequency = 2 * 60 * 60 // 2 hours
-        logger.logFileManager.maximumNumberOfLogFiles = 1
-        logger.logFormatter = ADFileLoggerFormatter()
+        logger?.rollingFrequency = TimeInterval(2 * 60 * 60) // 2 hours
+        logger?.logFileManager.maximumNumberOfLogFiles = 1
+        logger?.logFormatter = ADFileLoggerFormatter()
         return logger
     }()
 
@@ -25,22 +25,22 @@ class Logger {
         let logLevel = TargetSettings.sharedSettings.logLevel
 
         let xCodeConsoleLogger = DDTTYLogger.sharedInstance()
-        xCodeConsoleLogger.colorsEnabled = true
+        xCodeConsoleLogger?.colorsEnabled = true
 
         let appleSystemLogger = DDASLLogger.sharedInstance()
 
-        DDLog.addLogger(xCodeConsoleLogger, withLevel: logLevel)
-        DDLog.addLogger(appleSystemLogger, withLevel: logLevel)
-        DDLog.addLogger(fileLogger, withLevel: DDLogLevel.All)
+        DDLog.add(xCodeConsoleLogger, with: logLevel)
+        DDLog.add(appleSystemLogger, with: logLevel)
+        DDLog.add(fileLogger, with: DDLogLevel.all)
     }
 
-    func fileLogs() -> NSData {
-        let data = NSMutableData()
-        fileLogger.logFileManager.sortedLogFileInfos().forEach {
+    func fileLogs() -> Data {
+        var data = Data()
+        fileLogger?.logFileManager.sortedLogFileInfos.forEach {
             if let fileData = NSData(contentsOfFile: $0.filePath) {
-                data.appendData(fileData)
+                data.append(fileData as Data)
             }
         }
-        return data.copy() as! NSData
+        return data
     }
 }

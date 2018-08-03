@@ -10,28 +10,47 @@ import Foundation
 
 extension String {
 
-    public func attributedString(withArguments arguments: [String],
-                                               defaultAttributes: [String: AnyObject],
-                                               formatAttributes: [String: AnyObject]) -> NSAttributedString? {
+    /**
+     Create an NSAttributedString using self as format, and apply same attributes for each argument
+
+     - parameter arguments: Arguments that match format (self)
+
+     - parameter defaultAttributes: Attributes to apply to whole string by default
+
+     - parameter formatAttributes: Attributes to apply for each argument
+
+     - returns: NSAttributedString with same attributes for each argument
+     */
+    public func attributedString(arguments: [String],
+                                 defaultAttributes: [String: Any],
+                                 formatAttributes: [String: Any]) -> NSAttributedString? {
         return attributedString(
-            withArguments: arguments,
+            arguments: arguments,
             defaultAttributes: defaultAttributes,
             differentFormatAttributes: arguments.map{ _ in return formatAttributes }
         )
     }
 
     /**
-     * create an attributed string using self as format
-     * default attributes are used for self, while differentFormatAttributes are matched to arguments with the same index
-     */
+     Create an NSAttributedString using self as format, and apply different attributes for each argument
 
-    public func attributedString(withArguments arguments: [String],
-                                               defaultAttributes: [String: AnyObject],
-                                               differentFormatAttributes: [[String: AnyObject]]) -> NSAttributedString? {
+     `differentFormatAttributes[i]` is applied to `arguments[i]`
+
+     - parameter arguments: Arguments that match format (self)
+
+     - parameter defaultAttributes: Attributes to apply to whole string by default
+
+     - parameter differentFormatAttributes: Attributes to apply for each argument
+
+     - returns: NSAttributedString with differents attributes for each argument
+     */
+    public func attributedString(arguments: [String],
+                                 defaultAttributes: [String: Any],
+                                 differentFormatAttributes: [[String: Any]]) -> NSAttributedString? {
         guard arguments.count == differentFormatAttributes.count else { return nil }
         do {
-            let regex = try NSRegularExpression(pattern: "%(\\d\\$)?@", options: .CaseInsensitive)
-            let result = regex.matchesInString(self, options: .ReportProgress, range: NSMakeRange(0, self.characters.count))
+            let regex = try NSRegularExpression(pattern: "%(\\d\\$)?@", options: .caseInsensitive)
+            let result = regex.matches(in: self, options: .reportProgress, range: NSMakeRange(0, self.characters.count))
             let mutableAttributedString = NSMutableAttributedString(string: self, attributes: defaultAttributes)
             var locationOffset = 0
             for index in (0..<min(result.count, arguments.count)) {
@@ -41,9 +60,9 @@ extension String {
                 )
                 let unmodifiedRange = result[index].range
                 let range = NSMakeRange(unmodifiedRange.location + locationOffset, unmodifiedRange.length)
-                mutableAttributedString.replaceCharactersInRange(
-                    range,
-                    withAttributedString: attributedArgument
+                mutableAttributedString.replaceCharacters(
+                    in: range,
+                    with: attributedArgument
                 )
                 locationOffset += attributedArgument.length - unmodifiedRange.length
             }

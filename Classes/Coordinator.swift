@@ -25,17 +25,17 @@ func ==(lhs: Coordinator, rhs: Coordinator) -> Bool {
 
 extension Coordinator {
 
-    func addChild(coordinator: Coordinator) {
+    func addChild(_ coordinator: Coordinator) {
         children.append(coordinator)
     }
 
-    func removeChild(coordinator: Coordinator) {
-        if let index = children.indexOf(coordinator) {
-            children.removeAtIndex(index)
+    func removeChild(_ coordinator: Coordinator) {
+        if let index = children.index(of: coordinator) {
+            children.remove(at: index)
         }
     }
 
     func removeAllChildren() {
-        children.removeAll(keepCapacity: false)
+        children.removeAll(keepingCapacity: false)
     }
 }

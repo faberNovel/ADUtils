@@ -21,7 +21,7 @@ class ViewInsertionWithMargin: QuickSpec {
         it("Snapshots should match") {
             let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
             let subView = UIView()
-            subView.backgroundColor = UIColor.redColor()
+            subView.backgroundColor = UIColor.red
             view.ad_addSubview(subView, withMargins: UIEdgeInsets(top: 12.0, left: 13.0, bottom: 20.0, right: 45.0))
 
             expect(view).to(haveValidSnapshot(named: "ViewInsertionWithMargin"))

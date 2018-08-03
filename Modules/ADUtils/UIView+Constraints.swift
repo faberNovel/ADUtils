@@ -11,22 +11,29 @@ import Foundation
 extension UIView {
 
     /**
-     * Add view to itself, pinning edges to margins
-     */
+     Add view to itself, pinning edges to margins
 
-    public func ad_addSubview(view: UIView, withMargins margins: UIEdgeInsets) {
+     - parameter view: UIView to insert as subview
+
+     - parameter margins: UIEdgeInsets to apply to subview
+     */
+    public func ad_addSubview(_ view: UIView, withMargins margins: UIEdgeInsets) {
         let viewBindings = ["view" : view]
         view.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(view)
 
         let metrics = ["top" : margins.top, "right" : margins.right, "bottom" : margins.bottom, "left" : margins.left]
-        let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-left-[view]-right-|",
-                                                                         options: NSLayoutFormatOptions(rawValue:0),
-                                                                         metrics: metrics, views: viewBindings)
+        let hConstraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-left-[view]-right-|",
+            options: NSLayoutFormatOptions(rawValue:0),
+            metrics: metrics, views: viewBindings
+        )
 
-        let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-top-[view]-bottom-|",
-                                                                          options: NSLayoutFormatOptions(rawValue:0),
-                                                                          metrics: metrics, views: viewBindings)
+        let vConstraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-top-[view]-bottom-|",
+            options: NSLayoutFormatOptions(rawValue:0),
+            metrics: metrics, views: viewBindings
+        )
         self.addConstraints(hConstraints)
         self.addConstraints(vConstraints)
     }
