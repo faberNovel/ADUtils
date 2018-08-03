@@ -10,6 +10,7 @@ import Foundation
 
 //http://redqueencoder.com/property-lists-and-user-defaults-in-swift/
 
+@available(*, deprecated, message: "Use `Codable` instead")
 public protocol PropertyListReadable {
     func propertyListRepresentation() -> NSDictionary
     init?(propertyListRepresentation: NSDictionary?)
@@ -21,9 +22,30 @@ public protocol PropertyListReadable {
 public class PropertyListArchiver {
 
     private let defaults: UserDefaults
+    private let encoder = PropertyListEncoder()
+    private let decoder = PropertyListDecoder()
 
     public init(defaults: UserDefaults) {
         self.defaults = defaults
+    }
+
+    /**
+     Set a value for a specific key in the user defaults.
+     - parameter value: The object to store in the user defaults.
+     - parameter key: The key to use in the user defaults.
+     */
+    public func set<C : Codable>(_ value: C, forKey key: String) throws {
+        let data = try encoder.encode(value)
+        defaults.set(data, forKey: key)
+    }
+
+    /**
+     Read the value for a specific key in the user defaults.
+     - parameter key: The key to read in the user defaults.
+     - returns: The value associated to the key if it exists or nil
+     */
+    public func value<C : Codable>(forKey key: String) throws -> C? {
+        return try defaults.data(forKey: key).flatMap { try decoder.decode(C.self, from: $0) }
     }
 
     /**
@@ -31,6 +53,7 @@ public class PropertyListArchiver {
      - parameter value: The object to store in the user defaults.
      - parameter key: The key to use in the user defaults.
      */
+    @available(*, deprecated, message: "Use `set(_:,forKey:)` instead")
     public func save<T: PropertyListReadable>(value: T, forKey key: String) {
         defaults.set(value.propertyListRepresentation(), forKey: key)
         defaults.synchronize()
@@ -41,6 +64,7 @@ public class PropertyListArchiver {
      - parameter values: The array to store in the user defaults.
      - parameter key: The key to use in the user defaults.
      */
+    @available(*, deprecated, message: "Use `set(_:forKey:)` instead")
     public func save<T: PropertyListReadable>(values: [T], forKey key: String) {
         let encodedValues = values.map { $0.propertyListRepresentation() }
         defaults.set(encodedValues, forKey: key)
@@ -52,6 +76,7 @@ public class PropertyListArchiver {
      - parameter key: The key to read in the user defaults.
      - returns: The value associated to the key if it exists or nil
      */
+    @available(*, deprecated, message: "Use `value(forKey:)` instead")
     public func readValue<T: PropertyListReadable>(forKey key: String) -> T? {
         let savedValue = defaults.value(forKey: key)
         if let dictionary = savedValue as? NSDictionary {
@@ -65,6 +90,7 @@ public class PropertyListArchiver {
      - parameter key: The key to read in the user defaults.
      - returns: The values associated to the key if it exists or empty array
      */
+    @available(*, deprecated, message: "Use `value(forKey:)` instead")
     public func readValues<T: PropertyListReadable>(forKey key: String) -> [T] {
         let savedValue = defaults.value(forKey: key)
         if let array = savedValue as? [AnyObject] {

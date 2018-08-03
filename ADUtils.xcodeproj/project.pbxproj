@@ -30,6 +30,7 @@
 		7A0EC6541535D8ED00E5F54A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6531535D8ED00E5F54A /* UIKit.framework */; };
 		7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6551535D8ED00E5F54A /* Foundation.framework */; };
 		7A0EC6581535D8ED00E5F54A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */; };
+		E7F92DA81FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F92DA71FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift */; };
 		EC368BC41EDF13DA00661556 /* OptionalUnwrapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC368BC31EDF13DA00661556 /* OptionalUnwrapTest.swift */; };
 		EC626C6B1FA06DB4001C332C /* DynamicFontTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC626C6A1FA06DB4001C332C /* DynamicFontTest.swift */; };
 		EC626C6D1FA07281001C332C /* HelveticaNeue.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC626C6C1FA07281001C332C /* HelveticaNeue.plist */; };
@@ -90,6 +91,7 @@
 		836A694BE9CF460F6BF35DC5 /* Pods-ADUtilsApp.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.stubs.xcconfig"; sourceTree = "<group>"; };
 		9C9220CDCE8C495437E023DB /* Pods-ADUtilsTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.stubs.xcconfig"; sourceTree = "<group>"; };
 		D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADUtilsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7F92DA71FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryUtilitiesTest.swift; sourceTree = "<group>"; };
 		EC368BC31EDF13DA00661556 /* OptionalUnwrapTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalUnwrapTest.swift; sourceTree = "<group>"; };
 		EC626C6A1FA06DB4001C332C /* DynamicFontTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFontTest.swift; sourceTree = "<group>"; };
 		EC626C6C1FA07281001C332C /* HelveticaNeue.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = HelveticaNeue.plist; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				EC368BC31EDF13DA00661556 /* OptionalUnwrapTest.swift */,
 				49CEC4A41EFA484900675EC4 /* NavigationControllerObserverTest.swift */,
 				EC626C6A1FA06DB4001C332C /* DynamicFontTest.swift */,
+				E7F92DA71FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift */,
 				EC626C6C1FA07281001C332C /* HelveticaNeue.plist */,
 			);
 			path = ADUtilsTests;
@@ -712,6 +715,7 @@
 				ECB627061DE33F2200951346 /* AttributedStringTest.swift in Sources */,
 				EC7953421ECB5C7B00404857 /* ViewLayoutTest.swift in Sources */,
 				EC368BC41EDF13DA00661556 /* OptionalUnwrapTest.swift in Sources */,
+				E7F92DA81FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift in Sources */,
 				49EE98A41DE6CAE100DE1CB8 /* RegisterableViewTest.swift in Sources */,
 				ECB627021DE33C1100951346 /* ViewInsertionWithMarginTest.swift in Sources */,
 				49D85E021E1E6F5300233A3F /* PropertyListArchiverTest.swift in Sources */,
