@@ -72,7 +72,7 @@ class PropertyListArchiverTest: QuickSpec {
 
                 // When
                 try archiver.set(user, forKey: oneUserKey)
-                let readUser = try archiver.value(User.self, forKey: oneUserKey)
+                let readUser: User? = try archiver.value(forKey: oneUserKey)
 
                 // Then
                 expect(readUser).toNot(beNil())
@@ -112,6 +112,26 @@ class PropertyListArchiverTest: QuickSpec {
                 // When
                 try archiver.set(users, forKey: multipleUsersKey)
                 let readUsers: [User] = try archiver.value(forKey: multipleUsersKey) ?? []
+
+                // Then
+                expect(readUsers.count).to(equal(2))
+                expect(readUsers).to(equal(users))
+            } catch {
+                fail()
+            }
+        }
+
+        it("should save and read multiple codable values") {
+            do {
+                // Given
+                let users = [
+                    User(name: "Georges", age: 40),
+                    User(name: "Abitbol", age: 39)
+                ]
+
+                // When
+                try archiver.set(users, forKey: multipleUsersKey)
+                let readUsers: [User] = try archiver.array(forKey: multipleUsersKey)
 
                 // Then
                 expect(readUsers.count).to(equal(2))

@@ -17,6 +17,10 @@ public class ProxyDetector {
     }
 
     public func handleProxyNotification(after delay: TimeInterval) {
+        guard TARGET_OS_SIMULATOR == 0 else {
+            //???: (Benjamin Lavialle) 2018-01-18 Do not notify proxy on simulator
+            return
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
             //???: (Benjamin Lavialle) 2017-10-03 Do not weak self, we need to keep self to complete action
             guard let topMostViewController = self.topMostViewController else { return }
