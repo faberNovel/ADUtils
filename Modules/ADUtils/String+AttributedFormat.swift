@@ -78,14 +78,14 @@ extension String {
     //MARK: - Private
 
     private func patternRegularExpression() throws -> NSRegularExpression  {
-        return try NSRegularExpression(pattern: "%(\\d\\$)?@", options: .caseInsensitive)
+        return try NSRegularExpression(pattern: "%(([1-9][0-9]*)\\$)?@", options: .caseInsensitive)
     }
 
     private func patternMatches() throws -> [NSTextCheckingResult] {
         let patternMatches = try patternRegularExpression().matches(
             in: self,
             options: [],
-            range: NSRange(location: 0, length: self.count)
+            range: NSRange(location: 0, length: count)
         )
         return patternMatches
     }

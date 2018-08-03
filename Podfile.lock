@@ -1,12 +1,12 @@
 PODS:
   - ADDynamicLogLevel (2.0.0):
     - CocoaLumberjack (~> 3.0)
-  - ADUtils (6.0.0):
-    - ADUtils/objc (= 6.0.0)
-    - ADUtils/Swift (= 6.0.0)
-  - ADUtils/objc (6.0.0):
+  - ADUtils (7.0.0):
+    - ADUtils/objc (= 7.0.0)
+    - ADUtils/Swift (= 7.0.0)
+  - ADUtils/objc (7.0.0):
     - ADUtils/Swift
-  - ADUtils/Swift (6.0.0)
+  - ADUtils/Swift (7.0.0)
   - Alamofire (4.2.0)
   - CocoaLumberjack (3.2.1):
     - CocoaLumberjack/Default (= 3.2.1)
@@ -66,7 +66,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ADDynamicLogLevel: 446f21d2c807ad898bd6868513ac9f7b21253066
-  ADUtils: 838fd4507049ed47c83ecdbd2405817d525b7631
+  ADUtils: 3f5af3bb21cd6eea1c0bc46fe4bcb69011c3d602
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   CocoaLumberjack: 2800c03334042fe80589423c8d80e582dcaec482
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a

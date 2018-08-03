@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [7.0.1]
+
+### Fixed
+- `attributedString(arguments:defaultAttributes:differentFormatAttributes:)` handles array of arguments bigger than 9 elements
+
 ## [7.0.0]
 
 ### Updated
