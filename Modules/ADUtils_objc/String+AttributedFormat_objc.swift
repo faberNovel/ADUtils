@@ -12,7 +12,7 @@ import Foundation
 
 extension NSString {
 
-    public func adobjc_attributedString(arguments: [String],
+    @objc public func adobjc_attributedString(arguments: [String],
                                         defaultAttributes: [NSAttributedStringKey: Any],
                                         formatAttributes: [NSAttributedStringKey: Any]) -> NSAttributedString? {
         return (self as String).attributedString(
@@ -22,7 +22,7 @@ extension NSString {
         )
     }
 
-    public func adobjc_attributedString(arguments: [String],
+    @objc public func adobjc_attributedString(arguments: [String],
                                         defaultAttributes: [NSAttributedStringKey: Any],
                                         differentFormatAttributes: [[NSAttributedStringKey: Any]]) -> NSAttributedString? {
         return (self as String).attributedString(
