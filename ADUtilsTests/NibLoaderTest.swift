@@ -16,7 +16,7 @@ class NibLoaderTest: QuickSpec {
 
     override func spec() {
         it("should return a view") {
-            let testView: TestView = TestView.ad_fromNib()
+            let testView = TestView.ad_fromNib()
             expect(testView).toNot(beNil())
         }
     }
