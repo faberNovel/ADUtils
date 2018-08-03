@@ -12,6 +12,7 @@
 		4959115A1D7D4FE70057C974 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495911591D7D4FE70057C974 /* Coordinator.swift */; };
 		4959115C1D7D4FFE0057C974 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959115B1D7D4FFE0057C974 /* ApplicationCoordinator.swift */; };
 		49595DCE1D93E11D003F1816 /* TargetSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49595DCD1D93E11D003F1816 /* TargetSettings.swift */; };
+		49D85E021E1E6F5300233A3F /* PropertyListArchiverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D85E011E1E6F5300233A3F /* PropertyListArchiverTest.swift */; };
 		49EE98A21DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */; };
 		49EE98A41DE6CAE100DE1CB8 /* RegisterableViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE98A31DE6CAE100DE1CB8 /* RegisterableViewTest.swift */; };
 		49F7C9F51D0EDE6300086054 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C9F41D0EDE6300086054 /* Logger.swift */; };
@@ -55,6 +56,7 @@
 		49595DCD1D93E11D003F1816 /* TargetSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TargetSettings.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		49B1F77E1CE4B3DB00A29BFE /* ADUtilsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADUtilsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B1F7821CE4B3DB00A29BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49D85E011E1E6F5300233A3F /* PropertyListArchiverTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListArchiverTest.swift; sourceTree = "<group>"; };
 		49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsTest.swift; sourceTree = "<group>"; };
 		49EE98A31DE6CAE100DE1CB8 /* RegisterableViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterableViewTest.swift; sourceTree = "<group>"; };
 		49F7C9F41D0EDE6300086054 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Logger.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -203,6 +205,7 @@
 				ECB627051DE33F2200951346 /* AttributedStringTest.swift */,
 				49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */,
 				49EE98A31DE6CAE100DE1CB8 /* RegisterableViewTest.swift */,
+				49D85E011E1E6F5300233A3F /* PropertyListArchiverTest.swift */,
 			);
 			path = ADUtilsTests;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				ECB627061DE33F2200951346 /* AttributedStringTest.swift in Sources */,
 				49EE98A41DE6CAE100DE1CB8 /* RegisterableViewTest.swift in Sources */,
 				ECB627021DE33C1100951346 /* ViewInsertionWithMarginTest.swift in Sources */,
+				49D85E021E1E6F5300233A3F /* PropertyListArchiverTest.swift in Sources */,
 				49EE98A21DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift in Sources */,
 				ECB626FE1DE3344A00951346 /* NibLoaderTest.swift in Sources */,
 				ECB627001DE3395100951346 /* ChildInsertionTest.swift in Sources */,
