@@ -2,6 +2,17 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.2.0]
+
+### Added
+- DynamicFontProvider: an helper to provide dynamic type with custom font before iOS 11
+
+### Updated
+
+### Removed
+
+### Fixed
+
 ## [4.1.0]
 
 ### Added
