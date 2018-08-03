@@ -76,3 +76,4 @@ ADUtils is owned and maintained by [Fabernovel Technologies](https://technologie
 
 ## License
 
+ADUtils is released under the MIT license. [See LICENSE](LICENSE) for details.
