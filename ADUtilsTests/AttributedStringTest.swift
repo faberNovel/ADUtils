@@ -56,7 +56,10 @@ class AttributedStringTest: QuickSpec {
             let value2 = "Testi testo"
             stringTest(format, [value1, value2], "DifferentAttributes")
             stringTest(format, [value1, value1], "SameAttributes")
-
+            let invertedFormat = "Test %2$@ %1$@"
+            stringTest(invertedFormat, [value1, value2], "InvertedFormat")
+            let singleFormat = "Test %@"
+            stringTest(singleFormat, [value1], "SingleFormat")
         }
     }
 }
