@@ -10,11 +10,11 @@ import Foundation
 
 extension String {
 
-    var localizedUppercaseString: String {
+    public var localizedUppercaseString: String {
         return uppercaseStringWithLocale(NSLocale.currentLocale())
     }
 
-    func localized() -> String {
+    public func localized() -> String {
         return NSLocalizedString(self, comment: "")
     }
 }
