@@ -2,7 +2,30 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
-## [3.5.0]
+## [4.1.0]
+
+### Added
+- ProxyDetector: Provide a way to notify the user if a proxy is running on the phone
+
+### Updated
+- ad_localizedUppercaseString is now deprecated after iOS 9
+
+### Removed
+
+### Fixed
+
+## [4.0.0]
+
+### Added
+
+### Updated
+- Swift 4 support
+
+### Removed
+
+### Fixed
+
+## [3.6.0]
 
 ### Added
 - NavigationControllerObserver:  The NavigationControllerObserver class provides a simple API to observe the pop transitions that occur in a navigationController stack.
