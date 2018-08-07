@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [7.0.2]
+
+### Added
+
+- Add documentation, readme, licence for opensource purpose.
+
+### Updated
+
+- Pod source is now on Github.
+
 ## [7.0.1]
 
 ### Fixed
