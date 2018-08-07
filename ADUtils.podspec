@@ -3,7 +3,7 @@ Pod::Spec.new do |spec|
   spec.version      = '7.0.1'
   spec.authors      = 'Applidium'
   spec.homepage     = 'http://applidium.com'
-  spec.summary      = 'Applidium\'s utily classes for templater'
+  spec.summary      = 'Applidium\'s toolbox for iOS'
   spec.ios.deployment_target = '8.1'
   spec.tvos.deployment_target = '9.0'
   spec.license      = { :type => 'MIT', :text => 'Created and licensed by Fabernovel Technologies. Copyright 2014-2018 Fabernovel Technologies. All rights reserved.' }
