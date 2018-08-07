@@ -1,5 +1,10 @@
- ADUtils: UIKit and Swift toolbox.
+![ADUtils: UIKit and Swift toolbox](https://raw.githubusercontent.com/applidium/ADUtils/master/ADUtils.jpg)
 
+[![CocoaPods](https://img.shields.io/cocoapods/v/ADUtils.svg?style=flat)](https://github.com/applidium/ADUtils)
+![Language](https://img.shields.io/badge/language-Swift%204-orange.svg)
+[![Platform](https://img.shields.io/cocoapods/p/ADUtils.svg?style=flat)](https://github.com/applidium/ADUtils)
+![License](https://img.shields.io/github/license/applidium/ADUtils.svg?style=flat)
+[![Twitter](https://img.shields.io/badge/twitter-@applidium-blue.svg?style=flat)](https://twitter.com/applidium)
 
 ADUtils is a set of helpers, shortcuts or other tools providing simplified interactions with UIKit and more generally with Swift.
 
