@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [7.1.0]
+
+### Added
+
+- Add objc methods from DeselectableView UITableView and UICollectionView implementations.
+- Create subspecs to be used in application extension, removing application related code.
+
 ## [7.0.2]
 
 ### Added
