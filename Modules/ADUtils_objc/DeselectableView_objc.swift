@@ -12,12 +12,36 @@ import Foundation
 
 extension UITableView {
 
+    @objc public var adobjc_selectedIndexPaths: [IndexPath]? {
+        return selectedIndexPaths
+    }
+
+    @objc public func adobjc_deselect(atIndexPath indexPath: IndexPath, animated: Bool) {
+        deselect(atIndexPath: indexPath, animated: animated)
+    }
+
+    @objc public func adobjc_select(atIndexPath indexPath: IndexPath, animated: Bool) {
+        select(atIndexPath: indexPath, animated: animated)
+    }
+
     @objc public func adobjc_smoothlyDeselectItems(in coordinator: UIViewControllerTransitionCoordinator?) {
         smoothlyDeselectItems(in: coordinator)
     }
 }
 
 extension UICollectionView  {
+
+    @objc public var adobjc_selectedIndexPaths: [IndexPath]? {
+        return selectedIndexPaths
+    }
+
+    @objc public func adobjc_deselect(atIndexPath indexPath: IndexPath, animated: Bool) {
+        deselect(atIndexPath: indexPath, animated: animated)
+    }
+
+    @objc public func adobjc_select(atIndexPath indexPath: IndexPath, animated: Bool) {
+        select(atIndexPath: indexPath, animated: animated)
+    }
 
     @objc public func adobjc_smoothlyDeselectItems(in coordinator: UIViewControllerTransitionCoordinator?) {
         smoothlyDeselectItems(in: coordinator)
