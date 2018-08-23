@@ -36,7 +36,7 @@ All notable changes to this project will be documented in this file.
 ## [7.0.0]
 
 ### Updated
-- `ad_fromNib` is not optionnal anymore, meaning we do not have to specify the return type
+- `ad_fromNib` is not optional anymore, meaning we do not have to specify the return type
 
 ## [6.0.0]
 
