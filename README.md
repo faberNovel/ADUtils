@@ -19,7 +19,7 @@ ADUtils is a set of helpers, shortcuts or other tools providing simplified inter
 - [x] Swift syntaxic sugar (object synchronization [(src)](Modules/ADUtils/AnyObject+Synchronize.swift), array filtering [(src)](Modules/ADUtils/Array+Filter.swift), optionnal unwrapping [(src)](Modules/ADUtils/Optional+Unwrap.swift))
 - [x] Table and Collection views smooth deselection [(src)](Modules/ADUtils/DeselectableView.swift)
 - [x] Table and Collection view syntaxic sugar [(src)](Modules/ADUtils/RegisterableView.swift)
-- [x] Font wrapper for `Dynamic type` support [(src)](Modules/ADUtils/DynamicFont.swift)
+- [x] Font wrapper for `Dynamic type` support [(src)](Modules/ADUtils_noext/DynamicFont.swift)
 - [x] [UINavigationController observation](https://en.fabernovel.com/insights/dev-en/coordinators-and-back-button) [(src)](Modules/ADUtils/NavigationControllerObserver.swift)
 - [x] View nib instanciation [(src)](Modules/ADUtils/UIView+NibLoader.swift)
 - [x] ViewController child insertion [(src)](Modules/ADUtils/UIViewController+ChildInsertion.swift)
@@ -27,7 +27,7 @@ ADUtils is a set of helpers, shortcuts or other tools providing simplified inter
 - [x] Attributed String multi attributes helper [(src)](Modules/ADUtils/String+AttributedFormat.swift)
 - [x] String localization syntaxic sugar [(src)](Modules/ADUtils/String+Localization.swift)
 - [x] `UIView` (particularly `UITableViewCell`) size computation [(src)](Modules/ADUtils/UIView+PreferredLayoutSize.swift) [(src)](Modules/ADUtils/UITableViewCell+PreferredLayoutHeight.swift)
-- [x] On device proxy detection [(src)](Modules/ADUtils/ProxyDetector.swift)
+- [x] On device proxy detection [(src)](Modules/ADUtils_noext/ProxyDetector.swift)
 - [x] Core Graphic geometry utility [(src)](Modules/ADUtils/Geometry+Utilities.swift)
 - [x] Constraints and insets utility [(src)](Modules/ADUtils/UIView+Constraints.swift) [(src)](Modules/ADUtils/UIEdgeInsets+Utilities.swift)
 
