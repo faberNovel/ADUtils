@@ -107,5 +107,47 @@ class NavigationControllerObserverTest : QuickSpec {
                 }
             }
         }
+
+        let removeObserverTest = { (removeObserverAction: @escaping (UIViewController) -> Void) in
+            // Given
+            let viewControllerToObserve = UIViewController()
+            navigationController.pushViewController(viewControllerToObserve, animated: false)
+            observer.observePopTransition(
+                of: viewControllerToObserve,
+                delegate: observerDelegate
+            )
+
+            waitUntil(timeout: 1.0) { done in
+                // When
+                removeObserverAction(viewControllerToObserve)
+                navigationController.popViewController(animated: true)
+
+                // We need to wait the end of the animation
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    // Then
+                    expect(navigationController.viewControllers.count).to(equal(1))
+                    expect(observerDelegate.observedViewControllers).to(beEmpty())
+                    done()
+                }
+            }
+        }
+
+        it("should stop observing pop of view controller (with viewController)") {
+            removeObserverTest { viewControllerToObserve in
+                observer.removeDelegate(observing: viewControllerToObserve)
+            }
+        }
+
+        it("should stop observing pop of view controller (with delegate)") {
+            removeObserverTest { _ in
+                observer.remove(observerDelegate)
+            }
+        }
+
+        it("should stop observing pop of all view controllers") {
+            removeObserverTest { _ in
+                observer.removeAllDelegates()
+            }
+        }
     }
 }

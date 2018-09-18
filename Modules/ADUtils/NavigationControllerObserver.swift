@@ -101,6 +101,35 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
         viewControllersToDelegates[viewController] = wrappedDelegate
     }
 
+    /**
+     Stop observing the viewController and remove the associated delegate
+     - parameter viewController: The viewController being observed
+     */
+    public func removeDelegate(observing viewController: UIViewController) {
+        viewControllersToDelegates.removeValue(forKey: viewController)
+    }
+
+    /**
+     Stop observing the viewController associated to the delegate object and remove the delegate.
+     - parameter delegate: The delegate previously registered
+     */
+    public func remove(_ delegate: NavigationControllerObserverDelegate) {
+        let viewControllersToRemove = viewControllersToDelegates
+            .filter {
+                let (_, wrappedDelegate) = $0
+                return wrappedDelegate.value === delegate
+            }
+            .keys
+        viewControllersToRemove.forEach { removeDelegate(observing: $0) }
+    }
+
+    /**
+     Stop observing all the viewController and remove all delegates
+     */
+    public func removeAllDelegates() {
+        viewControllersToDelegates.removeAll()
+    }
+
     //MARK: - UINavigationControllerDelegate
 
     public func navigationController(_ navigationController: UINavigationController,
@@ -120,7 +149,7 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
 
         // Clean up state before calling delegate method
         let delegateToCall = viewControllersToDelegates[fromViewController]?.value
-        viewControllersToDelegates.removeValue(forKey: fromViewController)
+        removeDelegate(observing: fromViewController)
         cleanOutdatedViewControllers()
         delegateToCall?.navigationControllerObserver(self, didObservePopTransitionFor: fromViewController)
     }
@@ -138,8 +167,6 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
         let viewControllersToRemove = viewControllersToDelegates.keys.filter {
             $0.parent != self.navigationController
         }
-        viewControllersToRemove.forEach {
-            viewControllersToDelegates.removeValue(forKey: $0)
-        }
+        viewControllersToRemove.forEach { removeDelegate(observing: $0) }
     }
 }
