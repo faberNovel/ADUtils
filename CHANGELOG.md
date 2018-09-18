@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [7.2.0]
+
+- `NavigationControllerObserver`: add methods to stop observing view controllers
+
 ## [7.1.0]
 
 ### Added
