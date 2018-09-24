@@ -40,7 +40,7 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADUtils: f1d1032ac84d9d2b61fa23b0fd7a6f09ad8d5455
+  ADUtils: be01581a6492f854fe2686c7de3f18748d2e41d7
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
   Nimble-Snapshots: 4ba722c35b73a680cbd856e4bc22076dfb8085d4
