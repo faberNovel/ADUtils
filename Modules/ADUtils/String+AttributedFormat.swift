@@ -22,8 +22,8 @@ extension String {
      - returns: NSAttributedString with same attributes for each argument
      */
     public func attributedString(arguments: [String],
-                                 defaultAttributes: [NSAttributedStringKey: Any],
-                                 formatAttributes: [NSAttributedStringKey: Any]) -> NSAttributedString? {
+                                 defaultAttributes: [NSAttributedString.Key: Any],
+                                 formatAttributes: [NSAttributedString.Key: Any]) -> NSAttributedString? {
         return attributedString(
             arguments: arguments,
             defaultAttributes: defaultAttributes,
@@ -45,8 +45,8 @@ extension String {
      - returns: NSAttributedString with differents attributes for each argument
      */
     public func attributedString(arguments: [String],
-                                 defaultAttributes: [NSAttributedStringKey: Any],
-                                 differentFormatAttributes: [[NSAttributedStringKey: Any]]) -> NSAttributedString? {
+                                 defaultAttributes: [NSAttributedString.Key: Any],
+                                 differentFormatAttributes: [[NSAttributedString.Key: Any]]) -> NSAttributedString? {
         guard arguments.count == differentFormatAttributes.count else { return nil }
         do {
             let attributedString = NSMutableAttributedString(

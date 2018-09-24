@@ -13,7 +13,7 @@ import Nimble_Snapshots
 
 private extension UIFont {
 
-    class func ad_mainFont(forTextStyle textStyle: UIFontTextStyle) -> UIFont {
+    class func ad_mainFont(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
         return FontHelper.shared.helveticaNeueDynamicFont.font(forTextStyle: textStyle)
     }
 }
@@ -38,7 +38,7 @@ class DynamicFontTest: QuickSpec {
 
         describe("display fonts") {
 
-            let types: [UIFontTextStyle] = [
+            let types: [UIFont.TextStyle] = [
                 .title1,
                 .title2,
                 .title3,

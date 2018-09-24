@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'ADUtils'
-  spec.version      = '7.2.1'
+  spec.version      = '8.0.0'
   spec.authors      = 'Applidium'
   spec.homepage     = 'http://applidium.com'
   spec.summary      = 'Applidium\'s toolbox for iOS'
@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
     # ADUtils_noext contains classes which depend on APIs not compliant with App extensions (such as UIApplication.shared)
     subspec.source_files = 'Modules/ADUtils/*.{h,m,swift}', 'Modules/ADUtils_noext/*.{h,m,swift}'
   end
-  
+
   spec.subspec 'Swift-ext' do |subspec|
     # Subspec compliant with App extensions
     subspec.source_files = 'Modules/ADUtils/*.{h,m,swift}'
@@ -26,7 +26,7 @@ Pod::Spec.new do |spec|
     subspec.dependency 'ADUtils/Swift'
 	subspec.source_files = 'Modules/ADUtils_objc/*.{h,m,swift}'
   end
-  
+
   spec.subspec 'objc-ext' do |subspec|
     # Subspec compliant with App extensions
     subspec.dependency 'ADUtils/Swift-ext'

@@ -7,7 +7,7 @@
 
 import Foundation
 
-private typealias FontDescriptionDictionary = [UIFontTextStyle.RawValue: FontStyleDescription]
+private typealias FontDescriptionDictionary = [UIFont.TextStyle.RawValue: FontStyleDescription]
 
 /**
  FontDescription fully describes a font meaning it provides a font (name and size) for each style
@@ -57,7 +57,7 @@ struct FontDescription {
      - parameter fontTextStyle: the text style
      - returns: the FontStyleDescription corresponding to the text style, as specified in the plist
      */
-    func fontStyleDescription(for fontTextStyle: UIFontTextStyle) throws -> FontStyleDescription {
+    func fontStyleDescription(for fontTextStyle: UIFont.TextStyle) throws -> FontStyleDescription {
         guard let fontStyleDescription = dictionary[fontTextStyle.rawValue] else {
             throw FontDescriptionError.styleForFontUnavailable
         }

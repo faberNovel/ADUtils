@@ -24,20 +24,20 @@ class AttributedStringTest: QuickSpec {
                     fail("Font HelveticaNeue do not exists")
                     return
             }
-            let attributes: [NSAttributedStringKey: Any] = [
+            let attributes: [NSAttributedString.Key: Any] = [
                 .foregroundColor: UIColor.red,
                 .font: smallFont
             ]
-            let attributes1: [NSAttributedStringKey: Any] = [
+            let attributes1: [NSAttributedString.Key: Any] = [
                 .foregroundColor: UIColor.green,
                 .font: smallFont
             ]
-            let attributes2: [NSAttributedStringKey: Any] = [
+            let attributes2: [NSAttributedString.Key: Any] = [
                 .foregroundColor: UIColor.blue,
                 .font: bigFont
             ]
 
-            let differentFormatAttributes = arguments.enumerated().map({ (arg) -> [NSAttributedStringKey: Any] in
+            let differentFormatAttributes = arguments.enumerated().map({ (arg) -> [NSAttributedString.Key: Any] in
                 let (index, _) = arg
                 return [attributes1, attributes2][index % 2]
             })

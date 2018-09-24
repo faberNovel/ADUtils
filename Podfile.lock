@@ -1,9 +1,9 @@
 PODS:
-  - ADUtils (7.2.1):
-    - ADUtils/objc (= 7.2.1)
-  - ADUtils/objc (7.2.1):
+  - ADUtils (8.0.0):
+    - ADUtils/objc (= 8.0.0)
+  - ADUtils/objc (8.0.0):
     - ADUtils/Swift
-  - ADUtils/Swift (7.2.1)
+  - ADUtils/Swift (8.0.0)
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
@@ -40,13 +40,13 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADUtils: f1d1032ac84d9d2b61fa23b0fd7a6f09ad8d5455
+  ADUtils: 9cf152259e20686830af77cbdb66ea4f4800b3e8
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
   Nimble-Snapshots: 4ba722c35b73a680cbd856e4bc22076dfb8085d4
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
 
-PODFILE CHECKSUM: 580dc725fea22ee3cf6a1c31552ba67f54555de4
+PODFILE CHECKSUM: 41fef735f317e34a890e41ca612ff488b24ec08b
 
 COCOAPODS: 1.5.3
