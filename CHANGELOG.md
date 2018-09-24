@@ -2,6 +2,24 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [8.0.0]
+
+### Created
+
+- Create `UICollectionViewCell.ad_preferredCellLayoutHeight(fittingWidth:)`
+
+### Updated
+
+- Swift 4.2 support
+
+### Removed
+
+- Remove `EnumCollection` with Swift 4.2
+
+### Fixed
+
+- Fix layout tests
+
 ## [7.2.1]
 
 ### Fixed
