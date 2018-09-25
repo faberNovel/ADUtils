@@ -43,6 +43,23 @@ class UIEdgeInsetsTest: QuickSpec {
             expect(inset.horizontal).to(equal(left + right))
             expect(inset.vertical).to(equal(top + bottom))
         }
+
+        it("should compute single edge properties correctly") {
+            let left: CGFloat = 1
+            let right: CGFloat = 2
+            let top: CGFloat = 3
+            let bottom: CGFloat = 4
+
+            let leftInset = UIEdgeInsets(left: left)
+            let rightInset = UIEdgeInsets(right: right)
+            let topInset = UIEdgeInsets(top: top)
+            let bottomInset = UIEdgeInsets(bottom: bottom)
+
+            expect(leftInset).to(equal(UIEdgeInsets(top: 0, left: left, bottom: 0, right: 0)))
+            expect(rightInset).to(equal(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: right)))
+            expect(topInset).to(equal(UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)))
+            expect(bottomInset).to(equal(UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)))
+        }
     }
 
 }
