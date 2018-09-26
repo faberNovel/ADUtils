@@ -12,6 +12,57 @@ import UIKit
 extension UIView {
 
     /**
+     Add max constraints to edges of superview.
+
+     - parameter edges: Edges to pin the view in its superview
+
+     - parameter insets: UIEdgeInsets to apply for each edge
+
+     - parameter priority: The layout priority used for the constraint created (default value is Required)
+
+     */
+    @objc(ad_constrainInSuperviewWithEdges:insets:priority:)
+    public func ad_constrainInSuperview(edges: UIRectEdge,
+                                        insets: UIEdgeInsets,
+                                        priority: UILayoutPriority) {
+        guard let superview = superview else { return }
+        translatesAutoresizingMaskIntoConstraints = false
+        if edges.contains(.top) {
+            ad_pinMinTo(view: superview, attribute: .top, constant: insets.top, priority: priority)
+        }
+        if edges.contains(.bottom) {
+            ad_pinMaxTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority)
+        }
+        if edges.contains(.left) {
+            ad_pinMinTo(view: superview, attribute: .left, constant: insets.left, priority: priority)
+        }
+        if edges.contains(.right) {
+            ad_pinMaxTo(view: superview, attribute: .right, constant: -insets.right, priority: priority)
+        }
+    }
+
+    @objc(ad_constrainInSuperviewWithEdges:insets:)
+    public func ad_constrainInSuperview(edges: UIRectEdge,
+                                        insets: UIEdgeInsets) {
+        ad_constrainInSuperview(edges: edges, insets: insets, priority: .required)
+    }
+
+    @objc(ad_constrainInSuperviewWithEdges:)
+    public func ad_constrainInSuperview(edges: UIRectEdge) {
+        ad_constrainInSuperview(edges: edges, insets: .zero, priority: .required)
+    }
+
+    @objc(ad_constrainInSuperviewWithInsets:)
+    public func ad_constrainInSuperview(insets: UIEdgeInsets) {
+        ad_constrainInSuperview(edges: .all, insets: insets, priority: .required)
+    }
+
+    @objc(ad_constrainInSuperview)
+    public func ad_constrainInSuperview() {
+        ad_constrainInSuperview(edges: .all, insets: .zero, priority: .required)
+    }
+
+    /**
      Add constraints to width and height anchors with size parameters as constants
 
      - parameter size: Size applied to the view
@@ -131,6 +182,34 @@ extension UIView {
             item: self,
             attribute: attribute,
             relatedBy: .equal,
+            toItem: view,
+            attribute: attribute,
+            multiplier: 1.0,
+            constant: constant
+        )
+        constraint.priority = priority
+        view.addConstraint(constraint)
+    }
+
+    private func ad_pinMinTo(view: UIView, attribute: NSLayoutConstraint.Attribute, constant: CGFloat, priority: UILayoutPriority = .required) {
+        let constraint = NSLayoutConstraint(
+            item: self,
+            attribute: attribute,
+            relatedBy: .greaterThanOrEqual,
+            toItem: view,
+            attribute: attribute,
+            multiplier: 1.0,
+            constant: constant
+        )
+        constraint.priority = priority
+        view.addConstraint(constraint)
+    }
+
+    private func ad_pinMaxTo(view: UIView, attribute: NSLayoutConstraint.Attribute, constant: CGFloat, priority: UILayoutPriority = .required) {
+        let constraint = NSLayoutConstraint(
+            item: self,
+            attribute: attribute,
+            relatedBy: .lessThanOrEqual,
             toItem: view,
             attribute: attribute,
             multiplier: 1.0,
