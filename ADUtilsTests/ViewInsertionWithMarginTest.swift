@@ -98,6 +98,35 @@ class ViewInsertionWithMargin: QuickSpec {
             }
         }
 
+        describe("Center in superview") {
+            var view: UIView!
+            var subview: UIView!
+
+            beforeEach {
+                view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
+                view.backgroundColor = UIColor.white
+                subview = IntrinsicContentSizeView(contentSize: CGSize(width: 50, height: 50))
+                subview.backgroundColor = UIColor.red
+                view.addSubview(subview)
+            }
+
+            it("should center in superview") {
+                subview.ad_centerInSuperview()
+                expect(view).to(haveValidSnapshot(named: "CenterInSuperview"))
+            }
+
+            it("should center X in superview") {
+                subview.ad_pinToSuperview(edges: [.top, .bottom])
+                subview.ad_centerInSuperview(along: .horizontal)
+                expect(view).to(haveValidSnapshot(named: "CenterXInSuperview"))
+            }
+
+            it("should center Y in superview") {
+                subview.ad_pinToSuperview(edges: [.left, .right])
+                subview.ad_centerInSuperview(along: .vertical)
+                expect(view).to(haveValidSnapshot(named: "CenterYInSuperview"))
+            }
+        }
 
     }
 }
