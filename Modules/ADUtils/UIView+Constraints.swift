@@ -70,7 +70,7 @@ extension UIView {
      - parameter priority: The layout priority used for the constraint created (default value is Required)
 
      */
-    @objc(ad_constraintToSize:withPriority:) public func ad_constraint(to size: CGSize, with priority: UILayoutPriority) {
+    @objc(ad_constrainToSize:priority:) public func ad_constrain(to size: CGSize, priority: UILayoutPriority) {
         translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
             NSLayoutConstraint(
@@ -96,8 +96,8 @@ extension UIView {
         addConstraints(constraints)
     }
 
-    @objc(ad_constraintToSize:) public func ad_constraint(to size: CGSize) {
-        ad_constraint(to: size, with: UILayoutPriority.required)
+    @objc(ad_constrainToSize:) public func ad_constrain(to size: CGSize) {
+        ad_constrain(to: size, priority: .required)
     }
 
     /**

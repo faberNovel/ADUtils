@@ -141,7 +141,7 @@ class ViewInsertionWithMargin: QuickSpec {
             }
 
             it("should constrain to size") {
-                subview.ad_constraint(to: CGSize(width: 50, height: 50))
+                subview.ad_constrain(to: CGSize(width: 50, height: 50))
                 subview.ad_pinToSuperview(edges: [.top, .left])
                 expect(view).to(haveValidSnapshot(named: "ConstrainToSize"))
             }
