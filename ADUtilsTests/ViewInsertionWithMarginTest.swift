@@ -128,5 +128,24 @@ class ViewInsertionWithMargin: QuickSpec {
             }
         }
 
+        describe("Constrain to size") {
+            var view: UIView!
+            var subview: UIView!
+
+            beforeEach {
+                view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
+                view.backgroundColor = UIColor.white
+                subview = UIView()
+                subview.backgroundColor = UIColor.red
+                view.addSubview(subview)
+            }
+
+            it("should constrain to size") {
+                subview.ad_constraint(to: CGSize(width: 50, height: 50))
+                subview.ad_pinToSuperview(edges: [.top, .left])
+                expect(view).to(haveValidSnapshot(named: "ConstrainToSize"))
+            }
+        }
+
     }
 }
