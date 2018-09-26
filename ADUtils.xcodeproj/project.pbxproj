@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		42CDDA9C8179B9F9824C64F2 /* Pods_ADUtilsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EFE73855C87585926C10E6 /* Pods_ADUtilsApp.framework */; };
 		47E17214F9A4009CF12359D7 /* Pods_ADUtilsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */; };
+		492B5FDF215BD54300D76A0D /* ProxyDetectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B5FDE215BD54300D76A0D /* ProxyDetectorTests.swift */; };
 		4988CBBA21592CAB003A3C08 /* SequenceGroupedByTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4988CBB921592CAB003A3C08 /* SequenceGroupedByTests.swift */; };
 		4988CBBE215931B4003A3C08 /* OptionalStringIsBlankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4988CBBD215931B4003A3C08 /* OptionalStringIsBlankTests.swift */; };
 		49CC380120C048F800CFEDDB /* ArrayFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC380020C048F800CFEDDB /* ArrayFilterTests.swift */; };
@@ -53,6 +54,7 @@
 		28EFE73855C87585926C10E6 /* Pods_ADUtilsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADUtilsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D3D6308F00B6B8059A24E8 /* Pods-ADUtilsTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.production.xcconfig"; sourceTree = "<group>"; };
 		4131DA2D9333046F6E9F313E /* Pods-ADUtilsTests.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.distribution.xcconfig"; sourceTree = "<group>"; };
+		492B5FDE215BD54300D76A0D /* ProxyDetectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyDetectorTests.swift; sourceTree = "<group>"; };
 		4988CBB921592CAB003A3C08 /* SequenceGroupedByTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceGroupedByTests.swift; sourceTree = "<group>"; };
 		4988CBBD215931B4003A3C08 /* OptionalStringIsBlankTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalStringIsBlankTests.swift; sourceTree = "<group>"; };
 		49B1F77E1CE4B3DB00A29BFE /* ADUtilsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADUtilsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +148,7 @@
 				49CC380020C048F800CFEDDB /* ArrayFilterTests.swift */,
 				4988CBB921592CAB003A3C08 /* SequenceGroupedByTests.swift */,
 				4988CBBD215931B4003A3C08 /* OptionalStringIsBlankTests.swift */,
+				492B5FDE215BD54300D76A0D /* ProxyDetectorTests.swift */,
 				EC626C6C1FA07281001C332C /* HelveticaNeue.plist */,
 			);
 			path = ADUtilsTests;
@@ -525,6 +528,7 @@
 			files = (
 				EC626C6B1FA06DB4001C332C /* DynamicFontTest.swift in Sources */,
 				ECB627061DE33F2200951346 /* AttributedStringTest.swift in Sources */,
+				492B5FDF215BD54300D76A0D /* ProxyDetectorTests.swift in Sources */,
 				EC7953421ECB5C7B00404857 /* ViewLayoutTest.swift in Sources */,
 				EC368BC41EDF13DA00661556 /* OptionalUnwrapTest.swift in Sources */,
 				E7F92DA81FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift in Sources */,
