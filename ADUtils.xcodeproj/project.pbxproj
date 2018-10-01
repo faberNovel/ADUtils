@@ -17,6 +17,7 @@
 		49EE98A21DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */; };
 		49EE98A41DE6CAE100DE1CB8 /* RegisterableViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE98A31DE6CAE100DE1CB8 /* RegisterableViewTest.swift */; };
 		49F0F20D2162095F00FC8AA4 /* SynchronizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F0F20C2162095F00FC8AA4 /* SynchronizeTests.swift */; };
+		49F0F20F21621EB300FC8AA4 /* DeselectableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F0F20E21621EB300FC8AA4 /* DeselectableViewTests.swift */; };
 		49F0F21121625E7000FC8AA4 /* StringLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F0F21021625E7000FC8AA4 /* StringLocalizationTests.swift */; };
 		57C59D681BB1478A003798DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C59D671BB1478A003798DF /* Images.xcassets */; };
 		57C59D6A1BB1486B003798DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C59D691BB1486B003798DF /* LaunchScreen.storyboard */; };
@@ -65,6 +66,7 @@
 		49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsTest.swift; sourceTree = "<group>"; };
 		49EE98A31DE6CAE100DE1CB8 /* RegisterableViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterableViewTest.swift; sourceTree = "<group>"; };
 		49F0F20C2162095F00FC8AA4 /* SynchronizeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizeTests.swift; sourceTree = "<group>"; };
+		49F0F20E21621EB300FC8AA4 /* DeselectableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeselectableViewTests.swift; sourceTree = "<group>"; };
 		49F0F21021625E7000FC8AA4 /* StringLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLocalizationTests.swift; sourceTree = "<group>"; };
 		4C8B60A08D066BFD9DDA1251 /* Pods-ADUtilsApp.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.distribution.xcconfig"; sourceTree = "<group>"; };
 		57C59D671BB1478A003798DF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				49B1F7821CE4B3DB00A29BFE /* Info.plist */,
 				ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */,
 				49F0F20C2162095F00FC8AA4 /* SynchronizeTests.swift */,
+				49F0F20E21621EB300FC8AA4 /* DeselectableViewTests.swift */,
 				ECB626FF1DE3395100951346 /* ChildInsertionTest.swift */,
 				ECB627011DE33C1100951346 /* ViewInsertionWithMarginTest.swift */,
 				ECB627051DE33F2200951346 /* AttributedStringTest.swift */,
@@ -532,6 +535,7 @@
 				EC626C6B1FA06DB4001C332C /* DynamicFontTest.swift in Sources */,
 				ECB627061DE33F2200951346 /* AttributedStringTest.swift in Sources */,
 				49F0F21121625E7000FC8AA4 /* StringLocalizationTests.swift in Sources */,
+				49F0F20F21621EB300FC8AA4 /* DeselectableViewTests.swift in Sources */,
 				EC7953421ECB5C7B00404857 /* ViewLayoutTest.swift in Sources */,
 				EC368BC41EDF13DA00661556 /* OptionalUnwrapTest.swift in Sources */,
 				E7F92DA81FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift in Sources */,
