@@ -140,4 +140,91 @@ extension UIView {
             priority: .required
         )
     }
+
+    /**
+     Add constraints to center self in the layout guide along specified axis
+
+     - parameter layoutGuide: Layout guide to center the view in
+
+     - parameter axis: Axis to center the view along in layout guide
+
+     - parameter priority: The layout priority used for the constraint created
+
+     */
+    @objc(ad_centerInLayoutGuide:alongAxis:priority:)
+    public func ad_center(in layoutGuide: UILayoutGuide,
+                          along axis: NSLayoutConstraint.Axis,
+                          priority: UILayoutPriority) {
+        guard
+            let owningView = layoutGuide.owningView,
+            isDescendant(of: owningView) else {
+                return
+        }
+        translatesAutoresizingMaskIntoConstraints = false
+        switch axis {
+        case .horizontal:
+            centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor)
+                .priority(priority)
+                .isActive = true
+        case .vertical:
+            centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor)
+                .priority(priority)
+                .isActive = true
+        }
+    }
+
+    /**
+     Add constraints to center self in the layout guide along specified axis with required priorities
+
+     - parameter layoutGuide: Layout guide to center the view in
+
+     - parameter axis: Axis to center the view along in layout guide
+
+     */
+    @objc(ad_centerInLayoutGuide:alongAxis:)
+    public func ad_center(in layoutGuide: UILayoutGuide,
+                          along axis: NSLayoutConstraint.Axis) {
+        ad_center(
+            in: layoutGuide,
+            along: axis,
+            priority: .required
+        )
+    }
+
+    /**
+     Add constraints to center self both vertically and horizontally in the layout guide
+
+     - parameter layoutGuide: Layout guide to center the view in
+
+     - parameter priority: The layout priority used for the constraints created
+
+     */
+    @objc(ad_centerInLayoutGuide:priority:)
+    public func ad_center(in layoutGuide: UILayoutGuide,
+                          priority: UILayoutPriority) {
+        ad_center(
+            in: layoutGuide,
+            along: .horizontal,
+            priority: priority
+        )
+        ad_center(
+            in: layoutGuide,
+            along: .vertical,
+            priority: priority
+        )
+    }
+
+    /**
+     Add constraints to center self both vertically and horizontally in the layout guide with required priorities
+
+     - parameter layoutGuide: Layout guide to center the view in
+
+     */
+    @objc(ad_centerInLayoutGuide:)
+    public func ad_center(in layoutGuide: UILayoutGuide) {
+        ad_center(
+            in: layoutGuide,
+            priority: .required
+        )
+    }
 }

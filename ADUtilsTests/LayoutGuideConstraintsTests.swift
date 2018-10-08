@@ -74,6 +74,39 @@ class LayoutGuideConstraintsTests: QuickSpec {
                 expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesHighPriority"))
             }
         }
+
+        describe("Center in layout guide") {
+            var view: UIView!
+            var subview: UIView!
+
+            beforeEach {
+                view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
+                view.backgroundColor = UIColor.white
+                view.layoutMargins = UIEdgeInsets(value: 10.0)
+                subview = IntrinsicContentSizeView(contentSize: CGSize(width: 50, height: 50))
+                subview.backgroundColor = UIColor.red
+                view.addSubview(subview)
+            }
+
+            it("should center in layout guide") {
+                subview.ad_center(in: view.layoutMarginsGuide)
+                // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
+                subview.ad_constrain(to: subview.intrinsicContentSize)
+                expect(view).to(haveValidSnapshot(named: "CenterInLayoutGuide"))
+            }
+
+            it("should center X in layout guide") {
+                subview.ad_pin(to: view.layoutMarginsGuide, edges: [.top, .bottom])
+                subview.ad_center(in: view.layoutMarginsGuide, along: .horizontal)
+                expect(view).to(haveValidSnapshot(named: "CenterXInLayoutGuide"))
+            }
+
+            it("should center Y in layout guide") {
+                subview.ad_pin(to: view.layoutMarginsGuide, edges: [.left, .right])
+                subview.ad_center(in: view.layoutMarginsGuide, along: .vertical)
+                expect(view).to(haveValidSnapshot(named: "CenterYInLayoutGuide"))
+            }
+        }
     }
 }
 
