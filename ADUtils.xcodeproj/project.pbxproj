@@ -11,6 +11,7 @@
 		47E17214F9A4009CF12359D7 /* Pods_ADUtilsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */; };
 		4988CBBA21592CAB003A3C08 /* SequenceGroupedByTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4988CBB921592CAB003A3C08 /* SequenceGroupedByTests.swift */; };
 		4988CBBE215931B4003A3C08 /* OptionalStringIsBlankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4988CBBD215931B4003A3C08 /* OptionalStringIsBlankTests.swift */; };
+		49BA42C72167B8BE00578C48 /* LayoutGuideConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA42C62167B8BE00578C48 /* LayoutGuideConstraintsTests.swift */; };
 		49CC380120C048F800CFEDDB /* ArrayFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC380020C048F800CFEDDB /* ArrayFilterTests.swift */; };
 		49CEC4A51EFA484900675EC4 /* NavigationControllerObserverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CEC4A41EFA484900675EC4 /* NavigationControllerObserverTest.swift */; };
 		49D85E021E1E6F5300233A3F /* PropertyListArchiverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D85E011E1E6F5300233A3F /* PropertyListArchiverTest.swift */; };
@@ -63,6 +64,7 @@
 		4988CBBD215931B4003A3C08 /* OptionalStringIsBlankTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalStringIsBlankTests.swift; sourceTree = "<group>"; };
 		49B1F77E1CE4B3DB00A29BFE /* ADUtilsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADUtilsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B1F7821CE4B3DB00A29BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49BA42C62167B8BE00578C48 /* LayoutGuideConstraintsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutGuideConstraintsTests.swift; sourceTree = "<group>"; };
 		49CC380020C048F800CFEDDB /* ArrayFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayFilterTests.swift; sourceTree = "<group>"; };
 		49CEC4A41EFA484900675EC4 /* NavigationControllerObserverTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerObserverTest.swift; sourceTree = "<group>"; };
 		49D85E011E1E6F5300233A3F /* PropertyListArchiverTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListArchiverTest.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				49F0F20E21621EB300FC8AA4 /* DeselectableViewTests.swift */,
 				ECB626FF1DE3395100951346 /* ChildInsertionTest.swift */,
 				ECB627011DE33C1100951346 /* ViewInsertionWithMarginTest.swift */,
+				49BA42C62167B8BE00578C48 /* LayoutGuideConstraintsTests.swift */,
 				ECB627051DE33F2200951346 /* AttributedStringTest.swift */,
 				49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */,
 				49EE98A31DE6CAE100DE1CB8 /* RegisterableViewTest.swift */,
@@ -560,6 +563,7 @@
 				4988CBBE215931B4003A3C08 /* OptionalStringIsBlankTests.swift in Sources */,
 				49F0F20D2162095F00FC8AA4 /* SynchronizeTests.swift in Sources */,
 				ECB627001DE3395100951346 /* ChildInsertionTest.swift in Sources */,
+				49BA42C72167B8BE00578C48 /* LayoutGuideConstraintsTests.swift in Sources */,
 				4988CBBA21592CAB003A3C08 /* SequenceGroupedByTests.swift in Sources */,
 				49CEC4A51EFA484900675EC4 /* NavigationControllerObserverTest.swift in Sources */,
 			);
