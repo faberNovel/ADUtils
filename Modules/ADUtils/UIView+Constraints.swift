@@ -109,19 +109,19 @@ extension UIView {
 
      */
     @objc(ad_centerInSuperview) public func ad_centerInSuperview() {
-        ad_centerInSuperview(with: .required)
+        ad_centerInSuperview(priority: .required)
     }
 
-    @objc(ad_centerInSuperviewWithPriority:) public func ad_centerInSuperview(with priority: UILayoutPriority) {
-        ad_centerInSuperview(along: .horizontal, with: priority)
-        ad_centerInSuperview(along: .vertical, with: priority)
+    @objc(ad_centerInSuperviewWithPriority:) public func ad_centerInSuperview(priority: UILayoutPriority) {
+        ad_centerInSuperview(along: .horizontal, priority: priority)
+        ad_centerInSuperview(along: .vertical, priority: priority)
     }
 
     @objc(ad_centerInSuperviewAlongAxis:) public func ad_centerInSuperview(along axis: NSLayoutConstraint.Axis) {
-        ad_centerInSuperview(along: axis, with: UILayoutPriority.required)
+        ad_centerInSuperview(along: axis, priority: .required)
     }
 
-    @objc(ad_centerInSuperviewAlongAxis:withPriority:) public func ad_centerInSuperview(along axis: NSLayoutConstraint.Axis, with priority: UILayoutPriority) {
+    @objc(ad_centerInSuperviewAlongAxis:priority:) public func ad_centerInSuperview(along axis: NSLayoutConstraint.Axis, priority: UILayoutPriority) {
         guard let superview = self.superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
         switch axis {
