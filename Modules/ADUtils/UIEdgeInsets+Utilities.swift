@@ -28,14 +28,14 @@ extension UIEdgeInsets {
     /**
      Returns the total insets horizontally (left + right)
      */
-    public var horizontal: CGFloat {
+    public var totalHorizontal: CGFloat {
         return left + right
     }
 
     /**
      Returns the total insets vertically (top + bottom)
      */
-    public var vertical: CGFloat {
+    public var totalVertical: CGFloat {
         return top + bottom
     }
 
