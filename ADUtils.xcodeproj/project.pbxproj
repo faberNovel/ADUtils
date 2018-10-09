@@ -14,6 +14,8 @@
 		49BA42C72167B8BE00578C48 /* LayoutGuideConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA42C62167B8BE00578C48 /* LayoutGuideConstraintsTests.swift */; };
 		49CC380120C048F800CFEDDB /* ArrayFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC380020C048F800CFEDDB /* ArrayFilterTests.swift */; };
 		49CEC4A51EFA484900675EC4 /* NavigationControllerObserverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CEC4A41EFA484900675EC4 /* NavigationControllerObserverTest.swift */; };
+		49D1F132216C968E009F87AB /* ADViewLayoutTestsObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D1F131216C968E009F87AB /* ADViewLayoutTestsObjc.m */; };
+		49D1F134216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D1F133216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m */; };
 		49D85E021E1E6F5300233A3F /* PropertyListArchiverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D85E011E1E6F5300233A3F /* PropertyListArchiverTest.swift */; };
 		49EE98A21DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */; };
 		49EE98A41DE6CAE100DE1CB8 /* RegisterableViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE98A31DE6CAE100DE1CB8 /* RegisterableViewTest.swift */; };
@@ -67,6 +69,9 @@
 		49BA42C62167B8BE00578C48 /* LayoutGuideConstraintsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutGuideConstraintsTests.swift; sourceTree = "<group>"; };
 		49CC380020C048F800CFEDDB /* ArrayFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayFilterTests.swift; sourceTree = "<group>"; };
 		49CEC4A41EFA484900675EC4 /* NavigationControllerObserverTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerObserverTest.swift; sourceTree = "<group>"; };
+		49D1F130216C968E009F87AB /* ADUtilsTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ADUtilsTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		49D1F131216C968E009F87AB /* ADViewLayoutTestsObjc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADViewLayoutTestsObjc.m; sourceTree = "<group>"; };
+		49D1F133216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADViewLayoutGuideTestsObjc.m; sourceTree = "<group>"; };
 		49D85E011E1E6F5300233A3F /* PropertyListArchiverTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListArchiverTest.swift; sourceTree = "<group>"; };
 		49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsTest.swift; sourceTree = "<group>"; };
 		49EE98A31DE6CAE100DE1CB8 /* RegisterableViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterableViewTest.swift; sourceTree = "<group>"; };
@@ -164,7 +169,10 @@
 				49CC380020C048F800CFEDDB /* ArrayFilterTests.swift */,
 				4988CBB921592CAB003A3C08 /* SequenceGroupedByTests.swift */,
 				4988CBBD215931B4003A3C08 /* OptionalStringIsBlankTests.swift */,
+				49D1F131216C968E009F87AB /* ADViewLayoutTestsObjc.m */,
+				49D1F133216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m */,
 				EC626C6C1FA07281001C332C /* HelveticaNeue.plist */,
+				49D1F130216C968E009F87AB /* ADUtilsTests-Bridging-Header.h */,
 			);
 			path = ADUtilsTests;
 			sourceTree = "<group>";
@@ -554,8 +562,10 @@
 				EC7953421ECB5C7B00404857 /* ViewLayoutTest.swift in Sources */,
 				EC368BC41EDF13DA00661556 /* OptionalUnwrapTest.swift in Sources */,
 				E7F92DA81FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift in Sources */,
+				49D1F134216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m in Sources */,
 				49EE98A41DE6CAE100DE1CB8 /* RegisterableViewTest.swift in Sources */,
 				ECB627021DE33C1100951346 /* ViewInsertionWithMarginTest.swift in Sources */,
+				49D1F132216C968E009F87AB /* ADViewLayoutTestsObjc.m in Sources */,
 				49D85E021E1E6F5300233A3F /* PropertyListArchiverTest.swift in Sources */,
 				49EE98A21DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift in Sources */,
 				ECB626FE1DE3344A00951346 /* NibLoaderTest.swift in Sources */,
@@ -615,6 +625,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = applidium.ADUtilsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ADUtilsTests/ADUtilsTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
@@ -647,6 +658,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = applidium.ADUtilsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ADUtilsTests/ADUtilsTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
@@ -679,6 +691,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = applidium.ADUtilsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ADUtilsTests/ADUtilsTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
@@ -711,6 +724,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = applidium.ADUtilsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ADUtilsTests/ADUtilsTests-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
