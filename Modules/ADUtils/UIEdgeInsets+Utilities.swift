@@ -10,18 +10,31 @@ import Foundation
 
 extension UIEdgeInsets {
 
+    /**
+     - parameter value: Used for top, left, bottom, right
+     */
     public init(value: CGFloat) {
         self.init(top: value, left: value, bottom: value, right: value)
     }
 
-    public init(horizontal: CGFloat, vertical: CGFloat) {
+    /**
+     - parameter horizontal: Used for left and right
+     - parameter vertical: Used for top and bottom
+     */
+    public init(horizontal: CGFloat = 0, vertical: CGFloat = 0) {
         self.init(top: vertical, left: horizontal, bottom: vertical, right: horizontal)
     }
 
+    /**
+     Returns the total insets horizontally (left + right)
+     */
     public var horizontal: CGFloat {
         return left + right
     }
 
+    /**
+     Returns the total insets vertically (top + bottom)
+     */
     public var vertical: CGFloat {
         return top + bottom
     }
