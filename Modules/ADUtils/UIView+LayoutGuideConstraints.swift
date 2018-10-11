@@ -227,4 +227,123 @@ extension UIView {
             priority: .required
         )
     }
+
+    /**
+     Add max constraints to edges of layout guide
+
+     - parameter layoutGuide: Layout guide to constrain the view in
+
+     - parameter edges: Edges to pin the view in layout guide
+
+     - parameter insets: UIEdgeInsets to apply for each edge
+
+     - parameter priority: The layout priority used for the constraint created
+
+     */
+    @objc(ad_constrainInLayoutGuide:edges:insets:priority:)
+    public func ad_constrain(in layoutGuide: UILayoutGuide,
+                             edges: UIRectEdge,
+                             insets: UIEdgeInsets,
+                             priority: UILayoutPriority) {
+        guard
+            let owningView = layoutGuide.owningView,
+            isDescendant(of: owningView) else {
+                return
+        }
+        translatesAutoresizingMaskIntoConstraints = false
+        if edges.contains(.top) {
+            topAnchor.constraint(greaterThanOrEqualTo: layoutGuide.topAnchor, constant: insets.top)
+                .priority(priority)
+                .isActive = true
+        }
+        if edges.contains(.bottom) {
+            bottomAnchor.constraint(lessThanOrEqualTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
+                .priority(priority)
+                .isActive = true
+        }
+        if edges.contains(.left) {
+            leftAnchor.constraint(greaterThanOrEqualTo: layoutGuide.leftAnchor, constant: insets.left)
+                .priority(priority)
+                .isActive = true
+        }
+        if edges.contains(.right) {
+            rightAnchor.constraint(lessThanOrEqualTo: layoutGuide.rightAnchor, constant: -insets.right)
+                .priority(priority)
+                .isActive = true
+        }
+    }
+
+    /**
+     Add max constraints to all edges of layout guide with no insets and required priorities
+
+     - parameter layoutGuide: Layout guide to constrain the view in
+
+     */
+    @objc(ad_constrainInLayoutGuide:)
+    public func ad_constrain(in layoutGuide: UILayoutGuide) {
+        ad_constrain(
+            in: layoutGuide,
+            edges: .all,
+            insets: .zero
+        )
+    }
+
+    /**
+     Add max constraints to all edges of layout guide and required priorities
+
+     - parameter layoutGuide: Layout guide to constrain the view in
+
+     - parameter insets: UIEdgeInsets to apply for each edge
+
+     */
+    @objc(ad_constrainInLayoutGuide:insets:)
+    public func ad_constrain(in layoutGuide: UILayoutGuide,
+                             insets: UIEdgeInsets) {
+        ad_constrain(
+            in: layoutGuide,
+            edges: .all,
+            insets: insets
+        )
+    }
+
+    /**
+     Add max constraints to edges of layout guide with no insets and required priorities
+
+     - parameter layoutGuide: Layout guide to constrain the view in
+
+     - parameter edges: Edges to pin the view in layout guide
+
+     */
+    @objc(ad_constrainInLayoutGuide:edges:)
+    public func ad_constrain(in layoutGuide: UILayoutGuide,
+                             edges: UIRectEdge) {
+        ad_constrain(
+            in: layoutGuide,
+            edges: edges,
+            insets: .zero,
+            priority: .required
+        )
+    }
+
+    /**
+     Add max constraints to edges of layout guide and required priorities
+
+     - parameter layoutGuide: Layout guide to constrain the view in
+
+     - parameter edges: Edges to pin the view in layout guide
+
+     - parameter insets: UIEdgeInsets to apply for each edge
+
+     */
+    @objc(ad_constrainInLayoutGuide:edges:insets:)
+    public func ad_constrain(in layoutGuide: UILayoutGuide,
+                             edges: UIRectEdge,
+                             insets: UIEdgeInsets) {
+        ad_constrain(
+            in: layoutGuide,
+            edges: edges,
+            insets: insets,
+            priority: .required
+        )
+    }
 }

@@ -107,6 +107,67 @@ class LayoutGuideConstraintsTests: QuickSpec {
                 expect(view).to(haveValidSnapshot(named: "CenterYInLayoutGuide"))
             }
         }
+
+        describe("Constrain in layout guide") {
+            var view: UIView!
+            var subview: UIView!
+            let insets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 30.0, right: 40.0)
+
+            beforeEach {
+                view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
+                view.layoutMargins = UIEdgeInsets(value: 10.0)
+                view.backgroundColor = UIColor.white
+                subview = IntrinsicContentSizeView(contentSize: CGSize(width: 300, height: 300))
+                subview.backgroundColor = UIColor.red
+                view.addSubview(subview)
+            }
+
+            it("should constrain in layout guide pin bottom left") {
+                subview.ad_pin(to: view.layoutMarginsGuide, edges: [.bottom, .left], insets: insets)
+                subview.ad_constrain(in: view.layoutMarginsGuide, edges: [.top, .right], insets: insets)
+                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinBottomLeft"))
+            }
+
+            it("should constrain in layout guide pin bottom right") {
+                subview.ad_pin(to: view.layoutMarginsGuide, edges: [.bottom, .right], insets: insets)
+                subview.ad_constrain(in: view.layoutMarginsGuide, edges: [.top, .left], insets: insets)
+                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinBottomRight"))
+            }
+
+            it("should constrain in layout guide top left") {
+                subview.ad_pin(to: view.layoutMarginsGuide, edges: [.top, .left], insets: insets)
+                subview.ad_constrain(in: view.layoutMarginsGuide, edges: [.bottom, .right], insets: insets)
+                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinTopLeft"))
+            }
+
+            it("should constrain in layout guide pin top right") {
+                subview.ad_pin(to: view.layoutMarginsGuide, edges: [.top, .right], insets: insets)
+                subview.ad_constrain(in: view.layoutMarginsGuide, edges: [.bottom, .left], insets: insets)
+                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinTopRight"))
+            }
+
+            it("should constrain in layout guide") {
+                subview.ad_center(in: view.layoutMarginsGuide)
+                subview.ad_constrain(in: view.layoutMarginsGuide)
+                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuide"))
+            }
+
+            it("should constrain in layout guide with insets") {
+                subview.ad_center(in: view.layoutMarginsGuide)
+                // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
+                subview.ad_constrain(to: subview.intrinsicContentSize, priority: .defaultLow)
+                subview.ad_constrain(in: view.layoutMarginsGuide, insets: UIEdgeInsets(value: 10.0))
+                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideWithInsets"))
+            }
+
+            it("should constrain in layout guide with left edge") {
+                subview.ad_center(in: view.layoutMarginsGuide)
+                // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
+                subview.ad_constrain(to: subview.intrinsicContentSize, priority: .defaultLow)
+                subview.ad_constrain(in: view.layoutMarginsGuide, edges: [.left])
+                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideWithLeftEdge"))
+            }
+        }
     }
 }
 
