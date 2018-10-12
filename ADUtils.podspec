@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'ADUtils'
-  spec.version      = '8.0.0'
+  spec.version      = '9.0.0'
   spec.authors      = 'Applidium'
   spec.homepage     = 'http://applidium.com'
   spec.summary      = 'Applidium\'s toolbox for iOS'

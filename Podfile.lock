@@ -1,9 +1,9 @@
 PODS:
-  - ADUtils (8.0.0):
-    - ADUtils/objc (= 8.0.0)
-  - ADUtils/objc (8.0.0):
+  - ADUtils (9.0.0):
+    - ADUtils/objc (= 9.0.0)
+  - ADUtils/objc (9.0.0):
     - ADUtils/Swift
-  - ADUtils/Swift (8.0.0)
+  - ADUtils/Swift (9.0.0)
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
@@ -40,7 +40,7 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADUtils: 9cf152259e20686830af77cbdb66ea4f4800b3e8
+  ADUtils: c431a1077a8a0a7d890aed87e770fd12ba9167e2
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
   Nimble-Snapshots: 4ba722c35b73a680cbd856e4bc22076dfb8085d4
