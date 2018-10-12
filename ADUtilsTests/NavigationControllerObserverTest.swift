@@ -21,16 +21,35 @@ private class ObserverDelegate : NavigationControllerObserverDelegate {
     }
 }
 
+private class NavigationControllerDelegate: NSObject, UINavigationControllerDelegate {
+
+    var willShowViewControllers: [UIViewController] = []
+    var didShowViewControllers: [UIViewController] = []
+
+    func navigationController(_ navigationController: UINavigationController,
+                              willShow viewController: UIViewController,
+                              animated: Bool) {
+        willShowViewControllers.append(viewController)
+    }
+
+    func navigationController(_ navigationController: UINavigationController,
+                              didShow viewController: UIViewController,
+                              animated: Bool) {
+        didShowViewControllers.append(viewController)
+    }
+}
+
 class NavigationControllerObserverTest : QuickSpec {
 
     override func spec() {
 
+        var rootViewController: UIViewController!
         var navigationController = UINavigationController()
         var observer: NavigationControllerObserver!
         var observerDelegate: ObserverDelegate!
 
         beforeEach {
-            let rootViewController = UIViewController()
+            rootViewController = UIViewController()
             navigationController = UINavigationController(rootViewController: rootViewController)
             UIApplication.shared.keyWindow?.rootViewController = navigationController
             UIApplication.shared.keyWindow?.makeKeyAndVisible()
@@ -147,6 +166,73 @@ class NavigationControllerObserverTest : QuickSpec {
         it("should stop observing pop of all view controllers") {
             removeObserverTest { _ in
                 observer.removeAllDelegates()
+            }
+        }
+
+        it("should forward navigation controller delegate methods") {
+            // Given
+            let viewControllerToObserve = UIViewController()
+            navigationController.pushViewController(viewControllerToObserve, animated: false)
+            observer.observePopTransition(
+                of: viewControllerToObserve,
+                delegate: observerDelegate
+            )
+
+            let navigationControllerDelegate = NavigationControllerDelegate()
+            observer.navigationControllerDelegate = navigationControllerDelegate
+
+            waitUntil(timeout: 1.0) { done in
+                // When
+                navigationController.popViewController(animated: true)
+
+                // We need to wait the end of the animation
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    // Then
+                    expect(navigationControllerDelegate.willShowViewControllers).toNot(beEmpty())
+                    expect(navigationControllerDelegate.didShowViewControllers).toNot(beEmpty())
+                    done()
+                }
+            }
+        }
+
+        it("should clean observer of view controllers not in the stack") {
+            // Given
+            let viewControllerToObserve = UIViewController()
+            let viewControllerNotInTheStack = UIViewController()
+            navigationController.pushViewController(viewControllerToObserve, animated: false)
+            observer.observePopTransition(
+                of: viewControllerToObserve,
+                delegate: observerDelegate
+            )
+            // We observer viewControllerNotInTheStack even if not pushed in the navigation controller
+            observer.observePopTransition(
+                of: viewControllerNotInTheStack,
+                delegate: observerDelegate
+            )
+
+            waitUntil(timeout: 1.0) { done in
+                // When
+                navigationController.popViewController(animated: true)
+
+                // We need to wait the end of the animation
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    // Then
+
+                    expect(navigationController.viewControllers.count).to(equal(1))
+                    expect(observerDelegate.observedViewControllers).to(equal([viewControllerToObserve]))
+
+                    // We now try to push/pop the viewControllerNotInTheStack
+                    navigationController.pushViewController(viewControllerNotInTheStack, animated: false)
+                    navigationController.popViewController(animated: true)
+
+                    // We need to wait the end of the animation
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        // The viewControllerNotInTheStack should not be observed anymore
+                        expect(navigationController.viewControllers.count).to(equal(1))
+                        expect(observerDelegate.observedViewControllers).to(equal([viewControllerToObserve]))
+                        done()
+                    }
+                }
             }
         }
     }

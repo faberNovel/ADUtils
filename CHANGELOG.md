@@ -2,6 +2,27 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [9.0.0]
+
+### Created
+
+- Layout: create `ad_constrainInSuperview(edges:insets:priority:)`
+- LayoutGuide: create `ad_pin(to:edges:insets:priority:)`, `ad_center(in:along:priority:)`, `ad_center(in:priority:)`, `ad_constrain(in:edges:insets:priority:)`
+- `UIEdgeInsets`: add `init(top:)`, `init(bottom:)`, `init(left:)`, `init(right:)`
+- Utils: create `ad_isBlank` method on `String?`
+- `Sequence`: create `ad_groupedBy(grouping:)` method
+
+### Updated
+
+- `DeselectableView`: rename `smoothlyDeselectItems` to `ad_smoothlyDeselectItems` and make `DeselectableView` protocol private
+- Layout: rename `ad_constraint(to:with:)` to `ad_constrain(to:priority:)`
+- Layout: rename `ad_centerInSuperview(with:)` to `ad_centerInSuperview(priority:)` and `ad_centerInSuperview(along:with:)` to `ad_centerInSuperview(along:priority:)`
+- `UIEdgeInsets`: rename `horizontal` and `vertical` properties to `totalHorizontal` and `totalVertical`
+
+### Fixed
+
+- Add missing unit tests (Swift & ObjC)
+
 ## [8.0.0]
 
 ### Created
