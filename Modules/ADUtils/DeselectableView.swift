@@ -10,60 +10,62 @@ import Foundation
 
 /**
  * This is a protocol to factorize table and collection view selection methods
- * There is not reason those methods should be called
  */
 
-public protocol DeselectableView: class {
+protocol DeselectableView: class {
     var selectedIndexPaths: [IndexPath]? { get }
     func deselect(atIndexPath indexPath: IndexPath, animated: Bool)
     func select(atIndexPath indexPath: IndexPath, animated: Bool)
 }
 
-public extension DeselectableView where Self: UIView {
+extension DeselectableView where Self: UIView {
 
     //MARK: - DeselectableView
 
     /**
-     Smootly deselects item in DeselectableView (ie UITableView/UICollectionView) along coordinator's transition
+     Smoothly deselects item in DeselectableView (ie UITableView/UICollectionView) along coordinator's transition
 
      Should be used inside viewWillAppear :
 
      ```
      override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        collectionView.smoothlyDeselectItems(in: transitionCoordinator())
+        collectionView.smoothlyDeselectItems(in: transitionCoordinator)
      }
      ```
 
      - parameter coordinator: UIViewControllerTransitionCoordinator
      */
-    public func smoothlyDeselectItems(in coordinator: UIViewControllerTransitionCoordinator?) {
+    func smoothlyDeselectItems(in coordinator: UIViewControllerTransitionCoordinator?) {
         guard let selectedIndexPaths = selectedIndexPaths else { return }
         guard let coordinator = coordinator else {
             deselect(atIndexPaths: selectedIndexPaths, animated: false)
             return
         }
 
-        coordinator.animateAlongsideTransition(in: self, animation: { [weak self] (context: UIViewControllerTransitionCoordinatorContext) in
-            self?.deselect(atIndexPaths: selectedIndexPaths, animated: true)
-        })
-        { [weak self] (context : UIViewControllerTransitionCoordinatorContext) in
-            guard context.isCancelled else {
-                return
+        coordinator.animateAlongsideTransition(
+            in: self,
+            animation: { [weak self] (context: UIViewControllerTransitionCoordinatorContext) in
+                self?.deselect(atIndexPaths: selectedIndexPaths, animated: true)
+            },
+            completion: { [weak self] (context: UIViewControllerTransitionCoordinatorContext) in
+                guard context.isCancelled else {
+                    return
+                }
+                self?.select(atIndexPaths: selectedIndexPaths, animated: false)
             }
-            self?.select(atIndexPaths: selectedIndexPaths, animated: false)
-        }
+        )
     }
 
     //MARK: - Private
 
-    private  func select(atIndexPaths indexPaths: [IndexPath], animated: Bool) {
+    private func select(atIndexPaths indexPaths: [IndexPath], animated: Bool) {
         for indexPath in indexPaths {
             select(atIndexPath: indexPath, animated: animated)
         }
     }
 
-    private  func deselect(atIndexPaths indexPaths: [IndexPath], animated: Bool) {
+    private func deselect(atIndexPaths indexPaths: [IndexPath], animated: Bool) {
         for indexPath in indexPaths {
             deselect(atIndexPath: indexPath, animated: animated)
         }
@@ -97,5 +99,47 @@ extension UICollectionView: DeselectableView {
 
     public func select(atIndexPath indexPath: IndexPath, animated: Bool) {
         selectItem(at: indexPath, animated: animated, scrollPosition: .top)
+    }
+}
+
+public extension UITableView {
+
+    /**
+     Smoothly deselects item in UITableView along coordinator's transition
+
+     Should be used inside viewWillAppear :
+
+     ```
+     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.ad_smoothlyDeselectItems(in: transitionCoordinator)
+     }
+     ```
+
+     - parameter coordinator: UIViewControllerTransitionCoordinator
+     */
+    public func ad_smoothlyDeselectItems(in coordinator: UIViewControllerTransitionCoordinator?) {
+        smoothlyDeselectItems(in: coordinator)
+    }
+}
+
+public extension UICollectionView {
+
+    /**
+     Smoothly deselects item in UICollectionView along coordinator's transition
+
+     Should be used inside viewWillAppear :
+
+     ```
+     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.ad_smoothlyDeselectItems(in: transitionCoordinator)
+     }
+     ```
+
+     - parameter coordinator: UIViewControllerTransitionCoordinator
+     */
+    public func ad_smoothlyDeselectItems(in coordinator: UIViewControllerTransitionCoordinator?) {
+        smoothlyDeselectItems(in: coordinator)
     }
 }
