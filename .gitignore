@@ -57,9 +57,9 @@ fastlane/Gemfile.lock
 fastlane/.bundle/config
 
 #Fastlane Plugins
+Pluginfile_fastlane
 Gemfile_fastlane
 Gemfile_fastlane.lock
-fastlane/Pluginfile
 
 ##AppCode
 .idea/

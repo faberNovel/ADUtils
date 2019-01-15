@@ -1,3 +1,150 @@
 import_from_git(url: ENV['FASTLANE_URL'],
-               path: 'ios/fastlane/Fastfile',
-               branch: 'v5.0+')
+                path: 'Fastfile_ios.rb',
+                branch: 'v6.0+')
+
+#####################################################
+# @!group Configuration
+#####################################################
+
+override_lane :get_project_configuration do
+  {
+    xcworkspace: 'ADUtils.xcworkspace',
+    xcodeproj: 'ADUtils.xcodeproj'
+  }
+end
+
+override_lane :get_variants_build_configurations do
+  {
+    'ADUtils_Prod' => {
+      scheme: 'ADUtilsApp',
+      xcode_configuration: 'Production'
+    }
+  }
+end
+
+override_lane :get_slack_configuration do
+  {
+    channel: 'TODO',
+    slack_url: nil # Use nil to use FABERNOVEL's default one
+  }
+end
+
+override_lane :get_variants_hockeyapp_configurations do
+  {
+    'ADUtils_Prod' => {
+      api_token: nil, # Use nil to use FABERNOVEL's default one
+      public_identifier: "TODO_OR_NIL" #can be passed through cli option (hockeyapp_id)
+    }
+  }
+end
+
+#####################################################
+# @!group CI
+#####################################################
+
+override_lane :get_variants_to_build_on_ci do |options|
+  case options[:commit_type]
+  when 'merge'
+    variants = ['ADUtils_Prod']
+  when 'release'
+    variants = ['ADUtils_Prod']
+  else
+    variants = ['ADUtils_Prod']
+  end
+  variants
+end
+
+#####################################################
+# @!group Codesign
+#####################################################
+
+override_lane :get_variants_codesign_configurations do
+  MATCH_CUSTOMER_CONFIGURATION =
+    {
+      apple_id: "TODO",
+      apple_id_password: lane_context[:ALL_CLI_OPTIONS][:apple_password],
+      team_id: "TODO", # Available on developer.apple.com
+      team_name: "TODO", # Available on developer.apple.com
+      git_repository: "ssh://ci@codereview.technologies.fabernovel.com:29418/ADSigningAssetsCustomers",
+      git_branch: "TODO", # To create on the git repository. Guidelines: <client_name>_<team_id>
+      git_password: lane_context[:ALL_CLI_OPTIONS][:match_password]
+    }
+  {
+    'ADUtils_Prod' => {
+      bundles: ["com.yourclient.appname", "com.yourclient.appname.watchkitextension"],
+      fabernovel_bundles: ["com.applidium.ADUtils", "com.applidium.appname.watchkitextension"],
+      provisioning_profile_templates: ["TODO_OR_NIL"],
+      match_configuration: MATCH_CUSTOMER_CONFIGURATION
+    }
+  }
+end
+
+override_lane :get_variants_itunes_connect_configurations do
+  ITC_CUSTOMER_CONFIGURATION = {
+    apple_id: "TODO",
+    team_id: "TODO", # Run $ fastlane deliver init , to easily find it (will be between parenthesis)
+    team_name: "TODO", # Also returned bu the command for team_id
+    apple_id_password: lane_context[:ALL_CLI_OPTIONS][:apple_password],
+    itc_provider: "TODO" # Use /Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/itms/bin/iTMSTransporter -u YOUR_APPLE_ID -p YOUR_PASSWORD -account_type itunes_connect -v off -m provider
+  }
+  {
+    'ADUtils_Prod' => ITC_CUSTOMER_CONFIGURATION
+  }
+end
+
+#####################################################
+# @!group Tests
+#####################################################
+
+override_lane :get_project_tests_configurations do
+  {
+    'ADUtils_Prod_CI' => {
+      display_name: 'ADUtils UI Tests',
+      scheme: 'ADUtilsApp',
+      app_bundle: 'com.applidium.ADUtils',
+      xcode_configuration: 'Stubs',
+      unit_tests_bundles: ['ADUtilsTests'],
+      ui_tests_bundles: nil,
+      devices: ['iPhone SE'],
+      languages: ['fr-FR'],
+      os_versions: nil, # Use nil to use the latest, otherwise ['11.3', '11.2']
+      reinstall_app: true,
+      screenshots_output_path: './screenshots',
+      sonar_properties_file: nil # disable sonar '../sonar-project.properties'
+    }
+  }
+end
+
+override_lane :get_test_configurations_for_ci do |options|
+  case options[:commit_type]
+  when 'merge'
+    test_configurations = ['ADUtils_Prod_CI']
+  when 'release'
+    test_configurations = ['ADUtils_Prod_CI']
+  else
+    test_configurations = ['ADUtils_Prod_CI']
+  end
+  test_configurations
+end
+
+override_lane :get_appstore_screenshots_test_configurations_for_variant do
+  {
+    'ADUtils_Prod' => ['ADUtils_Prod_CI']
+  }
+end
+
+#####################################################
+# @!group LANES THAT CAN BE OVERRIDEN - LOOK SOURCE FOR MORE
+#####################################################
+
+# override_lane :get_variants_crashlytics_configurations do
+# end
+
+# override_lane :get_variants_s3_configurations do
+# end
+
+# override_lane :user_defined_prebuild_lane do |options|
+# end
+
+# override_lane :user_defined_postbuild_lane do |options|
+# end
