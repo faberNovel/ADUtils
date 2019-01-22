@@ -30,40 +30,40 @@ extension UIView {
 
      */
     @objc(ad_pinToLayoutGuide:edges:insets:priority:)
+    @discardableResult
     public func ad_pin(to layoutGuide: UILayoutGuide,
                        edges: UIRectEdge,
                        insets: UIEdgeInsets,
-                       priority: UILayoutPriority) {
+                       priority: UILayoutPriority) -> [NSLayoutConstraint] {
         guard
             let owningView = layoutGuide.owningView,
             isDescendant(of: owningView) else {
-                return
+                return []
         }
         translatesAutoresizingMaskIntoConstraints = false
+        var constraints: [NSLayoutConstraint] = []
         if edges.contains(.top) {
-            topAnchor
-                .constraint(equalTo: layoutGuide.topAnchor, constant: insets.top)
+            let topConstraint = topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: insets.top)
                 .priority(priority)
-                .isActive = true
-        }
-        if edges.contains(.left) {
-            leftAnchor
-                .constraint(equalTo: layoutGuide.leftAnchor, constant: insets.left)
-                .priority(priority)
-                .isActive = true
+            constraints.append(topConstraint)
         }
         if edges.contains(.bottom) {
-            bottomAnchor
-                .constraint(equalTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
+            let bottomConstraint = bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
                 .priority(priority)
-                .isActive = true
+            constraints.append(bottomConstraint)
+        }
+        if edges.contains(.left) {
+            let leftConstraint = leftAnchor.constraint(equalTo: layoutGuide.leftAnchor, constant: insets.left)
+                .priority(priority)
+            constraints.append(leftConstraint)
         }
         if edges.contains(.right) {
-            rightAnchor
-                .constraint(equalTo: layoutGuide.rightAnchor, constant: -insets.right)
+            let rightConstraint = rightAnchor.constraint(equalTo: layoutGuide.rightAnchor, constant: -insets.right)
                 .priority(priority)
-                .isActive = true
+            constraints.append(rightConstraint)
         }
+        NSLayoutConstraint.activate(constraints)
+        return constraints
     }
 
     /**
@@ -73,8 +73,9 @@ extension UIView {
 
      */
     @objc(ad_pinToLayoutGuide:)
-    public func ad_pin(to layoutGuide: UILayoutGuide) {
-        ad_pin(
+    @discardableResult
+    public func ad_pin(to layoutGuide: UILayoutGuide) -> [NSLayoutConstraint] {
+        return ad_pin(
             to: layoutGuide,
             edges: .all,
             insets: .zero
@@ -90,9 +91,10 @@ extension UIView {
 
      */
     @objc(ad_pinToLayoutGuide:insets:)
+    @discardableResult
     public func ad_pin(to layoutGuide: UILayoutGuide,
-                       insets: UIEdgeInsets) {
-        ad_pin(
+                       insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        return ad_pin(
             to: layoutGuide,
             edges: .all,
             insets: insets,
@@ -109,9 +111,10 @@ extension UIView {
 
      */
     @objc(ad_pinToLayoutGuide:edges:)
+    @discardableResult
     public func ad_pin(to layoutGuide: UILayoutGuide,
-                       edges: UIRectEdge) {
-        ad_pin(
+                       edges: UIRectEdge) -> [NSLayoutConstraint] {
+        return ad_pin(
             to: layoutGuide,
             edges: edges,
             insets: .zero,
@@ -130,10 +133,11 @@ extension UIView {
 
      */
     @objc(ad_pinToLayoutGuide:edges:insets:)
+    @discardableResult
     public func ad_pin(to layoutGuide: UILayoutGuide,
                        edges: UIRectEdge,
-                       insets: UIEdgeInsets) {
-        ad_pin(
+                       insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        return ad_pin(
             to: layoutGuide,
             edges: edges,
             insets: insets,
@@ -152,25 +156,27 @@ extension UIView {
 
      */
     @objc(ad_centerInLayoutGuide:alongAxis:priority:)
+    @discardableResult
     public func ad_center(in layoutGuide: UILayoutGuide,
                           along axis: NSLayoutConstraint.Axis,
-                          priority: UILayoutPriority) {
+                          priority: UILayoutPriority) -> [NSLayoutConstraint] {
         guard
             let owningView = layoutGuide.owningView,
             isDescendant(of: owningView) else {
-                return
+                return []
         }
         translatesAutoresizingMaskIntoConstraints = false
+        let constraint: NSLayoutConstraint
         switch axis {
         case .horizontal:
-            centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor)
+            constraint = centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor)
                 .priority(priority)
-                .isActive = true
         case .vertical:
-            centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor)
+            constraint = centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor)
                 .priority(priority)
-                .isActive = true
         }
+        constraint.isActive = true
+        return [constraint]
     }
 
     /**
@@ -182,9 +188,10 @@ extension UIView {
 
      */
     @objc(ad_centerInLayoutGuide:alongAxis:)
+    @discardableResult
     public func ad_center(in layoutGuide: UILayoutGuide,
-                          along axis: NSLayoutConstraint.Axis) {
-        ad_center(
+                          along axis: NSLayoutConstraint.Axis) -> [NSLayoutConstraint] {
+        return ad_center(
             in: layoutGuide,
             along: axis,
             priority: .required
@@ -200,18 +207,21 @@ extension UIView {
 
      */
     @objc(ad_centerInLayoutGuide:priority:)
+    @discardableResult
     public func ad_center(in layoutGuide: UILayoutGuide,
-                          priority: UILayoutPriority) {
-        ad_center(
-            in: layoutGuide,
-            along: .horizontal,
-            priority: priority
-        )
-        ad_center(
-            in: layoutGuide,
-            along: .vertical,
-            priority: priority
-        )
+                          priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        return [
+            ad_center(
+                in: layoutGuide,
+                along: .horizontal,
+                priority: priority
+            ),
+            ad_center(
+                in: layoutGuide,
+                along: .vertical,
+                priority: priority
+            ),
+        ].flatMap { $0 }
     }
 
     /**
@@ -221,8 +231,9 @@ extension UIView {
 
      */
     @objc(ad_centerInLayoutGuide:)
-    public func ad_center(in layoutGuide: UILayoutGuide) {
-        ad_center(
+    @discardableResult
+    public func ad_center(in layoutGuide: UILayoutGuide) -> [NSLayoutConstraint] {
+        return ad_center(
             in: layoutGuide,
             priority: .required
         )
@@ -241,36 +252,40 @@ extension UIView {
 
      */
     @objc(ad_constrainInLayoutGuide:edges:insets:priority:)
+    @discardableResult
     public func ad_constrain(in layoutGuide: UILayoutGuide,
                              edges: UIRectEdge,
                              insets: UIEdgeInsets,
-                             priority: UILayoutPriority) {
+                             priority: UILayoutPriority) -> [NSLayoutConstraint] {
         guard
             let owningView = layoutGuide.owningView,
             isDescendant(of: owningView) else {
-                return
+                return []
         }
         translatesAutoresizingMaskIntoConstraints = false
+        var constraints: [NSLayoutConstraint] = []
         if edges.contains(.top) {
-            topAnchor.constraint(greaterThanOrEqualTo: layoutGuide.topAnchor, constant: insets.top)
+            let topConstraint = topAnchor.constraint(greaterThanOrEqualTo: layoutGuide.topAnchor, constant: insets.top)
                 .priority(priority)
-                .isActive = true
+            constraints.append(topConstraint)
         }
         if edges.contains(.bottom) {
-            bottomAnchor.constraint(lessThanOrEqualTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
+            let bottomConstraint = bottomAnchor.constraint(lessThanOrEqualTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
                 .priority(priority)
-                .isActive = true
+            constraints.append(bottomConstraint)
         }
         if edges.contains(.left) {
-            leftAnchor.constraint(greaterThanOrEqualTo: layoutGuide.leftAnchor, constant: insets.left)
+            let leftConstraint = leftAnchor.constraint(greaterThanOrEqualTo: layoutGuide.leftAnchor, constant: insets.left)
                 .priority(priority)
-                .isActive = true
+            constraints.append(leftConstraint)
         }
         if edges.contains(.right) {
-            rightAnchor.constraint(lessThanOrEqualTo: layoutGuide.rightAnchor, constant: -insets.right)
+            let rightConstraint = rightAnchor.constraint(lessThanOrEqualTo: layoutGuide.rightAnchor, constant: -insets.right)
                 .priority(priority)
-                .isActive = true
+            constraints.append(rightConstraint)
         }
+        NSLayoutConstraint.activate(constraints)
+        return constraints
     }
 
     /**
@@ -280,8 +295,9 @@ extension UIView {
 
      */
     @objc(ad_constrainInLayoutGuide:)
-    public func ad_constrain(in layoutGuide: UILayoutGuide) {
-        ad_constrain(
+    @discardableResult
+    public func ad_constrain(in layoutGuide: UILayoutGuide) -> [NSLayoutConstraint] {
+        return ad_constrain(
             in: layoutGuide,
             edges: .all,
             insets: .zero
@@ -297,9 +313,10 @@ extension UIView {
 
      */
     @objc(ad_constrainInLayoutGuide:insets:)
+    @discardableResult
     public func ad_constrain(in layoutGuide: UILayoutGuide,
-                             insets: UIEdgeInsets) {
-        ad_constrain(
+                             insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        return ad_constrain(
             in: layoutGuide,
             edges: .all,
             insets: insets
@@ -315,9 +332,10 @@ extension UIView {
 
      */
     @objc(ad_constrainInLayoutGuide:edges:)
+    @discardableResult
     public func ad_constrain(in layoutGuide: UILayoutGuide,
-                             edges: UIRectEdge) {
-        ad_constrain(
+                             edges: UIRectEdge) -> [NSLayoutConstraint] {
+        return ad_constrain(
             in: layoutGuide,
             edges: edges,
             insets: .zero,
@@ -336,10 +354,11 @@ extension UIView {
 
      */
     @objc(ad_constrainInLayoutGuide:edges:insets:)
+    @discardableResult
     public func ad_constrain(in layoutGuide: UILayoutGuide,
                              edges: UIRectEdge,
-                             insets: UIEdgeInsets) {
-        ad_constrain(
+                             insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        return ad_constrain(
             in: layoutGuide,
             edges: edges,
             insets: insets,
