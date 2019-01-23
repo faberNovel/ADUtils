@@ -52,6 +52,11 @@
             expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
         });
 
+        it(@"Pin to layout guide edges insets", ^{
+            [subview ad_pinToLayoutGuide:view.layoutMarginsGuide insets:UIEdgeInsetsZero priority:UILayoutPriorityRequired];
+            expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+        });
+
         it(@"Pin to layout guide edges insets priority", ^{
             [subview ad_pinToLayoutGuide:view.layoutMarginsGuide edges:UIRectEdgeAll insets:UIEdgeInsetsZero priority:UILayoutPriorityRequired];
             expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());

@@ -67,6 +67,24 @@ extension UIView {
     }
 
     /**
+     Add constraints to pin self in layout guide
+
+     - parameter layoutGuide: Layout guide to pin the view in
+
+     - parameter insets: UIEdgeInsets to apply for each edge
+
+     - parameter priority: The layout priority used for the constraints created
+
+     */
+    @objc(ad_pinToLayoutGuide:insets:priority:)
+    @discardableResult
+    public func ad_pin(to layoutGuide: UILayoutGuide,
+                       insets: UIEdgeInsets,
+                       priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        return ad_pin(to: layoutGuide, edges: .all, insets: insets, priority: priority)
+    }
+
+    /**
      Add constraints to pin self to all edges with no insets in layout guide with required priorities
 
      - parameter layoutGuide: Layout guide to pin the view in
