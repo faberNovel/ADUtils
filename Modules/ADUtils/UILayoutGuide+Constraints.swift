@@ -22,22 +22,18 @@ extension UILayoutGuide {
 
      */
     @objc(ad_constrainInOwningViewWithEdges:insets:priority:)
+    @discardableResult
     public func ad_constrainInOwningView(edges: UIRectEdge,
                                         insets: UIEdgeInsets,
-                                        priority: UILayoutPriority) {
-        guard let owningView = owningView else { return }
-        if edges.contains(.top) {
-            ad_pinMinTo(view: owningView, attribute: .top, constant: insets.top, priority: priority)
-        }
-        if edges.contains(.bottom) {
-            ad_pinMaxTo(view: owningView, attribute: .bottom, constant: -insets.bottom, priority: priority)
-        }
-        if edges.contains(.left) {
-            ad_pinMinTo(view: owningView, attribute: .left, constant: insets.left, priority: priority)
-        }
-        if edges.contains(.right) {
-            ad_pinMaxTo(view: owningView, attribute: .right, constant: -insets.right, priority: priority)
-        }
+                                        priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        guard let owningView = owningView else { return [] }
+        let constraints: [NSLayoutConstraint] = [
+            edges.contains(.top) ? ad_pinMinTo(view: owningView, attribute: .top, constant: insets.top, priority: priority) : nil,
+            edges.contains(.left) ? ad_pinMinTo(view: owningView, attribute: .left, constant: insets.left, priority: priority) : nil,
+            edges.contains(.bottom) ? ad_pinMaxTo(view: owningView, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
+            edges.contains(.right) ? ad_pinMaxTo(view: owningView, attribute: .right, constant: -insets.right, priority: priority) : nil,
+        ].compactMap { $0 }
+        return constraints
     }
 
     /**
@@ -49,9 +45,10 @@ extension UILayoutGuide {
 
      */
     @objc(ad_constrainInOwningViewWithEdges:insets:)
+    @discardableResult
     public func ad_constrainInOwningView(edges: UIRectEdge,
-                                        insets: UIEdgeInsets) {
-        ad_constrainInOwningView(edges: edges, insets: insets, priority: .required)
+                                        insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        return ad_constrainInOwningView(edges: edges, insets: insets, priority: .required)
     }
 
     /**
@@ -61,8 +58,9 @@ extension UILayoutGuide {
 
      */
     @objc(ad_constrainInOwningViewWithEdges:)
-    public func ad_constrainInOwningView(edges: UIRectEdge) {
-        ad_constrainInOwningView(edges: edges, insets: .zero, priority: .required)
+    @discardableResult
+    public func ad_constrainInOwningView(edges: UIRectEdge) -> [NSLayoutConstraint] {
+        return ad_constrainInOwningView(edges: edges, insets: .zero, priority: .required)
     }
 
     /**
@@ -72,8 +70,9 @@ extension UILayoutGuide {
 
      */
     @objc(ad_constrainInOwningViewWithInsets:)
-    public func ad_constrainInOwningView(insets: UIEdgeInsets) {
-        ad_constrainInOwningView(edges: .all, insets: insets, priority: .required)
+    @discardableResult
+    public func ad_constrainInOwningView(insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        return ad_constrainInOwningView(edges: .all, insets: insets, priority: .required)
     }
 
     /**
@@ -81,8 +80,9 @@ extension UILayoutGuide {
 
      */
     @objc(ad_constrainInOwningView)
-    public func ad_constrainInOwningView() {
-        ad_constrainInOwningView(edges: .all, insets: .zero, priority: .required)
+    @discardableResult
+    public func ad_constrainInOwningView() -> [NSLayoutConstraint] {
+        return ad_constrainInOwningView(edges: .all, insets: .zero, priority: .required)
     }
 
     /**
@@ -93,13 +93,16 @@ extension UILayoutGuide {
      - parameter priority: The layout priority used for the constraints created
 
      */
-    @objc(ad_constrainToSize:priority:) public func ad_constrain(to size: CGSize, priority: UILayoutPriority) {
+    @objc(ad_constrainToSize:priority:)
+    @discardableResult
+    public func ad_constrain(to size: CGSize, priority: UILayoutPriority) -> [NSLayoutConstraint] {
         let constraints = [
             heightAnchor.constraint(equalToConstant: size.height),
             widthAnchor.constraint(equalToConstant: size.width),
         ]
         constraints.forEach { $0.priority = priority }
         constraints.forEach { $0.isActive = true }
+        return constraints
     }
 
     /**
@@ -108,8 +111,10 @@ extension UILayoutGuide {
      - parameter size: Size applied to the layoutGuide
 
      */
-    @objc(ad_constrainToSize:) public func ad_constrain(to size: CGSize) {
-        ad_constrain(to: size, priority: .required)
+    @objc(ad_constrainToSize:)
+    @discardableResult
+    public func ad_constrain(to size: CGSize) -> [NSLayoutConstraint] {
+        return ad_constrain(to: size, priority: .required)
     }
 
     /**
@@ -120,13 +125,15 @@ extension UILayoutGuide {
      - parameter priority: The layout priority used for the constraint created
 
      */
-    @objc(ad_centerInOwningViewAlongAxis:priority:) public func ad_centerInOwningView(along axis: NSLayoutConstraint.Axis, priority: UILayoutPriority) {
-        guard let owningView = self.owningView else { return }
+    @objc(ad_centerInOwningViewAlongAxis:priority:)
+    @discardableResult
+    public func ad_centerInOwningView(along axis: NSLayoutConstraint.Axis, priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        guard let owningView = self.owningView else { return [] }
         switch axis {
         case .horizontal:
-            ad_pinTo(view: owningView, attribute: .centerX, constant: 0.0, priority: priority)
+            return [ad_pinTo(view: owningView, attribute: .centerX, constant: 0.0, priority: priority)]
         case .vertical:
-            ad_pinTo(view: owningView, attribute: .centerY, constant: 0.0, priority: priority)
+            return [ad_pinTo(view: owningView, attribute: .centerY, constant: 0.0, priority: priority)]
         }
     }
 
@@ -136,8 +143,10 @@ extension UILayoutGuide {
      - parameter axis: Axis to center the view along in its owningView
 
      */
-    @objc(ad_centerInOwningViewAlongAxis:) public func ad_centerInOwningView(along axis: NSLayoutConstraint.Axis) {
-        ad_centerInOwningView(along: axis, priority: .required)
+    @objc(ad_centerInOwningViewAlongAxis:)
+    @discardableResult
+    public func ad_centerInOwningView(along axis: NSLayoutConstraint.Axis) -> [NSLayoutConstraint] {
+        return ad_centerInOwningView(along: axis, priority: .required)
     }
 
     /**
@@ -146,17 +155,23 @@ extension UILayoutGuide {
      - parameter priority: The layout priority used for the constraint created
 
      */
-    @objc(ad_centerInOwningViewWithPriority:) public func ad_centerInOwningView(priority: UILayoutPriority) {
-        ad_centerInOwningView(along: .horizontal, priority: priority)
-        ad_centerInOwningView(along: .vertical, priority: priority)
+    @objc(ad_centerInOwningViewWithPriority:)
+    @discardableResult
+    public func ad_centerInOwningView(priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        return [
+            ad_centerInOwningView(along: .horizontal, priority: priority),
+            ad_centerInOwningView(along: .vertical, priority: priority),
+        ].flatMap { $0 }
     }
 
     /**
      Add constraints to center self in the owningView both vertically and horizontally with required priority
 
      */
-    @objc(ad_centerInOwningView) public func ad_centerInOwningView() {
-        ad_centerInOwningView(priority: .required)
+    @objc(ad_centerInOwningView)
+    @discardableResult
+    public func ad_centerInOwningView() -> [NSLayoutConstraint] {
+        return ad_centerInOwningView(priority: .required)
     }
 
     /**
@@ -169,20 +184,19 @@ extension UILayoutGuide {
      - parameter priority: The layout priority used for the constraint created
 
      */
-    @objc(ad_pinToOwningViewWithEdges:insets:priority:) public func ad_pinToOwningView(edges: UIRectEdge, insets: UIEdgeInsets, priority: UILayoutPriority) {
-        guard let owningView = self.owningView else { return }
-        if edges.contains(.top) {
-            ad_pinTo(view: owningView, attribute: .top, constant: insets.top, priority: priority)
-        }
-        if edges.contains(.left) {
-            ad_pinTo(view: owningView, attribute: .left, constant: insets.left, priority: priority)
-        }
-        if edges.contains(.bottom) {
-            ad_pinTo(view: owningView, attribute: .bottom, constant: -insets.bottom, priority: priority)
-        }
-        if edges.contains(.right) {
-            ad_pinTo(view: owningView, attribute: .right, constant: -insets.right, priority: priority)
-        }
+    @objc(ad_pinToOwningViewWithEdges:insets:priority:)
+    @discardableResult
+    public func ad_pinToOwningView(edges: UIRectEdge,
+                                   insets: UIEdgeInsets,
+                                   priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        guard let owningView = self.owningView else { return [] }
+        let constraints: [NSLayoutConstraint] = [
+            edges.contains(.top) ? ad_pinTo(view: owningView, attribute: .top, constant: insets.top, priority: priority) : nil,
+            edges.contains(.left) ? ad_pinTo(view: owningView, attribute: .left, constant: insets.left, priority: priority) : nil,
+            edges.contains(.bottom) ? ad_pinTo(view: owningView, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
+            edges.contains(.right) ? ad_pinTo(view: owningView, attribute: .right, constant: -insets.right, priority: priority) : nil,
+        ].compactMap { $0 }
+        return constraints
     }
 
     /**
@@ -193,8 +207,10 @@ extension UILayoutGuide {
      - parameter insets: UIEdgeInsets to apply for each edge
 
      */
-    @objc(ad_pinToOwningViewWithEdges:insets:) public func ad_pinToOwningView(edges: UIRectEdge, insets: UIEdgeInsets) {
-        ad_pinToOwningView(edges: edges, insets: insets, priority: UILayoutPriority.required)
+    @objc(ad_pinToOwningViewWithEdges:insets:)
+    @discardableResult
+    public func ad_pinToOwningView(edges: UIRectEdge, insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        return ad_pinToOwningView(edges: edges, insets: insets, priority: UILayoutPriority.required)
     }
 
     /**
@@ -203,8 +219,10 @@ extension UILayoutGuide {
      - parameter edges: Edges to pin the view in its owningView
 
      */
-    @objc(ad_pinToOwningViewWithEdges:) public func ad_pinToOwningView(edges: UIRectEdge) {
-        ad_pinToOwningView(edges: edges, insets: .zero)
+    @objc(ad_pinToOwningViewWithEdges:)
+    @discardableResult
+    public func ad_pinToOwningView(edges: UIRectEdge) -> [NSLayoutConstraint] {
+        return ad_pinToOwningView(edges: edges, insets: .zero)
     }
 
     /**
@@ -213,21 +231,28 @@ extension UILayoutGuide {
      - parameter insets: UIEdgeInsets to apply for each edge
 
      */
-    @objc(ad_pinToOwningViewWithInsets:) public func ad_pinToOwningView(insets: UIEdgeInsets) {
-        ad_pinToOwningView(edges: .all, insets: insets)
+    @objc(ad_pinToOwningViewWithInsets:)
+    @discardableResult
+    public func ad_pinToOwningView(insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        return ad_pinToOwningView(edges: .all, insets: insets)
     }
 
     /**
      Add constraints to pin self in owningView to all edges with no insets and required priority
 
      */
-    @objc(ad_pinToOwningView) public func ad_pinToOwningView() {
-        ad_pinToOwningView(edges: .all, insets: .zero)
+    @objc(ad_pinToOwningView)
+    @discardableResult
+    public func ad_pinToOwningView() -> [NSLayoutConstraint] {
+        return ad_pinToOwningView(edges: .all, insets: .zero)
     }
 
     //MARK: - Private
 
-    private func ad_pinTo(view: UIView, attribute: NSLayoutConstraint.Attribute, constant: CGFloat, priority: UILayoutPriority = .required) {
+    private func ad_pinTo(view: UIView,
+                          attribute: NSLayoutConstraint.Attribute,
+                          constant: CGFloat,
+                          priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         let constraint = NSLayoutConstraint(
             item: self,
             attribute: attribute,
@@ -236,12 +261,15 @@ extension UILayoutGuide {
             attribute: attribute,
             multiplier: 1.0,
             constant: constant
-        )
-        constraint.priority = priority
-        view.addConstraint(constraint)
+        ).priority(priority)
+        constraint.isActive = true
+        return constraint
     }
 
-    private func ad_pinMinTo(view: UIView, attribute: NSLayoutConstraint.Attribute, constant: CGFloat, priority: UILayoutPriority = .required) {
+    private func ad_pinMinTo(view: UIView,
+                             attribute: NSLayoutConstraint.Attribute,
+                             constant: CGFloat,
+                             priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         let constraint = NSLayoutConstraint(
             item: self,
             attribute: attribute,
@@ -250,12 +278,15 @@ extension UILayoutGuide {
             attribute: attribute,
             multiplier: 1.0,
             constant: constant
-        )
-        constraint.priority = priority
-        view.addConstraint(constraint)
+        ).priority(priority)
+        constraint.isActive = true
+        return constraint
     }
 
-    private func ad_pinMaxTo(view: UIView, attribute: NSLayoutConstraint.Attribute, constant: CGFloat, priority: UILayoutPriority = .required) {
+    private func ad_pinMaxTo(view: UIView,
+                             attribute: NSLayoutConstraint.Attribute,
+                             constant: CGFloat,
+                             priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         let constraint = NSLayoutConstraint(
             item: self,
             attribute: attribute,
@@ -264,8 +295,8 @@ extension UILayoutGuide {
             attribute: attribute,
             multiplier: 1.0,
             constant: constant
-        )
-        constraint.priority = priority
-        view.addConstraint(constraint)
+        ).priority(priority)
+        constraint.isActive = true
+        return constraint
     }
 }
