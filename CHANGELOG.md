@@ -2,6 +2,20 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [9.1.0]
+
+### Created
+
+- `UIView` Add missing method `ad_pinToLayoutGuide:insets:priority:`
+- `UILayoutGuide` add `ad_pinToOwningView(edges: UIRectEdge, insets: UIEdgeInsets, priority: UILayoutPriority)`
+- `UILayoutGuide` add `ad_centerInOwningView(along axis: NSLayoutConstraint.Axis, priority: UILayoutPriority)`
+- `UILayoutGuide` add `ad_constrainInOwningView(edges: UIRectEdge, insets: UIEdgeInsets, priority: UILayoutPriority)`
+- `UILayoutGuide` add `ad_constrain(to size: CGSize, priority: UILayoutPriority)`
+
+### Updated
+
+- Layout: method creating constraints now return an array containing thoses constraints as `@discardableResult`
+
 ## [9.0.0]
 
 ### Created

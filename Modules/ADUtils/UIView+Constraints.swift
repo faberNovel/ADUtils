@@ -22,23 +22,19 @@ extension UIView {
 
      */
     @objc(ad_constrainInSuperviewWithEdges:insets:priority:)
+    @discardableResult
     public func ad_constrainInSuperview(edges: UIRectEdge,
                                         insets: UIEdgeInsets,
-                                        priority: UILayoutPriority) {
-        guard let superview = superview else { return }
+                                        priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        guard let superview = superview else { return [] }
         translatesAutoresizingMaskIntoConstraints = false
-        if edges.contains(.top) {
-            ad_pinMinTo(view: superview, attribute: .top, constant: insets.top, priority: priority)
-        }
-        if edges.contains(.bottom) {
-            ad_pinMaxTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority)
-        }
-        if edges.contains(.left) {
-            ad_pinMinTo(view: superview, attribute: .left, constant: insets.left, priority: priority)
-        }
-        if edges.contains(.right) {
-            ad_pinMaxTo(view: superview, attribute: .right, constant: -insets.right, priority: priority)
-        }
+        let constraints: [NSLayoutConstraint] = [
+            edges.contains(.top) ? ad_pinMinTo(view: superview, attribute: .top, constant: insets.top, priority: priority) : nil,
+            edges.contains(.left) ? ad_pinMinTo(view: superview, attribute: .left, constant: insets.left, priority: priority) : nil,
+            edges.contains(.bottom) ? ad_pinMaxTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
+            edges.contains(.right) ? ad_pinMaxTo(view: superview, attribute: .right, constant: -insets.right, priority: priority) : nil,
+        ].compactMap { $0 }
+        return constraints
     }
 
     /**
@@ -50,9 +46,10 @@ extension UIView {
 
      */
     @objc(ad_constrainInSuperviewWithEdges:insets:)
+    @discardableResult
     public func ad_constrainInSuperview(edges: UIRectEdge,
-                                        insets: UIEdgeInsets) {
-        ad_constrainInSuperview(edges: edges, insets: insets, priority: .required)
+                                        insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        return ad_constrainInSuperview(edges: edges, insets: insets, priority: .required)
     }
 
     /**
@@ -62,8 +59,9 @@ extension UIView {
 
      */
     @objc(ad_constrainInSuperviewWithEdges:)
-    public func ad_constrainInSuperview(edges: UIRectEdge) {
-        ad_constrainInSuperview(edges: edges, insets: .zero, priority: .required)
+    @discardableResult
+    public func ad_constrainInSuperview(edges: UIRectEdge) -> [NSLayoutConstraint] {
+        return ad_constrainInSuperview(edges: edges, insets: .zero, priority: .required)
     }
 
     /**
@@ -73,8 +71,9 @@ extension UIView {
 
      */
     @objc(ad_constrainInSuperviewWithInsets:)
-    public func ad_constrainInSuperview(insets: UIEdgeInsets) {
-        ad_constrainInSuperview(edges: .all, insets: insets, priority: .required)
+    @discardableResult
+    public func ad_constrainInSuperview(insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        return ad_constrainInSuperview(edges: .all, insets: insets, priority: .required)
     }
 
     /**
@@ -82,8 +81,9 @@ extension UIView {
 
      */
     @objc(ad_constrainInSuperview)
-    public func ad_constrainInSuperview() {
-        ad_constrainInSuperview(edges: .all, insets: .zero, priority: .required)
+    @discardableResult
+    public func ad_constrainInSuperview() -> [NSLayoutConstraint] {
+        return ad_constrainInSuperview(edges: .all, insets: .zero, priority: .required)
     }
 
     /**
@@ -94,7 +94,9 @@ extension UIView {
      - parameter priority: The layout priority used for the constraints created
 
      */
-    @objc(ad_constrainToSize:priority:) public func ad_constrain(to size: CGSize, priority: UILayoutPriority) {
+    @objc(ad_constrainToSize:priority:)
+    @discardableResult
+    public func ad_constrain(to size: CGSize, priority: UILayoutPriority) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
             NSLayoutConstraint(
@@ -117,7 +119,8 @@ extension UIView {
             ),
         ]
         constraints.forEach { $0.priority = priority }
-        addConstraints(constraints)
+        NSLayoutConstraint.activate(constraints)
+        return constraints
     }
 
     /**
@@ -126,8 +129,10 @@ extension UIView {
      - parameter size: Size applied to the view
 
      */
-    @objc(ad_constrainToSize:) public func ad_constrain(to size: CGSize) {
-        ad_constrain(to: size, priority: .required)
+    @objc(ad_constrainToSize:)
+    @discardableResult
+    public func ad_constrain(to size: CGSize) -> [NSLayoutConstraint] {
+        return ad_constrain(to: size, priority: .required)
     }
 
     /**
@@ -138,15 +143,20 @@ extension UIView {
      - parameter priority: The layout priority used for the constraint created
 
      */
-    @objc(ad_centerInSuperviewAlongAxis:priority:) public func ad_centerInSuperview(along axis: NSLayoutConstraint.Axis, priority: UILayoutPriority) {
-        guard let superview = self.superview else { return }
+    @objc(ad_centerInSuperviewAlongAxis:priority:)
+    @discardableResult
+    public func ad_centerInSuperview(along axis: NSLayoutConstraint.Axis,
+                                     priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        guard let superview = self.superview else { return [] }
         translatesAutoresizingMaskIntoConstraints = false
+        let constraint: NSLayoutConstraint
         switch axis {
         case .horizontal:
-            ad_pinTo(view: superview, attribute: .centerX, constant: 0.0, priority: priority)
+            constraint = ad_pinTo(view: superview, attribute: .centerX, constant: 0.0, priority: priority)
         case .vertical:
-            ad_pinTo(view: superview, attribute: .centerY, constant: 0.0, priority: priority)
+            constraint = ad_pinTo(view: superview, attribute: .centerY, constant: 0.0, priority: priority)
         }
+        return [constraint]
     }
 
     /**
@@ -155,8 +165,10 @@ extension UIView {
      - parameter axis: Axis to center the view along in its superview
 
      */
-    @objc(ad_centerInSuperviewAlongAxis:) public func ad_centerInSuperview(along axis: NSLayoutConstraint.Axis) {
-        ad_centerInSuperview(along: axis, priority: .required)
+    @objc(ad_centerInSuperviewAlongAxis:)
+    @discardableResult
+    public func ad_centerInSuperview(along axis: NSLayoutConstraint.Axis) -> [NSLayoutConstraint] {
+        return ad_centerInSuperview(along: axis, priority: .required)
     }
 
     /**
@@ -165,17 +177,23 @@ extension UIView {
      - parameter priority: The layout priority used for the constraint created
 
      */
-    @objc(ad_centerInSuperviewWithPriority:) public func ad_centerInSuperview(priority: UILayoutPriority) {
-        ad_centerInSuperview(along: .horizontal, priority: priority)
-        ad_centerInSuperview(along: .vertical, priority: priority)
+    @objc(ad_centerInSuperviewWithPriority:)
+    @discardableResult
+    public func ad_centerInSuperview(priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        return [
+            ad_centerInSuperview(along: .horizontal, priority: priority),
+            ad_centerInSuperview(along: .vertical, priority: priority),
+        ].flatMap { $0 }
     }
 
     /**
      Add constraints to center self in the superview both vertically and horizontally with required priority
 
      */
-    @objc(ad_centerInSuperview) public func ad_centerInSuperview() {
-        ad_centerInSuperview(priority: .required)
+    @objc(ad_centerInSuperview)
+    @discardableResult
+    public func ad_centerInSuperview() -> [NSLayoutConstraint] {
+        return ad_centerInSuperview(priority: .required)
     }
 
     /**
@@ -188,21 +206,20 @@ extension UIView {
      - parameter priority: The layout priority used for the constraint created
 
      */
-    @objc(ad_pinToSuperviewWithEdges:insets:priority:) public func ad_pinToSuperview(edges: UIRectEdge, insets: UIEdgeInsets, priority: UILayoutPriority) {
-        guard let superview = self.superview else { return }
+    @objc(ad_pinToSuperviewWithEdges:insets:priority:)
+    @discardableResult
+    public func ad_pinToSuperview(edges: UIRectEdge,
+                                  insets: UIEdgeInsets,
+                                  priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        guard let superview = self.superview else { return [] }
         translatesAutoresizingMaskIntoConstraints = false
-        if edges.contains(.top) {
-            ad_pinTo(view: superview, attribute: .top, constant: insets.top, priority: priority)
-        }
-        if edges.contains(.left) {
-            ad_pinTo(view: superview, attribute: .left, constant: insets.left, priority: priority)
-        }
-        if edges.contains(.bottom) {
-            ad_pinTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority)
-        }
-        if edges.contains(.right) {
-            ad_pinTo(view: superview, attribute: .right, constant: -insets.right, priority: priority)
-        }
+        let constraints: [NSLayoutConstraint] = [
+            edges.contains(.top) ? ad_pinTo(view: superview, attribute: .top, constant: insets.top, priority: priority) : nil,
+            edges.contains(.left) ? ad_pinTo(view: superview, attribute: .left, constant: insets.left, priority: priority) : nil,
+            edges.contains(.bottom) ? ad_pinTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
+            edges.contains(.right) ? ad_pinTo(view: superview, attribute: .right, constant: -insets.right, priority: priority) : nil,
+        ].compactMap { $0 }
+        return constraints
     }
 
     /**
@@ -213,8 +230,10 @@ extension UIView {
      - parameter insets: UIEdgeInsets to apply for each edge
 
      */
-    @objc(ad_pinToSuperviewWithEdges:insets:) public func ad_pinToSuperview(edges: UIRectEdge, insets: UIEdgeInsets) {
-        ad_pinToSuperview(edges: edges, insets: insets, priority: UILayoutPriority.required)
+    @objc(ad_pinToSuperviewWithEdges:insets:)
+    @discardableResult
+    public func ad_pinToSuperview(edges: UIRectEdge, insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        return ad_pinToSuperview(edges: edges, insets: insets, priority: UILayoutPriority.required)
     }
 
     /**
@@ -223,8 +242,10 @@ extension UIView {
      - parameter edges: Edges to pin the view in its superview
 
      */
-    @objc(ad_pinToSuperviewWithEdges:) public func ad_pinToSuperview(edges: UIRectEdge) {
-        ad_pinToSuperview(edges: edges, insets: .zero)
+    @objc(ad_pinToSuperviewWithEdges:)
+    @discardableResult
+    public func ad_pinToSuperview(edges: UIRectEdge) -> [NSLayoutConstraint] {
+        return ad_pinToSuperview(edges: edges, insets: .zero)
     }
 
     /**
@@ -233,21 +254,28 @@ extension UIView {
      - parameter insets: UIEdgeInsets to apply for each edge
 
      */
-    @objc(ad_pinToSuperviewWithInsets:) public func ad_pinToSuperview(insets: UIEdgeInsets) {
-        ad_pinToSuperview(edges: .all, insets: insets)
+    @objc(ad_pinToSuperviewWithInsets:)
+    @discardableResult
+    public func ad_pinToSuperview(insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        return ad_pinToSuperview(edges: .all, insets: insets)
     }
 
     /**
      Add constraints to pin self in superview to all edges with no insets and required priority
 
      */
-    @objc(ad_pinToSuperview) public func ad_pinToSuperview() {
-        ad_pinToSuperview(edges: .all, insets: .zero)
+    @objc(ad_pinToSuperview)
+    @discardableResult
+    public func ad_pinToSuperview() -> [NSLayoutConstraint] {
+        return ad_pinToSuperview(edges: .all, insets: .zero)
     }
 
     //MARK: - Private
 
-    private func ad_pinTo(view: UIView, attribute: NSLayoutConstraint.Attribute, constant: CGFloat, priority: UILayoutPriority = .required) {
+    private func ad_pinTo(view: UIView,
+                          attribute: NSLayoutConstraint.Attribute,
+                          constant: CGFloat,
+                          priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         let constraint = NSLayoutConstraint(
             item: self,
             attribute: attribute,
@@ -258,10 +286,14 @@ extension UIView {
             constant: constant
         )
         constraint.priority = priority
-        view.addConstraint(constraint)
+        constraint.isActive = true
+        return constraint
     }
 
-    private func ad_pinMinTo(view: UIView, attribute: NSLayoutConstraint.Attribute, constant: CGFloat, priority: UILayoutPriority = .required) {
+    private func ad_pinMinTo(view: UIView,
+                             attribute: NSLayoutConstraint.Attribute,
+                             constant: CGFloat,
+                             priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         let constraint = NSLayoutConstraint(
             item: self,
             attribute: attribute,
@@ -272,10 +304,14 @@ extension UIView {
             constant: constant
         )
         constraint.priority = priority
-        view.addConstraint(constraint)
+        constraint.isActive = true
+        return constraint
     }
 
-    private func ad_pinMaxTo(view: UIView, attribute: NSLayoutConstraint.Attribute, constant: CGFloat, priority: UILayoutPriority = .required) {
+    private func ad_pinMaxTo(view: UIView,
+                             attribute: NSLayoutConstraint.Attribute,
+                             constant: CGFloat,
+                             priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         let constraint = NSLayoutConstraint(
             item: self,
             attribute: attribute,
@@ -286,6 +322,7 @@ extension UIView {
             constant: constant
         )
         constraint.priority = priority
-        view.addConstraint(constraint)
+        constraint.isActive = true
+        return constraint
     }
 }
