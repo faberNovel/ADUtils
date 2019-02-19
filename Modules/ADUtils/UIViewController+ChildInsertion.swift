@@ -9,6 +9,31 @@
 import Foundation
 
 extension UIViewController {
+
+
+    /**
+     Insert a view controller as child of current view controller
+
+     - parameter child: UIViewController to insert as child. Its view is inserted without margins
+
+     - parameter layoutGuide: UILayoutGuide where child's view is inserted
+     */
+    @available(iOS 9.0, *)
+    @objc(ad_insertChild:inLayoutGuide:) public func ad_insert(child viewController: UIViewController,
+                                                               in layoutGuide: UILayoutGuide) {
+        guard
+            let owningView = layoutGuide.owningView,
+            owningView.isDescendant(of: view) else {
+                return
+        }
+        addChild(viewController)
+        let viewControllerView: UIView = viewController.view
+        viewControllerView.translatesAutoresizingMaskIntoConstraints = false
+        owningView.addSubview(viewControllerView)
+        viewControllerView.ad_pin(to: layoutGuide)
+        viewController.didMove(toParent: self)
+    }
+
     /**
      Insert a view controller as child of current view controller
 
