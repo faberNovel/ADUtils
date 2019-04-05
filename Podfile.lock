@@ -4,32 +4,30 @@ PODS:
   - ADUtils/objc (9.1.0):
     - ADUtils/Swift
   - ADUtils/Swift (9.1.0)
-  - FBSnapshotTestCase (2.1.4):
-    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
-  - FBSnapshotTestCase/Core (2.1.4)
-  - FBSnapshotTestCase/SwiftSupport (2.1.4):
-    - FBSnapshotTestCase/Core
-  - Nimble (7.0.1)
-  - Nimble-Snapshots (4.3.0):
-    - Nimble-Snapshots/Core (= 4.3.0)
-  - Nimble-Snapshots/Core (4.3.0):
-    - FBSnapshotTestCase (~> 2.0)
-    - Nimble
-    - Quick
-  - OCMock (3.3.1)
-  - Quick (1.1.0)
+  - iOSSnapshotTestCase (5.0.2):
+    - iOSSnapshotTestCase/SwiftSupport (= 5.0.2)
+  - iOSSnapshotTestCase/Core (5.0.2)
+  - iOSSnapshotTestCase/SwiftSupport (5.0.2):
+    - iOSSnapshotTestCase/Core
+  - Nimble (7.3.4)
+  - Nimble-Snapshots (6.9.1):
+    - Nimble-Snapshots/Core (= 6.9.1)
+  - Nimble-Snapshots/Core (6.9.1):
+    - iOSSnapshotTestCase (~> 5.0)
+    - Nimble (~> 7.0)
+  - OCMock (3.4.3)
+  - Quick (2.0.0)
 
 DEPENDENCIES:
   - ADUtils (from `./`)
-  - FBSnapshotTestCase (~> 2.1)
   - Nimble (~> 7.0)
-  - Nimble-Snapshots (= 4.3.0)
-  - OCMock (~> 3.3)
-  - Quick (~> 1.1.0)
+  - Nimble-Snapshots (~> 6.9)
+  - OCMock (~> 3.4)
+  - Quick (~> 2.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - FBSnapshotTestCase
+    - iOSSnapshotTestCase
     - Nimble
     - Nimble-Snapshots
     - OCMock
@@ -40,13 +38,13 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADUtils: 995f3899e53e2848445eed5cf6aa435bedc38f19
-  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
-  Nimble-Snapshots: 4ba722c35b73a680cbd856e4bc22076dfb8085d4
-  OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
-  Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
+  ADUtils: 08b19e6513629773e288c5391954c9bd4bc28070
+  iOSSnapshotTestCase: 2d51aa06775e95cecb0a1fb9c5c159ccd1dd4596
+  Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
+  Nimble-Snapshots: bbd1ab264bacc24a9ce24a8363bc05aac783aeb0
+  OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
+  Quick: ce1276c7c27ba2da3cb2fd0cde053c3648b3b22d
 
-PODFILE CHECKSUM: 41fef735f317e34a890e41ca612ff488b24ec08b
+PODFILE CHECKSUM: e9d074ec864ac3faa7ba2f19a8706336c3e79751
 
-COCOAPODS: 1.6.0.beta.1
+COCOAPODS: 1.6.1
