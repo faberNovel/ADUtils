@@ -56,6 +56,12 @@
             expect(view.constraints.count).to(equal(4));
         });
 
+        it(@"Pin to superview edges priority", ^{
+            [subview ad_pinToSuperviewWithEdges:UIRectEdgeAll priority: UILayoutPriorityRequired];
+            expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+            expect(view.constraints.count).to(equal(4));
+        });
+
         it(@"Pin to superview edges insets priority", ^{
             [subview ad_pinToSuperviewWithEdges:UIRectEdgeAll insets:UIEdgeInsetsZero priority:UILayoutPriorityRequired];
             expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
