@@ -58,5 +58,16 @@ class ViewLayout: QuickSpec {
             // Then
             expect(height).to(equal(CGFloat(1218.0)))
         }
+
+        it("should layout UITableViewHeaderFooterView") {
+            // Given
+            let headerFooter = UITableViewHeaderFooterView(reuseIdentifier: nil)
+            headerFooter.frame = frame
+            addLabelInView(headerFooter.contentView)
+            // When
+            let height = headerFooter.ad_preferredContentViewLayoutHeight(fittingWidth: width)
+            // Then
+            expect(height).to(equal(CGFloat(1218.0)))
+        }
     }
 }

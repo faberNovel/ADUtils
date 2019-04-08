@@ -2,15 +2,32 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [9.2.0]
+
+### Created
+
+- `UIViewController`: add `ad_insert(child:in:)` to insert a child viewController in a layoutGuide instead of a view
+- `NSLayoutConstraint`: add `priority(_:)` that returns the constraint with the given priority
+- `UILayoutPriority`: add `applyIfPossible` which is `.required - 1`
+- `UITableViewHeaderFooterView`: add `ad_preferredContentViewLayoutHeight(fittingWidth:)`
+- `UILayoutGuide`: add `ad_pinTo(_: edges: UIRectEdge, insets: UIEdgeInsets, priority: UILayoutPriority)`
+- `UILayoutGuide`: add `ad_center(in: along axis: NSLayoutConstraint.Axis, priority: UILayoutPriority)`
+- `UILayoutGuide`: add `ad_constrain(in: edges: UIRectEdge, insets: UIEdgeInsets, priority: UILayoutPriority)`
+- `UILayoutGuide`: add `ad_constrain(to size: CGSize, priority: UILayoutPriority)`
+
+### Fixed
+
+- Update pods for Xcode 10.2
+
 ## [9.1.0]
 
 ### Created
 
-- `UIView` Add missing method `ad_pinToLayoutGuide:insets:priority:`
-- `UILayoutGuide` add `ad_pinToOwningView(edges: UIRectEdge, insets: UIEdgeInsets, priority: UILayoutPriority)`
-- `UILayoutGuide` add `ad_centerInOwningView(along axis: NSLayoutConstraint.Axis, priority: UILayoutPriority)`
-- `UILayoutGuide` add `ad_constrainInOwningView(edges: UIRectEdge, insets: UIEdgeInsets, priority: UILayoutPriority)`
-- `UILayoutGuide` add `ad_constrain(to size: CGSize, priority: UILayoutPriority)`
+- `UIView`: Add missing method `ad_pinToLayoutGuide:insets:priority:`
+- `UILayoutGuide`: add `ad_pinToOwningView(edges: UIRectEdge, insets: UIEdgeInsets, priority: UILayoutPriority)`
+- `UILayoutGuide`: add `ad_centerInOwningView(along axis: NSLayoutConstraint.Axis, priority: UILayoutPriority)`
+- `UILayoutGuide`: add `ad_constrainInOwningView(edges: UIRectEdge, insets: UIEdgeInsets, priority: UILayoutPriority)`
+- `UILayoutGuide`: add `ad_constrain(to size: CGSize, priority: UILayoutPriority)`
 
 ### Updated
 

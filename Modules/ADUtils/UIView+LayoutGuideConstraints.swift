@@ -7,13 +7,6 @@
 
 import Foundation
 
-extension NSLayoutConstraint {
-    func priority(_ priority: UILayoutPriority) -> NSLayoutConstraint {
-        self.priority = priority
-        return self
-    }
-}
-
 @available(iOS 9.0, *)
 extension UIView {
 

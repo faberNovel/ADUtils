@@ -237,6 +237,20 @@ extension UIView {
     }
 
     /**
+     Add constraints to pin self in superview with required priority
+
+     - parameter edges: Edges to pin the view in its superview
+
+     - parameter priority: The layout priority used for the constraint created
+
+     */
+    @objc(ad_pinToSuperviewWithEdges:priority:)
+    @discardableResult
+    public func ad_pinToSuperview(edges: UIRectEdge, priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        return ad_pinToSuperview(edges: edges, insets: .zero, priority: priority)
+    }
+
+    /**
      Add constraints to pin self in superview with no insets
 
      - parameter edges: Edges to pin the view in its superview
