@@ -43,21 +43,21 @@ public enum RegisterableView {
 }
 
 public extension RegisterableView {
-    public var nib: UINib? {
+    var nib: UINib? {
         switch self {
         case let .nib(cellClass): return UINib(nibName: String(describing: cellClass), bundle: nil)
         default: return nil
         }
     }
 
-    public var identifier: String {
+    var identifier: String {
         switch self {
         case let .nib(cellClass): return cellClass.identifier()
         case let .class(cellClass): return cellClass.identifier()
         }
     }
 
-    public var cellClass: AnyClass? {
+    var cellClass: AnyClass? {
         switch self {
         case let .class(cellClass): return cellClass
         default: return nil
@@ -72,15 +72,15 @@ public protocol CollectionView {
 }
 
 public extension CollectionView {
-    public func register(cells: [RegisterableView]) {
+    func register(cells: [RegisterableView]) {
         cells.forEach(register(cell:))
     }
 
-    public func register(headers: [RegisterableView]) {
+    func register(headers: [RegisterableView]) {
         headers.forEach(register(header:))
     }
 
-    public func register(footers: [RegisterableView]) {
+    func register(footers: [RegisterableView]) {
         footers.forEach(register(footer:))
     }
 }

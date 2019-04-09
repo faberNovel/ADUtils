@@ -14,7 +14,7 @@ public extension UITableViewCell {
 
      - parameter fittingWidth: The biggest width the view can get
      */
-    public func ad_preferredCellLayoutHeight(fittingWidth: CGFloat) -> CGFloat {
+    func ad_preferredCellLayoutHeight(fittingWidth: CGFloat) -> CGFloat {
         var bounds = self.bounds
         bounds.size.width = fittingWidth
         self.bounds = bounds

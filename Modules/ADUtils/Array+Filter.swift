@@ -31,7 +31,7 @@ public extension Array {
      && (user.name.contains("street") || user.address.contains("street"))
      ```
      */
-    public func ad_filter(query: String, for keyPaths: [KeyPath<Element, String>]) -> [Element] {
+    func ad_filter(query: String, for keyPaths: [KeyPath<Element, String>]) -> [Element] {
         let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmedQuery.isEmpty else { return self }
         let searchTerms = Set(trimmedQuery.components(separatedBy: " "))

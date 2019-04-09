@@ -118,7 +118,7 @@ public extension UITableView {
 
      - parameter coordinator: UIViewControllerTransitionCoordinator
      */
-    public func ad_smoothlyDeselectItems(in coordinator: UIViewControllerTransitionCoordinator?) {
+    func ad_smoothlyDeselectItems(in coordinator: UIViewControllerTransitionCoordinator?) {
         smoothlyDeselectItems(in: coordinator)
     }
 }
@@ -139,7 +139,7 @@ public extension UICollectionView {
 
      - parameter coordinator: UIViewControllerTransitionCoordinator
      */
-    public func ad_smoothlyDeselectItems(in coordinator: UIViewControllerTransitionCoordinator?) {
+    func ad_smoothlyDeselectItems(in coordinator: UIViewControllerTransitionCoordinator?) {
         smoothlyDeselectItems(in: coordinator)
     }
 }
