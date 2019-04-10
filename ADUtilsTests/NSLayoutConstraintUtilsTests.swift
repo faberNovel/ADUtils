@@ -11,7 +11,7 @@ import Nimble
 import ADUtils
 import UIKit
 
-class NSLayoutConstraintPriorityTests: QuickSpec {
+class NSLayoutConstraintUtilsTests: QuickSpec {
 
     override func spec() {
 
@@ -33,6 +33,16 @@ class NSLayoutConstraintPriorityTests: QuickSpec {
             expect(constraint.priority).to(equal(UILayoutPriority.applyIfPossible))
             constraint = constraint.priority(.defaultLow)
             expect(constraint.priority).to(equal(UILayoutPriority.defaultLow))
+        }
+
+        it("should activate ann deactivate constraints array") {
+            let view = UIView()
+            let constraints = view.ad_constrain(to: CGSize(width: 100.0, height: 100.0))
+            expect(constraints.map { $0.isActive }).to(allPass(beTrue()))
+            constraints.deactivate()
+            expect(constraints.map { $0.isActive }).to(allPass(beFalse()))
+            constraints.activate()
+            expect(constraints.map { $0.isActive }).to(allPass(beTrue()))
         }
     }
 }
