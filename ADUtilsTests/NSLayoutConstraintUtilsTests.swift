@@ -35,7 +35,7 @@ class NSLayoutConstraintUtilsTests: QuickSpec {
             expect(constraint.priority).to(equal(UILayoutPriority.defaultLow))
         }
 
-        it("should activate ann deactivate constraints array") {
+        it("should activate and deactivate constraints array") {
             let view = UIView()
             let constraints = view.ad_constrain(to: CGSize(width: 100.0, height: 100.0))
             expect(constraints.map { $0.isActive }).to(allPass(beTrue()))
