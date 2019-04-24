@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [9.3.0]
+
+### Created
+
+- `JSONDecoder` and `PropertyListDecoder`: add `ad_safelyDecodeArray<T>(of type: T.Type, from data: Data)` to decode a top-level array of values of the given type from the given JSON representation. If the decoding of a value fails, it is ignored and will not be present in the final array
+- `KeyedDecodingContainer`: add `ad_safelyDecodeArray<T>(of type: T.Type, forKey key: KeyedDecodingContainer.Key)` to decode an array of values of the given type for the given key. If the decoding of a value fails, it is ignored and will not be present in the final array
+- `Collection` of `NSLayoutConstraint`: add `activate()` which activate each constraint in the collection
+- `Collection` of `NSLayoutConstraint`: add `deactivate()` which deactivate each constraint in the collection
+
 ## [9.2.0]
 
 ### Created
