@@ -44,5 +44,15 @@ class NSLayoutConstraintUtilsTests: QuickSpec {
             constraints.activate()
             expect(constraints.map { $0.isActive }).to(allPass(beTrue()))
         }
+
+        it("should activate and deactivate constraints set") {
+            let view = UIView()
+            let constraints = Set(view.ad_constrain(to: CGSize(width: 100.0, height: 100.0)))
+            expect(constraints.map { $0.isActive }).to(allPass(beTrue()))
+            constraints.deactivate()
+            expect(constraints.map { $0.isActive }).to(allPass(beFalse()))
+            constraints.activate()
+            expect(constraints.map { $0.isActive }).to(allPass(beTrue()))
+        }
     }
 }
