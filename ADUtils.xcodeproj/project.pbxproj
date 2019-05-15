@@ -36,7 +36,8 @@
 		7A0EC6581535D8ED00E5F54A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */; };
 		87F2D42121020D8E0004465B /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2D42021020D8E0004465B /* TestView.swift */; };
 		921907DF21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */; };
-		92DA1F5F2257556800060A32 /* NSLayoutConstraintPriorityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA1F5E2257556800060A32 /* NSLayoutConstraintPriorityTests.swift */; };
+		92DA1F5F2257556800060A32 /* NSLayoutConstraintUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA1F5E2257556800060A32 /* NSLayoutConstraintUtilsTests.swift */; };
+		92FAEA942271DF0D0090A2C7 /* FailableDecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */; };
 		E7F92DA81FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F92DA71FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift */; };
 		EC368BC41EDF13DA00661556 /* OptionalUnwrapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC368BC31EDF13DA00661556 /* OptionalUnwrapTest.swift */; };
 		EC626C6B1FA06DB4001C332C /* DynamicFontTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC626C6A1FA06DB4001C332C /* DynamicFontTest.swift */; };
@@ -100,7 +101,8 @@
 		836A694BE9CF460F6BF35DC5 /* Pods-ADUtilsApp.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.stubs.xcconfig"; sourceTree = "<group>"; };
 		87F2D42021020D8E0004465B /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADLayoutGuideTestsObjc.m; sourceTree = "<group>"; };
-		92DA1F5E2257556800060A32 /* NSLayoutConstraintPriorityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintPriorityTests.swift; sourceTree = "<group>"; };
+		92DA1F5E2257556800060A32 /* NSLayoutConstraintUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintUtilsTests.swift; sourceTree = "<group>"; };
+		92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableDecodableTests.swift; sourceTree = "<group>"; };
 		9C9220CDCE8C495437E023DB /* Pods-ADUtilsTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.stubs.xcconfig"; sourceTree = "<group>"; };
 		D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADUtilsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7F92DA71FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryUtilitiesTest.swift; sourceTree = "<group>"; };
@@ -173,7 +175,8 @@
 				49CC380020C048F800CFEDDB /* ArrayFilterTests.swift */,
 				4988CBB921592CAB003A3C08 /* SequenceGroupedByTests.swift */,
 				4988CBBD215931B4003A3C08 /* OptionalStringIsBlankTests.swift */,
-				92DA1F5E2257556800060A32 /* NSLayoutConstraintPriorityTests.swift */,
+				92DA1F5E2257556800060A32 /* NSLayoutConstraintUtilsTests.swift */,
+				92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */,
 				49D1F131216C968E009F87AB /* ADViewLayoutTestsObjc.m */,
 				49D1F133216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m */,
 				921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */,
@@ -579,8 +582,9 @@
 				49CC380120C048F800CFEDDB /* ArrayFilterTests.swift in Sources */,
 				4988CBBE215931B4003A3C08 /* OptionalStringIsBlankTests.swift in Sources */,
 				49F0F20D2162095F00FC8AA4 /* SynchronizeTests.swift in Sources */,
-				92DA1F5F2257556800060A32 /* NSLayoutConstraintPriorityTests.swift in Sources */,
+				92DA1F5F2257556800060A32 /* NSLayoutConstraintUtilsTests.swift in Sources */,
 				ECB627001DE3395100951346 /* ChildInsertionTest.swift in Sources */,
+				92FAEA942271DF0D0090A2C7 /* FailableDecodableTests.swift in Sources */,
 				49BA42C72167B8BE00578C48 /* LayoutGuideConstraintsTests.swift in Sources */,
 				4988CBBA21592CAB003A3C08 /* SequenceGroupedByTests.swift in Sources */,
 				49CEC4A51EFA484900675EC4 /* NavigationControllerObserverTest.swift in Sources */,

@@ -25,7 +25,7 @@ public extension Optional {
      - parameter block: The possibly executed block
      */
 
-    public func unwrap(execute block: ((Wrapped) -> Void)) {
+    func unwrap(execute block: ((Wrapped) -> Void)) {
         switch self {
         case .none:
             break

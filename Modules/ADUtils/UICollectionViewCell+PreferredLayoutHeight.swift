@@ -15,7 +15,7 @@ public extension UICollectionViewCell {
 
      - parameter fittingWidth: The biggest width the view can get
      */
-    public func ad_preferredCellLayoutHeight(fittingWidth: CGFloat) -> CGFloat {
+    func ad_preferredCellLayoutHeight(fittingWidth: CGFloat) -> CGFloat {
         return contentView.ad_preferredLayoutHeight(fittingWidth: fittingWidth)
     }
 }

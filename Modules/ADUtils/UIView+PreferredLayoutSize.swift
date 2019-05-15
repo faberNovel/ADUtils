@@ -20,7 +20,7 @@ public extension UIView {
 
      - parameter fittingWidth: The biggest width the view can get
      */
-    public func ad_preferredLayoutHeight(fittingWidth: CGFloat) -> CGFloat {
+    func ad_preferredLayoutHeight(fittingWidth: CGFloat) -> CGFloat {
         return ad_preferredLayoutSize(
             fittingSize: CGSize(width: fittingWidth, height: 0),
             lockDirection: .horizontal
@@ -32,7 +32,7 @@ public extension UIView {
 
      - parameter fittingHeight: The biggest height the view can get
      */
-    public func ad_preferredLayoutWidth(fittingHeight: CGFloat) -> CGFloat {
+    func ad_preferredLayoutWidth(fittingHeight: CGFloat) -> CGFloat {
         return ad_preferredLayoutSize(
             fittingSize: CGSize(width: 0, height: fittingHeight),
             lockDirection: .vertical

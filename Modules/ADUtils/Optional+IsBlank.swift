@@ -12,7 +12,7 @@ public extension Optional where Wrapped == String {
     /**
      Returns true if the string is empty or nil
      */
-    public var ad_isBlank: Bool {
+    var ad_isBlank: Bool {
         return self?.isEmpty ?? true
     }
 }
