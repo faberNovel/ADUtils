@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A6E273122B2834500B31F40 /* MKMapViewDequeuingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6E273022B2834500B31F40 /* MKMapViewDequeuingTest.swift */; };
 		42CDDA9C8179B9F9824C64F2 /* Pods_ADUtilsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EFE73855C87585926C10E6 /* Pods_ADUtilsApp.framework */; };
 		47E17214F9A4009CF12359D7 /* Pods_ADUtilsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */; };
 		4988CBBA21592CAB003A3C08 /* SequenceGroupedByTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4988CBB921592CAB003A3C08 /* SequenceGroupedByTests.swift */; };
@@ -63,6 +64,7 @@
 /* Begin PBXFileReference section */
 		0DA2083431F4C16E69ED219E /* Pods-ADUtilsApp.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.preproduction.xcconfig"; sourceTree = "<group>"; };
 		28EFE73855C87585926C10E6 /* Pods_ADUtilsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADUtilsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A6E273022B2834500B31F40 /* MKMapViewDequeuingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapViewDequeuingTest.swift; sourceTree = "<group>"; };
 		32D3D6308F00B6B8059A24E8 /* Pods-ADUtilsTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.production.xcconfig"; sourceTree = "<group>"; };
 		4131DA2D9333046F6E9F313E /* Pods-ADUtilsTests.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.distribution.xcconfig"; sourceTree = "<group>"; };
 		4988CBB921592CAB003A3C08 /* SequenceGroupedByTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceGroupedByTests.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				4988CBBD215931B4003A3C08 /* OptionalStringIsBlankTests.swift */,
 				92DA1F5E2257556800060A32 /* NSLayoutConstraintUtilsTests.swift */,
 				92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */,
+				2A6E273022B2834500B31F40 /* MKMapViewDequeuingTest.swift */,
 				49D1F131216C968E009F87AB /* ADViewLayoutTestsObjc.m */,
 				49D1F133216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m */,
 				921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */,
@@ -575,6 +578,7 @@
 				49D1F134216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m in Sources */,
 				49EE98A41DE6CAE100DE1CB8 /* RegisterableViewTest.swift in Sources */,
 				ECB627021DE33C1100951346 /* ViewInsertionWithMarginTest.swift in Sources */,
+				2A6E273122B2834500B31F40 /* MKMapViewDequeuingTest.swift in Sources */,
 				49D1F132216C968E009F87AB /* ADViewLayoutTestsObjc.m in Sources */,
 				49D85E021E1E6F5300233A3F /* PropertyListArchiverTest.swift in Sources */,
 				49EE98A21DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift in Sources */,
