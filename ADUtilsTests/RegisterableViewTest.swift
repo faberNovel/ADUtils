@@ -114,8 +114,12 @@ class RegisterableViewTest: QuickSpec {
 
                 let cell: UITableViewCell = tableView.dequeueCell(at: indexPath)
                 expect(cell).toNot(beNil())
+                let cellDequeuedBySpecifyingClassInMethod = tableView.dequeueCell(UITableViewCell.self, at: indexPath)
+                expect(cellDequeuedBySpecifyingClassInMethod).toNot(beNil())
                 let nibCell: NibTableViewCell = tableView.dequeueCell(at: indexPath)
                 expect(nibCell).toNot(beNil())
+                let nibCellDequeuedBySpecifyingClassInMethod = tableView.dequeueCell(NibTableViewCell.self, at: indexPath)
+                expect(nibCellDequeuedBySpecifyingClassInMethod).toNot(beNil())
             }
 
             it("Should register header class and get not nil instance back") {
@@ -125,10 +129,16 @@ class RegisterableViewTest: QuickSpec {
 
                 let header: TableViewHeader = tableView.dequeueHeader()
                 expect(header).toNot(beNil())
+                let headerDequeuedBySpecifyingClassInMethod = tableView.dequeueHeader(TableViewHeader.self)
+                expect(headerDequeuedBySpecifyingClassInMethod).toNot(beNil())
                 let nibHeader: NibTableHeaderView = tableView.dequeueHeader()
                 expect(nibHeader).toNot(beNil())
+                let nibHeaderDequeuedBySpecifyingClassInMethod = tableView.dequeueHeader(NibTableHeaderView.self)
+                expect(nibHeaderDequeuedBySpecifyingClassInMethod).toNot(beNil())
                 let footer: TableViewFooter = tableView.dequeueFooter()
                 expect(footer).toNot(beNil())
+                let nibFooterDequeuedBySpecifyingClassInMethod = tableView.dequeueFooter(TableViewFooter.self)
+                expect(nibFooterDequeuedBySpecifyingClassInMethod).toNot(beNil())
             }
         }
 
@@ -153,16 +163,40 @@ class RegisterableViewTest: QuickSpec {
                 let cell: UICollectionViewCell = collectionView.dequeueCell(at: indexPath)
                 expect(cell).toNot(beNil())
 
+                let cellDequeuedBySpecifyingClassInMethod = collectionView.dequeueCell(
+                    UICollectionViewCell.self,
+                    at: indexPath
+                )
+                expect(cellDequeuedBySpecifyingClassInMethod).toNot(beNil())
+
                 let nibCell: NibCollectionViewCell = collectionView.dequeueCell(at: indexPath)
                 expect(nibCell).toNot(beNil())
+
+                let nibCellDequeuedBySpecifyingClassInMethod = collectionView.dequeueCell(
+                    NibCollectionViewCell.self,
+                    at: indexPath
+                )
+                expect(nibCellDequeuedBySpecifyingClassInMethod).toNot(beNil())
             }
 
             it("should register header class and get not instance back") {
                 let header: CollectionViewHeader = collectionView.dequeueHeader(at: indexPath)
                 expect(header).toNot(beNil())
 
+                let headerDequeuedBySpecifyingClassInMethod = collectionView.dequeueHeader(
+                    CollectionViewHeader.self,
+                    at: indexPath
+                )
+                expect(headerDequeuedBySpecifyingClassInMethod).toNot(beNil())
+
                 let footer: CollectionViewFooter = collectionView.dequeueFooter(at: indexPath)
                 expect(footer).toNot(beNil())
+
+                let nibFooterDequeuedBySpecifyingClassInMethod = collectionView.dequeueFooter(
+                    CollectionViewFooter.self,
+                    at: indexPath
+                )
+                expect(nibFooterDequeuedBySpecifyingClassInMethod).toNot(beNil())
             }
         }
     }
