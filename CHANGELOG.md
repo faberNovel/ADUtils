@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [9.4.0]
+
+### Created
+
+- `MKMapView`: add `dequeueAnnotationView<U: MKAnnotationView>(annotationView:, annotation:) -> U` to dequeue `MKAnnotationView`s similarly to cells and headers in `Table|CollectionView`
+
+### Updated
+
+- Dequeuing methods for `UITableView` and `UICollectionView` now have an optional parameter to indicate the class of the dequeued element, allowing to write for instance `let cell = tableView.dequeue(SomeTableViewCell.self, at: indexPath)` instead of `let cell: SomeTableViewCell = tableView.dequeue(at: indexPath)`
+
 ## [9.3.0]
 
 ### Created

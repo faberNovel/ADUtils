@@ -138,29 +138,29 @@ extension UICollectionView : CollectionView {
 }
 
 extension UITableView {
-    public func dequeueCell<U: ClassIdentifiable>(at indexPath: IndexPath) -> U {
+    public func dequeueCell<U: ClassIdentifiable>(_ cellClass: U.Type = U.self, at indexPath: IndexPath) -> U {
         return dequeueReusableCell(withIdentifier: U.identifier(), for: indexPath) as! U
     }
 
-    public func dequeueHeader<U: ClassIdentifiable>() -> U {
+    public func dequeueHeader<U: ClassIdentifiable>(_ headerClass: U.Type = U.self) -> U {
         return dequeueReusableHeaderFooterView(withIdentifier: U.identifier()) as! U
     }
 
-    public func dequeueFooter<U: ClassIdentifiable>() -> U {
+    public func dequeueFooter<U: ClassIdentifiable>(_ footerClass: U.Type = U.self) -> U {
         return dequeueHeader()
     }
 }
 
 extension UICollectionView {
-    public func dequeueCell<U: ClassIdentifiable>(at indexPath: IndexPath) -> U {
+    public func dequeueCell<U: ClassIdentifiable>(_ cellClass: U.Type = U.self, at indexPath: IndexPath) -> U {
         return dequeueReusableCell(withReuseIdentifier: U.identifier(), for: indexPath) as! U
     }
 
-    public func dequeueHeader<U: ClassIdentifiable>(at indexPath: IndexPath) -> U {
+    public func dequeueHeader<U: ClassIdentifiable>(_ headerClass: U.Type = U.self, at indexPath: IndexPath) -> U {
         return dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: U.identifier(), for: indexPath) as! U
     }
 
-    public func dequeueFooter<U: ClassIdentifiable>(at indexPath: IndexPath) -> U {
+    public func dequeueFooter<U: ClassIdentifiable>(_ footerClass: U.Type = U.self, at indexPath: IndexPath) -> U {
         return dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: U.identifier(), for: indexPath) as! U
     }
 }

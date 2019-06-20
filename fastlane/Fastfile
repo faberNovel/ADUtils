@@ -1,6 +1,6 @@
 import_from_git(url: ENV['FASTLANE_URL'],
                 path: 'Fastfile_ios.rb',
-                branch: 'v6.0+')
+                branch: 'v6.4.0')
 
 #####################################################
 # @!group Configuration
@@ -24,7 +24,7 @@ end
 
 override_lane :get_slack_configuration do
   {
-    channel: 'TODO',
+    channel: '76890_sandbox_channel',
     slack_url: nil # Use nil to use FABERNOVEL's default one
   }
 end
@@ -130,6 +130,15 @@ end
 override_lane :get_appstore_screenshots_test_configurations_for_variant do
   {
     'ADUtils_Prod' => ['ADUtils_Prod_CI']
+  }
+end
+
+override_lane :get_pod_configuration do
+  {
+    use_libraries: false,
+    extra_sources_repos: [],
+    skip_lib_lint: false,
+    pod_repository: nil # You can use ft_pod_repo, nil for the pod trunk repo
   }
 end
 
