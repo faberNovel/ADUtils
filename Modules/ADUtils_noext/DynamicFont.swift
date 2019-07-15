@@ -84,11 +84,9 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
 
     private var currentSpecifiedContentSizeCategory: UIContentSizeCategory {
         var currentContentSizeCategory = UIApplication.shared.preferredContentSizeCategory
-        if #available(iOS 10.0, tvOS 10.0, *) {
-            if currentContentSizeCategory == .unspecified {
-                //???: (Benjamin Lavialle) 2017-10-20 fallback on default category
-                currentContentSizeCategory = .large
-            }
+        if currentContentSizeCategory == .unspecified {
+            //???: (Benjamin Lavialle) 2017-10-20 fallback on default category
+            currentContentSizeCategory = .large
         }
         return currentContentSizeCategory
     }
@@ -117,16 +115,13 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
     }
 
     private func systemFont(weightName: String, size: CGFloat) throws -> UIFont {
-        guard
-            #available(iOS 8.2, *),
-            let weight = UIFont.Weight(name: weightName) else {
+        guard let weight = UIFont.Weight(name: weightName) else {
                 throw FontDescriptionError.fontMissing
         }
         return UIFont.systemFont(ofSize: size, weight: weight)
     }
 }
 
-@available(iOS 8.2, *)
 private extension UIFont.Weight {
 
     init?(name: String) {
@@ -266,64 +261,62 @@ private struct FontSizeHelper {
                 .extraSmall: 11.0
             ]
         ]
-        if #available(iOS 9.0, tvOS 9.0, *) {
-            fontSizeMatrix[.title1] = [
-                .accessibilityExtraExtraExtraLarge: 58.0,
-                .accessibilityExtraExtraLarge: 53.0,
-                .accessibilityExtraLarge: 48.0,
-                .accessibilityLarge: 43.0,
-                .accessibilityMedium: 38.0,
-                .extraExtraExtraLarge: 34.0,
-                .extraExtraLarge: 32.0,
-                .extraLarge: 30.0,
-                .large: 28.0,
-                .medium: 27.0,
-                .small: 26.0,
-                .extraSmall: 25.0
-            ]
-            fontSizeMatrix[.title2] = [
-                .accessibilityExtraExtraExtraLarge: 56.0,
-                .accessibilityExtraExtraLarge: 50.0,
-                .accessibilityExtraLarge: 44.0,
-                .accessibilityLarge: 39.0,
-                .accessibilityMedium: 34.0,
-                .extraExtraExtraLarge: 28.0,
-                .extraExtraLarge: 26.0,
-                .extraLarge: 24.0,
-                .large: 22.0,
-                .medium: 21.0,
-                .small: 20.0,
-                .extraSmall: 19.0
-            ]
-            fontSizeMatrix[.title3] = [
-                .accessibilityExtraExtraExtraLarge: 55.0,
-                .accessibilityExtraExtraLarge: 49.0,
-                .accessibilityExtraLarge: 43.0,
-                .accessibilityLarge: 37.0,
-                .accessibilityMedium: 31.0,
-                .extraExtraExtraLarge: 26.0,
-                .extraExtraLarge: 24.0,
-                .extraLarge: 22.0,
-                .large: 20.0,
-                .medium: 19.0,
-                .small: 18.0,
-                .extraSmall: 17.0
-            ]
-            fontSizeMatrix[.callout] = [
-                .accessibilityExtraExtraExtraLarge: 51.0,
-                .accessibilityExtraExtraLarge: 44.0,
-                .accessibilityExtraLarge: 38.0,
-                .accessibilityLarge: 32.0,
-                .accessibilityMedium: 26.0,
-                .extraExtraExtraLarge: 22.0,
-                .extraExtraLarge: 20.0,
-                .extraLarge: 18.0,
-                .large: 16.0,
-                .medium: 15.0,
-                .small: 14.0,
-                .extraSmall: 13.0
-            ]
-        }
+        fontSizeMatrix[.title1] = [
+            .accessibilityExtraExtraExtraLarge: 58.0,
+            .accessibilityExtraExtraLarge: 53.0,
+            .accessibilityExtraLarge: 48.0,
+            .accessibilityLarge: 43.0,
+            .accessibilityMedium: 38.0,
+            .extraExtraExtraLarge: 34.0,
+            .extraExtraLarge: 32.0,
+            .extraLarge: 30.0,
+            .large: 28.0,
+            .medium: 27.0,
+            .small: 26.0,
+            .extraSmall: 25.0
+        ]
+        fontSizeMatrix[.title2] = [
+            .accessibilityExtraExtraExtraLarge: 56.0,
+            .accessibilityExtraExtraLarge: 50.0,
+            .accessibilityExtraLarge: 44.0,
+            .accessibilityLarge: 39.0,
+            .accessibilityMedium: 34.0,
+            .extraExtraExtraLarge: 28.0,
+            .extraExtraLarge: 26.0,
+            .extraLarge: 24.0,
+            .large: 22.0,
+            .medium: 21.0,
+            .small: 20.0,
+            .extraSmall: 19.0
+        ]
+        fontSizeMatrix[.title3] = [
+            .accessibilityExtraExtraExtraLarge: 55.0,
+            .accessibilityExtraExtraLarge: 49.0,
+            .accessibilityExtraLarge: 43.0,
+            .accessibilityLarge: 37.0,
+            .accessibilityMedium: 31.0,
+            .extraExtraExtraLarge: 26.0,
+            .extraExtraLarge: 24.0,
+            .extraLarge: 22.0,
+            .large: 20.0,
+            .medium: 19.0,
+            .small: 18.0,
+            .extraSmall: 17.0
+        ]
+        fontSizeMatrix[.callout] = [
+            .accessibilityExtraExtraExtraLarge: 51.0,
+            .accessibilityExtraExtraLarge: 44.0,
+            .accessibilityExtraLarge: 38.0,
+            .accessibilityLarge: 32.0,
+            .accessibilityMedium: 26.0,
+            .extraExtraExtraLarge: 22.0,
+            .extraExtraLarge: 20.0,
+            .extraLarge: 18.0,
+            .large: 16.0,
+            .medium: 15.0,
+            .small: 14.0,
+            .extraSmall: 13.0
+        ]
         #if os(iOS)
             if #available(iOS 11.0, *) {
                 fontSizeMatrix[.largeTitle] = [

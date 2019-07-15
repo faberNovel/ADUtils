@@ -58,11 +58,7 @@ public extension Array {
             .map { term in
                 return keyPaths.contains { keyPath in
                     // ???: (Pierre Felgines) 31/05/2018 The cast to NSString improves performance
-                    if #available(iOS 9.0, *) {
-                        return (element[keyPath: keyPath] as NSString).localizedStandardContains(term)
-                    } else {
-                        return (element[keyPath: keyPath] as NSString).localizedCaseInsensitiveContains(term)
-                    }
+                    return (element[keyPath: keyPath] as NSString).localizedStandardContains(term)
                 }
             }
         return !searchTermsAreContained.contains(false)
