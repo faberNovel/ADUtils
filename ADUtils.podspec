@@ -4,8 +4,8 @@ Pod::Spec.new do |spec|
   spec.authors      = 'Applidium'
   spec.homepage     = 'http://applidium.com'
   spec.summary      = 'Applidium\'s toolbox for iOS'
-  spec.ios.deployment_target = '8.1'
-  spec.tvos.deployment_target = '9.0'
+  spec.ios.deployment_target = '10.0'
+  spec.tvos.deployment_target = '10.0'
   spec.license      = { :type => 'MIT', :text => 'Created and licensed by Fabernovel Technologies. Copyright 2014-2018 Fabernovel Technologies. All rights reserved.' }
   spec.source       = { :git => 'https://github.com/applidium/ADUtils.git', :tag => "v#{spec.version}" }
   spec.framework    = 'Foundation', 'UIKit'
