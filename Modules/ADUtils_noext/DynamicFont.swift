@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
  The DynamicFontProvider protocol provides a font depending on parameters
@@ -83,7 +84,7 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
     //MARK: - Private
 
     private var currentSpecifiedContentSizeCategory: UIContentSizeCategory {
-        var currentContentSizeCategory = UIApplication.shared.preferredContentSizeCategory
+        var currentContentSizeCategory = UIScreen.main.traitCollection.preferredContentSizeCategory
         if currentContentSizeCategory == .unspecified {
             //???: (Benjamin Lavialle) 2017-10-20 fallback on default category
             currentContentSizeCategory = .large
@@ -99,11 +100,10 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
             let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
             return fontMetrics.scaledFont(for: font)
         } else {
-            let currentContentSizeCategory = currentSpecifiedContentSizeCategory
             let size = fontSizeHelper.fontSize(
                 matchingSize: styleDescription.size,
                 withStyle: textStyle,
-                contentSizeCategory: currentContentSizeCategory
+                contentSizeCategory: currentSpecifiedContentSizeCategory
             )
             guard customFont != nil else {
                 // TODO: (Benjamin Lavialle) 2018-03-15 Check custom font existency, otherwise fallback to system font
