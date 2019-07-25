@@ -43,24 +43,35 @@ class NavigationControllerObserverTest : QuickSpec {
 
     override func spec() {
 
-        var rootViewController: UIViewController!
-        var navigationController = UINavigationController()
+        let rootViewController = UIViewController()
+        let navigationController = UINavigationController(rootViewController: rootViewController)
         var observer: NavigationControllerObserver!
         var observerDelegate: ObserverDelegate!
 
-        beforeEach {
-            rootViewController = UIViewController()
-            navigationController = UINavigationController(rootViewController: rootViewController)
+        beforeSuite {
             UIApplication.shared.keyWindow?.rootViewController = navigationController
             UIApplication.shared.keyWindow?.makeKeyAndVisible()
             UIApplication.shared.keyWindow?.layer.speed = 100 // speed up animations
+            let viewController = UIViewController()
+            navigationController.pushViewController(viewController, animated: false)
+            waitUntil(timeout: 1.0) { done in
+                navigationController.popViewController(animated: true)
+                // We need to wait the end of the animation
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    done()
+                }
+            }
+        }
+
+        afterSuite {
+            UIApplication.shared.keyWindow?.layer.speed = 1 // reset default animations speed
+        }
+
+        beforeEach {
+            navigationController.popToRootViewController(animated: false)
 
             observer = NavigationControllerObserver(navigationController: navigationController)
             observerDelegate = ObserverDelegate()
-        }
-
-        afterEach {
-            UIApplication.shared.keyWindow?.layer.speed = 1 // reset default animations speed
         }
 
         it("should observe pop of view controller") {
