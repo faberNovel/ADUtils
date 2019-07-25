@@ -41,11 +41,9 @@ class ArrayFilterTests: QuickSpec {
             expect(results.count).to(equal(2))
             expect(results.map { $0.name }).to(equal(["John", "Brian"]))
 
-            if #available(iOS 9.0, *) {
-                results = vendors.ad_filter(query: "rve", for: keyPaths)
-                expect(results.count).to(equal(1))
-                expect(results.map { $0.name }).to(equal(["Hervé"]))
-            }
+            results = vendors.ad_filter(query: "rve", for: keyPaths)
+            expect(results.count).to(equal(1))
+            expect(results.map { $0.name }).to(equal(["Hervé"]))
         }
     }
 }

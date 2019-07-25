@@ -11,17 +11,6 @@ import Foundation
 extension String {
 
     /**
-     Provides localizedUppercaseString for iOS < 10.0
-     */
-    @available(iOS, deprecated: 9.0, message: "Use localizedUppercase instead")
-    public var ad_localizedUppercaseString: String {
-        guard #available(iOS 9, *) else {
-            return uppercased(with: Locale.current)
-        }
-        return localizedUppercase
-    }
-
-    /**
      Syntaxic sugar for NSLocalizedString
      */
     public func localized() -> String {

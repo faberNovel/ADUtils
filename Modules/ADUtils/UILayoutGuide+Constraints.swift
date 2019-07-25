@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-@available(iOS 9.0, *)
 extension UILayoutGuide {
     /**
      Add constraints to pin self in layout guide

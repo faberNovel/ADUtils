@@ -18,7 +18,6 @@ extension UIViewController {
 
      - parameter layoutGuide: UILayoutGuide where child's view is inserted
      */
-    @available(iOS 9.0, *)
     @objc(ad_insertChild:inLayoutGuide:) public func ad_insert(child viewController: UIViewController,
                                                                in layoutGuide: UILayoutGuide) {
         guard

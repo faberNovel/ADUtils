@@ -11,11 +11,6 @@ import Foundation
 
 extension NSString {
 
-    @available(iOS, deprecated: 9.0, message: "Use localizedUppercaseString instead")
-    public var adobjc_localizedUppercaseString: NSString {
-        return (self as String).ad_localizedUppercaseString as NSString
-    }
-
     @objc public func adobjc_localized() -> NSString? {
         return (self as String).localized() as NSString
     }
