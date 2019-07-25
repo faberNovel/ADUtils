@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [10.0.0]
+
+### Updated
+
+- Set minimal requirements to iOS 10.0
+
+### Fixed
+
+- `DynamicFont` is now compliant with App Extensions
+
 ## [9.4.0]
 
 ### Created
