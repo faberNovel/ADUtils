@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [10.0.1]
+
+### Fixed
+
+- `attributedString(arguments:defaultAttributes:differentFormatAttributes:)` handles correctly variable-width unicode characters (like emojis) in the string format
+
 ## [10.0.0]
 
 ### Updated

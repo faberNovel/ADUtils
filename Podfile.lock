@@ -1,9 +1,9 @@
 PODS:
-  - ADUtils (10.0.0):
-    - ADUtils/objc (= 10.0.0)
-  - ADUtils/objc (10.0.0):
+  - ADUtils (10.0.1):
+    - ADUtils/objc (= 10.0.1)
+  - ADUtils/objc (10.0.1):
     - ADUtils/Swift
-  - ADUtils/Swift (10.0.0)
+  - ADUtils/Swift (10.0.1)
   - iOSSnapshotTestCase (5.0.2):
     - iOSSnapshotTestCase/SwiftSupport (= 5.0.2)
   - iOSSnapshotTestCase/Core (5.0.2)
@@ -38,7 +38,7 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADUtils: 590ba19c961444087775bf7ebb48e0cfaa364ff5
+  ADUtils: 855b8dba97c1a0eea415db170994363f7e5a0878
   iOSSnapshotTestCase: 2d51aa06775e95cecb0a1fb9c5c159ccd1dd4596
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
   Nimble-Snapshots: bbd1ab264bacc24a9ce24a8363bc05aac783aeb0
