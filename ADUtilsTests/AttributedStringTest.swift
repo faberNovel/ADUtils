@@ -63,6 +63,8 @@ class AttributedStringTest: QuickSpec {
             stringTest(invertedFormat, [value1, value2], "InvertedFormat")
             let singleFormat = "Test %@"
             stringTest(singleFormat, [value1], "SingleFormat")
+            let formatWithEmoji = "Test 🦁 %1$@ %2$@"
+            stringTest(formatWithEmoji, [value1, value2], "EmojiInFormat")
         }
     }
 }

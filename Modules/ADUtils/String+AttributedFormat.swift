@@ -85,20 +85,20 @@ extension String {
         let patternMatches = try patternRegularExpression().matches(
             in: self,
             options: [],
-            range: NSRange(location: 0, length: count)
+            range: NSRange(location: 0, length: (self as NSString).length)
         )
         return patternMatches
     }
 
     private func parameterIndex(for patternMatch: NSTextCheckingResult) -> Int {
-        let matchRange = patternMatch.range(at: 1)
-        guard matchRange.location != NSNotFound && matchRange.length > 1 else {
+        let matchRange = patternMatch.range(at: 2)
+        guard matchRange.location != NSNotFound && matchRange.length > 0 else {
             return 0
         }
-        let startIndex = index(self.startIndex, offsetBy: matchRange.location)
-        let endIndex = index(startIndex, offsetBy: matchRange.length-1)
-
-        let parameterString = self[startIndex..<endIndex]
-        return (Int(parameterString) ?? 0)-1
+        let parameterString = (self as NSString).substring(with: matchRange)
+        guard let parameterIndex = Int(parameterString) else {
+            return 0
+        }
+        return parameterIndex - 1
     }
 }
