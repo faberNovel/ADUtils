@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
  Protocol NavigationControllerObserverDelegate provides methods to observe `NavigationControllerObserver` actions

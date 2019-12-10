@@ -178,6 +178,8 @@ extension UILayoutGuide {
         case .vertical:
             constraint = centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor)
                 .priority(priority)
+        @unknown default:
+            return []
         }
         constraint.isActive = true
         return [constraint]
@@ -490,6 +492,8 @@ extension UILayoutGuide {
             return [ad_pinTo(view: owningView, attribute: .centerX, constant: 0.0, priority: priority)]
         case .vertical:
             return [ad_pinTo(view: owningView, attribute: .centerY, constant: 0.0, priority: priority)]
+        @unknown default:
+            return []
         }
     }
 

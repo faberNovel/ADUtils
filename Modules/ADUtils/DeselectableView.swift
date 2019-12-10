@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
  * This is a protocol to factorize table and collection view selection methods

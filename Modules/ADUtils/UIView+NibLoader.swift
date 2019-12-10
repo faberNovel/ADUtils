@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// NibLoadable is a semantic protocol defining an object instanciatable from a nib
 public protocol NibLoadable {}
@@ -14,7 +15,7 @@ public protocol NibLoadable {}
 extension UIView: NibLoadable {}
 
 // http://stackoverflow.com/a/26326006/900937
-extension NibLoadable where Self: NibLoadable {
+extension NibLoadable {
 
     /**
      Instanciate a Self object from a nib
