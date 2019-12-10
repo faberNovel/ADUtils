@@ -383,12 +383,12 @@
 					49B1F77D1CE4B3DB00A29BFE = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 2C897PS7YH;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1120;
 						TestTargetID = 7A0EC64E1535D8ED00E5F54A;
 					};
 					7A0EC64E1535D8ED00E5F54A = {
 						DevelopmentTeam = U5M7X5V6ZG;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -644,8 +644,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ADUtilsTests/ADUtilsTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Stubs;
@@ -677,8 +675,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ADUtilsTests/ADUtilsTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Preproduction;
@@ -710,8 +706,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ADUtilsTests/ADUtilsTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Production;
@@ -742,8 +736,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ADUtilsTests/ADUtilsTests-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Distribution;
@@ -795,7 +787,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UDID)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Stubs;
@@ -820,8 +812,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/ADUtils-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Stubs;
@@ -870,7 +860,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UDID)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -895,8 +885,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/ADUtils-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -947,7 +935,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UDID)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Preproduction;
@@ -972,8 +960,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/ADUtils-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Preproduction;
@@ -1024,7 +1010,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UDID)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Production;
@@ -1049,8 +1035,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/ADUtils-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Production;

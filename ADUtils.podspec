@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
   spec.framework    = 'Foundation', 'UIKit'
   spec.requires_arc = true
   spec.default_subspec = 'objc'
-  spec.swift_version = '4.2'
+  spec.swift_versions = ['5.0', '5.1']
 
   spec.subspec 'Swift' do |subspec|
     # ADUtils_noext contains classes which depend on APIs not compliant with App extensions (such as UIApplication.shared)

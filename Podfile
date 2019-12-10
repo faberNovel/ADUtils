@@ -8,18 +8,16 @@ target 'ADUtilsApp' do
 end
 
 target 'ADUtilsTests' do
-    pod 'Quick', '~> 2.0'
-    pod 'Nimble', '~> 7.0'
-    pod 'Nimble-Snapshots', '~> 6.9'
-    pod 'OCMock', '~> 3.4'
+    pod 'Quick', '~> 2.2'
+    pod 'Nimble', '~> 8.0'
+    pod 'Nimble-Snapshots', '~> 8.0'
+    pod 'OCMock', '~> 3.5'
     pod 'ADUtils', :path => './'
 end
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
-
-            config.build_settings['SWIFT_VERSION'] = '4.2'
 
             # Change the Optimization level for each target/configuration
             if !config.name.include?("Distribution")
