@@ -26,7 +26,7 @@ DEPENDENCIES:
   - Quick (~> 2.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - iOSSnapshotTestCase
     - Nimble
     - Nimble-Snapshots
@@ -38,7 +38,7 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADUtils: 855b8dba97c1a0eea415db170994363f7e5a0878
+  ADUtils: 150479def01d2dab867d8f0af143d9940343fa16
   iOSSnapshotTestCase: 2d51aa06775e95cecb0a1fb9c5c159ccd1dd4596
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
   Nimble-Snapshots: bbd1ab264bacc24a9ce24a8363bc05aac783aeb0
@@ -47,4 +47,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 1ef7c9b521add84317a6e3dad84f32dad8fb006c
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.3
