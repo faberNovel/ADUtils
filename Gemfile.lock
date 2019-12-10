@@ -72,5 +72,8 @@ PLATFORMS
 DEPENDENCIES
   cocoapods (= 1.6.1)
 
+RUBY VERSION
+   ruby 2.6.5p114
+
 BUNDLED WITH
-   1.16.6
+   1.17.2
