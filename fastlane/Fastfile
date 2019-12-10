@@ -1,6 +1,8 @@
-import_from_git(url: ENV['FASTLANE_URL'],
-                path: 'Fastfile_ios.rb',
-                branch: 'v6.4.0')
+import_from_git(
+    url: ENV['FASTLANE_URL'],
+    path: 'Fastfile_ios.rb',
+    branch: 'v7.1.0'
+)
 
 #####################################################
 # @!group Configuration
@@ -26,15 +28,6 @@ override_lane :get_slack_configuration do
   {
     channel: '76890_sandbox_channel',
     slack_url: nil # Use nil to use FABERNOVEL's default one
-  }
-end
-
-override_lane :get_variants_hockeyapp_configurations do
-  {
-    'ADUtils_Prod' => {
-      api_token: nil, # Use nil to use FABERNOVEL's default one
-      public_identifier: "TODO_OR_NIL" #can be passed through cli option (hockeyapp_id)
-    }
   }
 end
 
