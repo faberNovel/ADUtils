@@ -61,7 +61,10 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
         }
     }
 
-    private var viewControllersToDelegates: [UIViewController: NavigationControllerObserverDelegateContainer] = [:]
+    // Do not retain view controllers, but retain delegate containers as they are containers to weak objects, or they
+    // will be deallocated right the way
+    private let viewControllersToDelegates = NSMapTable<UIViewController, NavigationControllerObserverDelegateContainer>
+        .weakToStrongObjects()
     private weak var navigationController: UINavigationController?
 
     /**
@@ -99,7 +102,7 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
     public func observePopTransition(of viewController: UIViewController,
                                      delegate: NavigationControllerObserverDelegate) {
         let wrappedDelegate = NavigationControllerObserverDelegateContainer(value: delegate)
-        viewControllersToDelegates[viewController] = wrappedDelegate
+        viewControllersToDelegates.setObject(wrappedDelegate, forKey: viewController)
     }
 
     /**
@@ -107,7 +110,7 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
      - parameter viewController: The viewController being observed
      */
     public func removeDelegate(observing viewController: UIViewController) {
-        viewControllersToDelegates.removeValue(forKey: viewController)
+        viewControllersToDelegates.removeObject(forKey: viewController)
     }
 
     /**
@@ -116,11 +119,10 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
      */
     public func remove(_ delegate: NavigationControllerObserverDelegate) {
         let viewControllersToRemove = viewControllersToDelegates
-            .filter {
-                let (_, wrappedDelegate) = $0
-                return wrappedDelegate.value === delegate
-            }
-            .keys
+            .keyEnumerator()
+            .allObjects
+            .compactMap { $0 as? UIViewController }
+            .filter { viewControllersToDelegates.object(forKey: $0)?.value === delegate }
         viewControllersToRemove.forEach { removeDelegate(observing: $0) }
     }
 
@@ -128,7 +130,7 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
      Stop observing all the viewController and remove all delegates
      */
     public func removeAllDelegates() {
-        viewControllersToDelegates.removeAll()
+        viewControllersToDelegates.removeAllObjects()
     }
 
     //MARK: - UINavigationControllerDelegate
@@ -149,7 +151,7 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
         }
 
         // Clean up state before calling delegate method
-        let delegateToCall = viewControllersToDelegates[fromViewController]?.value
+        let delegateToCall = viewControllersToDelegates.object(forKey: fromViewController)?.value
         removeDelegate(observing: fromViewController)
         cleanOutdatedViewControllers()
         delegateToCall?.navigationControllerObserver(self, didObservePopTransitionFor: fromViewController)
@@ -165,9 +167,11 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
     }
 
     private func cleanOutdatedViewControllers() {
-        let viewControllersToRemove = viewControllersToDelegates.keys.filter {
-            $0.parent != self.navigationController
-        }
+        let viewControllersToRemove = viewControllersToDelegates
+            .keyEnumerator()
+            .allObjects
+            .compactMap { $0 as? UIViewController }
+            .filter { $0.parent != self.navigationController }
         viewControllersToRemove.forEach { removeDelegate(observing: $0) }
     }
 }
