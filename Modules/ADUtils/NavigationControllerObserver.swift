@@ -56,13 +56,13 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
         didSet {
             // Make the navigationController reevaluate respondsToSelector
             // for UINavigationControllerDelegate methods
-            navigationController.delegate = nil
-            navigationController.delegate = self
+            navigationController?.delegate = nil
+            navigationController?.delegate = self
         }
     }
 
     private var viewControllersToDelegates: [UIViewController: NavigationControllerObserverDelegateContainer] = [:]
-    private let navigationController: UINavigationController
+    private weak var navigationController: UINavigationController?
 
     /**
      - parameter navigationController: the `UINavigationController` we want to observe
