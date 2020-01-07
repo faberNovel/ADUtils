@@ -6,7 +6,7 @@
 //
 //
 
-import Foundation
+import Foundation
 import UIKit
 
 //???: (Benjamin Lavialle) 12/10/16 Protocol extension is not allowed in objc, adding thoses methods to table/collection view should be enough
