@@ -1,32 +1,32 @@
 PODS:
-  - ADUtils (10.0.1):
-    - ADUtils/objc (= 10.0.1)
-  - ADUtils/objc (10.0.1):
+  - ADUtils (10.1.0):
+    - ADUtils/objc (= 10.1.0)
+  - ADUtils/objc (10.1.0):
     - ADUtils/Swift
-  - ADUtils/Swift (10.0.1)
-  - iOSSnapshotTestCase (5.0.2):
-    - iOSSnapshotTestCase/SwiftSupport (= 5.0.2)
-  - iOSSnapshotTestCase/Core (5.0.2)
-  - iOSSnapshotTestCase/SwiftSupport (5.0.2):
+  - ADUtils/Swift (10.1.0)
+  - iOSSnapshotTestCase (6.2.0):
+    - iOSSnapshotTestCase/SwiftSupport (= 6.2.0)
+  - iOSSnapshotTestCase/Core (6.2.0)
+  - iOSSnapshotTestCase/SwiftSupport (6.2.0):
     - iOSSnapshotTestCase/Core
-  - Nimble (7.3.4)
-  - Nimble-Snapshots (6.9.1):
-    - Nimble-Snapshots/Core (= 6.9.1)
-  - Nimble-Snapshots/Core (6.9.1):
-    - iOSSnapshotTestCase (~> 5.0)
-    - Nimble (~> 7.0)
-  - OCMock (3.4.3)
-  - Quick (2.0.0)
+  - Nimble (8.0.4)
+  - Nimble-Snapshots (8.0.0):
+    - Nimble-Snapshots/Core (= 8.0.0)
+  - Nimble-Snapshots/Core (8.0.0):
+    - iOSSnapshotTestCase (~> 6.0)
+    - Nimble (~> 8.0)
+  - OCMock (3.5)
+  - Quick (2.2.0)
 
 DEPENDENCIES:
   - ADUtils (from `./`)
-  - Nimble (~> 7.0)
-  - Nimble-Snapshots (~> 6.9)
-  - OCMock (~> 3.4)
-  - Quick (~> 2.0)
+  - Nimble (~> 8.0)
+  - Nimble-Snapshots (~> 8.0)
+  - OCMock (~> 3.5)
+  - Quick (~> 2.2)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - iOSSnapshotTestCase
     - Nimble
     - Nimble-Snapshots
@@ -38,13 +38,13 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADUtils: 855b8dba97c1a0eea415db170994363f7e5a0878
-  iOSSnapshotTestCase: 2d51aa06775e95cecb0a1fb9c5c159ccd1dd4596
-  Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
-  Nimble-Snapshots: bbd1ab264bacc24a9ce24a8363bc05aac783aeb0
-  OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
-  Quick: ce1276c7c27ba2da3cb2fd0cde053c3648b3b22d
+  ADUtils: a88c87c869e8166f3ebdb9523b6940936f7c819a
+  iOSSnapshotTestCase: 9ab44cb5aa62b84d31847f40680112e15ec579a6
+  Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
+  Nimble-Snapshots: 8ec63f41ce6c7229a17be9a64edbc123b181f75b
+  OCMock: 4ab4577fc941af31f4a0398f6e7e230cf21fc72a
+  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
 
-PODFILE CHECKSUM: 1ef7c9b521add84317a6e3dad84f32dad8fb006c
+PODFILE CHECKSUM: cefd0a94f5940cca107779fe5489018a91059e67
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.3

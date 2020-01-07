@@ -10,6 +10,7 @@
 		2A6E273122B2834500B31F40 /* MKMapViewDequeuingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6E273022B2834500B31F40 /* MKMapViewDequeuingTest.swift */; };
 		42CDDA9C8179B9F9824C64F2 /* Pods_ADUtilsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EFE73855C87585926C10E6 /* Pods_ADUtilsApp.framework */; };
 		47E17214F9A4009CF12359D7 /* Pods_ADUtilsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */; };
+		491BC3C323C47D29001A3B82 /* StackViewUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491BC3C223C47D29001A3B82 /* StackViewUtilsTests.swift */; };
 		4988CBBA21592CAB003A3C08 /* SequenceGroupedByTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4988CBB921592CAB003A3C08 /* SequenceGroupedByTests.swift */; };
 		4988CBBE215931B4003A3C08 /* OptionalStringIsBlankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4988CBBD215931B4003A3C08 /* OptionalStringIsBlankTests.swift */; };
 		49BA42C72167B8BE00578C48 /* LayoutGuideConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA42C62167B8BE00578C48 /* LayoutGuideConstraintsTests.swift */; };
@@ -67,6 +68,7 @@
 		2A6E273022B2834500B31F40 /* MKMapViewDequeuingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapViewDequeuingTest.swift; sourceTree = "<group>"; };
 		32D3D6308F00B6B8059A24E8 /* Pods-ADUtilsTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.production.xcconfig"; sourceTree = "<group>"; };
 		4131DA2D9333046F6E9F313E /* Pods-ADUtilsTests.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.distribution.xcconfig"; sourceTree = "<group>"; };
+		491BC3C223C47D29001A3B82 /* StackViewUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewUtilsTests.swift; sourceTree = "<group>"; };
 		4988CBB921592CAB003A3C08 /* SequenceGroupedByTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceGroupedByTests.swift; sourceTree = "<group>"; };
 		4988CBBD215931B4003A3C08 /* OptionalStringIsBlankTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalStringIsBlankTests.swift; sourceTree = "<group>"; };
 		49B1F77E1CE4B3DB00A29BFE /* ADUtilsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADUtilsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +182,7 @@
 				92DA1F5E2257556800060A32 /* NSLayoutConstraintUtilsTests.swift */,
 				92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */,
 				2A6E273022B2834500B31F40 /* MKMapViewDequeuingTest.swift */,
+				491BC3C223C47D29001A3B82 /* StackViewUtilsTests.swift */,
 				49D1F131216C968E009F87AB /* ADViewLayoutTestsObjc.m */,
 				49D1F133216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m */,
 				921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */,
@@ -378,17 +381,17 @@
 			attributes = {
 				CLASSPREFIX = AD;
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1120;
 				TargetAttributes = {
 					49B1F77D1CE4B3DB00A29BFE = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 2C897PS7YH;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1120;
 						TestTargetID = 7A0EC64E1535D8ED00E5F54A;
 					};
 					7A0EC64E1535D8ED00E5F54A = {
 						DevelopmentTeam = U5M7X5V6ZG;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -591,6 +594,7 @@
 				92FAEA942271DF0D0090A2C7 /* FailableDecodableTests.swift in Sources */,
 				49BA42C72167B8BE00578C48 /* LayoutGuideConstraintsTests.swift in Sources */,
 				4988CBBA21592CAB003A3C08 /* SequenceGroupedByTests.swift in Sources */,
+				491BC3C323C47D29001A3B82 /* StackViewUtilsTests.swift in Sources */,
 				49CEC4A51EFA484900675EC4 /* NavigationControllerObserverTest.swift in Sources */,
 				921907DF21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m in Sources */,
 			);
@@ -644,8 +648,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ADUtilsTests/ADUtilsTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Stubs;
@@ -677,8 +679,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ADUtilsTests/ADUtilsTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Preproduction;
@@ -710,8 +710,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ADUtilsTests/ADUtilsTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Production;
@@ -742,8 +740,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ADUtilsTests/ADUtilsTests-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADUtilsApp.app/ADUtilsApp";
 			};
 			name = Distribution;
@@ -753,6 +749,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -794,7 +791,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UDID)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Stubs;
@@ -819,8 +816,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/ADUtils-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Stubs;
@@ -830,6 +825,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -868,7 +864,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UDID)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -893,8 +889,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/ADUtils-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -904,6 +898,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -944,7 +939,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UDID)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Preproduction;
@@ -969,8 +964,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/ADUtils-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Preproduction;
@@ -980,6 +973,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1020,7 +1014,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UDID)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Production;
@@ -1045,8 +1039,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "$(PROFILE_UUID_0)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/ADUtils-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Production;

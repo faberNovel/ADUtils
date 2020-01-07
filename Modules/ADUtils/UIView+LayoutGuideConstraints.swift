@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension UIView {
 
@@ -184,6 +185,8 @@ extension UIView {
         case .vertical:
             constraint = centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor)
                 .priority(priority)
+        @unknown default:
+            return []
         }
         constraint.isActive = true
         return [constraint]

@@ -155,6 +155,8 @@ extension UIView {
             constraint = ad_pinTo(view: superview, attribute: .centerX, constant: 0.0, priority: priority)
         case .vertical:
             constraint = ad_pinTo(view: superview, attribute: .centerY, constant: 0.0, priority: priority)
+        @unknown default:
+            return []
         }
         return [constraint]
     }

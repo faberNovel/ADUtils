@@ -2,6 +2,19 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [10.1.0]
+
+### Added
+- Utils: create `ad_removeAllArrangedSubviews` and `ad_addArrangedSubviews` methods on `UIStackView`
+
+### Update
+- Project now asks for swift 5.0
+
+### Fixed
+- Fixed some warnings regarding missing imports
+- Fixed some warnings using @unknown default in enums
+- Fixed possible retain cycles on `NavigationControllerObserver`
+
 ## [10.0.1]
 
 ### Fixed

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 private typealias FontDescriptionDictionary = [UIFont.TextStyle.RawValue: FontStyleDescription]
 
