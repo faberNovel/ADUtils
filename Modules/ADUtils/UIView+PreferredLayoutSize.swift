@@ -23,7 +23,7 @@ public extension UIView {
      */
     func ad_preferredLayoutHeight(fittingWidth: CGFloat) -> CGFloat {
         return ad_preferredLayoutSize(
-            fittingSize: CGSize(width: fittingWidth, height: 0),
+            fittingSize: CGSize(width: fittingWidth, height: UIView.layoutFittingCompressedSize.height),
             lockDirection: .horizontal
         ).height
     }
@@ -35,7 +35,7 @@ public extension UIView {
      */
     func ad_preferredLayoutWidth(fittingHeight: CGFloat) -> CGFloat {
         return ad_preferredLayoutSize(
-            fittingSize: CGSize(width: 0, height: fittingHeight),
+            fittingSize: CGSize(width: UIView.layoutFittingCompressedSize.width, height: fittingHeight),
             lockDirection: .vertical
         ).width
     }
@@ -51,51 +51,24 @@ public extension UIView {
      */
     private func ad_preferredLayoutSize(fittingSize targetSize: CGSize,
                                         lockDirection: LayoutOrientation) -> CGSize {
-        let previousTranslatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
-        translatesAutoresizingMaskIntoConstraints = false
-        var lockConstraints: [NSLayoutConstraint] = []
+        let horizontalFittingPriority: UILayoutPriority
+        let verticalFittingPriority: UILayoutPriority
         switch lockDirection {
         case .horizontal:
-            lockConstraints.append(contentsOf: lockView(.width, to:targetSize.width))
+            horizontalFittingPriority = .required
+            verticalFittingPriority = .fittingSizeLevel
         case .vertical:
-            // TODO: (Pierre Felgines) 18/04/2018 Someone with a real life test case should handle the layout
-            NSLog("[ADUtils] WARNING, argument LayoutOrientation.vertical is not handled yet...")
-            lockConstraints.append(contentsOf: lockView(.height, to:targetSize.height))
+            horizontalFittingPriority = .fittingSizeLevel
+            verticalFittingPriority = .required
         }
-        layoutIfNeeded()
-        let computedSize = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        self.removeConstraints(lockConstraints)
-        translatesAutoresizingMaskIntoConstraints = previousTranslatesAutoresizingMaskIntoConstraints
+        let computedSize = systemLayoutSizeFitting(
+            targetSize,
+            withHorizontalFittingPriority: horizontalFittingPriority,
+            verticalFittingPriority: verticalFittingPriority
+        )
         return CGSize(
             width: ceil(computedSize.width),
             height: ceil(computedSize.height)
         )
-    }
-
-    private func lockView(_ attribute: NSLayoutConstraint.Attribute, to value: CGFloat) -> [NSLayoutConstraint] {
-        let equalConstraint = NSLayoutConstraint(
-            item: self,
-            attribute: attribute,
-            relatedBy: .equal,
-            toItem: nil,
-            attribute: .notAnAttribute,
-            multiplier: 1.0,
-            constant: value
-        )
-        //???: (Benjamin Lavialle) 2017-05-04 Do not use required in case there is an other width constraint
-        equalConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.required.rawValue - 1)
-        let maxConstraint = NSLayoutConstraint(
-            item: self,
-            attribute: attribute,
-            relatedBy: .lessThanOrEqual,
-            toItem: nil,
-            attribute: .notAnAttribute,
-            multiplier: 1.0,
-            constant: value
-        )
-        maxConstraint.priority = UILayoutPriority.required
-        let constraints = [equalConstraint, maxConstraint]
-        addConstraints(constraints)
-        return constraints
     }
 }

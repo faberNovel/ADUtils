@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [next]
+
+### Update
+- Remove side effects on contentView when calling `UIView.ad_preferredLayoutHeight(fittingWidth:)`, `UITableViewCell.ad_preferredCellLayoutHeight(fittingWidth:)`, `UICollectionViewCell.ad_preferredCellLayoutHeight(fittingWidth:)` and `UITableViewHeaderFooterView.ad_preferredContentViewLayoutHeight(fittingWidth:)`
+
 ## [10.1.0]
 
 ### Added
