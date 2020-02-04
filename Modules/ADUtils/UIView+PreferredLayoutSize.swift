@@ -22,10 +22,7 @@ public extension UIView {
      - parameter fittingWidth: The biggest width the view can get
      */
     func ad_preferredLayoutHeight(fittingWidth: CGFloat) -> CGFloat {
-        return ad_preferredLayoutSize(
-            fittingSize: CGSize(width: fittingWidth, height: UIView.layoutFittingCompressedSize.height),
-            lockDirection: .horizontal
-        ).height
+        return ad_preferredLayoutSize(fittingWidth: fittingWidth).height
     }
 
     /**
@@ -34,10 +31,31 @@ public extension UIView {
      - parameter fittingHeight: The biggest height the view can get
      */
     func ad_preferredLayoutWidth(fittingHeight: CGFloat) -> CGFloat {
+        return ad_preferredLayoutSize(fittingHeight: fittingHeight).width
+    }
+
+    /**
+     Provides the preferred layout size for the view, this is the smallest size the view and its content can fit. You should populate the view before calling this method.
+
+     - parameter fittingWidth: The biggest width the view can get
+     */
+    func ad_preferredLayoutSize(fittingWidth: CGFloat) -> CGSize {
+        return ad_preferredLayoutSize(
+            fittingSize: CGSize(width: fittingWidth, height: UIView.layoutFittingCompressedSize.height),
+            lockDirection: .horizontal
+        )
+    }
+
+    /**
+     Provides the preferred layout size for the view, this is the smallest size the view and its content can fit. You should populate the view before calling this method.
+
+     - parameter fittingHeight: The biggest height the view can get
+     */
+    func ad_preferredLayoutSize(fittingHeight: CGFloat) -> CGSize {
         return ad_preferredLayoutSize(
             fittingSize: CGSize(width: UIView.layoutFittingCompressedSize.width, height: fittingHeight),
             lockDirection: .vertical
-        ).width
+        )
     }
 
     // MARK: - Private

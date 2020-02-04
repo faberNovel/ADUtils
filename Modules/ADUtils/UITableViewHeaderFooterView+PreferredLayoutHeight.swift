@@ -16,6 +16,6 @@ extension UITableViewHeaderFooterView {
      - parameter fittingWidth: The biggest width the view can get
      */
     public func ad_preferredContentViewLayoutHeight(fittingWidth: CGFloat) -> CGFloat {
-        return contentView.ad_preferredLayoutHeight(fittingWidth: fittingWidth)
+        return contentView.ad_preferredLayoutSize(fittingWidth: fittingWidth).height
     }
 }

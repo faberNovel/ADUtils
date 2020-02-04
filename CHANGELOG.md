@@ -4,8 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## [next]
 
+### Created
+- Create `UIView.ad_preferredLayoutSize(fittingWidth:)`
+- Create `UIView.ad_preferredLayoutSize(fittingHeight:)`
+- Create `UICollectionViewCell.ad_preferredCellLayoutSize(fittingWidth:)`
+- Create `UICollectionViewCell.ad_preferredCellLayoutSize(fittingHeight:)`
+
 ### Update
 - Remove side effects on contentView when calling `UIView.ad_preferredLayoutHeight(fittingWidth:)`, `UITableViewCell.ad_preferredCellLayoutHeight(fittingWidth:)`, `UICollectionViewCell.ad_preferredCellLayoutHeight(fittingWidth:)` and `UITableViewHeaderFooterView.ad_preferredContentViewLayoutHeight(fittingWidth:)`
+- `UICollectionViewCell.ad_preferredCellLayoutHeight(fittingWidth:)` is now deprecated
 
 ## [10.1.0]
 
