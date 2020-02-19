@@ -2,24 +2,28 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
-## [next]
+## [10.2.0]
 
 ### Created
 - Create `UIView.ad_preferredLayoutSize(fittingWidth:)`
 - Create `UIView.ad_preferredLayoutSize(fittingHeight:)`
 - Create `UICollectionViewCell.ad_preferredCellLayoutSize(fittingWidth:)`
 - Create `UICollectionViewCell.ad_preferredCellLayoutSize(fittingHeight:)`
+- Create `@Debounced` property wrapper and `Debouncer` class
 
-### Update
+### Updated
 - Remove side effects on contentView when calling `UIView.ad_preferredLayoutHeight(fittingWidth:)`, `UITableViewCell.ad_preferredCellLayoutHeight(fittingWidth:)`, `UICollectionViewCell.ad_preferredCellLayoutHeight(fittingWidth:)` and `UITableViewHeaderFooterView.ad_preferredContentViewLayoutHeight(fittingWidth:)`
 - `UICollectionViewCell.ad_preferredCellLayoutHeight(fittingWidth:)` is now deprecated
 
+### Fixed
+- `Sequence`: `ad_groupedBy(grouping:)` now uses the `Dictionary(grouping:by:)` function from standard library
+
 ## [10.1.0]
 
-### Added
+### Created
 - Utils: create `ad_removeAllArrangedSubviews` and `ad_addArrangedSubviews` methods on `UIStackView`
 
-### Update
+### Updated
 - Project now asks for swift 5.0
 
 ### Fixed
