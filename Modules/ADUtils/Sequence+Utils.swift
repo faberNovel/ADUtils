@@ -16,14 +16,10 @@ public extension Sequence {
 
      - returns: A dictionary where each key contains all the elements of `self` that are mapped to the key
      via the `grouping` function.
+
+     - note: Use the standard library `Dictionary.init(grouping:by:)`
      */
     func ad_groupedBy<U: Hashable>(grouping: (Iterator.Element) -> U) -> [U: [Iterator.Element]] {
-        var categories: [U: [Iterator.Element]] = [:]
-        for element in self {
-            let key = grouping(element)
-            categories[key] = categories[key] ?? []
-            categories[key]?.append(element)
-        }
-        return categories
+        return Dictionary(grouping: self, by: grouping)
     }
 }
