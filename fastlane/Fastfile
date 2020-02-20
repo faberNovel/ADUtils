@@ -98,7 +98,7 @@ override_lane :get_project_tests_configurations do
       xcode_configuration: 'Stubs',
       unit_tests_bundles: ['ADUtilsTests'],
       ui_tests_bundles: nil,
-      devices: ['iPhone SE'],
+      devices: ['iPhone 8'],
       languages: ['fr-FR'],
       os_versions: nil, # Use nil to use the latest, otherwise ['11.3', '11.2']
       reinstall_app: true,

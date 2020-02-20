@@ -69,5 +69,44 @@ class ViewLayout: QuickSpec {
             // Then
             expect(height).to(equal(CGFloat(1218.0)))
         }
+
+        it("should not alter contentView of a UICollectionViewCell") {
+            // Given
+            let cell = UICollectionViewCell(frame: frame)
+            addLabelInView(cell.contentView)
+            let previousContentFrame = cell.contentView.frame
+            let previousContentConstraints = cell.contentView.constraints
+            // When
+            _ = cell.ad_preferredCellLayoutHeight(fittingWidth: width)
+            // Then
+            expect(cell.contentView.frame).to(equal(previousContentFrame))
+            expect(cell.contentView.constraints).to(equal(previousContentConstraints))
+        }
+
+        it("should not alter contentView of a UITableViewCell") {
+            // Given
+            let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+            addLabelInView(cell.contentView)
+            let previousContentFrame = cell.contentView.frame
+            let previousContentConstraints = cell.contentView.constraints
+            // When
+            _ = cell.ad_preferredCellLayoutHeight(fittingWidth: width)
+            // Then
+            expect(cell.contentView.frame).to(equal(previousContentFrame))
+            expect(cell.contentView.constraints).to(equal(previousContentConstraints))
+        }
+
+        it("should not alter contentView of a UITableViewHeaderFooterView") {
+            // Given
+            let cell = UITableViewHeaderFooterView(reuseIdentifier: nil)
+            addLabelInView(cell.contentView)
+            let previousContentFrame = cell.contentView.frame
+            let previousContentConstraints = cell.contentView.constraints
+            // When
+            _ = cell.ad_preferredContentViewLayoutHeight(fittingWidth: width)
+            // Then
+            expect(cell.contentView.frame).to(equal(previousContentFrame))
+            expect(cell.contentView.constraints).to(equal(previousContentConstraints))
+        }
     }
 }

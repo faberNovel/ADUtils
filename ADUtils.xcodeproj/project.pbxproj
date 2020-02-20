@@ -27,6 +27,7 @@
 		49F0F23421637A1E00FC8AA4 /* NibCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F0F23321637A1E00FC8AA4 /* NibCollectionViewCell.xib */; };
 		49F0F23621637ADD00FC8AA4 /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F0F23521637ADD00FC8AA4 /* NibTableViewCell.xib */; };
 		49F0F23821639D6900FC8AA4 /* NibTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F0F23721639D6900FC8AA4 /* NibTableHeaderView.xib */; };
+		4AE8A6D323F563F300ABE095 /* DebouncedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE8A6D223F563F300ABE095 /* DebouncedTests.swift */; };
 		57C59D681BB1478A003798DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C59D671BB1478A003798DF /* Images.xcassets */; };
 		57C59D6A1BB1486B003798DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C59D691BB1486B003798DF /* LaunchScreen.storyboard */; };
 		57E1CD281C884F1C00A7DFFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1CD271C884F1C00A7DFFB /* ViewController.swift */; };
@@ -88,6 +89,7 @@
 		49F0F23321637A1E00FC8AA4 /* NibCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NibCollectionViewCell.xib; path = Defaults/NibCollectionViewCell.xib; sourceTree = "<group>"; };
 		49F0F23521637ADD00FC8AA4 /* NibTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NibTableViewCell.xib; path = Defaults/NibTableViewCell.xib; sourceTree = "<group>"; };
 		49F0F23721639D6900FC8AA4 /* NibTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NibTableHeaderView.xib; path = Defaults/NibTableHeaderView.xib; sourceTree = "<group>"; };
+		4AE8A6D223F563F300ABE095 /* DebouncedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebouncedTests.swift; sourceTree = "<group>"; };
 		4C8B60A08D066BFD9DDA1251 /* Pods-ADUtilsApp.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.distribution.xcconfig"; sourceTree = "<group>"; };
 		57C59D671BB1478A003798DF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57C59D691BB1486B003798DF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */,
 				2A6E273022B2834500B31F40 /* MKMapViewDequeuingTest.swift */,
 				491BC3C223C47D29001A3B82 /* StackViewUtilsTests.swift */,
+				4AE8A6D223F563F300ABE095 /* DebouncedTests.swift */,
 				49D1F131216C968E009F87AB /* ADViewLayoutTestsObjc.m */,
 				49D1F133216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m */,
 				921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */,
@@ -593,6 +596,7 @@
 				ECB627001DE3395100951346 /* ChildInsertionTest.swift in Sources */,
 				92FAEA942271DF0D0090A2C7 /* FailableDecodableTests.swift in Sources */,
 				49BA42C72167B8BE00578C48 /* LayoutGuideConstraintsTests.swift in Sources */,
+				4AE8A6D323F563F300ABE095 /* DebouncedTests.swift in Sources */,
 				4988CBBA21592CAB003A3C08 /* SequenceGroupedByTests.swift in Sources */,
 				491BC3C323C47D29001A3B82 /* StackViewUtilsTests.swift in Sources */,
 				49CEC4A51EFA484900675EC4 /* NavigationControllerObserverTest.swift in Sources */,
