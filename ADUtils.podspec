@@ -14,23 +14,12 @@ Pod::Spec.new do |spec|
   spec.swift_versions = ['5.0', '5.1']
 
   spec.subspec 'Swift' do |subspec|
-    # ADUtils_noext contains classes which depend on APIs not compliant with App extensions (such as UIApplication.shared)
-    subspec.source_files = 'Modules/ADUtils/*.{h,m,swift}', 'Modules/ADUtils_noext/*.{h,m,swift}'
-  end
-
-  spec.subspec 'Swift-ext' do |subspec|
     # Subspec compliant with App extensions
     subspec.source_files = 'Modules/ADUtils/*.{h,m,swift}'
   end
 
   spec.subspec 'objc' do |subspec|
     subspec.dependency 'ADUtils/Swift'
-	subspec.source_files = 'Modules/ADUtils_objc/*.{h,m,swift}'
-  end
-
-  spec.subspec 'objc-ext' do |subspec|
-    # Subspec compliant with App extensions
-    subspec.dependency 'ADUtils/Swift-ext'
 	subspec.source_files = 'Modules/ADUtils_objc/*.{h,m,swift}'
   end
 
