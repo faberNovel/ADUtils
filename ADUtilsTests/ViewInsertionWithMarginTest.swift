@@ -211,6 +211,73 @@ class ViewInsertionWithMargin: QuickSpec {
                 expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewWithLeftEdge"))
             }
         }
+
+        if #available(iOS 11.0, *) {
+            describe("Constrain in superview's safe area layout guide") {
+                var viewController: UIViewController!
+                var view: UIView {
+                    return viewController.view
+                }
+                var subview: UIView!
+                let insets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 30.0, right: 40.0)
+
+                beforeEach {
+                    viewController = UIViewController()
+                    viewController.additionalSafeAreaInsets = UIEdgeInsets(top: 40, left: 30, bottom: 20, right: 10)
+                    viewController.view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
+                    view.backgroundColor = UIColor.white
+                    subview = IntrinsicContentSizeView(contentSize: CGSize(width: 500, height: 500))
+                    subview.backgroundColor = UIColor.red
+                    view.addSubview(subview)
+
+                    //(Benjamin Lavialle) 2020-03-19 Adding the view controller to a window is required to have
+                    // safe area insets. The snapshots are then device agnostic.
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
+
+                it("should constrain in superview pin bottom left") {
+                    subview.ad_pinToSuperviewSafeAreaLayoutGuide(edges: [.bottom, .left], insets: insets)
+                    subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.top, .right], insets: insets)
+                    expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomLeft"))
+                }
+
+                it("should constrain in superview pin bottom right") {
+                    subview.ad_pinToSuperviewSafeAreaLayoutGuide(edges: [.bottom, .right], insets: insets)
+                    subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.top, .left], insets: insets)
+                    expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomRight"))
+                }
+
+                it("should constrain in superview pin top left") {
+                    subview.ad_pinToSuperviewSafeAreaLayoutGuide(edges: [.top, .left], insets: insets)
+                    subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.bottom, .right], insets: insets)
+                    expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopLeft"))
+                }
+
+                it("should constrain in superview pin top right") {
+                    subview.ad_pinToSuperviewSafeAreaLayoutGuide(edges: [.top, .right], insets: insets)
+                    subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.bottom, .left], insets: insets)
+                    expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopRight"))
+                }
+
+                it("should constrain in superview") {
+                    subview.ad_centerInSuperviewSafeAreaLayoutGuide()
+                    subview.ad_constrainInSuperviewSafeAreaLayoutGuide()
+                    expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeArea"))
+                }
+
+                it("should constrain in superview with insets") {
+                    subview.ad_centerInSuperviewSafeAreaLayoutGuide()
+                    subview.ad_constrainInSuperviewSafeAreaLayoutGuide(insets: UIEdgeInsets(value: 100))
+                    expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaWithInsets"))
+                }
+
+                it("should constrain in superview with left edge") {
+                    subview.ad_centerInSuperviewSafeAreaLayoutGuide()
+                    subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.left])
+                    expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaWithLeftEdge"))
+                }
+            }
+        }
     }
 
     @available(iOS 13.0, *)
