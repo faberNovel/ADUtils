@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C8CFF10242B69BA0009FA88 /* AutoSizingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CFF0F242B69BA0009FA88 /* AutoSizingCollectionView.swift */; };
+		0C8CFF12242B6A510009FA88 /* SimpleAutoSizingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CFF11242B6A510009FA88 /* SimpleAutoSizingCollectionView.swift */; };
 		2A6E273122B2834500B31F40 /* MKMapViewDequeuingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6E273022B2834500B31F40 /* MKMapViewDequeuingTest.swift */; };
 		42CDDA9C8179B9F9824C64F2 /* Pods_ADUtilsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EFE73855C87585926C10E6 /* Pods_ADUtilsApp.framework */; };
 		47E17214F9A4009CF12359D7 /* Pods_ADUtilsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */; };
@@ -64,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C8CFF0F242B69BA0009FA88 /* AutoSizingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingCollectionView.swift; sourceTree = "<group>"; };
+		0C8CFF11242B6A510009FA88 /* SimpleAutoSizingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAutoSizingCollectionView.swift; sourceTree = "<group>"; };
 		0DA2083431F4C16E69ED219E /* Pods-ADUtilsApp.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.preproduction.xcconfig"; sourceTree = "<group>"; };
 		28EFE73855C87585926C10E6 /* Pods_ADUtilsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADUtilsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A6E273022B2834500B31F40 /* MKMapViewDequeuingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapViewDequeuingTest.swift; sourceTree = "<group>"; };
@@ -158,9 +162,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C8CFF0E242B699B0009FA88 /* LayoutTests */ = {
+			isa = PBXGroup;
+			children = (
+				EC7953411ECB5C7B00404857 /* ViewLayoutTest.swift */,
+				0C8CFF0F242B69BA0009FA88 /* AutoSizingCollectionView.swift */,
+				0C8CFF11242B6A510009FA88 /* SimpleAutoSizingCollectionView.swift */,
+			);
+			path = LayoutTests;
+			sourceTree = "<group>";
+		};
 		49B1F77F1CE4B3DB00A29BFE /* ADUtilsTests */ = {
 			isa = PBXGroup;
 			children = (
+				0C8CFF0E242B699B0009FA88 /* LayoutTests */,
 				49B1F7821CE4B3DB00A29BFE /* Info.plist */,
 				ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */,
 				49F0F20C2162095F00FC8AA4 /* SynchronizeTests.swift */,
@@ -172,7 +187,6 @@
 				49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */,
 				49EE98A31DE6CAE100DE1CB8 /* RegisterableViewTest.swift */,
 				49D85E011E1E6F5300233A3F /* PropertyListArchiverTest.swift */,
-				EC7953411ECB5C7B00404857 /* ViewLayoutTest.swift */,
 				49F0F21021625E7000FC8AA4 /* StringLocalizationTests.swift */,
 				EC368BC31EDF13DA00661556 /* OptionalUnwrapTest.swift */,
 				49CEC4A41EFA484900675EC4 /* NavigationControllerObserverTest.swift */,
@@ -583,6 +597,7 @@
 				E7F92DA81FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift in Sources */,
 				49D1F134216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m in Sources */,
 				49EE98A41DE6CAE100DE1CB8 /* RegisterableViewTest.swift in Sources */,
+				0C8CFF10242B69BA0009FA88 /* AutoSizingCollectionView.swift in Sources */,
 				ECB627021DE33C1100951346 /* ViewInsertionWithMarginTest.swift in Sources */,
 				2A6E273122B2834500B31F40 /* MKMapViewDequeuingTest.swift in Sources */,
 				49D1F132216C968E009F87AB /* ADViewLayoutTestsObjc.m in Sources */,
@@ -591,6 +606,7 @@
 				ECB626FE1DE3344A00951346 /* NibLoaderTest.swift in Sources */,
 				49CC380120C048F800CFEDDB /* ArrayFilterTests.swift in Sources */,
 				4988CBBE215931B4003A3C08 /* OptionalStringIsBlankTests.swift in Sources */,
+				0C8CFF12242B6A510009FA88 /* SimpleAutoSizingCollectionView.swift in Sources */,
 				49F0F20D2162095F00FC8AA4 /* SynchronizeTests.swift in Sources */,
 				92DA1F5F2257556800060A32 /* NSLayoutConstraintUtilsTests.swift in Sources */,
 				ECB627001DE3395100951346 /* ChildInsertionTest.swift in Sources */,
