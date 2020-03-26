@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [10.3.0]
+
+### Updated
+- Allow user to choose computation type for ad_preferredLayoutSize method
+
 ## [10.2.0]
 
 ### Created
