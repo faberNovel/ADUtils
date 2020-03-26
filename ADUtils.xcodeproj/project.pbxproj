@@ -43,6 +43,7 @@
 		921907DF21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */; };
 		92DA1F5F2257556800060A32 /* NSLayoutConstraintUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA1F5E2257556800060A32 /* NSLayoutConstraintUtilsTests.swift */; };
 		92FAEA942271DF0D0090A2C7 /* FailableDecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */; };
+		E7D5F497242DED3C0048C0DC /* OptionalGetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5F496242DED3C0048C0DC /* OptionalGetTests.swift */; };
 		E7F92DA81FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F92DA71FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift */; };
 		EC368BC41EDF13DA00661556 /* OptionalUnwrapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC368BC31EDF13DA00661556 /* OptionalUnwrapTest.swift */; };
 		EC626C6B1FA06DB4001C332C /* DynamicFontTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC626C6A1FA06DB4001C332C /* DynamicFontTest.swift */; };
@@ -116,6 +117,7 @@
 		92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableDecodableTests.swift; sourceTree = "<group>"; };
 		9C9220CDCE8C495437E023DB /* Pods-ADUtilsTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.stubs.xcconfig"; sourceTree = "<group>"; };
 		D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADUtilsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7D5F496242DED3C0048C0DC /* OptionalGetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalGetTests.swift; sourceTree = "<group>"; };
 		E7F92DA71FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryUtilitiesTest.swift; sourceTree = "<group>"; };
 		EC368BC31EDF13DA00661556 /* OptionalUnwrapTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalUnwrapTest.swift; sourceTree = "<group>"; };
 		EC626C6A1FA06DB4001C332C /* DynamicFontTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFontTest.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				2A6E273022B2834500B31F40 /* MKMapViewDequeuingTest.swift */,
 				491BC3C223C47D29001A3B82 /* StackViewUtilsTests.swift */,
 				4AE8A6D223F563F300ABE095 /* DebouncedTests.swift */,
+				E7D5F496242DED3C0048C0DC /* OptionalGetTests.swift */,
 				49D1F131216C968E009F87AB /* ADViewLayoutTestsObjc.m */,
 				49D1F133216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m */,
 				921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */,
@@ -606,6 +609,7 @@
 				49D1F132216C968E009F87AB /* ADViewLayoutTestsObjc.m in Sources */,
 				49D85E021E1E6F5300233A3F /* PropertyListArchiverTest.swift in Sources */,
 				49EE98A21DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift in Sources */,
+				E7D5F497242DED3C0048C0DC /* OptionalGetTests.swift in Sources */,
 				ECB626FE1DE3344A00951346 /* NibLoaderTest.swift in Sources */,
 				49CC380120C048F800CFEDDB /* ArrayFilterTests.swift in Sources */,
 				4988CBBE215931B4003A3C08 /* OptionalStringIsBlankTests.swift in Sources */,
