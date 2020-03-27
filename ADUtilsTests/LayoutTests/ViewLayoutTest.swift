@@ -10,6 +10,7 @@ import Foundation
 import Quick
 import ADUtils
 import Nimble
+import UIKit
 
 class ViewLayout: QuickSpec {
 
@@ -28,24 +29,45 @@ class ViewLayout: QuickSpec {
             label.ad_pinToSuperview()
         }
 
+        let addAutoSizingCollectionView = { (view: UIView) in
+            let collectionview = SimpleAutoSizingCollectionView(
+                frame: .zero,
+                collectionViewLayout: UICollectionViewFlowLayout()
+            )
+            view.addSubview(collectionview)
+            collectionview.ad_pinToSuperview()
+        }
+
         it("should layout regular view") {
             // Given
             let view = UIView(frame: frame)
             addLabelInView(view)
+            let expectedHeight = 1218.0
             // When
-            let height = view.ad_preferredLayoutHeight(fittingWidth: width)
+            let layoutEngineHeight = view.ad_preferredLayoutHeight(fittingWidth: width, computationType: .layoutEngine)
+            let autoLayoutHeight = view.ad_preferredLayoutHeight(fittingWidth: width, computationType: .autoLayout)
             // Then
-            expect(height).to(equal(CGFloat(1218.0)))
+            expect(layoutEngineHeight).to(equal(CGFloat(expectedHeight)))
+            expect(autoLayoutHeight).to(equal(CGFloat(expectedHeight)))
         }
 
         it("should layout UICollectionViewCell") {
             // Given
             let cell = UICollectionViewCell(frame: frame)
             addLabelInView(cell.contentView)
+            let expectedHeight = 1218.0
             // When
-            let height = cell.ad_preferredCellLayoutHeight(fittingWidth: width)
+            let layoutEngineHeight = cell.ad_preferredCellLayoutHeight(
+                fittingWidth: width,
+                computationType: .layoutEngine
+            )
+            let autoLayoutHeight = cell.ad_preferredCellLayoutHeight(
+                fittingWidth: width,
+                computationType: .autoLayout
+            )
             // Then
-            expect(height).to(equal(CGFloat(1218.0)))
+            expect(layoutEngineHeight).to(equal(CGFloat(expectedHeight)))
+            expect(autoLayoutHeight).to(equal(CGFloat(expectedHeight)))
         }
 
         it("should layout UITableViewCell") {
@@ -53,10 +75,16 @@ class ViewLayout: QuickSpec {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
             cell.frame = frame
             addLabelInView(cell.contentView)
+            let expectedHeight = 1218.0
             // When
-            let height = cell.ad_preferredCellLayoutHeight(fittingWidth: width)
+            let layoutEngineHeight = cell.ad_preferredCellLayoutHeight(
+                fittingWidth: width,
+                computationType: .layoutEngine
+            )
+            let autoLayoutHeight = cell.ad_preferredCellLayoutHeight(fittingWidth: width, computationType: .autoLayout)
             // Then
-            expect(height).to(equal(CGFloat(1218.0)))
+            expect(layoutEngineHeight).to(equal(CGFloat(expectedHeight)))
+            expect(autoLayoutHeight).to(equal(CGFloat(expectedHeight)))
         }
 
         it("should layout UITableViewHeaderFooterView") {
@@ -64,10 +92,37 @@ class ViewLayout: QuickSpec {
             let headerFooter = UITableViewHeaderFooterView(reuseIdentifier: nil)
             headerFooter.frame = frame
             addLabelInView(headerFooter.contentView)
+            let expectedHeight = 1218.0
             // When
             let height = headerFooter.ad_preferredContentViewLayoutHeight(fittingWidth: width)
+            let layoutEngineHeight = headerFooter.ad_preferredContentViewLayoutHeight(
+                fittingWidth: width,
+                computationType: .layoutEngine
+            )
+            let autoLayoutHeight = headerFooter.ad_preferredContentViewLayoutHeight(
+                fittingWidth: width,
+                computationType: .autoLayout
+            )
             // Then
-            expect(height).to(equal(CGFloat(1218.0)))
+            expect(layoutEngineHeight).to(equal(CGFloat(expectedHeight)))
+            expect(autoLayoutHeight).to(equal(CGFloat(expectedHeight)))
+        }
+
+        it("should layout UITableViewCell using autolayout computation with auto sizing collectionview") {
+            // Given
+            let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+            cell.frame = frame
+            addAutoSizingCollectionView(cell.contentView)
+            let expectedHeight = 308
+            // When
+            let layoutEngineHeight = cell.ad_preferredCellLayoutHeight(
+                fittingWidth: width,
+                computationType: .layoutEngine
+            )
+            let autoLayoutHeight = cell.ad_preferredCellLayoutHeight(fittingWidth: width, computationType: .autoLayout)
+            // Then
+            expect(layoutEngineHeight).to(equal(CGFloat(0)))
+            expect(autoLayoutHeight).to(equal(CGFloat(expectedHeight)))
         }
 
         it("should not alter contentView of a UICollectionViewCell") {
