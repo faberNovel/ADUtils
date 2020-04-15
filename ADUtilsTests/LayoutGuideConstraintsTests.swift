@@ -260,7 +260,7 @@ class LayoutGuideConstraintsTests: QuickSpec {
             }
 
             it("should center X in layout guide") {
-                layoutGuide.ad_pin(to: view.layoutMarginsGuide, edges: [.top, .bottom])
+                layoutGuide.ad_pin(to: view.layoutMarginsGuide, edges: [UIRectEdge.top, UIRectEdge.bottom])
                 layoutGuide.ad_center(in: view.layoutMarginsGuide, along: .horizontal)
                 expect(view).to(haveValidSnapshot(named: "CenterXInLayoutGuide"))
             }
