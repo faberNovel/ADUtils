@@ -116,7 +116,7 @@ class ViewInsertionWithMargin: QuickSpec {
             }
 
             it("should center X in superview") {
-                subview.ad_pinToSuperview(edges: [.top, .bottom])
+                subview.ad_pinToSuperview(edges: [UIRectEdge.top, UIRectEdge.bottom])
                 subview.ad_centerInSuperview(along: .horizontal)
                 expect(view).to(haveValidSnapshot(named: "CenterXInSuperview"))
             }
