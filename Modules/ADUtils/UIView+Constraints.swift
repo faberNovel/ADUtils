@@ -83,7 +83,7 @@ extension UIView {
     @objc(ad_constrainInSuperview)
     @discardableResult
     public func ad_constrainInSuperview() -> [NSLayoutConstraint] {
-        return ad_constrainInSuperview(edges: UIRectEdge.all, insets: UIEdgeInsets.zero, priority: .required)
+        return ad_constrainInSuperview(edges: .all, insets: .zero, priority: .required)
     }
 
     /**
@@ -283,7 +283,7 @@ extension UIView {
     @objc(ad_pinToSuperview)
     @discardableResult
     public func ad_pinToSuperview() -> [NSLayoutConstraint] {
-        return ad_pinToSuperview(edges: UIRectEdge.all, insets: UIEdgeInsets.zero)
+        return ad_pinToSuperview(edges: .all, insets: .zero)
     }
 
     //MARK: - Private
@@ -350,7 +350,7 @@ extension UIView {
     /**
      Add max constraints to edges of superview.
 
-     - parameter edges: NSDirectionalRectEdge to pin the view in its superview
+     - parameter directionalEdges: NSDirectionalRectEdge to pin the view in its superview
 
      - parameter insets: NSDirectionalEdgeInsets to apply for each edge
 
@@ -358,16 +358,16 @@ extension UIView {
 
      */
     @discardableResult
-    public func ad_constrainInSuperview(edges: NSDirectionalRectEdge,
+    public func ad_constrainInSuperview(directionalEdges: NSDirectionalRectEdge,
                                         insets: NSDirectionalEdgeInsets,
                                         priority: UILayoutPriority) -> [NSLayoutConstraint] {
         guard let superview = superview else { return [] }
         translatesAutoresizingMaskIntoConstraints = false
         let constraints: [NSLayoutConstraint] = [
-            edges.contains(.top) ? ad_pinMinTo(view: superview, attribute: .top, constant: insets.top, priority: priority) : nil,
-            edges.contains(.leading) ? ad_pinMinTo(view: superview, attribute: .leading, constant: insets.leading, priority: priority) : nil,
-            edges.contains(.bottom) ? ad_pinMaxTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
-            edges.contains(.trailing) ? ad_pinMaxTo(view: superview, attribute: .trailing, constant: -insets.trailing, priority: priority) : nil,
+            directionalEdges.contains(.top) ? ad_pinMinTo(view: superview, attribute: .top, constant: insets.top, priority: priority) : nil,
+            directionalEdges.contains(.leading) ? ad_pinMinTo(view: superview, attribute: .leading, constant: insets.leading, priority: priority) : nil,
+            directionalEdges.contains(.bottom) ? ad_pinMaxTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
+            directionalEdges.contains(.trailing) ? ad_pinMaxTo(view: superview, attribute: .trailing, constant: -insets.trailing, priority: priority) : nil,
         ].compactMap { $0 }
         return constraints
     }
@@ -375,26 +375,26 @@ extension UIView {
     /**
      Add max constraints to edges of superview with required priority
 
-     - parameter edges: NSDirectionalRectEdge to pin the view in its superview
+     - parameter directionalEdges: NSDirectionalRectEdge to pin the view in its superview
 
      - parameter insets: NSDirectionalEdgeInsets to apply for each edge
 
      */
     @discardableResult
-    public func ad_constrainInSuperview(edges: NSDirectionalRectEdge,
+    public func ad_constrainInSuperview(directionalEdges: NSDirectionalRectEdge,
                                         insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
-        return ad_constrainInSuperview(edges: edges, insets: insets, priority: .required)
+        return ad_constrainInSuperview(directionalEdges: directionalEdges, insets: insets, priority: .required)
     }
 
     /**
      Add max constraints to edges of superview with no insets with required priority
 
-     - parameter edges: NSDirectionalRectEdge to pin the view in its superview
+     - parameter directionalEdges: NSDirectionalRectEdge to pin the view in its superview
 
      */
     @discardableResult
-    public func ad_constrainInSuperview(edges: NSDirectionalRectEdge) -> [NSLayoutConstraint] {
-        return ad_constrainInSuperview(edges: edges, insets: .zero, priority: .required)
+    public func ad_constrainInSuperview(directionalEdges: NSDirectionalRectEdge) -> [NSLayoutConstraint] {
+        return ad_constrainInSuperview(directionalEdges: directionalEdges, insets: .zero, priority: .required)
     }
 
     /**
@@ -405,7 +405,7 @@ extension UIView {
      */
     @discardableResult
     public func ad_constrainInSuperview(insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
-        return ad_constrainInSuperview(edges: .all, insets: insets, priority: .required)
+        return ad_constrainInSuperview(directionalEdges: .all, insets: insets, priority: .required)
     }
 
     /**
@@ -417,14 +417,14 @@ extension UIView {
     @discardableResult
     public func ad_constrainInSuperview(usingDirectionalEdges: Bool) -> [NSLayoutConstraint] {
         return usingDirectionalEdges
-            ? ad_constrainInSuperview(edges: NSDirectionalRectEdge.all, insets: NSDirectionalEdgeInsets.zero, priority: .required)
-            : ad_constrainInSuperview(edges: UIRectEdge.all, insets: UIEdgeInsets.zero, priority: .required)
+            ? ad_constrainInSuperview(directionalEdges: .all, insets: .zero, priority: .required)
+            : ad_constrainInSuperview(edges: .all, insets: .zero, priority: .required)
     }
 
     /**
      Add constraints to pin self in superview
 
-     - parameter edges: NSDirectionalRectEdge to pin the view in its superview
+     - parameter directionalEdges: NSDirectionalRectEdge to pin the view in its superview
 
      - parameter insets: NSDirectionalEdgeInsets to apply for each edge
 
@@ -432,16 +432,16 @@ extension UIView {
 
      */
     @discardableResult
-    public func ad_pinToSuperview(edges: NSDirectionalRectEdge,
+    public func ad_pinToSuperview(directionalEdges: NSDirectionalRectEdge,
                                   insets: NSDirectionalEdgeInsets,
                                   priority: UILayoutPriority) -> [NSLayoutConstraint] {
         guard let superview = self.superview else { return [] }
         translatesAutoresizingMaskIntoConstraints = false
         let constraints: [NSLayoutConstraint] = [
-            edges.contains(.top) ? ad_pinTo(view: superview, attribute: .top, constant: insets.top, priority: priority) : nil,
-            edges.contains(.leading) ? ad_pinTo(view: superview, attribute: .leading, constant: insets.leading, priority: priority) : nil,
-            edges.contains(.bottom) ? ad_pinTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
-            edges.contains(.trailing) ? ad_pinTo(view: superview, attribute: .trailing, constant: -insets.trailing, priority: priority) : nil,
+            directionalEdges.contains(.top) ? ad_pinTo(view: superview, attribute: .top, constant: insets.top, priority: priority) : nil,
+            directionalEdges.contains(.leading) ? ad_pinTo(view: superview, attribute: .leading, constant: insets.leading, priority: priority) : nil,
+            directionalEdges.contains(.bottom) ? ad_pinTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
+            directionalEdges.contains(.trailing) ? ad_pinTo(view: superview, attribute: .trailing, constant: -insets.trailing, priority: priority) : nil,
         ].compactMap { $0 }
         return constraints
     }
@@ -449,38 +449,38 @@ extension UIView {
     /**
      Add constraints to pin self in superview with required priority
 
-     - parameter edges: NSDirectionalRectEdge to pin the view in its superview
+     - parameter directionalEdges: NSDirectionalRectEdge to pin the view in its superview
 
      - parameter insets: NSDirectionalEdgeInsets to apply for each edge
 
      */
     @discardableResult
-    public func ad_pinToSuperview(edges: NSDirectionalRectEdge, insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
-        return ad_pinToSuperview(edges: edges, insets: insets, priority: UILayoutPriority.required)
+    public func ad_pinToSuperview(directionalEdges: NSDirectionalRectEdge, insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
+        return ad_pinToSuperview(directionalEdges: directionalEdges, insets: insets, priority: UILayoutPriority.required)
     }
 
     /**
      Add constraints to pin self in superview with required priority
 
-     - parameter edges: NSDirectionalRectEdge to pin the view in its superview
+     - parameter directionalEdges: NSDirectionalRectEdge to pin the view in its superview
 
      - parameter priority: The layout priority used for the constraint created
 
      */
     @discardableResult
-    public func ad_pinToSuperview(edges: NSDirectionalRectEdge, priority: UILayoutPriority) -> [NSLayoutConstraint] {
-        return ad_pinToSuperview(edges: edges, insets: .zero, priority: priority)
+    public func ad_pinToSuperview(directionalEdges: NSDirectionalRectEdge, priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        return ad_pinToSuperview(directionalEdges: directionalEdges, insets: .zero, priority: priority)
     }
 
     /**
      Add constraints to pin self in superview with no insets
 
-     - parameter edges: NSDirectionalRectEdge to pin the view in its superview
+     - parameter directionalEdges: NSDirectionalRectEdge to pin the view in its superview
 
      */
     @discardableResult
-    public func ad_pinToSuperview(edges: NSDirectionalRectEdge) -> [NSLayoutConstraint] {
-        return ad_pinToSuperview(edges: edges, insets: .zero)
+    public func ad_pinToSuperview(directionalEdges: NSDirectionalRectEdge) -> [NSLayoutConstraint] {
+        return ad_pinToSuperview(directionalEdges: directionalEdges, insets: .zero)
     }
 
     /**
@@ -491,7 +491,7 @@ extension UIView {
      */
     @discardableResult
     public func ad_pinToSuperview(insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
-        return ad_pinToSuperview(edges: .all, insets: insets)
+        return ad_pinToSuperview(directionalEdges: .all, insets: insets)
     }
 
     /**
@@ -503,7 +503,7 @@ extension UIView {
     @discardableResult
     public func ad_pinToSuperview(usingDirectionalEdges: Bool) -> [NSLayoutConstraint] {
         return usingDirectionalEdges
-            ? ad_pinToSuperview(edges: NSDirectionalRectEdge.all, insets: NSDirectionalEdgeInsets.zero)
-            : ad_pinToSuperview(edges: UIRectEdge.all, insets: UIEdgeInsets.zero)
+            ? ad_pinToSuperview(directionalEdges: .all, insets: .zero)
+            : ad_pinToSuperview(edges: .all, insets: .zero)
     }
 }

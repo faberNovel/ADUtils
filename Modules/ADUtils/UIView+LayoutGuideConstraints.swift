@@ -88,8 +88,8 @@ extension UIView {
     public func ad_pin(to layoutGuide: UILayoutGuide) -> [NSLayoutConstraint] {
         return ad_pin(
             to: layoutGuide,
-            edges: UIRectEdge.all,
-            insets: UIEdgeInsets.zero
+            edges: .all,
+            insets: .zero
         )
     }
 
@@ -312,8 +312,8 @@ extension UIView {
     public func ad_constrain(in layoutGuide: UILayoutGuide) -> [NSLayoutConstraint] {
         return ad_constrain(
             in: layoutGuide,
-            edges: UIRectEdge.all,
-            insets: UIEdgeInsets.zero
+            edges: .all,
+            insets: .zero
         )
     }
 
@@ -389,7 +389,7 @@ extension UIView {
 
      - parameter layoutGuide: Layout guide to pin the view in
 
-     - parameter edges: NSDirectionalRectEdge to pin the view in the layout guide
+     - parameter directionalEdges: NSDirectionalRectEdge to pin the view in the layout guide
 
      - parameter insets: NSDirectionalEdgeInsets to apply for each edge
 
@@ -398,7 +398,7 @@ extension UIView {
      */
     @discardableResult
     public func ad_pin(to layoutGuide: UILayoutGuide,
-                       edges: NSDirectionalRectEdge,
+                       directionalEdges: NSDirectionalRectEdge,
                        insets: NSDirectionalEdgeInsets,
                        priority: UILayoutPriority) -> [NSLayoutConstraint] {
         guard
@@ -408,22 +408,22 @@ extension UIView {
         }
         translatesAutoresizingMaskIntoConstraints = false
         var constraints: [NSLayoutConstraint] = []
-        if edges.contains(.top) {
+        if directionalEdges.contains(.top) {
             let topConstraint = topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: insets.top)
                 .priority(priority)
             constraints.append(topConstraint)
         }
-        if edges.contains(.bottom) {
+        if directionalEdges.contains(.bottom) {
             let bottomConstraint = bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
                 .priority(priority)
             constraints.append(bottomConstraint)
         }
-        if edges.contains(.leading) {
+        if directionalEdges.contains(.leading) {
             let leadingConstraint = leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: insets.leading)
                 .priority(priority)
             constraints.append(leadingConstraint)
         }
-        if edges.contains(.trailing) {
+        if directionalEdges.contains(.trailing) {
             let trailingConstraint = trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -insets.trailing)
                 .priority(priority)
             constraints.append(trailingConstraint)
@@ -446,7 +446,7 @@ extension UIView {
     public func ad_pin(to layoutGuide: UILayoutGuide,
                        insets: NSDirectionalEdgeInsets,
                        priority: UILayoutPriority) -> [NSLayoutConstraint] {
-        return ad_pin(to: layoutGuide, edges: .all, insets: insets, priority: priority)
+        return ad_pin(to: layoutGuide, directionalEdges: .all, insets: insets, priority: priority)
     }
 
     /**
@@ -459,8 +459,8 @@ extension UIView {
     @discardableResult
     public func ad_pin(to layoutGuide: UILayoutGuide, usingDirectionalEdges: Bool) -> [NSLayoutConstraint] {
         return usingDirectionalEdges
-            ? ad_pin(to: layoutGuide, edges: NSDirectionalRectEdge.all, insets: NSDirectionalEdgeInsets.zero)
-            : ad_pin(to: layoutGuide, edges: UIRectEdge.all, insets: UIEdgeInsets.zero)
+            ? ad_pin(to: layoutGuide, directionalEdges: .all, insets: .zero)
+            : ad_pin(to: layoutGuide, edges: .all, insets: .zero)
     }
 
     /**
@@ -476,7 +476,7 @@ extension UIView {
                        insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
         return ad_pin(
             to: layoutGuide,
-            edges: .all,
+            directionalEdges: .all,
             insets: insets,
             priority: .required
         )
@@ -487,15 +487,15 @@ extension UIView {
 
      - parameter layoutGuide: Layout guide to pin the view in
 
-     - parameter edges: NSDirectionalRectEdge to pin the view in the layout guide
+     - parameter directionalEdges: NSDirectionalRectEdge to pin the view in the layout guide
 
      */
     @discardableResult
     public func ad_pin(to layoutGuide: UILayoutGuide,
-                       edges: NSDirectionalRectEdge) -> [NSLayoutConstraint] {
+                       directionalEdges: NSDirectionalRectEdge) -> [NSLayoutConstraint] {
         return ad_pin(
             to: layoutGuide,
-            edges: edges,
+            directionalEdges: directionalEdges,
             insets: .zero,
             priority: .required
         )
@@ -506,18 +506,18 @@ extension UIView {
 
      - parameter layoutGuide: Layout guide to pin the view in
 
-     - parameter edges: NSDirectionalRectEdge to pin the view in the layout guide
+     - parameter directionalEdges: NSDirectionalRectEdge to pin the view in the layout guide
 
      - parameter insets: NSDirectionalEdgeInsets to apply for each edge
 
      */
     @discardableResult
     public func ad_pin(to layoutGuide: UILayoutGuide,
-                       edges: NSDirectionalRectEdge,
+                       directionalEdges: NSDirectionalRectEdge,
                        insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
         return ad_pin(
             to: layoutGuide,
-            edges: edges,
+            directionalEdges: directionalEdges,
             insets: insets,
             priority: .required
         )
@@ -528,7 +528,7 @@ extension UIView {
 
      - parameter layoutGuide: Layout guide to constrain the view in
 
-     - parameter edges: NSDirectionalRectEdge to pin the view in layout guide
+     - parameter directionalEdges: NSDirectionalRectEdge to pin the view in layout guide
 
      - parameter insets: NSDirectionalEdgeInsets to apply for each edge
 
@@ -537,7 +537,7 @@ extension UIView {
      */
     @discardableResult
     public func ad_constrain(in layoutGuide: UILayoutGuide,
-                             edges: NSDirectionalRectEdge,
+                             directionalEdges: NSDirectionalRectEdge,
                              insets: NSDirectionalEdgeInsets,
                              priority: UILayoutPriority) -> [NSLayoutConstraint] {
         guard
@@ -547,22 +547,22 @@ extension UIView {
         }
         translatesAutoresizingMaskIntoConstraints = false
         var constraints: [NSLayoutConstraint] = []
-        if edges.contains(.top) {
+        if directionalEdges.contains(.top) {
             let topConstraint = topAnchor.constraint(greaterThanOrEqualTo: layoutGuide.topAnchor, constant: insets.top)
                 .priority(priority)
             constraints.append(topConstraint)
         }
-        if edges.contains(.bottom) {
+        if directionalEdges.contains(.bottom) {
             let bottomConstraint = bottomAnchor.constraint(lessThanOrEqualTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
                 .priority(priority)
             constraints.append(bottomConstraint)
         }
-        if edges.contains(.leading) {
+        if directionalEdges.contains(.leading) {
             let leadingConstraint = leadingAnchor.constraint(greaterThanOrEqualTo: layoutGuide.leadingAnchor, constant: insets.leading)
                 .priority(priority)
             constraints.append(leadingConstraint)
         }
-        if edges.contains(.trailing) {
+        if directionalEdges.contains(.trailing) {
             let trailingConstraint = trailingAnchor.constraint(lessThanOrEqualTo: layoutGuide.trailingAnchor, constant: -insets.trailing)
                 .priority(priority)
             constraints.append(trailingConstraint)
@@ -581,8 +581,8 @@ extension UIView {
     @discardableResult
     public func ad_constrain(in layoutGuide: UILayoutGuide, usingDirectionalEdges: Bool) -> [NSLayoutConstraint] {
         return usingDirectionalEdges
-            ? ad_constrain(in: layoutGuide, edges: NSDirectionalRectEdge.all, insets: NSDirectionalEdgeInsets.zero)
-            : ad_constrain(in: layoutGuide, edges: UIRectEdge.all, insets: UIEdgeInsets.zero)
+            ? ad_constrain(in: layoutGuide, directionalEdges: .all, insets: .zero)
+            : ad_constrain(in: layoutGuide, edges: .all, insets: .zero)
     }
 
     /**
@@ -598,7 +598,7 @@ extension UIView {
                              insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
         return ad_constrain(
             in: layoutGuide,
-            edges: .all,
+            directionalEdges: .all,
             insets: insets
         )
     }
@@ -608,15 +608,15 @@ extension UIView {
 
      - parameter layoutGuide: Layout guide to constrain the view in
 
-     - parameter edges: NSDirectionalRectEdge to pin the view in layout guide
+     - parameter directionalEdges: NSDirectionalRectEdge to pin the view in layout guide
 
      */
     @discardableResult
     public func ad_constrain(in layoutGuide: UILayoutGuide,
-                             edges: NSDirectionalRectEdge) -> [NSLayoutConstraint] {
+                             directionalEdges: NSDirectionalRectEdge) -> [NSLayoutConstraint] {
         return ad_constrain(
             in: layoutGuide,
-            edges: edges,
+            directionalEdges: directionalEdges,
             insets: .zero,
             priority: .required
         )
@@ -627,18 +627,18 @@ extension UIView {
 
      - parameter layoutGuide: Layout guide to constrain the view in
 
-     - parameter edges: NSDirectionalRectEdge to pin the view in layout guide
+     - parameter directionalEdges: NSDirectionalRectEdge to pin the view in layout guide
 
      - parameter insets: NSDirectionalEdgeInsets to apply for each edge
 
      */
     @discardableResult
     public func ad_constrain(in layoutGuide: UILayoutGuide,
-                             edges: NSDirectionalRectEdge,
+                             directionalEdges: NSDirectionalRectEdge,
                              insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
         return ad_constrain(
             in: layoutGuide,
-            edges: edges,
+            directionalEdges: directionalEdges,
             insets: insets,
             priority: .required
         )
