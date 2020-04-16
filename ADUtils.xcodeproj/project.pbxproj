@@ -53,6 +53,7 @@
 		ECB627001DE3395100951346 /* ChildInsertionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB626FF1DE3395100951346 /* ChildInsertionTest.swift */; };
 		ECB627021DE33C1100951346 /* ViewInsertionWithMarginTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB627011DE33C1100951346 /* ViewInsertionWithMarginTest.swift */; };
 		ECB627061DE33F2200951346 /* AttributedStringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB627051DE33F2200951346 /* AttributedStringTest.swift */; };
+		F2F326C12448431300BB5700 /* NSDirectionalEdgeInsetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F326C02448431300BB5700 /* NSDirectionalEdgeInsetsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		ECB626FF1DE3395100951346 /* ChildInsertionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInsertionTest.swift; sourceTree = "<group>"; };
 		ECB627011DE33C1100951346 /* ViewInsertionWithMarginTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewInsertionWithMarginTest.swift; sourceTree = "<group>"; };
 		ECB627051DE33F2200951346 /* AttributedStringTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedStringTest.swift; sourceTree = "<group>"; };
+		F2F326C02448431300BB5700 /* NSDirectionalEdgeInsetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsetsTests.swift; sourceTree = "<group>"; };
 		F58BBA250BE675C419ED2946 /* Pods-ADUtilsTests.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.preproduction.xcconfig"; sourceTree = "<group>"; };
 		F83B92161A7A8CCF009E7ADF /* Defaults-Info_Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Defaults.plist"; sourceTree = "<group>"; };
 		F83B92171A7A8CCF009E7ADF /* Defaults-Info_Distribution.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Distribution.plist"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */,
 				EC626C6C1FA07281001C332C /* HelveticaNeue.plist */,
 				49D1F130216C968E009F87AB /* ADUtilsTests-Bridging-Header.h */,
+				F2F326C02448431300BB5700 /* NSDirectionalEdgeInsetsTests.swift */,
 			);
 			path = ADUtilsTests;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				ECB626FE1DE3344A00951346 /* NibLoaderTest.swift in Sources */,
 				49CC380120C048F800CFEDDB /* ArrayFilterTests.swift in Sources */,
 				4988CBBE215931B4003A3C08 /* OptionalStringIsBlankTests.swift in Sources */,
+				F2F326C12448431300BB5700 /* NSDirectionalEdgeInsetsTests.swift in Sources */,
 				0C8CFF12242B6A510009FA88 /* SimpleAutoSizingCollectionView.swift in Sources */,
 				49F0F20D2162095F00FC8AA4 /* SynchronizeTests.swift in Sources */,
 				92DA1F5F2257556800060A32 /* NSLayoutConstraintUtilsTests.swift in Sources */,
