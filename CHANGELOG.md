@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 ## [10.4.0]
 
 ### Created
+- Create `UIScreen.ad_pixelDimension`
+- Create `Optional.get()`
+- Create `UINavigationItem.ad_hideBackButtonTitle()`
+- Create `UITableView.ad_hideDefaultFooterCells()`
 - Create layout functions for iOS and tvOS 13+ using `NSDirectionalRectEdges` and `NSDirectionalEdgeInsets`
 - Create `UIViewController.ad_insert(child:in:usingDirectionalEdges:)`
 - Create `UIViewController.ad_insert(child:in:usingDirectionalEdges:)`
