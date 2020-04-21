@@ -32,6 +32,15 @@ class IntrinsicContentSizeView : UIView {
 class ViewInsertionWithMargin: QuickSpec {
 
     override func spec() {
+        standardEdgesSpec()
+        if #available(iOS 13, *) {
+            directionalEdgesSpec()
+        }
+    }
+
+    // MARK: - Private
+
+    private func standardEdgesSpec() {
 
         describe("Pin to superview") {
 
@@ -200,6 +209,222 @@ class ViewInsertionWithMargin: QuickSpec {
                 subview.ad_centerInSuperview()
                 subview.ad_constrainInSuperview(edges: [.left])
                 expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewWithLeftEdge"))
+            }
+        }
+    }
+
+    @available(iOS 13.0, *)
+    @available(tvOSApplicationExtension 13.0, *)
+    private func directionalEdgesSpec() {
+
+        describe("Pin to superview") {
+
+            let insets = NSDirectionalEdgeInsets(top: 12.0, leading: 13.0, bottom: 20.0, trailing: 45.0)
+            var view: UIView!
+            var subview: UIView!
+
+            beforeEach {
+                view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
+                view.backgroundColor = UIColor.white
+                subview = IntrinsicContentSizeView(contentSize: CGSize(width: 50, height: 50))
+                subview.backgroundColor = UIColor.red
+                view.addSubview(subview)
+            }
+
+            it("should pin all edges with insets") {
+                subview.ad_pinToSuperview(insets: insets)
+                expect(view).to(haveValidSnapshot(named: "PinAllEdgesWithInsets"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "PinAllEdgesWithInsetsRTLForced"))
+            }
+
+            it("should pin top right with insets") {
+                subview.ad_pinToSuperview(directionalEdges: [.top, .trailing], insets: insets)
+                expect(view).to(haveValidSnapshot(named: "PinTopRightEdgesWithInsets"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "PinTopRightEdgesWithInsetsRTLForced"))
+            }
+
+            it("should pin top left with insets") {
+                subview.ad_pinToSuperview(directionalEdges: [.top, .leading], insets: insets)
+                expect(view).to(haveValidSnapshot(named: "PinTopLeftEdgesWithInsets"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "PinTopLeftEdgesWithInsetsRTLForced"))
+            }
+
+            it("should pin bottom right with insets") {
+                subview.ad_pinToSuperview(directionalEdges: [.bottom, .trailing], insets: insets)
+                expect(view).to(haveValidSnapshot(named: "PinBottomRightEdgesWithInsets"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "PinBottomRightEdgesWithInsetsRTLForced"))
+            }
+
+            it("should pin bottom left with insets") {
+                subview.ad_pinToSuperview(directionalEdges: [.bottom, .leading], insets: insets)
+                expect(view).to(haveValidSnapshot(named: "PinBottomLeftEdgesWithInsets"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "PinBottomLeftEdgesWithInsetsRTLForced"))
+            }
+
+            it("should pin all edges without insets") {
+                subview.ad_pinToSuperview()
+                expect(view).to(haveValidSnapshot(named: "PinAllEdgesWithoutInsets"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "PinAllEdgesWithoutInsetsRTLForced"))
+            }
+
+            it("should pin top right without insets") {
+                subview.ad_pinToSuperview(directionalEdges: [.top, .trailing])
+                expect(view).to(haveValidSnapshot(named: "PinTopRightEdgesWithoutInsets"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "PinTopRightEdgesWithoutInsetsRTLForced"))
+            }
+
+            it("should pin top left without insets") {
+                subview.ad_pinToSuperview(directionalEdges: [.top, .leading])
+                expect(view).to(haveValidSnapshot(named: "PinTopLeftEdgesWithoutInsets"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "PinTopLeftEdgesWithoutInsetsRTLForced"))
+            }
+
+            it("should pin bottom right without insets") {
+                subview.ad_pinToSuperview(directionalEdges: [.bottom, .trailing])
+                expect(view).to(haveValidSnapshot(named: "PinBottomRightEdgesWithoutInsets"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "PinBottomRightEdgesWithoutInsetsRTLForced"))
+            }
+
+            it("should pin bottom left without insets") {
+                subview.ad_pinToSuperview(directionalEdges: [.bottom, .leading])
+                expect(view).to(haveValidSnapshot(named: "PinBottomLeftEdgesWithoutInsets"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "PinBottomLeftEdgesWithoutInsetsRTLForced"))
+            }
+        }
+
+        describe("Center in superview") {
+            var view: UIView!
+            var subview: UIView!
+
+            beforeEach {
+                view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
+                view.backgroundColor = UIColor.white
+                subview = IntrinsicContentSizeView(contentSize: CGSize(width: 50, height: 50))
+                subview.backgroundColor = UIColor.red
+                view.addSubview(subview)
+            }
+
+            it("should center in superview") {
+                subview.ad_centerInSuperview()
+                expect(view).to(haveValidSnapshot(named: "CenterInSuperview"))
+                expect(view).to(haveValidSnapshot(named: "CenterInSuperviewRTLForced"))
+            }
+
+            it("should center X in superview") {
+                subview.ad_pinToSuperview(directionalEdges: [.top, .bottom])
+                subview.ad_centerInSuperview(along: .horizontal)
+                expect(view).to(haveValidSnapshot(named: "CenterXInSuperview"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "CenterXInSuperviewRTLForced"))
+            }
+
+            it("should center Y in superview") {
+                subview.ad_pinToSuperview(directionalEdges: [.leading, .trailing])
+                subview.ad_centerInSuperview(along: .vertical)
+                expect(view).to(haveValidSnapshot(named: "CenterYInSuperview"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "CenterYInSuperviewRTLForced"))
+            }
+        }
+
+        describe("Constrain to size") {
+            var view: UIView!
+            var subview: UIView!
+
+            beforeEach {
+                view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
+                view.backgroundColor = UIColor.white
+                subview = UIView()
+                subview.backgroundColor = UIColor.red
+                view.addSubview(subview)
+            }
+
+            it("should constrain to size") {
+                subview.ad_constrain(to: CGSize(width: 50, height: 50))
+                subview.ad_pinToSuperview(directionalEdges: [.top, .leading])
+                expect(view).to(haveValidSnapshot(named: "ConstrainToSize"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "ConstrainToSizeRTLForced"))
+            }
+        }
+
+        describe("Constrain in superview") {
+            var view: UIView!
+            var subview: UIView!
+            let insets = NSDirectionalEdgeInsets(top: 10.0, leading: 20.0, bottom: 30.0, trailing: 40.0)
+
+            beforeEach {
+                view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
+                view.backgroundColor = UIColor.white
+                subview = IntrinsicContentSizeView(contentSize: CGSize(width: 300, height: 300))
+                subview.backgroundColor = UIColor.red
+                view.addSubview(subview)
+            }
+
+            it("should constrain in superview pin bottom left") {
+                subview.ad_pinToSuperview(directionalEdges: [.bottom, .leading], insets: insets)
+                subview.ad_constrainInSuperview(directionalEdges: [.top, .trailing], insets: insets)
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinBottomLeft"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinBottomLeftRTLForced"))
+            }
+
+            it("should constrain in superview pin bottom right") {
+                subview.ad_pinToSuperview(directionalEdges: [.bottom, .trailing], insets: insets)
+                subview.ad_constrainInSuperview(directionalEdges: [.top, .leading], insets: insets)
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinBottomRight"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinBottomRightRTLForced"))
+            }
+
+            it("should constrain in superview pin top left") {
+                subview.ad_pinToSuperview(directionalEdges: [.top, .leading], insets: insets)
+                subview.ad_constrainInSuperview(directionalEdges: [.bottom, .trailing], insets: insets)
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinTopLeft"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinTopLeftRTLForced"))
+            }
+
+            it("should constrain in superview pin top right") {
+                subview.ad_pinToSuperview(directionalEdges: [.top, .trailing], insets: insets)
+                subview.ad_constrainInSuperview(directionalEdges: [.bottom, .leading], insets: insets)
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinTopRight"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinTopRightRTLForced"))
+            }
+
+            it("should constrain in superview") {
+                subview.ad_centerInSuperview()
+                subview.ad_constrainInSuperview()
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperview"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewRTLForced"))
+            }
+
+            it("should constrain in superview with insets") {
+                subview.ad_centerInSuperview()
+                subview.ad_constrainInSuperview(insets: NSDirectionalEdgeInsets(value: 10.0))
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewWithInsets"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewWithInsetsRTLForced"))
+            }
+
+            it("should constrain in superview with left edge") {
+                subview.ad_centerInSuperview()
+                subview.ad_constrainInSuperview(directionalEdges: [.leading])
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewWithLeftEdge"))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewWithLeftEdgeRTLForced"))
             }
         }
     }
