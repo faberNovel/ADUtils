@@ -396,6 +396,7 @@ extension UIView {
      - parameter priority: The layout priority used for the constraints created
 
      */
+    @objc(ad_pinToLayoutGuide:directionalEdges:insets:priority:)
     @discardableResult
     public func ad_pin(to layoutGuide: UILayoutGuide,
                        directionalEdges: NSDirectionalRectEdge,
@@ -442,6 +443,7 @@ extension UIView {
      - parameter priority: The layout priority used for the constraints created
 
      */
+    @objc(ad_pinToLayoutGuide:directionalInsets:priority:)
     @discardableResult
     public func ad_pin(to layoutGuide: UILayoutGuide,
                        insets: NSDirectionalEdgeInsets,
@@ -456,6 +458,7 @@ extension UIView {
      - parameter usingDirectionalEdges: Boolean to determine if NSDirectionalRectEdge or UIRectEdges must be used
 
      */
+    @objc(ad_pinToLayoutGuide:usingDirectionalEdges:)
     @discardableResult
     public func ad_pin(to layoutGuide: UILayoutGuide, usingDirectionalEdges: Bool) -> [NSLayoutConstraint] {
         return usingDirectionalEdges
@@ -471,6 +474,7 @@ extension UIView {
      - parameter insets: NSDirectionalEdgeInsets to apply for each edge
 
      */
+    @objc(ad_pinToLayoutGuide:directionalInsets:)
     @discardableResult
     public func ad_pin(to layoutGuide: UILayoutGuide,
                        insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
@@ -490,6 +494,7 @@ extension UIView {
      - parameter directionalEdges: NSDirectionalRectEdge to pin the view in the layout guide
 
      */
+    @objc(ad_pinToLayoutGuide:directionalEdges:)
     @discardableResult
     public func ad_pin(to layoutGuide: UILayoutGuide,
                        directionalEdges: NSDirectionalRectEdge) -> [NSLayoutConstraint] {
@@ -511,6 +516,7 @@ extension UIView {
      - parameter insets: NSDirectionalEdgeInsets to apply for each edge
 
      */
+    @objc(ad_pinToLayoutGuide:directionalEdges:insets:)
     @discardableResult
     public func ad_pin(to layoutGuide: UILayoutGuide,
                        directionalEdges: NSDirectionalRectEdge,
@@ -535,6 +541,7 @@ extension UIView {
      - parameter priority: The layout priority used for the constraint created
 
      */
+    @objc(ad_constrainInLayoutGuide:directionalEdges:insets:priority:)
     @discardableResult
     public func ad_constrain(in layoutGuide: UILayoutGuide,
                              directionalEdges: NSDirectionalRectEdge,
@@ -578,6 +585,7 @@ extension UIView {
      - parameter usingDirectionalEdges: Boolean to determine if NSDirectionalRectEdge or UIRectEdges must be used
 
      */
+    @objc(ad_constrainInLayoutGuide:usingDirectionalEdges:)
     @discardableResult
     public func ad_constrain(in layoutGuide: UILayoutGuide, usingDirectionalEdges: Bool) -> [NSLayoutConstraint] {
         return usingDirectionalEdges
@@ -593,6 +601,7 @@ extension UIView {
      - parameter insets: NSDirectionalEdgeInsets to apply for each edge
 
      */
+    @objc(ad_constrainInLayoutGuide:directionalInsets:)
     @discardableResult
     public func ad_constrain(in layoutGuide: UILayoutGuide,
                              insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
@@ -611,6 +620,7 @@ extension UIView {
      - parameter directionalEdges: NSDirectionalRectEdge to pin the view in layout guide
 
      */
+    @objc(ad_constrainInLayoutGuide:directionalEdges:)
     @discardableResult
     public func ad_constrain(in layoutGuide: UILayoutGuide,
                              directionalEdges: NSDirectionalRectEdge) -> [NSLayoutConstraint] {
@@ -632,6 +642,7 @@ extension UIView {
      - parameter insets: NSDirectionalEdgeInsets to apply for each edge
 
      */
+    @objc(ad_constrainInLayoutGuide:directionalEdges:insets:)
     @discardableResult
     public func ad_constrain(in layoutGuide: UILayoutGuide,
                              directionalEdges: NSDirectionalRectEdge,

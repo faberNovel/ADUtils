@@ -111,6 +111,91 @@
             expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
         });
      });
+
+    if (@available(iOS 13.0, *)) {
+        describe(@"Should not translate autoresizing mask into constaints using directional edges and insets", ^{
+
+           __block UIView * view;
+           __block UIView * subview;
+
+           beforeEach(^{
+               view = [UIView new];
+               subview = [UIView new];
+               [view addSubview:subview];
+               expect(subview.translatesAutoresizingMaskIntoConstraints).to(beTrue());
+           });
+
+           // Pin to layout guide
+
+           it(@"Pin to layout guide", ^{
+               [subview ad_pinToLayoutGuide:view.layoutMarginsGuide usingDirectionalEdges:YES];
+               expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+           });
+
+           it(@"Pin to layout guide edges", ^{
+               [subview ad_pinToLayoutGuide:view.layoutMarginsGuide directionalEdges:NSDirectionalRectEdgeAll];
+               expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+           });
+
+           it(@"Pin to layout guide insets", ^{
+               [subview ad_pinToLayoutGuide:view.layoutMarginsGuide insets:UIEdgeInsetsZero];
+               expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+           });
+
+           it(@"Pin to layout guide edges insets", ^{
+               [subview ad_pinToLayoutGuide:view.layoutMarginsGuide
+                                      directionalEdges:NSDirectionalRectEdgeAll
+                                     insets:NSDirectionalEdgeInsetsZero];
+               expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+           });
+
+           it(@"Pin to layout guide edges insets", ^{
+               [subview ad_pinToLayoutGuide:view.layoutMarginsGuide
+                          directionalInsets:NSDirectionalEdgeInsetsZero
+                                   priority:UILayoutPriorityRequired];
+               expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+           });
+
+           it(@"Pin to layout guide edges insets priority", ^{
+               [subview ad_pinToLayoutGuide:view.layoutMarginsGuide
+                           directionalEdges:NSDirectionalRectEdgeAll
+                                     insets:NSDirectionalEdgeInsetsZero priority:UILayoutPriorityRequired];
+               expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+           });
+
+           // Constrain in layout guide
+
+           it(@"Constrain in layout guide", ^{
+               [subview ad_constrainInLayoutGuide:view.layoutMarginsGuide usingDirectionalEdges:YES];
+               expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+           });
+
+           it(@"Constrain in layout guide edges", ^{
+               [subview ad_constrainInLayoutGuide:view.layoutMarginsGuide directionalEdges:NSDirectionalRectEdgeAll];
+               expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+           });
+
+           it(@"Constrain in layout guide insets", ^{
+               [subview ad_constrainInLayoutGuide:view.layoutMarginsGuide directionalInsets:NSDirectionalEdgeInsetsZero];
+               expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+           });
+
+           it(@"Constrain in layout guide edges insets", ^{
+               [subview ad_constrainInLayoutGuide:view.layoutMarginsGuide
+                                 directionalEdges:NSDirectionalRectEdgeAll
+                                           insets:NSDirectionalEdgeInsetsZero];
+               expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+           });
+
+           it(@"Constrain in layout guide edges insets priority", ^{
+               [subview ad_constrainInLayoutGuide:view.layoutMarginsGuide
+                                 directionalEdges:NSDirectionalRectEdgeAll
+                                           insets:NSDirectionalEdgeInsetsZero
+                                         priority:UILayoutPriorityRequired];
+               expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+           });
+        });
+    }
 }
 
 @end
