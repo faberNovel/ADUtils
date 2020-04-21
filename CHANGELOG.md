@@ -2,6 +2,60 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [10.4.0]
+
+### Created
+- Create layout functions for iOS and tvOS 13+ using `NSDirectionalRectEdges` and `NSDirectionalEdgeInsets`
+- Create `UIViewController.ad_insert(child:in:usingDirectionalEdges:)`
+- Create `UIViewController.ad_insert(child:in:usingDirectionalEdges:)`
+- Create `UILayoutGuide.ad_pin(to:directionalEdges:insets:priority:)`
+- Create `UILayoutGuide.ad_pin(to:directionalInsets:priority:)`
+- Create `UILayoutGuide.ad_pin(to:usingDirectionalEdges:)`
+- Create `UILayoutGuide.ad_pin(to:directionalEdges:)`
+- Create `UILayoutGuide.ad_pin(to:directionalInsets:)`
+- Create `UILayoutGuide.ad_pin(to:directionalEdges:insets:)`
+- Create `UILayoutGuide.ad_constrain(in:directionalEdges:insets:priority:)`
+- Create `UILayoutGuide.ad_constrain(in:usingDirectionalEdges:)`
+- Create `UILayoutGuide.ad_constrain(in:directionalInsets:)`
+- Create `UILayoutGuide.ad_constrain(in:directionalEdges:)`
+- Create `UILayoutGuide.ad_constrain(in:directionalEdges:insets:)`
+- Create `UILayoutGuide.constrainInOwningView(directionalEdges:insets:priority:)`
+- Create `UILayoutGuide.constrainInOwningView(directionalEdges:insets:)`
+- Create `UILayoutGuide.constrainInOwningView(directionalEdges:)`
+- Create `UILayoutGuide.constrainInOwningView(directionalInsets:)`
+- Create `UILayoutGuide.constrainInOwningView(usingDirectionalEdges:)`
+- Create `UILayoutGuide.ad_pinToOwningView(directionalEdges:insets:priority:)`
+- Create `UILayoutGuide.constrainInOwningView(directionalEdges:insets:)`
+- Create `UILayoutGuide.constrainInOwningView(directionalEdges:)`
+- Create `UILayoutGuide.constrainInOwningView(directionalInsets:)`
+- Create `UILayoutGuide.constrainInOwningView(usingDirectionalEdges:)`
+- Create `UIView.ad_constrainInSuperview(directionalEdges:insets:priority:)`
+- Create `UIView.ad_constrainInSuperview(directionalEdges:insets:)`
+- Create `UIView.ad_constrainInSuperview(directionalEdges:)`
+- Create `UIView.ad_constrainInSuperview(directionalInsets:)`
+- Create `UIView.ad_constrainInSuperview(usingDirectionalEdges:)`
+- Create `UIView.ad_pinToSuperview(directionalEdges:insets:priority:)`
+- Create `UIView.ad_pinToSuperview(directionalEdges:insets:)`
+- Create `UIView.ad_pinToSuperview(directionalEdges:priority:)`
+- Create `UIView.ad_pinToSuperview(directionalEdges:)`
+- Create `UIView.ad_pinToSuperview(directionalInsets:)`
+- Create `UIView.ad_pinToSuperview(usingDirectionalEdges:)`
+- Create `UIView.ad_pin(to:directionalEdges:insets:priority:)`
+- Create `UIView.ad_pin(to:directionalEdges:priority:)` 
+- Create `UIView.ad_pin(usingDirectionalEdges:)`
+- Create `UIView.ad_pin(to:directionalInsets:)`
+- Create `UIView.ad_pin(to:directionalEdges:)`
+- Create `UIView.ad_pin(to:directionalEdges:insets:)`
+- Create `UIView.ad_constrain(in:directionalEdges:insets:priority:)`
+- Create `UIView.ad_constrain(usingDirectionalEdges:)`
+- Create `UIView.ad_constrain(in:directionalInsets:)`
+- Create `UIView.ad_constrain(in:directionalEdges:)`
+- Create `UIView.ad_constrain(in:directionalEdges:insets:)`
+- Create `NSDirectionalEdgeInsets+Utilities` extension
+
+### Updated
+- Add left to right and  right to left tests cases for iOS and tvOS 13+ when layout,  `NSDirectionalRectEdges` and `NSDirectionalEdgeInsets` are involved
+
 ## [10.3.0]
 
 ### Updated
