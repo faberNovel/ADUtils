@@ -14,6 +14,7 @@
 		47E17214F9A4009CF12359D7 /* Pods_ADUtilsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */; };
 		491BC3C323C47D29001A3B82 /* StackViewUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491BC3C223C47D29001A3B82 /* StackViewUtilsTests.swift */; };
 		496EB3BD246003EA0011B4AD /* NavigationControllerPopCompletionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496EB3BC246003EA0011B4AD /* NavigationControllerPopCompletionTests.swift */; };
+		496EB3C1246008E80011B4AD /* UITableViewHeaderFooterViewLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496EB3C0246008E80011B4AD /* UITableViewHeaderFooterViewLayoutTests.swift */; };
 		4988CBBA21592CAB003A3C08 /* SequenceGroupedByTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4988CBB921592CAB003A3C08 /* SequenceGroupedByTests.swift */; };
 		4988CBBE215931B4003A3C08 /* OptionalStringIsBlankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4988CBBD215931B4003A3C08 /* OptionalStringIsBlankTests.swift */; };
 		49BA42C72167B8BE00578C48 /* LayoutGuideConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA42C62167B8BE00578C48 /* LayoutGuideConstraintsTests.swift */; };
@@ -81,6 +82,7 @@
 		4131DA2D9333046F6E9F313E /* Pods-ADUtilsTests.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.distribution.xcconfig"; sourceTree = "<group>"; };
 		491BC3C223C47D29001A3B82 /* StackViewUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewUtilsTests.swift; sourceTree = "<group>"; };
 		496EB3BC246003EA0011B4AD /* NavigationControllerPopCompletionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerPopCompletionTests.swift; sourceTree = "<group>"; };
+		496EB3C0246008E80011B4AD /* UITableViewHeaderFooterViewLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterViewLayoutTests.swift; sourceTree = "<group>"; };
 		4988CBB921592CAB003A3C08 /* SequenceGroupedByTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceGroupedByTests.swift; sourceTree = "<group>"; };
 		4988CBBD215931B4003A3C08 /* OptionalStringIsBlankTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalStringIsBlankTests.swift; sourceTree = "<group>"; };
 		49B1F77E1CE4B3DB00A29BFE /* ADUtilsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADUtilsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +219,7 @@
 				E7D5F49A242DF01F0048C0DC /* UIScreenPixelDimensionTests.swift */,
 				E7D5F49C242DF0D90048C0DC /* UITableViewDefaultFooterCellsTests.swift */,
 				496EB3BC246003EA0011B4AD /* NavigationControllerPopCompletionTests.swift */,
+				496EB3C0246008E80011B4AD /* UITableViewHeaderFooterViewLayoutTests.swift */,
 				49D1F131216C968E009F87AB /* ADViewLayoutTestsObjc.m */,
 				49D1F133216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m */,
 				921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */,
@@ -626,6 +629,7 @@
 				E7D5F499242DEF120048C0DC /* UINavigationItemBackItemTests.swift in Sources */,
 				E7D5F497242DED3C0048C0DC /* OptionalGetTests.swift in Sources */,
 				ECB626FE1DE3344A00951346 /* NibLoaderTest.swift in Sources */,
+				496EB3C1246008E80011B4AD /* UITableViewHeaderFooterViewLayoutTests.swift in Sources */,
 				49CC380120C048F800CFEDDB /* ArrayFilterTests.swift in Sources */,
 				4988CBBE215931B4003A3C08 /* OptionalStringIsBlankTests.swift in Sources */,
 				F2F326C12448431300BB5700 /* NSDirectionalEdgeInsetsTests.swift in Sources */,
