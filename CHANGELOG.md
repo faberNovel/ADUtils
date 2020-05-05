@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
+### Created
+- Create `UINavigationController.ad_popViewController(animated:completion:)`
+- Create methods to set and layout `UITableView` header and footer
+
 ## [10.4.0]
 
 ### Created
@@ -45,7 +51,7 @@ All notable changes to this project will be documented in this file.
 - Create `UIView.ad_pinToSuperview(directionalInsets:)`
 - Create `UIView.ad_pinToSuperview(usingDirectionalEdges:)`
 - Create `UIView.ad_pin(to:directionalEdges:insets:priority:)`
-- Create `UIView.ad_pin(to:directionalEdges:priority:)` 
+- Create `UIView.ad_pin(to:directionalEdges:priority:)`
 - Create `UIView.ad_pin(usingDirectionalEdges:)`
 - Create `UIView.ad_pin(to:directionalInsets:)`
 - Create `UIView.ad_pin(to:directionalEdges:)`
