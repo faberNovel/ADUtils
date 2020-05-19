@@ -494,5 +494,118 @@ class ViewInsertionWithMargin: QuickSpec {
                 expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewWithLeftEdgeRTLForced"))
             }
         }
+
+        describe("Constrain in superview's safe area layout guide with directional edges") {
+            var viewController: UIViewController!
+            var view: UIView {
+                return viewController.view
+            }
+            var subview: UIView!
+            let insets = NSDirectionalEdgeInsets(top: 10.0, leading: 20.0, bottom: 30.0, trailing: 40.0)
+
+            beforeEach {
+                viewController = UIViewController()
+                viewController.additionalSafeAreaInsets = UIEdgeInsets(top: 40, left: 30, bottom: 20, right: 10)
+                viewController.view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
+                view.backgroundColor = UIColor.white
+                subview = IntrinsicContentSizeView(contentSize: CGSize(width: 500, height: 500))
+                subview.backgroundColor = UIColor.red
+                view.addSubview(subview)
+
+                //(Benjamin Lavialle) 2020-03-19 Adding the view controller to a window is required to have
+                // safe area insets. The snapshots are then device agnostic.
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
+
+            it("should constrain in superview pin bottom leading") {
+                subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.bottom, .leading], insets: insets)
+                subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .trailing], insets: insets)
+                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomLeft"))
+            }
+
+            it("should constrain in superview pin bottom trailing") {
+                subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.bottom, .trailing], insets: insets)
+                subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .leading], insets: insets)
+                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomRight"))
+            }
+
+            it("should constrain in superview pin top leading") {
+                subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .leading], insets: insets)
+                subview.ad_constrainInSuperviewSafeAreaLayoutGuide(
+                    directionalEdges: [.bottom, .trailing],
+                    insets: insets
+                )
+                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopLeft"))
+            }
+
+            it("should constrain in superview pin top trailing") {
+                subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .trailing], insets: insets)
+                subview.ad_constrainInSuperviewSafeAreaLayoutGuide(
+                    directionalEdges: [.bottom, .leading],
+                    insets: insets
+                )
+                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopRight"))
+            }
+
+            it("should constrain in superview with directional insets") {
+                subview.ad_centerInSuperviewSafeAreaLayoutGuide()
+                subview.ad_constrainInSuperviewSafeAreaLayoutGuide(insets: NSDirectionalEdgeInsets(value: 100))
+                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaWithInsets"))
+            }
+
+            it("should constrain in superview with leading edge") {
+                subview.ad_centerInSuperviewSafeAreaLayoutGuide()
+                subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.leading])
+                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaWithLeftEdge"))
+            }
+
+            it("should constrain in superview pin bottom leading") {
+                subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.bottom, .leading], insets: insets)
+                subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .trailing], insets: insets)
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomLeading"))
+            }
+
+            it("should constrain in superview pin bottom trailing") {
+                subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.bottom, .trailing], insets: insets)
+                subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .leading], insets: insets)
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomTrailing"))
+            }
+
+            it("should constrain in superview pin top leading") {
+                subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .leading], insets: insets)
+                subview.ad_constrainInSuperviewSafeAreaLayoutGuide(
+                    directionalEdges: [.bottom, .trailing],
+                    insets: insets
+                )
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopLeading"))
+            }
+
+            it("should constrain in superview pin top trailing") {
+                subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .trailing], insets: insets)
+                subview.ad_constrainInSuperviewSafeAreaLayoutGuide(
+                    directionalEdges: [.bottom, .leading],
+                    insets: insets
+                )
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopTrailing"))
+            }
+
+            it("should constrain in superview with directional insets") {
+                subview.ad_centerInSuperviewSafeAreaLayoutGuide()
+                subview.ad_constrainInSuperviewSafeAreaLayoutGuide(insets: NSDirectionalEdgeInsets(value: 100))
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaWithInsets"))
+            }
+
+            it("should constrain in superview with leading edge") {
+                subview.ad_centerInSuperviewSafeAreaLayoutGuide()
+                subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.leading])
+                view.semanticContentAttribute = .forceRightToLeft
+                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaWithLeftEdge"))
+            }
+        }
     }
 }
