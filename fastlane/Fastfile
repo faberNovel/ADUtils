@@ -9,6 +9,15 @@ lane :tests do
   )
 end
 
+desc "Run CI check for a commit"
+lane :ci_check do
+  tests
+  pod_lib_lint(
+    use_bundle_exec: true,
+    allow_warnings: true
+  )
+end
+
 desc "Release a new version"
 lane :prepare_release do |options|
   ensure_git_branch(branch: 'release/*')
