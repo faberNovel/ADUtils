@@ -12,14 +12,37 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.6.5
+
+    - name: Ruby cache
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+
     - name: Bundle install
-      run: bundle install
+      run: |
+        bundle config path vendor/bundle
+        bundle check || bundle install
+
+    - name: Pods cache
+      uses: actions/cache@v1
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-pods-
+
     - name: Pod install
       run: bundle exec pod install
+
     - name: Build and test
       run: bundle exec fastlane tests
+
     - name: Pod lib lint
       run: bundle exec pod lib lint --allow-warnings
