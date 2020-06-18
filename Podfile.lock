@@ -38,7 +38,7 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADUtils: 485189f1615a047a2ece7bebc5c6f52d05fa6895
+  ADUtils: 7ec49935d17edad004ab935bfd25d7fba04d95cb
   iOSSnapshotTestCase: 9ab44cb5aa62b84d31847f40680112e15ec579a6
   Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
   Nimble-Snapshots: 8ec63f41ce6c7229a17be9a64edbc123b181f75b
