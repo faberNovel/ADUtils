@@ -55,7 +55,7 @@ lane :publish_release do
     commitish: "master"
   )
 
-  pod_push
+  pod_push(allow_warnings: true)
 end
 
 #####################################################
