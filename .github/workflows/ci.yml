@@ -34,12 +34,15 @@ jobs:
       uses: actions/cache@v1
       with:
         path: Pods
-        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        key: ${{ runner.os }}-cocoapods-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
-          ${{ runner.os }}-pods-
+          ${{ runner.os }}-cocoapods-
 
     - name: Pod install
-      run: bundle exec pod install
+      run: |
+        if [ ! -d "Pods" ]; then
+          bundle exec pod install
+        fi
 
     - name: Build and test
       run: bundle exec fastlane tests
