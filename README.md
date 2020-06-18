@@ -1,10 +1,11 @@
-![ADUtils: UIKit and Swift toolbox](https://raw.githubusercontent.com/applidium/ADUtils/master/ADUtils.jpg)
+![ADUtils: UIKit and Swift toolbox](https://raw.githubusercontent.com/faberNovel/ADUtils/master/ADUtils.jpg)
 
-[![CocoaPods](https://img.shields.io/cocoapods/v/ADUtils.svg?style=flat)](https://github.com/applidium/ADUtils)
+[![CocoaPods](https://img.shields.io/cocoapods/v/ADUtils.svg?style=flat)](https://github.com/faberNovel/ADUtils)
 ![Language](https://img.shields.io/badge/language-Swift%204-orange.svg)
-[![Platform](https://img.shields.io/cocoapods/p/ADUtils.svg?style=flat)](https://github.com/applidium/ADUtils)
-![License](https://img.shields.io/github/license/applidium/ADUtils.svg?style=flat)
-[![Twitter](https://img.shields.io/badge/twitter-@applidium-blue.svg?style=flat)](https://twitter.com/applidium)
+[![Platform](https://img.shields.io/cocoapods/p/ADUtils.svg?style=flat)](https://github.com/faberNovel/ADUtils)
+![License](https://img.shields.io/github/license/faberNovel/ADUtils.svg?style=flat)
+[![Twitter](https://img.shields.io/badge/twitter-@FabernovelTech-blue.svg?style=flat)](https://twitter.com/FabernovelTech)
+![](https://github.com/faberNovel/ADUtils/workflows/CI/badge.svg)
 
 ADUtils is a set of helpers, shortcuts or other tools providing simplified interactions with UIKit and more generally with Swift.
 
@@ -33,15 +34,14 @@ ADUtils is a set of helpers, shortcuts or other tools providing simplified inter
 
 ## Requirements
 
-- iOS 8.1+ / tvOS 9.0+
-- Xcode 8.3+
-- Swift 3.1+
+- iOS 10.0+ / tvOS 10.0+
+- Swift 5
 
 ## Communication
 
-- If you **need help**, use [Twitter](https://twitter.com/applidium).
-- If you'd like to **ask a general question**, use [Twitter](https://twitter.com/applidium).
-- If you'd like to **apply for a job**, [email us](jobs@applidium.com).
+- If you **need help**, use [Twitter](https://twitter.com/FabernovelTech).
+- If you'd like to **ask a general question**, use [Twitter](https://twitter.com/FabernovelTech).
+- If you'd like to **apply for a job**, visit [https://careers.fabernovel.com/](https://careers.fabernovel.com/).
 - If you **found a bug**, open an issue.
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request.
@@ -64,7 +64,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'ADUtils', '~> 7.0'
+    pod 'ADUtils', '~> 10.0'
 end
 ```
 
@@ -76,7 +76,7 @@ $ pod install
 
 ## Credits
 
-ADUtils is owned and maintained by [Fabernovel Technologies](https://technologies.fabernovel.com/). You can follow us on Twitter at [@applidium](https://twitter.com/applidium).
+ADUtils is owned and maintained by [Fabernovel](https://www.fabernovel.com/). You can follow us on Twitter at [@Fabernovel](https://twitter.com/FabernovelTech).
 
 
 ## License
