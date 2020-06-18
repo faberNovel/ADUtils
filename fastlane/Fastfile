@@ -1,152 +1,95 @@
-import_from_git(
-    url: ENV['FASTLANE_URL'],
-    path: 'Fastfile_ios.rb',
-    branch: 'v7.2.3'
-)
-
-#####################################################
-# @!group Configuration
-#####################################################
-
-override_lane :get_project_configuration do
-  {
-    xcworkspace: 'ADUtils.xcworkspace',
-    xcodeproj: 'ADUtils.xcodeproj'
-  }
+desc "Run all unit tests"
+lane :tests do
+  scan(
+    workspace: "ADUtils.xcworkspace",
+    configuration: "Stubs",
+    scheme: "ADUtilsApp",
+    clean: true,
+    devices: ["iPhone 8"]
+  )
 end
 
-override_lane :get_variants_build_configurations do
-  {
-    'ADUtils_Prod' => {
-      scheme: 'ADUtilsApp',
-      xcode_configuration: 'Production'
-    }
-  }
+desc "Release a new version"
+lane :prepare_release do |options|
+  ensure_git_branch(branch: 'release/*')
+  ensure_git_status_clean
+
+  target_version = target_version_from_branch
+
+  next unless UI.confirm("Is your CHANGELOG up to date?")
+  update_changelog(target_version)
+  bump_podspec(target_version)
+
+  ensure_git_status_clean
 end
 
-override_lane :get_slack_configuration do
-  {
-    channel: '76890_sandbox_channel',
-    slack_url: nil # Use nil to use FABERNOVEL's default one
-  }
-end
+desc "Create release PR"
+lane :create_release_pr do
+  ensure_git_branch(branch: 'release/*')
 
-#####################################################
-# @!group CI
-#####################################################
-
-override_lane :get_variants_to_build_on_ci do |options|
-  case options[:commit_type]
-  when 'merge'
-    variants = ['ADUtils_Prod']
-  when 'release'
-    variants = ['ADUtils_Prod']
-  else
-    variants = ['ADUtils_Prod']
+  ["master", "develop"].each do |base|
+    create_pull_request(
+      api_token: ENV["GITHUB_TOKEN"],
+      repo: ENV["REPO"],
+      title: "Release #{target_version_from_branch}",
+      base: base
+    )
   end
-  variants
+end
+
+desc "Publish release"
+lane :publish_release do
+  ensure_git_branch(branch: 'master')
+
+  target_version = version_get_podspec(path: ENV["PODSPEC"])
+  changelog = read_changelog(
+    changelog_path: ENV["CHANGELOG"],
+    section_identifier: "[#{target_version}]"
+  )
+  set_github_release(
+    repository_name: ENV["REPO"],
+    api_token: ENV["GITHUB_TOKEN"],
+    name: "v#{target_version}",
+    tag_name: "v#{target_version}",
+    description: changelog,
+    commitish: "master"
+  )
+
+  pod_push
 end
 
 #####################################################
-# @!group Codesign
+# Private
 #####################################################
 
-override_lane :get_variants_codesign_configurations do
-  MATCH_CUSTOMER_CONFIGURATION =
-    {
-      apple_id: "TODO",
-      apple_id_password: lane_context[:ALL_CLI_OPTIONS][:apple_password],
-      team_id: "TODO", # Available on developer.apple.com
-      team_name: "TODO", # Available on developer.apple.com
-      git_repository: "ssh://ci@codereview.technologies.fabernovel.com:29418/ADSigningAssetsCustomers",
-      git_branch: "TODO", # To create on the git repository. Guidelines: <client_name>_<team_id>
-      git_password: lane_context[:ALL_CLI_OPTIONS][:match_password]
-    }
-  {
-    'ADUtils_Prod' => {
-      bundles: ["com.yourclient.appname", "com.yourclient.appname.watchkitextension"],
-      fabernovel_bundles: ["com.applidium.ADUtils", "com.applidium.appname.watchkitextension"],
-      provisioning_profile_templates: ["TODO_OR_NIL"],
-      match_configuration: MATCH_CUSTOMER_CONFIGURATION
-    }
-  }
+def update_changelog(target_version)
+  changelog_path = ENV["CHANGELOG"]
+  stamp_changelog(
+    changelog_path: changelog_path,
+    section_identifier: "#{target_version}"
+  )
+
+  git_add(path: changelog_path)
+  git_commit(
+    path: changelog_path,
+    message: "Update CHANGELOG"
+  )
 end
 
-override_lane :get_variants_itunes_connect_configurations do
-  ITC_CUSTOMER_CONFIGURATION = {
-    apple_id: "TODO",
-    team_id: "TODO", # Run $ fastlane deliver init , to easily find it (will be between parenthesis)
-    team_name: "TODO", # Also returned bu the command for team_id
-    apple_id_password: lane_context[:ALL_CLI_OPTIONS][:apple_password],
-    itc_provider: "TODO" # Use /Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/itms/bin/iTMSTransporter -u YOUR_APPLE_ID -p YOUR_PASSWORD -account_type itunes_connect -v off -m provider
-  }
-  {
-    'ADUtils_Prod' => ITC_CUSTOMER_CONFIGURATION
-  }
+def bump_podspec(target_version)
+  podspec_path = ENV["PODSPEC"]
+  version_bump_podspec(
+    path: podspec_path,
+    version_number: target_version
+  )
+
+  git_add(path: podspec_path)
+  git_commit(
+    path: podspec_path,
+    message: "Bump to #{target_version}"
+  )
 end
 
-#####################################################
-# @!group Tests
-#####################################################
-
-override_lane :get_project_tests_configurations do
-  {
-    'ADUtils_Prod_CI' => {
-      display_name: 'ADUtils UI Tests',
-      scheme: 'ADUtilsApp',
-      app_bundle: 'com.applidium.ADUtils',
-      xcode_configuration: 'Stubs',
-      unit_tests_bundles: ['ADUtilsTests'],
-      ui_tests_bundles: nil,
-      devices: ['iPhone 8'],
-      languages: ['fr-FR'],
-      os_versions: nil, # Use nil to use the latest, otherwise ['11.3', '11.2']
-      reinstall_app: true,
-      screenshots_output_path: './screenshots',
-      sonar_properties_file: nil # disable sonar '../sonar-project.properties'
-    }
-  }
+def target_version_from_branch
+  git_branch.gsub(/release\/[A-Za-z]*/, "")
 end
-
-override_lane :get_test_configurations_for_ci do |options|
-  case options[:commit_type]
-  when 'merge'
-    test_configurations = ['ADUtils_Prod_CI']
-  when 'release'
-    test_configurations = ['ADUtils_Prod_CI']
-  else
-    test_configurations = ['ADUtils_Prod_CI']
-  end
-  test_configurations
-end
-
-override_lane :get_appstore_screenshots_test_configurations_for_variant do
-  {
-    'ADUtils_Prod' => ['ADUtils_Prod_CI']
-  }
-end
-
-override_lane :get_pod_configuration do
-  {
-    use_libraries: false,
-    extra_sources_repos: [],
-    skip_lib_lint: false,
-    pod_repository: nil # You can use ft_pod_repo, nil for the pod trunk repo
-  }
-end
-
-#####################################################
-# @!group LANES THAT CAN BE OVERRIDEN - LOOK SOURCE FOR MORE
-#####################################################
-
-# override_lane :get_variants_crashlytics_configurations do
-# end
-
-# override_lane :get_variants_s3_configurations do
-# end
-
-# override_lane :user_defined_prebuild_lane do |options|
-# end
-
-# override_lane :user_defined_postbuild_lane do |options|
-# end
