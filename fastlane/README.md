@@ -20,6 +20,21 @@ or alternatively using `brew cask install fastlane`
 fastlane tests
 ```
 Run all unit tests
+### prepare_release
+```
+fastlane prepare_release
+```
+Release a new version
+### create_release_pr
+```
+fastlane create_release_pr
+```
+Create release PR
+### publish_release
+```
+fastlane publish_release
+```
+Publish release
 
 ----
 
