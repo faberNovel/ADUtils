@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [10.5.0] - 2020-06-18
+
 ### Created
 - Create `UINavigationController.ad_popViewController(animated:completion:)`
 - Create methods to set and layout `UITableView` header and footer
