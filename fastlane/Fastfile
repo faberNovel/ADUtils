@@ -8,3 +8,88 @@ lane :tests do
     devices: ["iPhone 8"]
   )
 end
+
+desc "Release a new version"
+lane :prepare_release do |options|
+  ensure_git_branch(branch: 'release/*')
+  ensure_git_status_clean
+
+  target_version = target_version_from_branch
+
+  next unless UI.confirm("Is your CHANGELOG up to date?")
+  update_changelog(target_version)
+  bump_podspec(target_version)
+
+  ensure_git_status_clean
+end
+
+desc "Create release PR"
+lane :create_release_pr do
+  ensure_git_branch(branch: 'release/*')
+
+  ["master", "develop"].each do |base|
+    create_pull_request(
+      api_token: ENV["GITHUB_TOKEN"],
+      repo: ENV["REPO"],
+      title: "Release #{target_version_from_branch}",
+      base: base
+    )
+  end
+end
+
+desc "Publish release"
+lane :publish_release do
+  ensure_git_branch(branch: 'master')
+
+  target_version = version_get_podspec(path: ENV["PODSPEC"])
+  changelog = read_changelog(
+    changelog_path: ENV["CHANGELOG"],
+    section_identifier: "[#{target_version}]"
+  )
+  set_github_release(
+    repository_name: ENV["REPO"],
+    api_token: ENV["GITHUB_TOKEN"],
+    name: "v#{target_version}",
+    tag_name: "v#{target_version}",
+    description: changelog,
+    commitish: "master"
+  )
+
+  pod_push
+end
+
+#####################################################
+# Private
+#####################################################
+
+def update_changelog(target_version)
+  changelog_path = ENV["CHANGELOG"]
+  stamp_changelog(
+    changelog_path: changelog_path,
+    section_identifier: "#{target_version}"
+  )
+
+  git_add(path: changelog_path)
+  git_commit(
+    path: changelog_path,
+    message: "Update CHANGELOG"
+  )
+end
+
+def bump_podspec(target_version)
+  podspec_path = ENV["PODSPEC"]
+  version_bump_podspec(
+    path: podspec_path,
+    version_number: target_version
+  )
+
+  git_add(path: podspec_path)
+  git_commit(
+    path: podspec_path,
+    message: "Bump to #{target_version}"
+  )
+end
+
+def target_version_from_branch
+  git_branch.gsub(/release\/[A-Za-z]*/, "")
+end
