@@ -4,6 +4,41 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Created
+- `ADUtils` is now usable on extensions
+- `UIView.ad_pinToSuperviewSafeAreaLayoutGuide(edges:insets:priority:)`
+- `UIView.ad_pinToSuperviewSafeAreaLayoutGuide(insets:priority:)`
+- `UIView.ad_pinToSuperviewSafeAreaLayoutGuide()`
+- `UIView.ad_pinToSuperviewSafeAreaLayoutGuide(insets:)`
+- `UIView.ad_pinToSuperviewSafeAreaLayoutGuide(edges:)`
+- `UIView.ad_pinToSuperviewSafeAreaLayoutGuide(edges:insets:)`
+- `func ad_centerInSuperviewSafeAreaLayoutGuide(along:priority:)`
+- `func ad_centerInSuperviewSafeAreaLayoutGuide(along:)`
+- `func ad_centerInSuperviewSafeAreaLayoutGuide(priority:)`
+- `func ad_centerInSuperviewSafeAreaLayoutGuide()`
+- `ad_constrainInSuperviewSafeAreaLayoutGuide(edges:insets:priority:)`
+- `ad_constrainInSuperviewSafeAreaLayoutGuide()`
+- `ad_constrainInSuperviewSafeAreaLayoutGuide(insets:)`
+- `ad_constrainInSuperviewSafeAreaLayoutGuide(edges:)`
+- `ad_constrainInSuperviewSafeAreaLayoutGuide(edges:insets:)`
+- `ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges:insets:priority:)`
+- `ad_pinToSuperviewSafeAreaLayoutGuide(insets:priority:)`
+- `ad_pinToSuperviewSafeAreaLayoutGuide(insets:)`
+- `ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges:)`
+- `ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges:insets:)`
+- `ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges:insets:priority:)`
+- `ad_constrainInSuperviewSafeAreaLayoutGuide(insets:)`
+- `ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges:)`
+- `ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges:insets:)`
+
+### Updated
+ - `ProxyDetector` is now created with a `ProxyDetectorWindowProvider` allowing to embed it in extensions
+
+### Fixed
+
+### Removed
+- `ADUtils/Swift-ext` and `ADUtils/objc-ext` are no longer supported, as `ADUtils` is now usable on extensions
+
 ## [10.5.0] - 2020-06-18
 
 ### Created

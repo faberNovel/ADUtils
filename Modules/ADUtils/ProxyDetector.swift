@@ -8,10 +8,20 @@
 import Foundation
 import UIKit
 
+public typealias ProxyDetectorWindowProvider = () -> UIWindow?
+
 /// ProxyDetector check on proxy use and display notification if in use
 public class ProxyDetector {
 
-    public init() {}
+    private var windowProvider: ProxyDetectorWindowProvider
+
+    /**
+    Check on proxy use and display an alert view if activated
+    - parameter windowProvider defines the way proxy detector is receiving a window to display a possible alert
+    */
+    public init(windowProvider: @escaping ProxyDetectorWindowProvider) {
+        self.windowProvider = windowProvider
+    }
 
     /// Defines if a proxy is currently in use on the device
     public var isProxyActivated: Bool {
@@ -68,7 +78,7 @@ public class ProxyDetector {
     }
 
     private var topMostViewController: UIViewController? {
-        var viewController = UIApplication.shared.delegate?.window??.rootViewController
+        var viewController = windowProvider()?.rootViewController
         while let presentedViewController = viewController?.presentedViewController {
             viewController = presentedViewController
         }
