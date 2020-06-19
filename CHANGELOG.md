@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [11.0.0] - 2020-06-19
+
 ### Created
 - `ADUtils` is now usable on extensions
 - `UIView.ad_pinToSuperviewSafeAreaLayoutGuide(edges:insets:priority:)`
