@@ -238,43 +238,43 @@ class ViewInsertionWithMargin: QuickSpec {
                 it("should constrain in superview pin bottom left") {
                     subview.ad_pinToSuperviewSafeAreaLayoutGuide(edges: [.bottom, .left], insets: insets)
                     subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.top, .right], insets: insets)
-                    expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomLeft"))
+                    expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomLeft"))
                 }
 
                 it("should constrain in superview pin bottom right") {
                     subview.ad_pinToSuperviewSafeAreaLayoutGuide(edges: [.bottom, .right], insets: insets)
                     subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.top, .left], insets: insets)
-                    expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomRight"))
+                    expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomRight"))
                 }
 
                 it("should constrain in superview pin top left") {
                     subview.ad_pinToSuperviewSafeAreaLayoutGuide(edges: [.top, .left], insets: insets)
                     subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.bottom, .right], insets: insets)
-                    expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopLeft"))
+                    expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopLeft"))
                 }
 
                 it("should constrain in superview pin top right") {
                     subview.ad_pinToSuperviewSafeAreaLayoutGuide(edges: [.top, .right], insets: insets)
                     subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.bottom, .left], insets: insets)
-                    expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopRight"))
+                    expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopRight"))
                 }
 
                 it("should constrain in superview") {
                     subview.ad_centerInSuperviewSafeAreaLayoutGuide()
                     subview.ad_constrainInSuperviewSafeAreaLayoutGuide()
-                    expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeArea"))
+                    expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeArea"))
                 }
 
                 it("should constrain in superview with insets") {
                     subview.ad_centerInSuperviewSafeAreaLayoutGuide()
                     subview.ad_constrainInSuperviewSafeAreaLayoutGuide(insets: UIEdgeInsets(value: 100))
-                    expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaWithInsets"))
+                    expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaWithInsets"))
                 }
 
                 it("should constrain in superview with left edge") {
                     subview.ad_centerInSuperviewSafeAreaLayoutGuide()
                     subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.left])
-                    expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaWithLeftEdge"))
+                    expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaWithLeftEdge"))
                 }
             }
         }
@@ -520,13 +520,13 @@ class ViewInsertionWithMargin: QuickSpec {
             it("should constrain in superview pin bottom leading") {
                 subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.bottom, .leading], insets: insets)
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .trailing], insets: insets)
-                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomLeft"))
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomLeft"))
             }
 
             it("should constrain in superview pin bottom trailing") {
                 subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.bottom, .trailing], insets: insets)
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .leading], insets: insets)
-                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomRight"))
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomRight"))
             }
 
             it("should constrain in superview pin top leading") {
@@ -535,7 +535,7 @@ class ViewInsertionWithMargin: QuickSpec {
                     directionalEdges: [.bottom, .trailing],
                     insets: insets
                 )
-                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopLeft"))
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopLeft"))
             }
 
             it("should constrain in superview pin top trailing") {
@@ -544,33 +544,33 @@ class ViewInsertionWithMargin: QuickSpec {
                     directionalEdges: [.bottom, .leading],
                     insets: insets
                 )
-                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopRight"))
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopRight"))
             }
 
             it("should constrain in superview with directional insets") {
                 subview.ad_centerInSuperviewSafeAreaLayoutGuide()
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(insets: NSDirectionalEdgeInsets(value: 100))
-                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaWithInsets"))
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaWithInsets"))
             }
 
             it("should constrain in superview with leading edge") {
                 subview.ad_centerInSuperviewSafeAreaLayoutGuide()
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.leading])
-                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaWithLeftEdge"))
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaWithLeftEdge"))
             }
 
             it("should constrain in superview pin bottom leading") {
                 subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.bottom, .leading], insets: insets)
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .trailing], insets: insets)
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomLeading"))
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomLeading"))
             }
 
             it("should constrain in superview pin bottom trailing") {
                 subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.bottom, .trailing], insets: insets)
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .leading], insets: insets)
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomTrailing"))
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomTrailing"))
             }
 
             it("should constrain in superview pin top leading") {
@@ -580,7 +580,7 @@ class ViewInsertionWithMargin: QuickSpec {
                     insets: insets
                 )
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopLeading"))
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopLeading"))
             }
 
             it("should constrain in superview pin top trailing") {
@@ -590,21 +590,21 @@ class ViewInsertionWithMargin: QuickSpec {
                     insets: insets
                 )
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopTrailing"))
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopTrailing"))
             }
 
             it("should constrain in superview with directional insets") {
                 subview.ad_centerInSuperviewSafeAreaLayoutGuide()
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(insets: NSDirectionalEdgeInsets(value: 100))
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaWithInsets"))
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaWithInsets"))
             }
 
             it("should constrain in superview with leading edge") {
                 subview.ad_centerInSuperviewSafeAreaLayoutGuide()
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.leading])
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidDeviceAgnosticSnapshot(named: "ConstrainInSuperviewSafeAreaWithLeftEdge"))
+                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaWithLeftEdge"))
             }
         }
     }
