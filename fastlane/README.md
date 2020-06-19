@@ -20,6 +20,11 @@ or alternatively using `brew cask install fastlane`
 fastlane tests
 ```
 Run all unit tests
+### ci_check
+```
+fastlane ci_check
+```
+Run CI check for a commit
 ### prepare_release
 ```
 fastlane prepare_release

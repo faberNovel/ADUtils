@@ -35,8 +35,6 @@ jobs:
       with:
         path: Pods
         key: ${{ runner.os }}-cocoapods-${{ hashFiles('**/Podfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-cocoapods-
 
     - name: Pod install
       run: |
@@ -45,7 +43,4 @@ jobs:
         fi
 
     - name: Build and test
-      run: bundle exec fastlane tests
-
-    - name: Pod lib lint
-      run: bundle exec pod lib lint --allow-warnings
+      run: bundle exec fastlane ci_check

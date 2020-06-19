@@ -378,6 +378,264 @@ extension UIView {
             priority: .required
         )
     }
+
+    /**
+     Add constraints to pin self in superview's safe area layout guide
+
+     - parameter edges: Edges to pin the view in the layout guide
+
+     - parameter insets: UIEdgeInsets to apply for each edge
+
+     - parameter priority: The layout priority used for the constraints created
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithEdges:insets:priority:)
+    @discardableResult
+    public func ad_pinToSuperviewSafeAreaLayoutGuide(edges: UIRectEdge,
+                                                     insets: UIEdgeInsets,
+                                                     priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_pin(to: layoutGuide, edges: edges, insets: insets, priority: priority)
+    }
+
+    /**
+     Add constraints to pin self in superview's safe area layout guide
+
+     - parameter insets: UIEdgeInsets to apply for each edge
+
+     - parameter priority: The layout priority used for the constraints created
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithInsets:priority:)
+    @discardableResult
+    public func ad_pinToSuperviewSafeAreaLayoutGuide(insets: UIEdgeInsets,
+                                                     priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_pin(to: layoutGuide, insets: insets, priority: priority)
+    }
+
+    /**
+     Add constraints to pin self in superview's safe area layout guide
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_pinToSuperviewSafeAreaLayoutGuide)
+    @discardableResult
+    public func ad_pinToSuperviewSafeAreaLayoutGuide() -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_pin(to: layoutGuide)
+    }
+
+    /**
+     Add constraints to pin self in superview's safe area layout guide
+
+     - parameter insets: UIEdgeInsets to apply for each edge
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithInsets:)
+    @discardableResult
+    public func ad_pinToSuperviewSafeAreaLayoutGuide(insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_pin(to: layoutGuide, insets: insets)
+    }
+
+    /**
+     Add constraints to pin self in superview's safe area layout guide
+
+     - parameter edges: Edges to pin the view in the layout guide
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithEdges:)
+    @discardableResult
+    public func ad_pinToSuperviewSafeAreaLayoutGuide(edges: UIRectEdge) -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_pin(to: layoutGuide, edges: edges)
+    }
+
+    /**
+     Add constraints to pin self in superview's safe area layout guide
+
+     - parameter edges: Edges to pin the view in the layout guide
+
+     - parameter insets: UIEdgeInsets to apply for each edge
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithEdges:insets:)
+    @discardableResult
+    public func ad_pinToSuperviewSafeAreaLayoutGuide(edges: UIRectEdge,
+                                                     insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_pin(to: layoutGuide, edges: edges, insets: insets)
+    }
+
+    /**
+     Add constraints to center self in superview's safe area layout guide along specified axis
+
+     - parameter axis: Axis to center the view along in layout guide
+
+     - parameter priority: The layout priority used for the constraint created
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_centerInSuperviewSafeAreaLayoutGuideAlongAxis:priority:)
+    @discardableResult
+    public func ad_centerInSuperviewSafeAreaLayoutGuide(along axis: NSLayoutConstraint.Axis,
+                                                        priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_center(in: layoutGuide, along: axis, priority: priority)
+    }
+
+    /**
+     Add constraints to center self in superview's safe area layout guide along specified axis
+
+     - parameter axis: Axis to center the view along in layout guide
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_centerInSuperviewSafeAreaLayoutGuideAlongAxis:)
+    @discardableResult
+    public func ad_centerInSuperviewSafeAreaLayoutGuide(along axis: NSLayoutConstraint.Axis) -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_center(in: layoutGuide, along: axis)
+    }
+
+    /**
+     Add constraints to center self in superview's safe area layout guide along specified axis
+
+     - parameter priority: The layout priority used for the constraint created
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_centerInSuperviewSafeAreaLayoutGuideWithPriority:)
+    @discardableResult
+    public func ad_centerInSuperviewSafeAreaLayoutGuide(priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_center(in: layoutGuide, priority: priority)
+    }
+
+    /**
+     Add constraints to center self in superview's safe area layout guide along specified axis
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_centerInSuperviewSafeAreaLayoutGuide)
+    @discardableResult
+    public func ad_centerInSuperviewSafeAreaLayoutGuide() -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_center(in: layoutGuide)
+    }
+
+    /**
+     Add max constraints to edges of superview's safe area layout guide
+
+     - parameter edges: Edges to pin the view in layout guide
+
+     - parameter insets: UIEdgeInsets to apply for each edge
+
+     - parameter priority: The layout priority used for the constraint created
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_constrainInSuperviewSafeAreaLayoutGuideWithEdges:insets:priority:)
+    @discardableResult
+    public func ad_constrainInSuperviewSafeAreaLayoutGuide(edges: UIRectEdge,
+                                                           insets: UIEdgeInsets,
+                                                           priority: UILayoutPriority) -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_constrain(in: layoutGuide, edges: edges, insets: insets, priority: priority)
+    }
+
+    /**
+     Add max constraints to edges of superview's safe area layout guide
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_constrainInSuperviewSafeAreaLayoutGuide)
+    @discardableResult
+    public func ad_constrainInSuperviewSafeAreaLayoutGuide() -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_constrain(in: layoutGuide)
+    }
+
+    /**
+     Add max constraints to edges of superview's safe area layout guide
+
+     - parameter insets: UIEdgeInsets to apply for each edge
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_constrainInSuperviewSafeAreaLayoutGuideWithInsets:)
+    @discardableResult
+    public func ad_constrainInSuperviewSafeAreaLayoutGuide(insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_constrain(in: layoutGuide, insets: insets)
+    }
+
+    /**
+     Add max constraints to edges of superview's safe area layout guide
+
+     - parameter edges: Edges to pin the view in layout guide
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_constrainInSuperviewSafeAreaLayoutGuideWithEdges:)
+    @discardableResult
+    public func ad_constrainInSuperviewSafeAreaLayoutGuide(edges: UIRectEdge) -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_constrain(in: layoutGuide, edges: edges)
+    }
+
+    /**
+     Add max constraints to edges of superview's safe area layout guide
+
+     - parameter edges: Edges to pin the view in layout guide
+
+     - parameter insets: UIEdgeInsets to apply for each edge
+
+     */
+    @available(iOS 11.0, tvOS 11.0, *)
+    @objc(ad_constrainInSuperviewSafeAreaLayoutGuideWithEdges:insets:)
+    @discardableResult
+    public func ad_constrainInSuperviewSafeAreaLayoutGuide(edges: UIRectEdge,
+                                                           insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+            return []
+        }
+        return ad_constrain(in: layoutGuide, edges: edges, insets: insets)
+    }
 }
 
 @available(iOS 13.0, *)
@@ -654,4 +912,166 @@ extension UIView {
             priority: .required
         )
     }
+
+    /**
+        Add constraints to pin self in superview's safe area layout guide
+
+        - parameter directionalEdges: NSDirectionalRectEdge to pin the view in layout guide
+
+        - parameter insets: NSDirectionalEdgeInsets to apply for each edge
+
+        - parameter priority: The layout priority used for the constraints created
+
+        */
+       @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithDirectionalEdges:insets:priority:)
+       @discardableResult
+       public func ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: NSDirectionalRectEdge,
+                                                        insets: NSDirectionalEdgeInsets,
+                                                        priority: UILayoutPriority) -> [NSLayoutConstraint] {
+           guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+               return []
+           }
+           return ad_pin(to: layoutGuide, directionalEdges: directionalEdges, insets: insets, priority: priority)
+       }
+
+       /**
+        Add constraints to pin self in superview's safe area layout guide
+
+        - parameter insets: NSDirectionalEdgeInsets to apply for each edge
+
+        - parameter priority: The layout priority used for the constraints created
+
+        */
+       @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithDirectionalInsets:priority:)
+       @discardableResult
+       public func ad_pinToSuperviewSafeAreaLayoutGuide(insets: NSDirectionalEdgeInsets,
+                                                        priority: UILayoutPriority) -> [NSLayoutConstraint] {
+           guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+               return []
+           }
+           return ad_pin(to: layoutGuide, insets: insets, priority: priority)
+       }
+
+       /**
+        Add constraints to pin self in superview's safe area layout guide
+
+        - parameter insets: UIEdgeInsets to apply for each edge
+
+        */
+       @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithDirectionalInsets:)
+       @discardableResult
+       public func ad_pinToSuperviewSafeAreaLayoutGuide(
+        insets: NSDirectionalEdgeInsets
+       ) -> [NSLayoutConstraint] {
+        guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+               return []
+           }
+           return ad_pin(to: layoutGuide, insets: insets)
+       }
+
+       /**
+        Add constraints to pin self in superview's safe area layout guide
+
+        - parameter directionalEdges: NSDirectionalRectEdge to pin the view in layout guide
+
+        */
+       @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithDirectionalEdges:)
+       @discardableResult
+       public func ad_pinToSuperviewSafeAreaLayoutGuide(
+        directionalEdges: NSDirectionalRectEdge
+       ) -> [NSLayoutConstraint] {
+           guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+               return []
+           }
+           return ad_pin(to: layoutGuide, directionalEdges: directionalEdges)
+       }
+
+       /**
+        Add constraints to pin self in superview's safe area layout guide
+
+        - parameter directionalEdges: NSDirectionalRectEdge to pin the view in layout guide
+
+        - parameter insets: NSDirectionalEdgeInsets to apply for each edge
+
+        */
+       @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithDirectionalEdges:insets:)
+       @discardableResult
+       public func ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: NSDirectionalRectEdge,
+                                                        insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
+           guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+               return []
+           }
+           return ad_pin(to: layoutGuide, directionalEdges: directionalEdges, insets: insets)
+       }
+
+       /**
+        Add max constraints to edges of superview's safe area layout guide
+
+        - parameter directionalEdges: NSDirectionalRectEdge to pin the view in layout guide
+
+        - parameter insets: NSDirectionalEdgeInsets to apply for each edge
+
+        - parameter priority: The layout priority used for the constraint created
+
+        */
+       @objc(ad_constrainInSuperviewSafeAreaLayoutGuideWithDirectionalEdges:insets:priority:)
+       @discardableResult
+       public func ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: NSDirectionalRectEdge,
+                                                              insets: NSDirectionalEdgeInsets,
+                                                              priority: UILayoutPriority) -> [NSLayoutConstraint] {
+           guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+               return []
+           }
+           return ad_constrain(in: layoutGuide, directionalEdges: directionalEdges, insets: insets, priority: priority)
+       }
+
+       /**
+        Add max constraints to edges of superview's safe area layout guide
+
+        - parameter insets: NSDirectionalEdgeInsets to apply for each edge
+
+        */
+       @objc(ad_constrainInSuperviewSafeAreaLayoutGuideWithDirectionalInsets:)
+       @discardableResult
+       public func ad_constrainInSuperviewSafeAreaLayoutGuide(insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
+           guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+               return []
+           }
+           return ad_constrain(in: layoutGuide, insets: insets)
+       }
+
+       /**
+        Add max constraints to edges of superview's safe area layout guide
+
+        - parameter directionalEdges: NSDirectionalRectEdge to pin the view in layout guide
+
+        */
+       @objc(ad_constrainInSuperviewSafeAreaLayoutGuideWithDirectionalEdges:)
+       @discardableResult
+       public func ad_constrainInSuperviewSafeAreaLayoutGuide(
+        directionalEdges: NSDirectionalRectEdge
+       ) -> [NSLayoutConstraint] {
+           guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+               return []
+           }
+           return ad_constrain(in: layoutGuide, directionalEdges: directionalEdges)
+       }
+
+       /**
+        Add max constraints to edges of superview's safe area layout guide
+
+        - parameter directionalEdges: NSDirectionalRectEdge to pin the view in layout guide
+
+        - parameter insets: NSDirectionalEdgeInsets to apply for each edge
+
+        */
+       @objc(ad_constrainInSuperviewSafeAreaLayoutGuideWithDirectionalEdges:insets:)
+       @discardableResult
+       public func ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: NSDirectionalRectEdge,
+                                                              insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
+           guard let layoutGuide = superview?.safeAreaLayoutGuide else {
+               return []
+           }
+           return ad_constrain(in: layoutGuide, directionalEdges: directionalEdges, insets: insets)
+       }
 }

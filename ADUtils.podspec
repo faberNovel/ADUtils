@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'ADUtils'
-  spec.version      = '10.5.0'
+  spec.version      = '11.0.0'
   spec.authors      = 'Fabernovel'
   spec.homepage     = 'https://github.com/faberNovel/ADUtils'
   spec.summary      = 'Fabernovel\'s toolbox for iOS'
@@ -14,23 +14,12 @@ Pod::Spec.new do |spec|
   spec.swift_versions = ['5.0', '5.1']
 
   spec.subspec 'Swift' do |subspec|
-    # ADUtils_noext contains classes which depend on APIs not compliant with App extensions (such as UIApplication.shared)
-    subspec.source_files = 'Modules/ADUtils/*.{h,m,swift}', 'Modules/ADUtils_noext/*.{h,m,swift}'
-  end
-
-  spec.subspec 'Swift-ext' do |subspec|
     # Subspec compliant with App extensions
     subspec.source_files = 'Modules/ADUtils/*.{h,m,swift}'
   end
 
   spec.subspec 'objc' do |subspec|
     subspec.dependency 'ADUtils/Swift'
-	subspec.source_files = 'Modules/ADUtils_objc/*.{h,m,swift}'
-  end
-
-  spec.subspec 'objc-ext' do |subspec|
-    # Subspec compliant with App extensions
-    subspec.dependency 'ADUtils/Swift-ext'
 	subspec.source_files = 'Modules/ADUtils_objc/*.{h,m,swift}'
   end
 
