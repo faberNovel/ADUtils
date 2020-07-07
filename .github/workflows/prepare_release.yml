@@ -21,5 +21,5 @@ jobs:
 
     - name: Prepare release
       env:
-        GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN_CI }}
       run: bundle exec fastlane create_release_pr
