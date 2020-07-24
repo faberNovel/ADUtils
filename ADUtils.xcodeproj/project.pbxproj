@@ -32,6 +32,7 @@
 		49F0F23621637ADD00FC8AA4 /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F0F23521637ADD00FC8AA4 /* NibTableViewCell.xib */; };
 		49F0F23821639D6900FC8AA4 /* NibTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F0F23721639D6900FC8AA4 /* NibTableHeaderView.xib */; };
 		4AE8A6D323F563F300ABE095 /* DebouncedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE8A6D223F563F300ABE095 /* DebouncedTests.swift */; };
+		57397F7D24CAD105001C6F2E /* LocaleUserPreferredTimeFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57397F7C24CAD105001C6F2E /* LocaleUserPreferredTimeFormatTests.swift */; };
 		57C59D681BB1478A003798DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C59D671BB1478A003798DF /* Images.xcassets */; };
 		57C59D6A1BB1486B003798DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C59D691BB1486B003798DF /* LaunchScreen.storyboard */; };
 		57E1CD281C884F1C00A7DFFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1CD271C884F1C00A7DFFB /* ViewController.swift */; };
@@ -104,6 +105,7 @@
 		49F0F23721639D6900FC8AA4 /* NibTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NibTableHeaderView.xib; path = Defaults/NibTableHeaderView.xib; sourceTree = "<group>"; };
 		4AE8A6D223F563F300ABE095 /* DebouncedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebouncedTests.swift; sourceTree = "<group>"; };
 		4C8B60A08D066BFD9DDA1251 /* Pods-ADUtilsApp.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.distribution.xcconfig"; sourceTree = "<group>"; };
+		57397F7C24CAD105001C6F2E /* LocaleUserPreferredTimeFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleUserPreferredTimeFormatTests.swift; sourceTree = "<group>"; };
 		57C59D671BB1478A003798DF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57C59D691BB1486B003798DF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57E1CD271C884F1C00A7DFFB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				EC626C6C1FA07281001C332C /* HelveticaNeue.plist */,
 				49D1F130216C968E009F87AB /* ADUtilsTests-Bridging-Header.h */,
 				F2F326C02448431300BB5700 /* NSDirectionalEdgeInsetsTests.swift */,
+				57397F7C24CAD105001C6F2E /* LocaleUserPreferredTimeFormatTests.swift */,
 			);
 			path = ADUtilsTests;
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 				49F0F20F21621EB300FC8AA4 /* DeselectableViewTests.swift in Sources */,
 				EC7953421ECB5C7B00404857 /* ViewLayoutTest.swift in Sources */,
 				EC368BC41EDF13DA00661556 /* OptionalUnwrapTest.swift in Sources */,
+				57397F7D24CAD105001C6F2E /* LocaleUserPreferredTimeFormatTests.swift in Sources */,
 				E7F92DA81FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift in Sources */,
 				496EB3BD246003EA0011B4AD /* NavigationControllerPopCompletionTests.swift in Sources */,
 				49D1F134216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m in Sources */,
