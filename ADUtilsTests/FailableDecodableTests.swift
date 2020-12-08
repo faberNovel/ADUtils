@@ -96,7 +96,11 @@ class KeyedDecodingContainerTests: QuickSpec {
 
         it("should throw error when decoding the JSON of a struct with some invalid data using standard method") {
             let decoder = JSONDecoder()
-            expect { try decoder.decode(StrictFolder.self, from: desktopData) }.to(throwError())
+            expect {
+                let decoded = try decoder.decode(StrictFolder.self, from: desktopData)
+                return expect(decoded).to(beNil())
+            }
+            .to(throwError())
         }
 
         // Slack and My-CV are valids, other are invalids
@@ -137,7 +141,11 @@ class KeyedDecodingContainerTests: QuickSpec {
 
         it("should throw error when decoding array with some invalid data using standard method") {
             let decoder = JSONDecoder()
-            expect { try decoder.decode([File].self, from: filesData) }.to(throwError())
+            expect {
+                let decoded = try decoder.decode([File].self, from: filesData)
+                return expect(decoded).to(beNil())
+            }
+            .to(throwError())
         }
 
         it("should not affect encoding") {
