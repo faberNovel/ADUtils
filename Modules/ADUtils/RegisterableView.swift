@@ -156,11 +156,17 @@ extension UICollectionView {
         return dequeueReusableCell(withReuseIdentifier: U.identifier(), for: indexPath) as! U
     }
 
+    public func dequeueSupplementaryView<U: ClassIdentifiable>(_ viewClass: U.Type = U.self,
+                                                               ofKind kind: String,
+                                                               at indexPath: IndexPath) -> U {
+        return dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: U.identifier(), for: indexPath) as! U
+    }
+
     public func dequeueHeader<U: ClassIdentifiable>(_ headerClass: U.Type = U.self, at indexPath: IndexPath) -> U {
-        return dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: U.identifier(), for: indexPath) as! U
+        return dequeueSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, at: indexPath)
     }
 
     public func dequeueFooter<U: ClassIdentifiable>(_ footerClass: U.Type = U.self, at indexPath: IndexPath) -> U {
-        return dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: U.identifier(), for: indexPath) as! U
+        return dequeueSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, at: indexPath)
     }
 }
