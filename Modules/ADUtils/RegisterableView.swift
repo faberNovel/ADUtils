@@ -119,21 +119,21 @@ extension UICollectionView : CollectionView {
         }
     }
 
+    public func register(supplementaryView view: RegisterableView, kind: String) {
+        switch view {
+        case .nib:
+            register(view.nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: view.identifier)
+        case .class:
+            register(view.cellClass, forSupplementaryViewOfKind: kind, withReuseIdentifier: view.identifier)
+        }
+    }
+
     public func register(header: RegisterableView) {
         register(supplementaryView: header, kind: UICollectionView.elementKindSectionHeader)
     }
 
     public func register(footer: RegisterableView) {
         register(supplementaryView: footer, kind: UICollectionView.elementKindSectionFooter)
-    }
-
-    private func register(supplementaryView view: RegisterableView, kind: String) {
-        switch view {
-        case .nib:
-            register(view.nib, forSupplementaryViewOfKind:kind , withReuseIdentifier: view.identifier)
-        case .class:
-            register(view.cellClass, forSupplementaryViewOfKind:kind , withReuseIdentifier: view.identifier)
-        }
     }
 }
 
