@@ -13,6 +13,8 @@ All notable changes to this project will be documented in this file.
 
 ## [11.0.0] - 2020-06-19
 
+- `UICollectionView.dequeueSupplementaryView<U: ClassIdentifiable>(_:ofKind:at:)`  dequeue generic reusable view from `UICollectionView`
+
 ### Created
 - `ADUtils` is now usable on extensions
 - `UIView.ad_pinToSuperviewSafeAreaLayoutGuide(edges:insets:priority:)`
