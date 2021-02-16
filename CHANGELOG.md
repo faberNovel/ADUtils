@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Created
+
+- `verifyOrNil(_:over:)`
+- `Optional.verifying(_:)`
+
 ## [11.0.0] - 2020-06-19
 
 ### Created
