@@ -15,8 +15,8 @@ public extension UIImage {
      - parameter color: The color to fill the image
      - parameter size: The size of the final image
      */
-    static func ad_image(withColor color: UIColor,
-                         size: CGSize = CGSize(width: 1, height: 1)) -> UIImage? {
+    static func ad_filled(with color: UIColor,
+                          size: CGSize = CGSize(width: 1, height: 1)) -> UIImage? {
         if #available(iOS 13.0, tvOS 13.0, *) {
             let lightModeImage = generateImage(
                 withColor: color,

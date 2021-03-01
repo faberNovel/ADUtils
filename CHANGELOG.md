@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - `verifyOrNil(_:over:)`
 - `Optional.verifying(_:)`
-- `UIImage.ad_image(withColor:size:)`
+- `UIImage.ad_filled(with:size:)`
 - `UIButton.ad_setBackgroundColor(:forState:)`
 
 ## [11.0.0] - 2020-06-19

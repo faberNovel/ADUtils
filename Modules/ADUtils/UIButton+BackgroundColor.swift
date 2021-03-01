@@ -16,7 +16,7 @@ public extension UIButton {
      */
     func ad_setBackgroundColor(_ backgroundColor: UIColor?,
                                for state: UIControl.State) {
-        let image = backgroundColor.flatMap { UIImage.ad_image(withColor: $0) }
+        let image = backgroundColor.flatMap { UIImage.ad_filled(with: $0) }
         setBackgroundImage(image, for: state)
     }
 }

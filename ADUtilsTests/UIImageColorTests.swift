@@ -21,7 +21,7 @@ class UIImageColorTests: QuickSpec {
             let color = UIColor.red
 
             // When
-            let image = UIImage.ad_image(withColor: color, size: size)
+            let image = UIImage.ad_filled(with: color, size: size)
 
             // Then
             let imageView = UIImageView(image: image)
@@ -33,7 +33,7 @@ class UIImageColorTests: QuickSpec {
             let color = UIColor.red
 
             // When
-            let image = UIImage.ad_image(withColor: color)
+            let image = UIImage.ad_filled(with: color)
 
             // Then
             let imageView = UIImageView(image: image)
@@ -58,7 +58,7 @@ class UIImageColorTests: QuickSpec {
                 let size = CGSize(width: 10, height: 20)
 
                 // When
-                let image = UIImage.ad_image(withColor: color, size: size)
+                let image = UIImage.ad_filled(with: color, size: size)
 
                 // Then
                 // Can't create a snapshot test case here, as userInterfaceStyle is not working in XCTest
