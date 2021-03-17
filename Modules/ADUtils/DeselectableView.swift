@@ -9,11 +9,13 @@
 import Foundation
 import UIKit
 
+// swiftlint:disable discouraged_optional_collection
+
 /**
  * This is a protocol to factorize table and collection view selection methods
  */
 
-protocol DeselectableView: class {
+protocol DeselectableView: AnyObject {
     var selectedIndexPaths: [IndexPath]? { get }
     func deselect(atIndexPath indexPath: IndexPath, animated: Bool)
     func select(atIndexPath indexPath: IndexPath, animated: Bool)
@@ -21,7 +23,7 @@ protocol DeselectableView: class {
 
 extension DeselectableView where Self: UIView {
 
-    //MARK: - DeselectableView
+    // MARK: - DeselectableView
 
     /**
      Smoothly deselects item in DeselectableView (ie UITableView/UICollectionView) along coordinator's transition
@@ -46,7 +48,7 @@ extension DeselectableView where Self: UIView {
 
         coordinator.animateAlongsideTransition(
             in: self,
-            animation: { [weak self] (context: UIViewControllerTransitionCoordinatorContext) in
+            animation: { [weak self] _ in
                 self?.deselect(atIndexPaths: selectedIndexPaths, animated: true)
             },
             completion: { [weak self] (context: UIViewControllerTransitionCoordinatorContext) in
@@ -58,7 +60,7 @@ extension DeselectableView where Self: UIView {
         )
     }
 
-    //MARK: - Private
+    // MARK: - Private
 
     private func select(atIndexPaths indexPaths: [IndexPath], animated: Bool) {
         for indexPath in indexPaths {

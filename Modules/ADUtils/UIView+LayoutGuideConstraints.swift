@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+// swiftlint:disable file_length
+
 extension UIView {
 
     /**
@@ -278,22 +280,26 @@ extension UIView {
         translatesAutoresizingMaskIntoConstraints = false
         var constraints: [NSLayoutConstraint] = []
         if edges.contains(.top) {
-            let topConstraint = topAnchor.constraint(greaterThanOrEqualTo: layoutGuide.topAnchor, constant: insets.top)
+            let topConstraint = topAnchor
+                .constraint(greaterThanOrEqualTo: layoutGuide.topAnchor, constant: insets.top)
                 .priority(priority)
             constraints.append(topConstraint)
         }
         if edges.contains(.bottom) {
-            let bottomConstraint = bottomAnchor.constraint(lessThanOrEqualTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
+            let bottomConstraint = bottomAnchor
+                .constraint(lessThanOrEqualTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
                 .priority(priority)
             constraints.append(bottomConstraint)
         }
         if edges.contains(.left) {
-            let leftConstraint = leftAnchor.constraint(greaterThanOrEqualTo: layoutGuide.leftAnchor, constant: insets.left)
+            let leftConstraint = leftAnchor
+                .constraint(greaterThanOrEqualTo: layoutGuide.leftAnchor, constant: insets.left)
                 .priority(priority)
             constraints.append(leftConstraint)
         }
         if edges.contains(.right) {
-            let rightConstraint = rightAnchor.constraint(lessThanOrEqualTo: layoutGuide.rightAnchor, constant: -insets.right)
+            let rightConstraint = rightAnchor
+                .constraint(lessThanOrEqualTo: layoutGuide.rightAnchor, constant: -insets.right)
                 .priority(priority)
             constraints.append(rightConstraint)
         }
@@ -668,22 +674,26 @@ extension UIView {
         translatesAutoresizingMaskIntoConstraints = false
         var constraints: [NSLayoutConstraint] = []
         if directionalEdges.contains(.top) {
-            let topConstraint = topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: insets.top)
+            let topConstraint = topAnchor
+                .constraint(equalTo: layoutGuide.topAnchor, constant: insets.top)
                 .priority(priority)
             constraints.append(topConstraint)
         }
         if directionalEdges.contains(.bottom) {
-            let bottomConstraint = bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
+            let bottomConstraint = bottomAnchor
+                .constraint(equalTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
                 .priority(priority)
             constraints.append(bottomConstraint)
         }
         if directionalEdges.contains(.leading) {
-            let leadingConstraint = leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: insets.leading)
+            let leadingConstraint = leadingAnchor
+                .constraint(equalTo: layoutGuide.leadingAnchor, constant: insets.leading)
                 .priority(priority)
             constraints.append(leadingConstraint)
         }
         if directionalEdges.contains(.trailing) {
-            let trailingConstraint = trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -insets.trailing)
+            let trailingConstraint = trailingAnchor
+                .constraint(equalTo: layoutGuide.trailingAnchor, constant: -insets.trailing)
                 .priority(priority)
             constraints.append(trailingConstraint)
         }
@@ -813,22 +823,26 @@ extension UIView {
         translatesAutoresizingMaskIntoConstraints = false
         var constraints: [NSLayoutConstraint] = []
         if directionalEdges.contains(.top) {
-            let topConstraint = topAnchor.constraint(greaterThanOrEqualTo: layoutGuide.topAnchor, constant: insets.top)
+            let topConstraint = topAnchor
+                .constraint(greaterThanOrEqualTo: layoutGuide.topAnchor, constant: insets.top)
                 .priority(priority)
             constraints.append(topConstraint)
         }
         if directionalEdges.contains(.bottom) {
-            let bottomConstraint = bottomAnchor.constraint(lessThanOrEqualTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
+            let bottomConstraint = bottomAnchor
+                .constraint(lessThanOrEqualTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
                 .priority(priority)
             constraints.append(bottomConstraint)
         }
         if directionalEdges.contains(.leading) {
-            let leadingConstraint = leadingAnchor.constraint(greaterThanOrEqualTo: layoutGuide.leadingAnchor, constant: insets.leading)
+            let leadingConstraint = leadingAnchor
+                .constraint(greaterThanOrEqualTo: layoutGuide.leadingAnchor, constant: insets.leading)
                 .priority(priority)
             constraints.append(leadingConstraint)
         }
         if directionalEdges.contains(.trailing) {
-            let trailingConstraint = trailingAnchor.constraint(lessThanOrEqualTo: layoutGuide.trailingAnchor, constant: -insets.trailing)
+            let trailingConstraint = trailingAnchor
+                .constraint(lessThanOrEqualTo: layoutGuide.trailingAnchor, constant: -insets.trailing)
                 .priority(priority)
             constraints.append(trailingConstraint)
         }

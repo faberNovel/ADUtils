@@ -5,6 +5,7 @@ use_frameworks!
 
 
 target 'ADUtilsApp' do
+    pod 'SwiftLint', '~> 0.42.0'
 end
 
 target 'ADUtilsTests' do

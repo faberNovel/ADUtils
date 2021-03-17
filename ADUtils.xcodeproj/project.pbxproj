@@ -416,6 +416,7 @@
 				6FE3EFF61A6D3EB1007A4AD5 /* Patch Info.plist according to the environment */,
 				490133B11C1EFC11000CC04B /* Turn TODO into Warning */,
 				490133B21C1EFC25000CC04B /* Warning if file > 250 lines */,
+				494C999A260205C500A1E098 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -522,6 +523,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "find \"${SRCROOT}/Classes\" \\( -name \"*.h\" -or -name \"*.m\" \\) -and \\( -path \"${SRCROOT}/Pods/*\" -prune -o -print0 \\) | xargs -0 wc -l | awk '$1 > 250 && $2 != \"total\" {for(i=2;i<NF;i++){printf \"%s%s\", $i, \" \"} print $NF \":1: warning: File more than 250 lines (\" $1 \"), consider refactoring.\" }'";
+		};
+		494C999A260205C500A1E098 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		6FE3EFF61A6D3EB1007A4AD5 /* Patch Info.plist according to the environment */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -27,7 +27,7 @@ extension String {
         return attributedString(
             arguments: arguments,
             defaultAttributes: defaultAttributes,
-            differentFormatAttributes: arguments.map{ _ in return formatAttributes }
+            differentFormatAttributes: arguments.map { _ in return formatAttributes }
         )
     }
 
@@ -75,9 +75,9 @@ extension String {
         }
     }
 
-    //MARK: - Private
+    // MARK: - Private
 
-    private func patternRegularExpression() throws -> NSRegularExpression  {
+    private func patternRegularExpression() throws -> NSRegularExpression {
         return try NSRegularExpression(pattern: "%(([1-9][0-9]*)\\$)?@", options: .caseInsensitive)
     }
 
