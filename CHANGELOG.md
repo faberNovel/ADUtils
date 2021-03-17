@@ -12,6 +12,8 @@ All notable changes to this project will be documented in this file.
 - `UIButton.ad_setBackgroundColor(:forState:)`
 - `UICollectionView.dequeueSupplementaryView<U: ClassIdentifiable>(_:ofKind:at:)` dequeue generic reusable view from `UICollectionView`
 - `UICollectionView.register(supplementaryView:kind:)` register generic reusable view from `UICollectionView`
+- `HStackView(spacing:alignment:distribution:arrangedSubviews:)`
+- `VStackView(spacing:alignment:distribution:arrangedSubviews:)`
 
 ## [11.0.0] - 2020-06-19
 
