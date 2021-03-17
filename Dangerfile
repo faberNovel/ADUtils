@@ -7,3 +7,10 @@ swiftlint.lint_files(
   inline_mode: true,
   additional_swiftlint_args: "--strict"
 )
+
+## CHANGELOG
+
+has_lib_changes = !(git.modified_files + git.added_files).grep(/Modules\/ADUtils/).empty?
+if !git.modified_files.include?("CHANGELOG.md") && has_lib_changes
+  warn("Please include a CHANGELOG entry.")
+end
