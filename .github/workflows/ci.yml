@@ -43,4 +43,6 @@ jobs:
         fi
 
     - name: Build and test
+      env:
+        GITHUB_API_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN_CI }}
       run: bundle exec fastlane ci_check
