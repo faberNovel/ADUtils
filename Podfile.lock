@@ -17,6 +17,7 @@ PODS:
     - Nimble (~> 8.0)
   - OCMock (3.5)
   - Quick (2.2.0)
+  - SwiftLint (0.42.0)
 
 DEPENDENCIES:
   - ADUtils (from `./`)
@@ -24,6 +25,7 @@ DEPENDENCIES:
   - Nimble-Snapshots (~> 8.0)
   - OCMock (~> 3.5)
   - Quick (~> 2.2)
+  - SwiftLint (~> 0.42.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -32,6 +34,7 @@ SPEC REPOS:
     - Nimble-Snapshots
     - OCMock
     - Quick
+    - SwiftLint
 
 EXTERNAL SOURCES:
   ADUtils:
@@ -44,7 +47,8 @@ SPEC CHECKSUMS:
   Nimble-Snapshots: 8ec63f41ce6c7229a17be9a64edbc123b181f75b
   OCMock: 4ab4577fc941af31f4a0398f6e7e230cf21fc72a
   Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
+  SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
 
-PODFILE CHECKSUM: cefd0a94f5940cca107779fe5489018a91059e67
+PODFILE CHECKSUM: 50ae66bf2466bc84dfeee8b16bd3f60d16ae032e
 
 COCOAPODS: 1.10.0

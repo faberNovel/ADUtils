@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+// swiftlint:disable file_length
+
 extension UILayoutGuide {
     /**
      Add constraints to pin self in layout guide
@@ -368,7 +370,6 @@ extension UILayoutGuide {
         )
     }
 
-
     /**
      Add max constraints to edges of owningView.
 
@@ -382,14 +383,22 @@ extension UILayoutGuide {
     @objc(ad_constrainInOwningViewWithEdges:insets:priority:)
     @discardableResult
     public func ad_constrainInOwningView(edges: UIRectEdge,
-                                        insets: UIEdgeInsets,
-                                        priority: UILayoutPriority) -> [NSLayoutConstraint] {
+                                         insets: UIEdgeInsets,
+                                         priority: UILayoutPriority) -> [NSLayoutConstraint] {
         guard let owningView = owningView else { return [] }
         let constraints: [NSLayoutConstraint] = [
-            edges.contains(.top) ? ad_pinMinTo(view: owningView, attribute: .top, constant: insets.top, priority: priority) : nil,
-            edges.contains(.left) ? ad_pinMinTo(view: owningView, attribute: .left, constant: insets.left, priority: priority) : nil,
-            edges.contains(.bottom) ? ad_pinMaxTo(view: owningView, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
-            edges.contains(.right) ? ad_pinMaxTo(view: owningView, attribute: .right, constant: -insets.right, priority: priority) : nil,
+            edges.contains(.top)
+                ? ad_pinMinTo(view: owningView, attribute: .top, constant: insets.top, priority: priority)
+                : nil,
+            edges.contains(.left)
+                ? ad_pinMinTo(view: owningView, attribute: .left, constant: insets.left, priority: priority)
+                : nil,
+            edges.contains(.bottom)
+                ? ad_pinMaxTo(view: owningView, attribute: .bottom, constant: -insets.bottom, priority: priority)
+                : nil,
+            edges.contains(.right)
+                ? ad_pinMaxTo(view: owningView, attribute: .right, constant: -insets.right, priority: priority)
+                : nil,
         ].compactMap { $0 }
         return constraints
     }
@@ -405,7 +414,7 @@ extension UILayoutGuide {
     @objc(ad_constrainInOwningViewWithEdges:insets:)
     @discardableResult
     public func ad_constrainInOwningView(edges: UIRectEdge,
-                                        insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+                                         insets: UIEdgeInsets) -> [NSLayoutConstraint] {
         return ad_constrainInOwningView(edges: edges, insets: insets, priority: .required)
     }
 
@@ -485,7 +494,8 @@ extension UILayoutGuide {
      */
     @objc(ad_centerInOwningViewAlongAxis:priority:)
     @discardableResult
-    public func ad_centerInOwningView(along axis: NSLayoutConstraint.Axis, priority: UILayoutPriority) -> [NSLayoutConstraint] {
+    public func ad_centerInOwningView(along axis: NSLayoutConstraint.Axis,
+                                      priority: UILayoutPriority) -> [NSLayoutConstraint] {
         guard let owningView = self.owningView else { return [] }
         switch axis {
         case .horizontal:
@@ -551,10 +561,18 @@ extension UILayoutGuide {
                                    priority: UILayoutPriority) -> [NSLayoutConstraint] {
         guard let owningView = self.owningView else { return [] }
         let constraints: [NSLayoutConstraint] = [
-            edges.contains(.top) ? ad_pinTo(view: owningView, attribute: .top, constant: insets.top, priority: priority) : nil,
-            edges.contains(.left) ? ad_pinTo(view: owningView, attribute: .left, constant: insets.left, priority: priority) : nil,
-            edges.contains(.bottom) ? ad_pinTo(view: owningView, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
-            edges.contains(.right) ? ad_pinTo(view: owningView, attribute: .right, constant: -insets.right, priority: priority) : nil,
+            edges.contains(.top)
+                ? ad_pinTo(view: owningView, attribute: .top, constant: insets.top, priority: priority)
+                : nil,
+            edges.contains(.left)
+                ? ad_pinTo(view: owningView, attribute: .left, constant: insets.left, priority: priority)
+                : nil,
+            edges.contains(.bottom)
+                ? ad_pinTo(view: owningView, attribute: .bottom, constant: -insets.bottom, priority: priority)
+                : nil,
+            edges.contains(.right)
+                ? ad_pinTo(view: owningView, attribute: .right, constant: -insets.right, priority: priority)
+                : nil,
         ].compactMap { $0 }
         return constraints
     }
@@ -607,7 +625,7 @@ extension UILayoutGuide {
         return ad_pinToOwningView(edges: .all, insets: .zero)
     }
 
-    //MARK: - Private
+    // MARK: - Private
 
     private func areInTheSameViewHierarchy(_ firstView: UIView, _ secondView: UIView) -> Bool {
         guard !firstView.isDescendant(of: secondView) && !secondView.isDescendant(of: firstView) else {
@@ -700,22 +718,26 @@ extension UILayoutGuide {
                 return constraints
         }
         if directionalEdges.contains(.top) {
-            let topConstraint = topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: insets.top)
+            let topConstraint = topAnchor
+                .constraint(equalTo: layoutGuide.topAnchor, constant: insets.top)
                 .priority(priority)
             constraints.append(topConstraint)
         }
         if directionalEdges.contains(.bottom) {
-            let bottomConstraint = bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
+            let bottomConstraint = bottomAnchor
+                .constraint(equalTo: layoutGuide.bottomAnchor, constant: -insets.bottom)
                 .priority(priority)
             constraints.append(bottomConstraint)
         }
         if directionalEdges.contains(.leading) {
-            let leadingConstraint = leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: insets.leading)
+            let leadingConstraint = leadingAnchor
+                .constraint(equalTo: layoutGuide.leadingAnchor, constant: insets.leading)
                 .priority(priority)
             constraints.append(leadingConstraint)
         }
         if directionalEdges.contains(.trailing) {
-            let trailingConstraint = trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -insets.trailing)
+            let trailingConstraint = trailingAnchor
+                .constraint(equalTo: layoutGuide.trailingAnchor, constant: -insets.trailing)
                 .priority(priority)
             constraints.append(trailingConstraint)
         }
@@ -942,7 +964,6 @@ extension UILayoutGuide {
         )
     }
 
-
     /**
      Add max constraints to edges of owningView.
 
@@ -956,14 +977,22 @@ extension UILayoutGuide {
     @objc(ad_constrainInOwningViewWithDirectionalEdges:insets:priority:)
     @discardableResult
     public func ad_constrainInOwningView(directionalEdges: NSDirectionalRectEdge,
-                                        insets: NSDirectionalEdgeInsets,
-                                        priority: UILayoutPriority) -> [NSLayoutConstraint] {
+                                         insets: NSDirectionalEdgeInsets,
+                                         priority: UILayoutPriority) -> [NSLayoutConstraint] {
         guard let owningView = owningView else { return [] }
         let constraints: [NSLayoutConstraint] = [
-            directionalEdges.contains(.top) ? ad_pinMinTo(view: owningView, attribute: .top, constant: insets.top, priority: priority) : nil,
-            directionalEdges.contains(.leading) ? ad_pinMinTo(view: owningView, attribute: .leading, constant: insets.leading, priority: priority) : nil,
-            directionalEdges.contains(.bottom) ? ad_pinMaxTo(view: owningView, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
-            directionalEdges.contains(.trailing) ? ad_pinMaxTo(view: owningView, attribute: .trailing, constant: -insets.trailing, priority: priority) : nil,
+            directionalEdges.contains(.top)
+                ? ad_pinMinTo(view: owningView, attribute: .top, constant: insets.top, priority: priority)
+                : nil,
+            directionalEdges.contains(.leading)
+                ? ad_pinMinTo(view: owningView, attribute: .leading, constant: insets.leading, priority: priority)
+                : nil,
+            directionalEdges.contains(.bottom)
+                ? ad_pinMaxTo(view: owningView, attribute: .bottom, constant: -insets.bottom, priority: priority)
+                : nil,
+            directionalEdges.contains(.trailing)
+                ? ad_pinMaxTo(view: owningView, attribute: .trailing, constant: -insets.trailing, priority: priority)
+                : nil,
         ].compactMap { $0 }
         return constraints
     }
@@ -979,7 +1008,7 @@ extension UILayoutGuide {
     @objc(ad_constrainInOwningViewWithDirectionalEdges:insets:)
     @discardableResult
     public func ad_constrainInOwningView(directionalEdges: NSDirectionalRectEdge,
-                                        insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
+                                         insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
         return ad_constrainInOwningView(directionalEdges: directionalEdges, insets: insets, priority: .required)
     }
 
@@ -1038,10 +1067,18 @@ extension UILayoutGuide {
                                    priority: UILayoutPriority) -> [NSLayoutConstraint] {
         guard let owningView = self.owningView else { return [] }
         let constraints: [NSLayoutConstraint] = [
-            directionalEdges.contains(.top) ? ad_pinTo(view: owningView, attribute: .top, constant: insets.top, priority: priority) : nil,
-            directionalEdges.contains(.leading) ? ad_pinTo(view: owningView, attribute: .leading, constant: insets.leading, priority: priority) : nil,
-            directionalEdges.contains(.bottom) ? ad_pinTo(view: owningView, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
-            directionalEdges.contains(.trailing) ? ad_pinTo(view: owningView, attribute: .trailing, constant: -insets.trailing, priority: priority) : nil,
+            directionalEdges.contains(.top)
+                ? ad_pinTo(view: owningView, attribute: .top, constant: insets.top, priority: priority)
+                : nil,
+            directionalEdges.contains(.leading)
+                ? ad_pinTo(view: owningView, attribute: .leading, constant: insets.leading, priority: priority)
+                : nil,
+            directionalEdges.contains(.bottom)
+                ? ad_pinTo(view: owningView, attribute: .bottom, constant: -insets.bottom, priority: priority)
+                : nil,
+            directionalEdges.contains(.trailing)
+                ? ad_pinTo(view: owningView, attribute: .trailing, constant: -insets.trailing, priority: priority)
+                : nil,
         ].compactMap { $0 }
         return constraints
     }
@@ -1058,7 +1095,11 @@ extension UILayoutGuide {
     @discardableResult
     public func ad_pinToOwningView(directionalEdges: NSDirectionalRectEdge,
                                    insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
-        return ad_pinToOwningView(directionalEdges: directionalEdges, insets: insets, priority: UILayoutPriority.required)
+        return ad_pinToOwningView(
+            directionalEdges: directionalEdges,
+            insets: insets,
+            priority: UILayoutPriority.required
+        )
     }
 
     /**

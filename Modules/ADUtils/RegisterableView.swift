@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+// swiftlint:disable force_cast
+
 /*
  * Usage example:
  *
@@ -31,7 +33,7 @@ public protocol ClassIdentifiable {
     static func identifier() -> String
 }
 
-extension NSObject : ClassIdentifiable {
+extension NSObject: ClassIdentifiable {
     public static func identifier() -> String {
         return String(describing: self)
     }
@@ -45,22 +47,28 @@ public enum RegisterableView {
 public extension RegisterableView {
     var nib: UINib? {
         switch self {
-        case let .nib(cellClass): return UINib(nibName: String(describing: cellClass), bundle: nil)
-        default: return nil
+        case let .nib(cellClass):
+            return UINib(nibName: String(describing: cellClass), bundle: nil)
+        default:
+            return nil
         }
     }
 
     var identifier: String {
         switch self {
-        case let .nib(cellClass): return cellClass.identifier()
-        case let .class(cellClass): return cellClass.identifier()
+        case let .nib(cellClass):
+            return cellClass.identifier()
+        case let .class(cellClass):
+            return cellClass.identifier()
         }
     }
 
     var cellClass: AnyClass? {
         switch self {
-        case let .class(cellClass): return cellClass
-        default: return nil
+        case let .class(cellClass):
+            return cellClass
+        default:
+            return nil
         }
     }
 }
@@ -85,7 +93,7 @@ public extension CollectionView {
     }
 }
 
-extension UITableView : CollectionView {
+extension UITableView: CollectionView {
     public func register(cell: RegisterableView) {
         switch cell {
         case .nib:
@@ -109,7 +117,7 @@ extension UITableView : CollectionView {
     }
 }
 
-extension UICollectionView : CollectionView {
+extension UICollectionView: CollectionView {
     public func register(cell: RegisterableView) {
         switch cell {
         case .nib:

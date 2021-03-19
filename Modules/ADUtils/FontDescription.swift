@@ -23,7 +23,7 @@ struct FontDescription {
      */
     private let dictionary: FontDescriptionDictionary
 
-    //MARK: - FontDescription
+    // MARK: - FontDescription
 
     /**
      Create a FontDescription use the fontName plist in the given bundle
