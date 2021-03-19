@@ -15,6 +15,9 @@ All notable changes to this project will be documented in this file.
 - `HStackView(spacing:alignment:distribution:arrangedSubviews:)`
 - `VStackView(spacing:alignment:distribution:arrangedSubviews:)`
 
+### Fixed
+- `Debounced` property wrapper no longer has a retain cycle
+
 ## [11.0.0] - 2020-06-19
 
 ### Created
