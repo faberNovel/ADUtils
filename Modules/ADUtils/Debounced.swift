@@ -53,8 +53,8 @@ public class Debounced {
         set {
             /// Each time the action parameter is called, the workItem is reset
             /// so the action is really executed after `delay`
-            self.action = {
-                self.debounceAction(newValue)
+            self.action = { [weak self] in
+                self?.debounceAction(newValue)
             }
         }
     }
