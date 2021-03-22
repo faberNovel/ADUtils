@@ -14,8 +14,9 @@ private enum LayoutOrientation {
     case vertical
 }
 /**
-The default computation type and the one that should be used is layout engine.
-AutoLayout computation type should be used for view requiring layout phase before computation; like auto sizing UIScrollView
+ The default computation type and the one that should be used is layout engine.
+ AutoLayout computation type should be used for view requiring layout phase before computation;
+ like auto sizing UIScrollView
 */
 public enum LayoutComputationType {
     /**
@@ -31,7 +32,9 @@ public enum LayoutComputationType {
 public extension UIView {
 
     /**
-     Provides the preferred layout height for the view, this is the smallest height the view and its content can fit. You should populate the view before calling this method.
+     Provides the preferred layout height for the view,
+     this is the smallest height the view and its content can fit.
+     You should populate the view before calling this method.
 
      - parameter fittingWidth: The biggest width the view can get
 
@@ -43,7 +46,9 @@ public extension UIView {
     }
 
     /**
-     Provides the preferred layout width for the view, this is the smallest width the view and its content can fit. You should populate the view before calling this method.
+     Provides the preferred layout width for the view, t
+     his is the smallest width the view and its content can fit.
+     You should populate the view before calling this method.
 
      - parameter fittingHeight: The biggest height the view can get
 
@@ -55,7 +60,9 @@ public extension UIView {
     }
 
     /**
-     Provides the preferred layout size for the view, this is the smallest size the view and its content can fit. You should populate the view before calling this method.
+     Provides the preferred layout size for the view,
+     this is the smallest size the view and its content can fit.
+     You should populate the view before calling this method.
 
      - parameter fittingWidth: The biggest width the view can get
 
@@ -71,7 +78,9 @@ public extension UIView {
     }
 
     /**
-     Provides the preferred layout size for the view, this is the smallest size the view and its content can fit. You should populate the view before calling this method.
+     Provides the preferred layout size for the view,
+     this is the smallest size the view and its content can fit.
+     You should populate the view before calling this method.
 
      - parameter fittingHeight: The biggest height the view can get
 
@@ -88,7 +97,9 @@ public extension UIView {
     // MARK: - Private
 
     /**
-     Provides the preferred layout size for the view, this is the smallest size the view and its content can fit. You should populate the view before calling this method.
+     Provides the preferred layout size for the view,
+     this is the smallest size the view and its content can fit.
+     You should populate the view before calling this method.
 
      - parameter targetSize: The biggest size the view can get
 
@@ -109,7 +120,9 @@ public extension UIView {
     }
 
     /**
-     Provides the preferred layout size for the view using layout engine, this is the smallest size the view and its content can fit. You should populate the view before calling this method.
+     Provides the preferred layout size for the view using layout engine,
+     this is the smallest size the view and its content can fit.
+     You should populate the view before calling this method.
 
      - parameter targetSize: The biggest size the view can get
 
@@ -139,7 +152,9 @@ public extension UIView {
     }
 
     /**
-     Provides the preferred layout size for the view using auto layout, this is the smallest size the view and its content can fit. You should populate the view before calling this method.
+     Provides the preferred layout size for the view using auto layout,
+     this is the smallest size the view and its content can fit.
+      bYou should populate the view before calling this method.
 
      - parameter targetSize: The biggest size the view can get
 
@@ -152,11 +167,11 @@ public extension UIView {
         var lockConstraints: [NSLayoutConstraint] = []
         switch lockDirection {
         case .horizontal:
-            lockConstraints.append(contentsOf: lockView(.width, to:targetSize.width))
+            lockConstraints.append(contentsOf: lockView(.width, to: targetSize.width))
         case .vertical:
             // TODO: (Pierre Felgines) 18/04/2018 Someone with a real life test case should handle the layout
             NSLog("[ADUtils] WARNING, argument LayoutOrientation.vertical is not handled yet...")
-            lockConstraints.append(contentsOf: lockView(.height, to:targetSize.height))
+            lockConstraints.append(contentsOf: lockView(.height, to: targetSize.height))
         }
         layoutIfNeeded()
         let computedSize = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
@@ -178,7 +193,7 @@ public extension UIView {
             multiplier: 1.0,
             constant: value
         )
-        //???: (Benjamin Lavialle) 2017-05-04 Do not use required in case there is an other width constraint
+        // (Benjamin Lavialle) 2017-05-04 Do not use required in case there is an other width constraint
         equalConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.required.rawValue - 1)
         let maxConstraint = NSLayoutConstraint(
             item: self,

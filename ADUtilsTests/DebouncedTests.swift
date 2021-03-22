@@ -138,5 +138,20 @@ class DebouncedTests: QuickSpec {
                 }
             }
         }
+
+        it("should not have retain cycle") {
+            class ObjectWithDebouncedWrapper {
+                @Debounced(delay: Constants.delay, queue: .main)
+                var debounced: () -> Void
+                var debouncedWrapper: Debounced { _debounced }
+            }
+            var object: ObjectWithDebouncedWrapper? = ObjectWithDebouncedWrapper()
+            object?.debounced = {}
+            weak var weakReference: Debouncer? = object?.debouncedWrapper
+
+            expect(weakReference).notTo(beNil())
+            object = nil
+            expect(weakReference).to(beNil())
+        }
     }
 }

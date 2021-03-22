@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+// swiftlint:disable file_length
+
 extension UIView {
 
     /**
@@ -29,10 +31,18 @@ extension UIView {
         guard let superview = superview else { return [] }
         translatesAutoresizingMaskIntoConstraints = false
         let constraints: [NSLayoutConstraint] = [
-            edges.contains(.top) ? ad_pinMinTo(view: superview, attribute: .top, constant: insets.top, priority: priority) : nil,
-            edges.contains(.left) ? ad_pinMinTo(view: superview, attribute: .left, constant: insets.left, priority: priority) : nil,
-            edges.contains(.bottom) ? ad_pinMaxTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
-            edges.contains(.right) ? ad_pinMaxTo(view: superview, attribute: .right, constant: -insets.right, priority: priority) : nil,
+            edges.contains(.top)
+                ? ad_pinMinTo(view: superview, attribute: .top, constant: insets.top, priority: priority)
+                : nil,
+            edges.contains(.left)
+                ? ad_pinMinTo(view: superview, attribute: .left, constant: insets.left, priority: priority)
+                : nil,
+            edges.contains(.bottom)
+                ? ad_pinMaxTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority)
+                : nil,
+            edges.contains(.right)
+                ? ad_pinMaxTo(view: superview, attribute: .right, constant: -insets.right, priority: priority)
+                : nil,
         ].compactMap { $0 }
         return constraints
     }
@@ -216,10 +226,18 @@ extension UIView {
         guard let superview = self.superview else { return [] }
         translatesAutoresizingMaskIntoConstraints = false
         let constraints: [NSLayoutConstraint] = [
-            edges.contains(.top) ? ad_pinTo(view: superview, attribute: .top, constant: insets.top, priority: priority) : nil,
-            edges.contains(.left) ? ad_pinTo(view: superview, attribute: .left, constant: insets.left, priority: priority) : nil,
-            edges.contains(.bottom) ? ad_pinTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
-            edges.contains(.right) ? ad_pinTo(view: superview, attribute: .right, constant: -insets.right, priority: priority) : nil,
+            edges.contains(.top)
+                ? ad_pinTo(view: superview, attribute: .top, constant: insets.top, priority: priority)
+                : nil,
+            edges.contains(.left)
+                ? ad_pinTo(view: superview, attribute: .left, constant: insets.left, priority: priority)
+                : nil,
+            edges.contains(.bottom)
+                ? ad_pinTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority)
+                : nil,
+            edges.contains(.right)
+                ? ad_pinTo(view: superview, attribute: .right, constant: -insets.right, priority: priority)
+                : nil,
         ].compactMap { $0 }
         return constraints
     }
@@ -286,7 +304,7 @@ extension UIView {
         return ad_pinToSuperview(edges: .all, insets: .zero)
     }
 
-    //MARK: - Private
+    // MARK: - Private
 
     private func ad_pinTo(view: UIView,
                           attribute: NSLayoutConstraint.Attribute,
@@ -365,10 +383,18 @@ extension UIView {
         guard let superview = superview else { return [] }
         translatesAutoresizingMaskIntoConstraints = false
         let constraints: [NSLayoutConstraint] = [
-            directionalEdges.contains(.top) ? ad_pinMinTo(view: superview, attribute: .top, constant: insets.top, priority: priority) : nil,
-            directionalEdges.contains(.leading) ? ad_pinMinTo(view: superview, attribute: .leading, constant: insets.leading, priority: priority) : nil,
-            directionalEdges.contains(.bottom) ? ad_pinMaxTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
-            directionalEdges.contains(.trailing) ? ad_pinMaxTo(view: superview, attribute: .trailing, constant: -insets.trailing, priority: priority) : nil,
+            directionalEdges.contains(.top)
+                ? ad_pinMinTo(view: superview, attribute: .top, constant: insets.top, priority: priority)
+                : nil,
+            directionalEdges.contains(.leading)
+                ? ad_pinMinTo(view: superview, attribute: .leading, constant: insets.leading, priority: priority)
+                : nil,
+            directionalEdges.contains(.bottom)
+                ? ad_pinMaxTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority)
+                : nil,
+            directionalEdges.contains(.trailing)
+                ? ad_pinMaxTo(view: superview, attribute: .trailing, constant: -insets.trailing, priority: priority)
+                : nil,
         ].compactMap { $0 }
         return constraints
     }
@@ -444,10 +470,18 @@ extension UIView {
         guard let superview = self.superview else { return [] }
         translatesAutoresizingMaskIntoConstraints = false
         let constraints: [NSLayoutConstraint] = [
-            directionalEdges.contains(.top) ? ad_pinTo(view: superview, attribute: .top, constant: insets.top, priority: priority) : nil,
-            directionalEdges.contains(.leading) ? ad_pinTo(view: superview, attribute: .leading, constant: insets.leading, priority: priority) : nil,
-            directionalEdges.contains(.bottom) ? ad_pinTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority) : nil,
-            directionalEdges.contains(.trailing) ? ad_pinTo(view: superview, attribute: .trailing, constant: -insets.trailing, priority: priority) : nil,
+            directionalEdges.contains(.top)
+                ? ad_pinTo(view: superview, attribute: .top, constant: insets.top, priority: priority)
+                : nil,
+            directionalEdges.contains(.leading)
+                ? ad_pinTo(view: superview, attribute: .leading, constant: insets.leading, priority: priority)
+                : nil,
+            directionalEdges.contains(.bottom)
+                ? ad_pinTo(view: superview, attribute: .bottom, constant: -insets.bottom, priority: priority)
+                : nil,
+            directionalEdges.contains(.trailing)
+                ? ad_pinTo(view: superview, attribute: .trailing, constant: -insets.trailing, priority: priority)
+                : nil,
         ].compactMap { $0 }
         return constraints
     }
@@ -462,8 +496,13 @@ extension UIView {
      */
     @objc(ad_pinToSuperviewWithDirectionalEdges:insets:)
     @discardableResult
-    public func ad_pinToSuperview(directionalEdges: NSDirectionalRectEdge, insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
-        return ad_pinToSuperview(directionalEdges: directionalEdges, insets: insets, priority: UILayoutPriority.required)
+    public func ad_pinToSuperview(directionalEdges: NSDirectionalRectEdge,
+                                  insets: NSDirectionalEdgeInsets) -> [NSLayoutConstraint] {
+        return ad_pinToSuperview(
+            directionalEdges: directionalEdges,
+            insets: insets,
+            priority: UILayoutPriority.required
+        )
     }
 
     /**
@@ -476,7 +515,8 @@ extension UIView {
      */
     @objc(ad_pinToSuperviewWithDirectionalEdges:priority:)
     @discardableResult
-    public func ad_pinToSuperview(directionalEdges: NSDirectionalRectEdge, priority: UILayoutPriority) -> [NSLayoutConstraint] {
+    public func ad_pinToSuperview(directionalEdges: NSDirectionalRectEdge,
+                                  priority: UILayoutPriority) -> [NSLayoutConstraint] {
         return ad_pinToSuperview(directionalEdges: directionalEdges, insets: .zero, priority: priority)
     }
 

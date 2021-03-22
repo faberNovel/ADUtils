@@ -28,7 +28,7 @@ public struct DynamicFont: DynamicFontProvider {
 
     private let provider: DynamicFontProvider
 
-    //MARK: - DynamicFont
+    // MARK: - DynamicFont
 
     /**
      Create a DynamicFont use the fontName plist in the given bundle
@@ -49,7 +49,7 @@ public struct DynamicFont: DynamicFontProvider {
         provider = DefaultDynamicFontProvider()
     }
 
-    //MARK: - DynamicFontProvider
+    // MARK: - DynamicFontProvider
 
     public func font(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
         return provider.font(forTextStyle: textStyle)
@@ -58,7 +58,7 @@ public struct DynamicFont: DynamicFontProvider {
 
 private struct DefaultDynamicFontProvider: DynamicFontProvider {
 
-    //MARK: - DynamicFontProvider
+    // MARK: - DynamicFontProvider
 
     func font(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
         return UIFont.preferredFont(forTextStyle: textStyle)
@@ -70,7 +70,7 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
     let fontDescription: FontDescription
     private let fontSizeHelper = FontSizeHelper()
 
-    //MARK: - DynamicFontProvider
+    // MARK: - DynamicFontProvider
 
     func font(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
         do {
@@ -81,12 +81,12 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
         }
     }
 
-    //MARK: - Private
+    // MARK: - Private
 
     private var currentSpecifiedContentSizeCategory: UIContentSizeCategory {
         var currentContentSizeCategory = UIScreen.main.traitCollection.preferredContentSizeCategory
         if currentContentSizeCategory == .unspecified {
-            //???: (Benjamin Lavialle) 2017-10-20 fallback on default category
+            // (Benjamin Lavialle) 2017-10-20 fallback on default category
             currentContentSizeCategory = .large
         }
         return currentContentSizeCategory
@@ -152,7 +152,7 @@ private extension UIFont.Weight {
 
 private struct FontSizeHelper {
 
-    //???: (Benjamin Lavialle) 2017-10-20 Provides a font size according to the Apple default font size for categories
+    // (Benjamin Lavialle) 2017-10-20 Provides a font size according to the Apple default font size for categories
     func fontSize(matchingSize size: CGFloat,
                   withStyle style: UIFont.TextStyle,
                   contentSizeCategory: UIContentSizeCategory) -> CGFloat {
@@ -171,9 +171,11 @@ private struct FontSizeHelper {
         return CGFloat(size)
     }
 
-    //???: (Benjamin Lavialle) 2017-10-20 Font sizes from Apple system font
+    // (Benjamin Lavialle) 2017-10-20 Font sizes from Apple system font
+    // swiftlint:disable:next line_length
     private let fontSizeMatrix: [UIFont.TextStyle: [UIContentSizeCategory: CGFloat]] = FontSizeHelper.createFontSizeMatrix()
 
+    // swiftlint:disable:next function_body_length
     private static func createFontSizeMatrix() -> [UIFont.TextStyle: [UIContentSizeCategory: CGFloat]] {
         var fontSizeMatrix: [UIFont.TextStyle: [UIContentSizeCategory: CGFloat]] = [
             .headline: [

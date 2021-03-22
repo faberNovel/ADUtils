@@ -30,18 +30,19 @@ public class ProxyDetector {
 
     /**
      Check on proxy use and display an alert view if activated
-     - parameter time interval before check, it may be usefull if you want to check on proxy at application start, but after launchscreen presentation
+     - parameter time interval before check, it may be usefull if you want to check on proxy at application start,
+     but after launchscreen presentation
      - note: Does not check on proxy on simulator
      - note: The alert view is presented on the application top most view controller
      - note: The alert view is dismissed on its own after one second
      */
     public func handleProxyNotification(after delay: TimeInterval) {
         guard TARGET_OS_SIMULATOR == 0 else {
-            //???: (Benjamin Lavialle) 2018-01-18 Do not notify proxy on simulator
+            // (Benjamin Lavialle) 2018-01-18 Do not notify proxy on simulator
             return
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
-            //???: (Benjamin Lavialle) 2017-10-03 Do not weak self, we need to keep self to complete action
+            // (Benjamin Lavialle) 2017-10-03 Do not weak self, we need to keep self to complete action
             guard let topMostViewController = self.topMostViewController else { return }
             self.notifyIfProxyActivated(in: topMostViewController)
         })
@@ -67,11 +68,11 @@ public class ProxyDetector {
         }
     }
 
-    //MARK: - Private
+    // MARK: - Private
 
     private var proxyName: String? {
         let cfNetworkProxySettings = CFNetworkCopySystemProxySettings()?.takeUnretainedValue()
-        let networkProxySettings =  cfNetworkProxySettings as? [String: AnyObject]
+        let networkProxySettings = cfNetworkProxySettings as? [String: AnyObject]
         let httpProxy = networkProxySettings?["HTTPProxy"] as? String
         let httpsProxy = networkProxySettings?["HTTPSProxy"] as? String
         return httpProxy ?? httpsProxy

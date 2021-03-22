@@ -11,7 +11,9 @@ import UIKit
 extension UITableViewHeaderFooterView {
 
     /**
-     Provides the preferred layout height for the table view headerFooter, this is the smallest height the view and its content can fit. You should populate the view before calling this method.
+     Provides the preferred layout height for the table view headerFooter,
+     this is the smallest height the view and its content can fit.
+     You should populate the view before calling this method.
 
      - parameter fittingWidth: The biggest width the view can get
 
@@ -31,8 +33,9 @@ extension UITableViewHeaderFooterView {
     // MARK: - Private
 
     /**
-    Provides the preferred layout height for the table view headerFooter using autoLayout computation type,
-    this is the smallest height the view and its content can fit. You should populate the view before calling this method.
+     Provides the preferred layout height for the table view headerFooter using autoLayout computation type,
+     this is the smallest height the view and its content can fit.
+     You should populate the view before calling this method.
 
     - parameter fittingWidth: The biggest width the view can get
     */

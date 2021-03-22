@@ -9,7 +9,10 @@
 import Foundation
 import UIKit
 
-//???: (Benjamin Lavialle) 12/10/16 Protocol extension is not allowed in objc, adding thoses methods to table/collection view should be enough
+// swiftlint:disable discouraged_optional_collection
+
+// (Benjamin Lavialle) 12/10/16 Protocol extension is not allowed in objc,
+// adding thoses methods to table/collection view should be enough
 
 extension UITableView {
 
@@ -30,7 +33,7 @@ extension UITableView {
     }
 }
 
-extension UICollectionView  {
+extension UICollectionView {
 
     @objc public var adobjc_selectedIndexPaths: [IndexPath]? {
         return selectedIndexPaths

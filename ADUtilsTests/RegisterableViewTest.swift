@@ -55,6 +55,10 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
                 .class(UICollectionReusableView.self)
             ]
         )
+        collectionView.register(
+            supplementaryView: .class(CollectionViewSupplementary.self),
+            kind: Constants.supplementaryKind
+        )
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -88,6 +92,10 @@ class CollectionViewCell: UICollectionViewCell {}
 class NibCollectionViewCell: UICollectionViewCell {}
 class CollectionViewHeader : UICollectionReusableView {}
 class CollectionViewFooter : UICollectionReusableView {}
+class CollectionViewSupplementary: UICollectionReusableView {}
+private enum Constants {
+    static let supplementaryKind = "supplementaryKind"
+}
 
 class RegisterableViewTest: QuickSpec {
 
@@ -159,7 +167,7 @@ class RegisterableViewTest: QuickSpec {
                 collectionView.layoutIfNeeded()
             }
 
-            it("should register cell class and get not nil instance back") {
+            it("should register cell class and get instance back") {
                 let cell: UICollectionViewCell = collectionView.dequeueCell(at: indexPath)
                 expect(cell).toNot(beNil())
 
@@ -179,7 +187,7 @@ class RegisterableViewTest: QuickSpec {
                 expect(nibCellDequeuedBySpecifyingClassInMethod).toNot(beNil())
             }
 
-            it("should register header class and get not instance back") {
+            it("should register header class and get instance back") {
                 let header: CollectionViewHeader = collectionView.dequeueHeader(at: indexPath)
                 expect(header).toNot(beNil())
 
@@ -197,6 +205,21 @@ class RegisterableViewTest: QuickSpec {
                     at: indexPath
                 )
                 expect(nibFooterDequeuedBySpecifyingClassInMethod).toNot(beNil())
+            }
+
+            it("should register supplementary class and get instance back") {
+                let view: CollectionViewSupplementary = collectionView.dequeueSupplementaryView(
+                    ofKind: Constants.supplementaryKind,
+                    at: indexPath
+                )
+                expect(view).toNot(beNil())
+
+                let viewDequeuedBySpecificClassInMethod = collectionView.dequeueSupplementaryView(
+                    CollectionViewSupplementary.self,
+                    ofKind: Constants.supplementaryKind,
+                    at: indexPath
+                )
+                expect(viewDequeuedBySpecificClassInMethod).toNot(beNil())
             }
         }
     }

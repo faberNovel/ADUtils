@@ -11,7 +11,9 @@ import UIKit
 public extension UITableViewCell {
 
     /**
-     Provides the preferred layout height for the table view cell, this is the smallest height the view and its content can fit. You should populate the view before calling this method.
+     Provides the preferred layout height for the table view cell,
+     this is the smallest height the view and its content can fit.
+     You should populate the view before calling this method.
 
      - parameter fittingWidth: The biggest width the view can get
 
@@ -31,8 +33,9 @@ public extension UITableViewCell {
     // MARK: - Private
 
     /**
-    Provides the preferred layout height for the table view cell using autoLayout computation type,
-    this is the smallest height the view and its content can fit. You should populate the view before calling this method.
+     Provides the preferred layout height for the table view cell using autoLayout computation type,
+     this is the smallest height the view and its content can fit.
+     You should populate the view before calling this method.
 
     - parameter fittingWidth: The biggest width the view can get
     */

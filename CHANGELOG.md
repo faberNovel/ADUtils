@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [11.1.0] - 2021-03-22
+
+### Created
+
+- `verifyOrNil(_:over:)`
+- `Optional.verifying(_:)`
+- `UIImage.ad_filled(with:size:)`
+- `UIButton.ad_setBackgroundColor(:forState:)`
+- `UICollectionView.dequeueSupplementaryView<U: ClassIdentifiable>(_:ofKind:at:)` dequeue generic reusable view from `UICollectionView`
+- `UICollectionView.register(supplementaryView:kind:)` register generic reusable view from `UICollectionView`
+- `HStackView(spacing:alignment:distribution:arrangedSubviews:)`
+- `VStackView(spacing:alignment:distribution:arrangedSubviews:)`
+
+### Fixed
+- `Debounced` property wrapper no longer has a retain cycle
+
 ## [11.0.0] - 2020-06-19
 
 ### Created
