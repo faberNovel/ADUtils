@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [11.1.0] - 2021-03-22
+
 ### Created
 
 - `verifyOrNil(_:over:)`
