@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [11.2.0] - 2021-05-18
+
+## Created
+
+- Add SPM support [#21](https://github.com/faberNovel/ADUtils/pull/21) via Alexandre Podlewski
+
 ## [11.1.0] - 2021-03-22
 
 ### Created
