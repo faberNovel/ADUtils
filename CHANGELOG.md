@@ -4,9 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- iOS 14.0+ gives a new property on navigationItem : `backButtonDisplayMode`. `ad_hideBackButtonTitle` now uses it.
+
 ## [11.2.0] - 2021-05-18
 
-## Created
+### Created
 
 - Add SPM support [#21](https://github.com/faberNovel/ADUtils/pull/21) via Alexandre Podlewski
 
