@@ -16,7 +16,11 @@ public extension UINavigationItem {
      */
     @available(tvOS, unavailable)
     func ad_hideBackButtonTitle() {
-        backBarButtonItem = .empty
+        if #available(iOS 14.0, *) {
+            backButtonDisplayMode = .minimal
+        } else {
+            backBarButtonItem = .empty
+        }
     }
 }
 
