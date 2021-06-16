@@ -54,7 +54,7 @@ class NavigationControllerObserverTest : QuickSpec {
             UIApplication.shared.keyWindow?.layer.speed = 100 // speed up animations
             let viewController = UIViewController()
             navigationController.pushViewController(viewController, animated: false)
-            waitUntil(timeout: 1.0) { done in
+            waitUntil(timeout: .milliseconds(1000)) { done in
                 navigationController.popViewController(animated: true)
                 // We need to wait the end of the animation
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -83,7 +83,7 @@ class NavigationControllerObserverTest : QuickSpec {
                 delegate: observerDelegate
             )
 
-            waitUntil(timeout: 1.0) { done in
+            waitUntil(timeout: .milliseconds(1000)) { done in
                 // When
                 navigationController.popViewController(animated: true)
 
@@ -116,7 +116,7 @@ class NavigationControllerObserverTest : QuickSpec {
                 delegate: observerDelegate2
             )
 
-            waitUntil(timeout: 1.0) { done in
+            waitUntil(timeout: .milliseconds(1000)) { done in
                 // When
                 navigationController.popViewController(animated: true)
 
@@ -147,7 +147,7 @@ class NavigationControllerObserverTest : QuickSpec {
                 delegate: observerDelegate
             )
 
-            waitUntil(timeout: 1.0) { done in
+            waitUntil(timeout: .milliseconds(1000)) { done in
                 // When
                 removeObserverAction(viewControllerToObserve)
                 navigationController.popViewController(animated: true)
@@ -192,7 +192,7 @@ class NavigationControllerObserverTest : QuickSpec {
             let navigationControllerDelegate = NavigationControllerDelegate()
             observer.navigationControllerDelegate = navigationControllerDelegate
 
-            waitUntil(timeout: 1.0) { done in
+            waitUntil(timeout: .milliseconds(1000)) { done in
                 // When
                 navigationController.popViewController(animated: true)
 
@@ -221,7 +221,7 @@ class NavigationControllerObserverTest : QuickSpec {
                 delegate: observerDelegate
             )
 
-            waitUntil(timeout: 1.0) { done in
+            waitUntil(timeout: .milliseconds(1000)) { done in
                 // When
                 navigationController.popViewController(animated: true)
 

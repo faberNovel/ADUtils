@@ -98,7 +98,7 @@ class KeyedDecodingContainerTests: QuickSpec {
             let decoder = JSONDecoder()
             expect {
                 let decoded = try decoder.decode(StrictFolder.self, from: desktopData)
-                return expect(decoded).to(beNil())
+                expect(decoded).to(beNil())
             }
             .to(throwError())
         }
@@ -143,7 +143,7 @@ class KeyedDecodingContainerTests: QuickSpec {
             let decoder = JSONDecoder()
             expect {
                 let decoded = try decoder.decode([File].self, from: filesData)
-                return expect(decoded).to(beNil())
+                expect(decoded).to(beNil())
             }
             .to(throwError())
         }
