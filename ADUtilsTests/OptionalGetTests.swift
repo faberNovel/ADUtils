@@ -21,7 +21,7 @@ class OptionalGetTests: QuickSpec {
             // Then
             expect {
                 let toto = try optional.get()
-                return expect(toto).to(beNil())
+                expect(toto).to(beNil())
             }
             .to(throwError(Optional<String>.Error.isNil))
         }
@@ -33,7 +33,7 @@ class OptionalGetTests: QuickSpec {
             // Then
             expect {
                 let toto = try optional.get()
-                return expect(toto).to(equal("toto"))
+                expect(toto).to(equal("toto"))
             }
             .toNot(throwError())
         }

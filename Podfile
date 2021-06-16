@@ -7,8 +7,8 @@ end
 
 target 'ADUtilsTests' do
     pod 'Quick', '~> 2.2'
-    pod 'Nimble', '~> 8.0'
-    pod 'Nimble-Snapshots', '~> 8.0'
+    pod 'Nimble', '~> 9.0'
+    pod 'Nimble-Snapshots', '~> 9.0'
     pod 'OCMock', '~> 3.5'
     pod 'ADUtils', :path => './'
 end
