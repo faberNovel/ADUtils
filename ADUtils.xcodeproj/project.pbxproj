@@ -50,6 +50,7 @@
 		921907DF21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */; };
 		92DA1F5F2257556800060A32 /* NSLayoutConstraintUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA1F5E2257556800060A32 /* NSLayoutConstraintUtilsTests.swift */; };
 		92FAEA942271DF0D0090A2C7 /* FailableDecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */; };
+		B0E1495F269444E600712620 /* SecureArchiverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1495E269444E600712620 /* SecureArchiverTests.swift */; };
 		E7D5F497242DED3C0048C0DC /* OptionalGetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5F496242DED3C0048C0DC /* OptionalGetTests.swift */; };
 		E7D5F499242DEF120048C0DC /* UINavigationItemBackItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5F498242DEF120048C0DC /* UINavigationItemBackItemTests.swift */; };
 		E7D5F49B242DF01F0048C0DC /* UIScreenPixelDimensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5F49A242DF01F0048C0DC /* UIScreenPixelDimensionTests.swift */; };
@@ -133,6 +134,7 @@
 		92DA1F5E2257556800060A32 /* NSLayoutConstraintUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintUtilsTests.swift; sourceTree = "<group>"; };
 		92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableDecodableTests.swift; sourceTree = "<group>"; };
 		9C9220CDCE8C495437E023DB /* Pods-ADUtilsTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.stubs.xcconfig"; sourceTree = "<group>"; };
+		B0E1495E269444E600712620 /* SecureArchiverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureArchiverTests.swift; sourceTree = "<group>"; };
 		D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADUtilsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7D5F496242DED3C0048C0DC /* OptionalGetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalGetTests.swift; sourceTree = "<group>"; };
 		E7D5F498242DEF120048C0DC /* UINavigationItemBackItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationItemBackItemTests.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 		49B1F77F1CE4B3DB00A29BFE /* ADUtilsTests */ = {
 			isa = PBXGroup;
 			children = (
+				B0E1495D2694449A00712620 /* Security */,
 				0C8CFF0E242B699B0009FA88 /* LayoutTests */,
 				49B1F7821CE4B3DB00A29BFE /* Info.plist */,
 				ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */,
@@ -327,6 +330,14 @@
 			);
 			name = Resources;
 			path = Ressources;
+			sourceTree = "<group>";
+		};
+		B0E1495D2694449A00712620 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				B0E1495E269444E600712620 /* SecureArchiverTests.swift */,
+			);
+			path = Security;
 			sourceTree = "<group>";
 		};
 		F83B92141A7A8CCF009E7ADF /* Configuration */ = {
@@ -673,6 +684,7 @@
 				F2F326C12448431300BB5700 /* NSDirectionalEdgeInsetsTests.swift in Sources */,
 				0C8CFF12242B6A510009FA88 /* SimpleAutoSizingCollectionView.swift in Sources */,
 				49F0F20D2162095F00FC8AA4 /* SynchronizeTests.swift in Sources */,
+				B0E1495F269444E600712620 /* SecureArchiverTests.swift in Sources */,
 				92DA1F5F2257556800060A32 /* NSLayoutConstraintUtilsTests.swift in Sources */,
 				ECB627001DE3395100951346 /* ChildInsertionTest.swift in Sources */,
 				495682EF25DBA8F800001624 /* UIButtonBackgroundColorTests.swift in Sources */,
