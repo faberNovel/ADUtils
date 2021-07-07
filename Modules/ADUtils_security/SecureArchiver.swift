@@ -8,35 +8,41 @@
 import Foundation
 import CryptoKit
 
-public protocol KeychainArchiver: AnyObject {
+public protocol KeychainArchiver {
     func get(forKey: String) -> String?
     func set(value: String?, forKey: String)
 }
 
-public protocol StorageArchiver: AnyObject {
+public protocol StorageArchiver {
     func get(forKey key: String) -> Data?
     func set(_ data: Data, forKey key: String)
     func deleteValue(forKey key: String)
 }
 
-private enum Constants {
-    static let passphrasePrefix = "cryptoKeyPassphrase_"
-    static let installedPrefix = "appIsInstalled_"
-}
-
 @available(iOS 13.0, *)
 public class SecureArchiver {
 
-    private var passphrase = ""
-    private let defaults = UserDefaults.standard
+    private enum Constants {
+        static let passphrasePrefix = "cryptoKeyPassphrase_"
+        static let installedPrefix = "appIsInstalled_"
+    }
+
+    private enum SecureArchiverError: Error {
+        case invalidSymmetricKey
+    }
+
+    private let defaults: UserDefaults
     private let keychainArchiver: KeychainArchiver
     private let storageArchiver: StorageArchiver
     private let passphraseKey: String
     private let installedKey: String
+    private var cryptoKey = SymmetricKey(size: .bits256)
 
-    public init(keychainArchiver: KeychainArchiver,
+    public init(defaults: UserDefaults,
+                keychainArchiver: KeychainArchiver,
                 storageArchiver: StorageArchiver,
-                appKey: String) {
+                appKey: String) throws {
+        self.defaults = defaults
         self.keychainArchiver = keychainArchiver
         self.storageArchiver = storageArchiver
         self.passphraseKey = "\(Constants.passphrasePrefix)\(appKey)"
@@ -51,11 +57,10 @@ public class SecureArchiver {
      - parameter key: The key to use in the user defaults.
      */
     public func set<C: Codable>(_ value: C, forKey key: String) throws {
-        guard let cryptoKey = getCryptoKey() else { return }
         do {
             let encoder = JSONEncoder()
             let valueData = try encoder.encode(value)
-            let encryptedData = try ChaChaPoly.seal(valueData, using: cryptoKey)
+            let encryptedData = try ChaChaPoly.seal(valueData, using: getCryptoKey())
             let dataToStore = encryptedData.combined
             storageArchiver.set(dataToStore, forKey: key)
         } catch {
@@ -69,12 +74,11 @@ public class SecureArchiver {
      - returns: The value associated to the key
      */
     public func value<C: Codable>(forKey key: String) throws -> C? {
-        guard let cryptoKey = getCryptoKey() else { return nil }
         let optionalStoredValue: Data? = storageArchiver.get(forKey: key)
         if let storedData = optionalStoredValue {
             do {
                 let box = try ChaChaPoly.SealedBox(combined: storedData)
-                let decryptedData = try ChaChaPoly.open(box, using: cryptoKey)
+                let decryptedData = try ChaChaPoly.open(box, using: getCryptoKey())
                 let decoder = JSONDecoder()
                 let object = try decoder.decode(C.self, from: decryptedData)
                 return object
@@ -99,17 +103,26 @@ public class SecureArchiver {
      Get the cryptographic key from the Keychain Archiver.
      - returns: A symmetric key computed from the secret passphrase stored in KA.
      */
-    private func getCryptoKey() -> SymmetricKey? {
+    private func getCryptoKey() throws -> SymmetricKey {
         let isInstalled = defaults.bool(forKey: installedKey)
-        if let storedPassphrase = keychainArchiver.get(forKey: passphraseKey) {
-            if isInstalled {
-                return keyFromPassphrase(storedPassphrase)
+        if let storedPassphrase = keychainArchiver.get(forKey: passphraseKey),
+           isInstalled {
+            do {
+                return try keyFromPassphrase(storedPassphrase)
+            } catch {
+                throw error
             }
         }
-        passphrase = randomString(length: 64)
+        let passphrase = randomString(length: 64)
         keychainArchiver.set(value: passphrase, forKey: passphraseKey)
         defaults.setValue(true, forKey: installedKey)
-        return keyFromPassphrase(passphrase)
+        do {
+            let newKey = try keyFromPassphrase(passphrase)
+            self.cryptoKey = newKey
+            return newKey
+        } catch {
+            throw error
+        }
     }
 
     /**
@@ -117,14 +130,14 @@ public class SecureArchiver {
      - parameter passphrase: The passphrase to compute the key.
      - returns: The symmetric key computed from the passphrase.
      */
-    func keyFromPassphrase(_ passphrase: String) -> SymmetricKey? {
+    func keyFromPassphrase(_ passphrase: String) throws -> SymmetricKey {
         // Create a SHA256 hash from the provided passphrase
         if let passphraseData = passphrase.data(using: .utf8) {
             let hash = SHA256.hash(data: passphraseData)
             // Create the key use keyData as the seed
             return SymmetricKey(data: hash)
         }
-        return nil
+        throw SecureArchiverError.invalidSymmetricKey
     }
 
     /**
