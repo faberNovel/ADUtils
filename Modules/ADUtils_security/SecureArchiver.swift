@@ -31,22 +31,17 @@ public class SecureArchiver {
         case invalidSymmetricKey
     }
 
-    private let defaults: UserDefaults
     private let keychainArchiver: KeychainArchiver
     private let storageArchiver: StorageArchiver
     private let passphraseKey: String
-    private let installedKey: String
     private var cryptoKey = SymmetricKey(size: .bits256)
 
-    public init(defaults: UserDefaults,
-                keychainArchiver: KeychainArchiver,
+    public init(keychainArchiver: KeychainArchiver,
                 storageArchiver: StorageArchiver,
-                appKey: String) throws {
-        self.defaults = defaults
+                appKey: String) {
         self.keychainArchiver = keychainArchiver
         self.storageArchiver = storageArchiver
-        self.passphraseKey = "\(Constants.passphrasePrefix)\(appKey)"
-        self.installedKey = "\(Constants.installedPrefix)\(appKey)"
+        passphraseKey = "\(Constants.passphrasePrefix)\(appKey)"
     }
 
     // MARK: - Public
@@ -104,9 +99,7 @@ public class SecureArchiver {
      - returns: A symmetric key computed from the secret passphrase stored in KA.
      */
     private func getCryptoKey() throws -> SymmetricKey {
-        let isInstalled = defaults.bool(forKey: installedKey)
-        if let storedPassphrase = keychainArchiver.get(forKey: passphraseKey),
-           isInstalled {
+        if let storedPassphrase = keychainArchiver.get(forKey: passphraseKey) {
             do {
                 return try keyFromPassphrase(storedPassphrase)
             } catch {
@@ -115,7 +108,6 @@ public class SecureArchiver {
         }
         let passphrase = randomString(length: 64)
         keychainArchiver.set(value: passphrase, forKey: passphraseKey)
-        defaults.setValue(true, forKey: installedKey)
         do {
             let newKey = try keyFromPassphrase(passphrase)
             self.cryptoKey = newKey

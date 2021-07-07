@@ -30,14 +30,13 @@ DEPENDENCIES:
   - SwiftLint (~> 0.42.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - OCMock
-    - Quick
-    - SwiftLint
   trunk:
     - iOSSnapshotTestCase
     - Nimble
     - Nimble-Snapshots
+    - OCMock
+    - Quick
+    - SwiftLint
 
 EXTERNAL SOURCES:
   ADUtils:
