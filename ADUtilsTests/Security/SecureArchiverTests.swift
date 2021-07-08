@@ -150,6 +150,40 @@ class SecureArchiverTests: QuickSpec {
             }
         }
 
+        describe("user defaults tests") {
+            it("should write and read several codables") {
+                let myFirstCar = Car(color: "Grey", brand: "Ford", year: 1967)
+                let mySecondCar = Car(color: "Blue", brand: "Porsche", year: 1999)
+                let myCars = [myFirstCar, mySecondCar]
+                do {
+                    if #available(iOS 13.0, *) {
+                        // Given
+                        let secureArchiver = SecureArchiver(
+                            keychainArchiver: keychainArchiver,
+                            storageArchiver: UserDefaults.standard,
+                            appKey: ""
+                        )
+
+                        // When
+                        try secureArchiver.set(myCars, forKey: "cars")
+                        let readCars: [Car] = try secureArchiver.value(forKey: "cars") ?? []
+
+                        //Then
+                        expect(readCars.count).to(equal(2))
+                        expect(readCars).to(equal(myCars))
+
+                        secureArchiver.deleteValue(forKey: "cars")
+
+                        let deletedDeadCars: [Car]? = try secureArchiver.value(forKey: "cars")
+                        expect(deletedDeadCars).to(beNil())
+
+                    }
+                } catch {
+                    fail()
+                }
+            }
+        }
+
         describe("passphrase tests") {
             it("passphrase should be set when application is installed") {
                 do {
