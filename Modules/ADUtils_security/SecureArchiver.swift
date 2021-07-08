@@ -19,7 +19,7 @@ public protocol StorageArchiver {
     func deleteValue(forKey key: String)
 }
 
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0, *)
 public class SecureArchiver {
 
     private enum Constants {
