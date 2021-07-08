@@ -197,28 +197,6 @@ class SecureArchiverTests: QuickSpec {
                     fail()
                 }
             }
-
-            it("UserDefaults should know if the app was installed") {
-                do {
-                    if #available(iOS 13.0, *) {
-                        // Given
-                        let secureArchiver = SecureArchiver(
-                            keychainArchiver: keychainArchiver,
-                            storageArchiver: storageArchiver,
-                            appKey: "secureArchiverTests"
-                        )
-
-                        // When
-                        try secureArchiver.set("Hello", forKey: "myWord")
-                        let storedInfo = UserDefaults.standard.bool(forKey: "appIsInstalled_secureArchiverTests")
-
-                        //Then
-                        expect(storedInfo).to(equal(true))
-                    }
-                } catch {
-                    fail()
-                }
-            }
         }
     }
 }
