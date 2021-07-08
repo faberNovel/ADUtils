@@ -29,6 +29,7 @@ public class SecureArchiver {
 
     private enum SecureArchiverError: Error {
         case invalidSymmetricKey
+        case unableToGenerateRandomKey
     }
 
     private let keychainArchiver: KeychainArchiver
@@ -106,9 +107,9 @@ public class SecureArchiver {
                 throw error
             }
         }
-        let passphrase = randomString(length: 64)
-        keychainArchiver.set(value: passphrase, forKey: passphraseKey)
         do {
+            let passphrase = try generateRandomBytes(64)
+            keychainArchiver.set(value: passphrase, forKey: passphraseKey)
             let newKey = try keyFromPassphrase(passphrase)
             self.cryptoKey = newKey
             return newKey
@@ -133,13 +134,25 @@ public class SecureArchiver {
     }
 
     /**
-     Create a random string.
+     Create a random string using `SecRandomCopyBytes` according to OWASP.
+     https://github.com/OWASP/owasp-mstg/blob/master/Document/0x06e-Testing-Cryptography.md
      - parameter length: The length of the string.
      - returns: A random string .
      */
-    private func randomString(length: Int) -> String {
-        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        return String((0..<length).map { _ in letters.randomElement() ?? "a" })
+    func generateRandomBytes(_ length: Int) throws -> String {
+        var keyData = Data(count: length)
+        let result = keyData.withUnsafeMutableBytes { bytes -> Int32 in
+            if let bytesAddress = bytes.baseAddress {
+                return SecRandomCopyBytes(kSecRandomDefault, length, bytesAddress)
+            } else {
+                return errSecMemoryError
+            }
+        }
+        if result == errSecSuccess {
+            return keyData.base64EncodedString()
+        } else {
+            throw SecureArchiverError.unableToGenerateRandomKey
+        }
     }
 
 }
