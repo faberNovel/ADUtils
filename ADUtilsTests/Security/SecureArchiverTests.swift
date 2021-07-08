@@ -64,12 +64,10 @@ class SecureArchiverTests: QuickSpec {
 
     override func spec() {
 
-        var defaults: UserDefaults!
         var storageArchiver: StorageArchiverImplementation!
         var keychainArchiver: KeychainArchiverImplementation!
 
         beforeEach {
-            defaults = UserDefaults.standard
             storageArchiver = StorageArchiverImplementation()
             keychainArchiver = KeychainArchiverImplementation()
         }
@@ -80,7 +78,7 @@ class SecureArchiverTests: QuickSpec {
                 do {
                     if #available(iOS 13.0, *) {
                         // Given
-                        let secureArchiver = try SecureArchiver(
+                        let secureArchiver = SecureArchiver(
                             keychainArchiver: keychainArchiver,
                             storageArchiver: storageArchiver,
                             appKey: ""
@@ -108,7 +106,7 @@ class SecureArchiverTests: QuickSpec {
                 do {
                     if #available(iOS 13.0, *) {
                         // Given
-                        let secureArchiver = try SecureArchiver(
+                        let secureArchiver = SecureArchiver(
                             keychainArchiver: keychainArchiver,
                             storageArchiver: storageArchiver,
                             appKey: ""
@@ -132,7 +130,7 @@ class SecureArchiverTests: QuickSpec {
                 do {
                     if #available(iOS 13.0, *) {
                         // Given
-                        let secureArchiver = try SecureArchiver(
+                        let secureArchiver = SecureArchiver(
                             keychainArchiver: keychainArchiver,
                             storageArchiver: storageArchiver,
                             appKey: ""
@@ -157,7 +155,7 @@ class SecureArchiverTests: QuickSpec {
                 do {
                     if #available(iOS 13.0, *) {
                         // Given
-                        let secureArchiver = try SecureArchiver(
+                        let secureArchiver = SecureArchiver(
                             keychainArchiver: keychainArchiver,
                             storageArchiver: storageArchiver,
                             appKey: "secureArchiverTests"
@@ -179,7 +177,7 @@ class SecureArchiverTests: QuickSpec {
                 do {
                     if #available(iOS 13.0, *) {
                         // Given
-                        let secureArchiver = try SecureArchiver(
+                        let secureArchiver = SecureArchiver(
                             keychainArchiver: keychainArchiver,
                             storageArchiver: storageArchiver,
                             appKey: "secureArchiverTests"
