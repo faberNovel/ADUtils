@@ -9,12 +9,12 @@ import Foundation
 import CryptoKit
 
 public protocol KeychainArchiver {
-    func get(forKey: String) -> String?
+    func getValue(forKey: String) -> String?
     func set(value: String?, forKey: String)
 }
 
 public protocol StorageArchiver {
-    func get(forKey key: String) -> Data?
+    func getValue(forKey key: String) -> Data?
     func set(_ data: Data, forKey key: String)
     func deleteValue(forKey key: String)
 }
@@ -70,7 +70,7 @@ public class SecureArchiver {
      - returns: The value associated to the key
      */
     public func value<C: Codable>(forKey key: String) throws -> C? {
-        let optionalStoredValue: Data? = storageArchiver.get(forKey: key)
+        let optionalStoredValue: Data? = storageArchiver.getValue(forKey: key)
         if let storedData = optionalStoredValue {
             do {
                 let box = try ChaChaPoly.SealedBox(combined: storedData)
@@ -100,7 +100,7 @@ public class SecureArchiver {
      - returns: A symmetric key computed from the secret passphrase stored in KA.
      */
     private func getCryptoKey() throws -> SymmetricKey {
-        if let storedPassphrase = keychainArchiver.get(forKey: passphraseKey) {
+        if let storedPassphrase = keychainArchiver.getValue(forKey: passphraseKey) {
             do {
                 return try keyFromPassphrase(storedPassphrase)
             } catch {

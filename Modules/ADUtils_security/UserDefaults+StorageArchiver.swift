@@ -9,7 +9,7 @@ import Foundation
 
 extension UserDefaults: StorageArchiver {
 
-    public func get(forKey key: String) -> Data? {
+    public func getValue(forKey key: String) -> Data? {
         value(forKey: key) as? Data
     }
 

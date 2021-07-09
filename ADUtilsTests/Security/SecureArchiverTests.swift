@@ -28,7 +28,7 @@ private class StorageArchiverImplementation: StorageArchiver {
 
     private var storage: [String: Data] = [:]
 
-    func get(forKey key: String) -> Data? {
+    func getValue(forKey key: String) -> Data? {
         return storage[key]
     }
 
@@ -46,7 +46,7 @@ private class KeychainArchiverImplementation: KeychainArchiver {
 
     private var storage: [String: String] = [:]
 
-    func get(forKey: String) -> String? {
+    func getValue(forKey: String) -> String? {
         return storage[forKey]
     }
 
@@ -60,6 +60,7 @@ private class KeychainArchiverImplementation: KeychainArchiver {
 
 }
 
+@available(iOS 13.0, *)
 class SecureArchiverTests: QuickSpec {
 
     override func spec() {
@@ -75,27 +76,21 @@ class SecureArchiverTests: QuickSpec {
         describe("Write and Read tests") {
             it("should write and read one codable") {
                 let myCar = Car(color: "Grey", brand: "Ford", year: 1967)
-                do {
-                    if #available(iOS 13.0, *) {
-                        // Given
-                        let secureArchiver = SecureArchiver(
-                            keychainArchiver: keychainArchiver,
-                            storageArchiver: storageArchiver,
-                            appKey: ""
-                        )
+                // Given
+                let secureArchiver = SecureArchiver(
+                    keychainArchiver: keychainArchiver,
+                    storageArchiver: storageArchiver,
+                    appKey: ""
+                )
 
-                        // When
-                        try secureArchiver.set(myCar, forKey: "car")
-                        let readCar: Car? = try secureArchiver.value(forKey: "car")
+                // When
+                try? secureArchiver.set(myCar, forKey: "car")
+                let readCar: Car? = try? secureArchiver.value(forKey: "car")
 
-                        //Then
-                        expect(readCar).toNot(beNil())
-                        if let readCar = readCar {
-                            expect(readCar).to(equal(myCar))
-                        }
-                    }
-                } catch {
-                    fail()
+                // Then
+                expect(readCar).toNot(beNil())
+                if let readCar = readCar {
+                    expect(readCar).to(equal(myCar))
                 }
             }
 
@@ -103,50 +98,42 @@ class SecureArchiverTests: QuickSpec {
                 let myFirstCar = Car(color: "Grey", brand: "Ford", year: 1967)
                 let mySecondCar = Car(color: "Blue", brand: "Porsche", year: 1999)
                 let myCars = [myFirstCar, mySecondCar]
-                do {
-                    if #available(iOS 13.0, *) {
-                        // Given
-                        let secureArchiver = SecureArchiver(
-                            keychainArchiver: keychainArchiver,
-                            storageArchiver: storageArchiver,
-                            appKey: ""
-                        )
+                // Given
+                let secureArchiver = SecureArchiver(
+                    keychainArchiver: keychainArchiver,
+                    storageArchiver: storageArchiver,
+                    appKey: ""
+                )
 
-                        // When
-                        try secureArchiver.set(myCars, forKey: "cars")
-                        let readCars: [Car] = try secureArchiver.value(forKey: "cars") ?? []
+                // When
+                try? secureArchiver.set(myCars, forKey: "cars")
+                let optionalReadCars: [Car]? = try? secureArchiver.value(forKey: "cars") ?? []
 
-                        //Then
-                        expect(readCars.count).to(equal(2))
-                        expect(readCars).to(equal(myCars))
-                    }
-                } catch {
+                // Then
+                if let readCars = optionalReadCars {
+                    expect(readCars.count).to(equal(2))
+                    expect(readCars).to(equal(myCars))
+                } else {
                     fail()
                 }
             }
 
             it("should delete codables") {
                 let myCar = Car(color: "Grey", brand: "Ford", year: 1967)
-                do {
-                    if #available(iOS 13.0, *) {
-                        // Given
-                        let secureArchiver = SecureArchiver(
-                            keychainArchiver: keychainArchiver,
-                            storageArchiver: storageArchiver,
-                            appKey: ""
-                        )
+                // Given
+                let secureArchiver = SecureArchiver(
+                    keychainArchiver: keychainArchiver,
+                    storageArchiver: storageArchiver,
+                    appKey: ""
+                )
 
-                        // When
-                        try secureArchiver.set(myCar, forKey: "car")
-                        secureArchiver.deleteValue(forKey: "car")
-                        let readCar: Car? = try secureArchiver.value(forKey: "car")
+                // When
+                try? secureArchiver.set(myCar, forKey: "car")
+                secureArchiver.deleteValue(forKey: "car")
+                let readCar: Car? = try? secureArchiver.value(forKey: "car")
 
-                        // Then
-                        expect(readCar).to(beNil())
-                    }
-                } catch {
-                    fail()
-                }
+                // Then
+                expect(readCar).to(beNil())
             }
         }
 
@@ -155,30 +142,25 @@ class SecureArchiverTests: QuickSpec {
                 let myFirstCar = Car(color: "Grey", brand: "Ford", year: 1967)
                 let mySecondCar = Car(color: "Blue", brand: "Porsche", year: 1999)
                 let myCars = [myFirstCar, mySecondCar]
-                do {
-                    if #available(iOS 13.0, *) {
-                        // Given
-                        let secureArchiver = SecureArchiver(
-                            keychainArchiver: keychainArchiver,
-                            storageArchiver: UserDefaults.standard,
-                            appKey: ""
-                        )
+                // Given
+                let secureArchiver = SecureArchiver(
+                    keychainArchiver: keychainArchiver,
+                    storageArchiver: UserDefaults.standard,
+                    appKey: ""
+                )
 
-                        // When
-                        try secureArchiver.set(myCars, forKey: "cars")
-                        let readCars: [Car] = try secureArchiver.value(forKey: "cars") ?? []
+                // When
+                try? secureArchiver.set(myCars, forKey: "cars")
+                let optionalReadCars: [Car]? = try? secureArchiver.value(forKey: "cars")
 
-                        //Then
-                        expect(readCars.count).to(equal(2))
-                        expect(readCars).to(equal(myCars))
-
-                        secureArchiver.deleteValue(forKey: "cars")
-
-                        let deletedDeadCars: [Car]? = try secureArchiver.value(forKey: "cars")
-                        expect(deletedDeadCars).to(beNil())
-
-                    }
-                } catch {
+                // Then
+                if let readCars = optionalReadCars {
+                    expect(readCars.count).to(equal(2))
+                    expect(readCars).to(equal(myCars))
+                    secureArchiver.deleteValue(forKey: "cars")
+                    let deletedDeadCars: [Car]? = try? secureArchiver.value(forKey: "cars")
+                    expect(deletedDeadCars).to(beNil())
+                } else {
                     fail()
                 }
             }
@@ -186,50 +168,38 @@ class SecureArchiverTests: QuickSpec {
 
         describe("passphrase tests") {
             it("passphrase should be set when application is installed") {
-                do {
-                    if #available(iOS 13.0, *) {
-                        // Given
-                        let secureArchiver = SecureArchiver(
-                            keychainArchiver: keychainArchiver,
-                            storageArchiver: storageArchiver,
-                            appKey: "secureArchiverTests"
-                        )
+                // Given
+                let secureArchiver = SecureArchiver(
+                    keychainArchiver: keychainArchiver,
+                    storageArchiver: storageArchiver,
+                    appKey: "secureArchiverTests"
+                )
 
-                        // When
-                        try secureArchiver.set("Hello", forKey: "myWord")
-                        let storedPassphrase = keychainArchiver.get(forKey: "cryptoKeyPassphrase_secureArchiverTests")
+                // When
+                try? secureArchiver.set("Hello", forKey: "myWord")
+                let storedPassphrase = keychainArchiver.getValue(forKey: "cryptoKeyPassphrase_secureArchiverTests")
 
-                        //Then
-                        expect(storedPassphrase).toNot(beNil())
-                    }
-                } catch {
-                    fail()
-                }
+                // Then
+                expect(storedPassphrase).toNot(beNil())
             }
 
             it("passphrase should be different when application is re-installed") {
-                do {
-                    if #available(iOS 13.0, *) {
-                        // Given
-                        let secureArchiver = SecureArchiver(
-                            keychainArchiver: keychainArchiver,
-                            storageArchiver: storageArchiver,
-                            appKey: "secureArchiverTests"
-                        )
+                // Given
+                let secureArchiver = SecureArchiver(
+                    keychainArchiver: keychainArchiver,
+                    storageArchiver: storageArchiver,
+                    appKey: "secureArchiverTests"
+                )
 
-                        // When
-                        try secureArchiver.set("Hello", forKey: "myWord")
-                        let firstStoredPassphrase = keychainArchiver.get(forKey: "cryptoKeyPassphrase_secureArchiverTests")
-                        keychainArchiver.cleanStorage()
-                        try secureArchiver.set("Hello", forKey: "myWord")
-                        let secondStoredPassphrase = keychainArchiver.get(forKey: "cryptoKeyPassphrase_secureArchiverTests")
+                // When
+                try? secureArchiver.set("Hello", forKey: "myWord")
+                let firstStoredPassphrase = keychainArchiver.getValue(forKey: "cryptoKeyPassphrase_secureArchiverTests")
+                keychainArchiver.cleanStorage()
+                try? secureArchiver.set("Hello", forKey: "myWord")
+                let secondStoredPassphrase = keychainArchiver.getValue(forKey: "cryptoKeyPassphrase_secureArchiverTests")
 
-                        //Then
-                        expect(firstStoredPassphrase).toNot(equal(secondStoredPassphrase))
-                    }
-                } catch {
-                    fail()
-                }
+                // Then
+                expect(firstStoredPassphrase).toNot(equal(secondStoredPassphrase))
             }
         }
     }
