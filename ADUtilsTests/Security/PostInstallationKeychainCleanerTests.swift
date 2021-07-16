@@ -38,19 +38,23 @@ class PostInstallationKeychainCleanerTests: QuickSpec {
 
         describe("First launch tests") {
             it("should wipe keychain") {
-                userDefaults.set(nil, forKey: "_PIKC_ALF")
-                try? postInstallationKeychainCleaner.checkInstallation()
-                expect(keychainWiper.didWipe).to(beTrue())
-                expect(userDefaults.bool(forKey: "_PIKC_ALF")).to(beTrue())
+                expect {
+                    userDefaults.set(nil, forKey: "_PIKC_ALF")
+                    try? postInstallationKeychainCleaner.checkInstallation()
+                    expect(keychainWiper.didWipe).to(beTrue())
+                    expect(userDefaults.bool(forKey: "_PIKC_ALF")).to(beTrue())
+                }.toNot(throwError())
             }
         }
 
         describe("Second launch tests") {
             it("should not wipe keychain") {
+                expect {
                     userDefaults.set(true, forKey: "_PIKC_ALF")
                     try? postInstallationKeychainCleaner.checkInstallation()
                     expect(keychainWiper.didWipe).to(beFalse())
                     expect(userDefaults.bool(forKey: "_PIKC_ALF")).to(beTrue())
+                }.toNot(throwError())
             }
         }
     }

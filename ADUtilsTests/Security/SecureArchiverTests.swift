@@ -75,131 +75,143 @@ class SecureArchiverTests: QuickSpec {
 
         describe("Write and Read tests") {
             it("should write and read one codable") {
-                let myCar = Car(color: "Grey", brand: "Ford", year: 1967)
-                // Given
-                let secureArchiver = SecureArchiver(
-                    keychainArchiver: keychainArchiver,
-                    storageArchiver: storageArchiver,
-                    appKey: ""
-                )
+                expect {
+                    let myCar = Car(color: "Grey", brand: "Ford", year: 1967)
+                    // Given
+                    let secureArchiver = SecureArchiver(
+                        keychainArchiver: keychainArchiver,
+                        storageArchiver: storageArchiver,
+                        appKey: ""
+                    )
 
-                // When
-                try? secureArchiver.set(myCar, forKey: "car")
-                let readCar: Car? = try? secureArchiver.value(forKey: "car")
+                    // When
+                    try secureArchiver.set(myCar, forKey: "car")
+                    let readCar: Car? = try secureArchiver.value(forKey: "car")
 
-                // Then
-                expect(readCar).toNot(beNil())
-                if let readCar = readCar {
-                    expect(readCar).to(equal(myCar))
-                }
+                    // Then
+                    expect(readCar).toNot(beNil())
+                    if let readCar = readCar {
+                        expect(readCar).to(equal(myCar))
+                    }
+                }.toNot(throwError())
             }
 
             it("should write and read several codables") {
-                let myFirstCar = Car(color: "Grey", brand: "Ford", year: 1967)
-                let mySecondCar = Car(color: "Blue", brand: "Porsche", year: 1999)
-                let myCars = [myFirstCar, mySecondCar]
-                // Given
-                let secureArchiver = SecureArchiver(
-                    keychainArchiver: keychainArchiver,
-                    storageArchiver: storageArchiver,
-                    appKey: ""
-                )
+                expect {
+                    let myFirstCar = Car(color: "Grey", brand: "Ford", year: 1967)
+                    let mySecondCar = Car(color: "Blue", brand: "Porsche", year: 1999)
+                    let myCars = [myFirstCar, mySecondCar]
+                    // Given
+                    let secureArchiver = SecureArchiver(
+                        keychainArchiver: keychainArchiver,
+                        storageArchiver: storageArchiver,
+                        appKey: ""
+                    )
 
-                // When
-                try? secureArchiver.set(myCars, forKey: "cars")
-                let optionalReadCars: [Car]? = try? secureArchiver.value(forKey: "cars") ?? []
+                    // When
+                    try secureArchiver.set(myCars, forKey: "cars")
+                    let optionalReadCars: [Car]? = try secureArchiver.value(forKey: "cars") ?? []
 
-                // Then
-                if let readCars = optionalReadCars {
-                    expect(readCars.count).to(equal(2))
-                    expect(readCars).to(equal(myCars))
-                } else {
-                    fail()
-                }
+                    // Then
+                    if let readCars = optionalReadCars {
+                        expect(readCars.count).to(equal(2))
+                        expect(readCars).to(equal(myCars))
+                    } else {
+                        fail()
+                    }
+                }.toNot(throwError())
             }
 
             it("should delete codables") {
-                let myCar = Car(color: "Grey", brand: "Ford", year: 1967)
-                // Given
-                let secureArchiver = SecureArchiver(
-                    keychainArchiver: keychainArchiver,
-                    storageArchiver: storageArchiver,
-                    appKey: ""
-                )
+                expect {
+                    let myCar = Car(color: "Grey", brand: "Ford", year: 1967)
+                    // Given
+                    let secureArchiver = SecureArchiver(
+                        keychainArchiver: keychainArchiver,
+                        storageArchiver: storageArchiver,
+                        appKey: ""
+                    )
 
-                // When
-                try? secureArchiver.set(myCar, forKey: "car")
-                secureArchiver.deleteValue(forKey: "car")
-                let readCar: Car? = try? secureArchiver.value(forKey: "car")
+                    // When
+                    try secureArchiver.set(myCar, forKey: "car")
+                    secureArchiver.deleteValue(forKey: "car")
+                    let readCar: Car? = try secureArchiver.value(forKey: "car")
 
-                // Then
-                expect(readCar).to(beNil())
+                    // Then
+                    expect(readCar).to(beNil())
+                }.toNot(throwError())
             }
         }
 
         describe("user defaults tests") {
             it("should write and read several codables") {
-                let myFirstCar = Car(color: "Grey", brand: "Ford", year: 1967)
-                let mySecondCar = Car(color: "Blue", brand: "Porsche", year: 1999)
-                let myCars = [myFirstCar, mySecondCar]
-                // Given
-                let secureArchiver = SecureArchiver(
-                    keychainArchiver: keychainArchiver,
-                    storageArchiver: UserDefaults.standard,
-                    appKey: ""
-                )
+                expect {
+                    let myFirstCar = Car(color: "Grey", brand: "Ford", year: 1967)
+                    let mySecondCar = Car(color: "Blue", brand: "Porsche", year: 1999)
+                    let myCars = [myFirstCar, mySecondCar]
+                    // Given
+                    let secureArchiver = SecureArchiver(
+                        keychainArchiver: keychainArchiver,
+                        storageArchiver: UserDefaults.standard,
+                        appKey: ""
+                    )
 
-                // When
-                try? secureArchiver.set(myCars, forKey: "cars")
-                let optionalReadCars: [Car]? = try? secureArchiver.value(forKey: "cars")
+                    // When
+                    try secureArchiver.set(myCars, forKey: "cars")
+                    let optionalReadCars: [Car]? = try secureArchiver.value(forKey: "cars")
 
-                // Then
-                if let readCars = optionalReadCars {
-                    expect(readCars.count).to(equal(2))
-                    expect(readCars).to(equal(myCars))
-                    secureArchiver.deleteValue(forKey: "cars")
-                    let deletedDeadCars: [Car]? = try? secureArchiver.value(forKey: "cars")
-                    expect(deletedDeadCars).to(beNil())
-                } else {
-                    fail()
-                }
+                    // Then
+                    if let readCars = optionalReadCars {
+                        expect(readCars.count).to(equal(2))
+                        expect(readCars).to(equal(myCars))
+                        secureArchiver.deleteValue(forKey: "cars")
+                        let deletedDeadCars: [Car]? = try secureArchiver.value(forKey: "cars")
+                        expect(deletedDeadCars).to(beNil())
+                    } else {
+                        fail()
+                    }
+                }.toNot(throwError())
             }
         }
 
         describe("passphrase tests") {
             it("passphrase should be set when application is installed") {
-                // Given
-                let secureArchiver = SecureArchiver(
-                    keychainArchiver: keychainArchiver,
-                    storageArchiver: storageArchiver,
-                    appKey: "secureArchiverTests"
-                )
+                expect {
+                    // Given
+                    let secureArchiver = SecureArchiver(
+                        keychainArchiver: keychainArchiver,
+                        storageArchiver: storageArchiver,
+                        appKey: "secureArchiverTests"
+                    )
 
-                // When
-                try? secureArchiver.set("Hello", forKey: "myWord")
-                let storedPassphrase = keychainArchiver.getValue(forKey: "cryptoKeyPassphrase_secureArchiverTests")
+                    // When
+                    try secureArchiver.set("Hello", forKey: "myWord")
+                    let storedPassphrase = keychainArchiver.getValue(forKey: "cryptoKeyPassphrase_secureArchiverTests")
 
-                // Then
-                expect(storedPassphrase).toNot(beNil())
+                    // Then
+                    expect(storedPassphrase).toNot(beNil())
+                }.toNot(throwError())
             }
 
             it("passphrase should be different when application is re-installed") {
-                // Given
-                let secureArchiver = SecureArchiver(
-                    keychainArchiver: keychainArchiver,
-                    storageArchiver: storageArchiver,
-                    appKey: "secureArchiverTests"
-                )
+                expect {
+                    // Given
+                    let secureArchiver = SecureArchiver(
+                        keychainArchiver: keychainArchiver,
+                        storageArchiver: storageArchiver,
+                        appKey: "secureArchiverTests"
+                    )
 
-                // When
-                try? secureArchiver.set("Hello", forKey: "myWord")
-                let firstStoredPassphrase = keychainArchiver.getValue(forKey: "cryptoKeyPassphrase_secureArchiverTests")
-                keychainArchiver.cleanStorage()
-                try? secureArchiver.set("Hello", forKey: "myWord")
-                let secondStoredPassphrase = keychainArchiver.getValue(forKey: "cryptoKeyPassphrase_secureArchiverTests")
+                    // When
+                    try secureArchiver.set("Hello", forKey: "myWord")
+                    let firstStoredPassphrase = keychainArchiver.getValue(forKey: "cryptoKeyPassphrase_secureArchiverTests")
+                    keychainArchiver.cleanStorage()
+                    try secureArchiver.set("Hello", forKey: "myWord")
+                    let secondStoredPassphrase = keychainArchiver.getValue(forKey: "cryptoKeyPassphrase_secureArchiverTests")
 
-                // Then
-                expect(firstStoredPassphrase).toNot(equal(secondStoredPassphrase))
+                    // Then
+                    expect(firstStoredPassphrase).toNot(equal(secondStoredPassphrase))
+                }.toNot(throwError())
             }
         }
     }
