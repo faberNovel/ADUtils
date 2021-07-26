@@ -7,7 +7,6 @@
 
 import Foundation
 
-@available(iOS 13, *)
 internal class FloatingAccessorySeparatorItem: UIView {
 
     override internal init(frame: CGRect) {

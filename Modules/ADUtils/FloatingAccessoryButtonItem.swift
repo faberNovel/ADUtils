@@ -12,11 +12,15 @@ private enum Constants {
     static let verticalPadding: CGFloat = 8.0
 }
 
-@available(iOS 13, *)
 public class FloatingAccessoryButtonItem: UIControl {
 
     private var button = UIButton()
 
+    /**
+     The item's button's image.
+
+     The item's button's image. Setter and getter are available.
+     */
     public var image: UIImage {
         get {
             return button.image(for: .normal) ?? UIImage()
@@ -31,6 +35,7 @@ public class FloatingAccessoryButtonItem: UIControl {
         setupButton(image: image)
     }
 
+    @available(iOS 13, *)
     public init(systemName: String) {
         super.init(frame: CGRect.zero)
         setupButton(image: UIImage(systemName: systemName))

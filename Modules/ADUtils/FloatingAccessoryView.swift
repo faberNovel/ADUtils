@@ -22,6 +22,15 @@ import Foundation
  *      accessoryView.addItem(item1)
  *      accessoryView.addItem(item2)
  *      accessoryView.addItem(item3)
+ * Or :
+ *      let items = [item1, item2, item3]
+ *      accessoryView.addItems(contentOf: items)
+ *
+ * To remove an item from the view :
+ *      accessoryView.removeItem(item1)
+ *
+ * To remove every item:
+ *      accessoryView.removeAllItems
  *
  * To override tintColor of every item :
  *      accessoryView.tintColor = .green
@@ -33,11 +42,10 @@ import Foundation
  *      item2.addTarget(self, action: #selector(myMethod), for: .touchUpInside)
  *
  * To change the view's separators' tint color :
- *      accessoryView.borderTintColor = .black
+ *      accessoryView.separatorColor = .black
  *
  */
 
-@available(iOS 13.0, *)
 private enum Constants {
     static let stackViewWidth = 48.0
     static let paddingTopBottom: CGFloat = 4.0
@@ -53,18 +61,11 @@ private enum Colors {
                 .systemBlue
         }
     }
-    static var initialBorder: UIColor {
+    static var initialSeparator: UIColor {
         return UIColor { (traits) -> UIColor in
             return traits.userInterfaceStyle == .dark ?
                 UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1.0) :
                 .separator
-        }
-    }
-    static var initialBackground: UIColor {
-        return UIColor { (traits) -> UIColor in
-            return traits.userInterfaceStyle == .dark ?
-                UIColor(red: 58 / 255, green: 59 / 255, blue: 61 / 255, alpha: 1.0) :
-                UIColor(red: 254 / 255, green: 252 / 255, blue: 247 / 255, alpha: 1.0)
         }
     }
 }
@@ -77,13 +78,13 @@ public class FloatingAccessoryView: UIView {
 
      # Example #
      ```
-     floatingAccessoryView.borderTintColor = UIColor.red
+     floatingAccessoryView.separatorColor = UIColor.red
      ```
      */
-    public var borderTintColor: UIColor = Colors.initialBorder {
+    public var separatorColor: UIColor = Colors.initialSeparator {
         didSet {
             for separator in separators.values {
-                separator.backgroundColor = borderTintColor
+                separator.backgroundColor = separatorColor
             }
         }
     }
@@ -96,6 +97,8 @@ public class FloatingAccessoryView: UIView {
             stackView.backgroundColor = newValue
         }
     }
+
+    public var items: [FloatingAccessoryButtonItem] = []
 
     private var stackView = UIStackView()
     private var buttonViews: [FloatingAccessoryButtonItem: UIView] = [:]
@@ -133,12 +136,15 @@ public class FloatingAccessoryView: UIView {
      ```
     */
     public func addItem(_ item: FloatingAccessoryButtonItem) {
-        if buttonViews.keys.contains(item) {
+        guard
+            !buttonViews.keys.contains(item),
+            !items.contains(item) else {
             return
         }
+        items.append(item)
         let separatorItem = FloatingAccessorySeparatorItem()
         separators[item] = separatorItem
-        separatorItem.backgroundColor = borderTintColor
+        separatorItem.backgroundColor = separatorColor
         let view = UIView()
         view.addSubview(item)
         item.ad_pinToSuperview()
@@ -147,6 +153,28 @@ public class FloatingAccessoryView: UIView {
             stackView.addArrangedSubview(separatorItem)
         }
         stackView.addArrangedSubview(view)
+    }
+
+    /**
+     Adds the elements of a sequence or collection to the view's items.
+
+     This methods adds every items from the given sequence.
+
+     - parameter newItems: Sequence of items to be added.
+
+     # Notes: #
+     1. Parameters must be **FloatingAccessoryButtonItem** type
+
+     # Example #
+     ```
+     var items = [item1, item2, item3]
+     accessoryView.addItems(contentsOf: items)
+     ```
+     */
+    public func addItems<S>(contentsOf newItems: S) where S : Sequence, S.Element == FloatingAccessoryButtonItem {
+        for item in newItems {
+            addItem(item)
+        }
     }
 
     /**
@@ -177,7 +205,27 @@ public class FloatingAccessoryView: UIView {
             item.removeFromSuperview()
             buttonView.removeFromSuperview()
         }
-        removeFirstItemBorderIfNeeded()
+        if let correspondingIndex = items.firstIndex(of: item) {
+            items.remove(at: correspondingIndex)
+        }
+        removeFirstItemSeparatorIfNeeded()
+    }
+
+    /**
+     Removes all items from the view.
+
+     Calling this method removes every item in the view. The view is thus not displayed anymore.
+
+     # Example #
+     ```
+     accessoryView.removeAllItems()
+     ```
+     */
+    public func removeAllItems() {
+        items.removeAll()
+        buttonViews.removeAll()
+        separators.removeAll()
+        stackView.ad_removeAllArrangedSubviews()
     }
 
     // MARK: - Private
@@ -218,7 +266,7 @@ public class FloatingAccessoryView: UIView {
         shadowView.ad_pinToSuperview()
     }
 
-    private func removeFirstItemBorderIfNeeded() {
+    private func removeFirstItemSeparatorIfNeeded() {
         if let firstStackViewSubview = stackView.subviews.first as? FloatingAccessorySeparatorItem,
            separators.values.contains(firstStackViewSubview) {
             firstStackViewSubview.removeFromSuperview()
