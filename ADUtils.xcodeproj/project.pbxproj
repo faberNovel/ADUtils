@@ -193,9 +193,9 @@
 		0C8CFF0E242B699B0009FA88 /* LayoutTests */ = {
 			isa = PBXGroup;
 			children = (
-				EC7953411ECB5C7B00404857 /* ViewLayoutTest.swift */,
 				0C8CFF0F242B69BA0009FA88 /* AutoSizingCollectionView.swift */,
 				0C8CFF11242B6A510009FA88 /* SimpleAutoSizingCollectionView.swift */,
+				EC7953411ECB5C7B00404857 /* ViewLayoutTest.swift */,
 			);
 			path = LayoutTests;
 			sourceTree = "<group>";
@@ -203,49 +203,49 @@
 		49B1F77F1CE4B3DB00A29BFE /* ADUtilsTests */ = {
 			isa = PBXGroup;
 			children = (
-				B0E1495D2694449A00712620 /* Security */,
-				0C8CFF0E242B699B0009FA88 /* LayoutTests */,
-				49B1F7821CE4B3DB00A29BFE /* Info.plist */,
-				ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */,
-				49F0F20C2162095F00FC8AA4 /* SynchronizeTests.swift */,
-				49F0F20E21621EB300FC8AA4 /* DeselectableViewTests.swift */,
-				ECB626FF1DE3395100951346 /* ChildInsertionTest.swift */,
-				ECB627011DE33C1100951346 /* ViewInsertionWithMarginTest.swift */,
-				49BA42C62167B8BE00578C48 /* LayoutGuideConstraintsTests.swift */,
+				921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */,
+				49D1F130216C968E009F87AB /* ADUtilsTests-Bridging-Header.h */,
+				49D1F133216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m */,
+				49D1F131216C968E009F87AB /* ADViewLayoutTestsObjc.m */,
+				49CC380020C048F800CFEDDB /* ArrayFilterTests.swift */,
 				ECB627051DE33F2200951346 /* AttributedStringTest.swift */,
-				49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */,
-				49EE98A31DE6CAE100DE1CB8 /* RegisterableViewTest.swift */,
-				49D85E011E1E6F5300233A3F /* PropertyListArchiverTest.swift */,
-				49F0F21021625E7000FC8AA4 /* StringLocalizationTests.swift */,
+				ECB626FF1DE3395100951346 /* ChildInsertionTest.swift */,
+				4AE8A6D223F563F300ABE095 /* DebouncedTests.swift */,
+				49F0F20E21621EB300FC8AA4 /* DeselectableViewTests.swift */,
+				EC626C6A1FA06DB4001C332C /* DynamicFontTest.swift */,
+				92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */,
+				E7F92DA71FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift */,
+				EC626C6C1FA07281001C332C /* HelveticaNeue.plist */,
+				49B1F7821CE4B3DB00A29BFE /* Info.plist */,
+				49BA42C62167B8BE00578C48 /* LayoutGuideConstraintsTests.swift */,
+				0C8CFF0E242B699B0009FA88 /* LayoutTests */,
+				57397F7C24CAD105001C6F2E /* LocaleUserPreferredTimeFormatTests.swift */,
+				2A6E273022B2834500B31F40 /* MKMapViewDequeuingTest.swift */,
+				49CEC4A41EFA484900675EC4 /* NavigationControllerObserverTest.swift */,
+				496EB3BC246003EA0011B4AD /* NavigationControllerPopCompletionTests.swift */,
+				ECB626FD1DE3344A00951346 /* NibLoaderTest.swift */,
+				F2F326C02448431300BB5700 /* NSDirectionalEdgeInsetsTests.swift */,
+				92DA1F5E2257556800060A32 /* NSLayoutConstraintUtilsTests.swift */,
+				E7D5F496242DED3C0048C0DC /* OptionalGetTests.swift */,
+				4988CBBD215931B4003A3C08 /* OptionalStringIsBlankTests.swift */,
 				EC368BC31EDF13DA00661556 /* OptionalUnwrapTest.swift */,
 				87BC46DC257E92FD008FB5A9 /* OptionalVerifyOrNilTests.swift */,
-				49CEC4A41EFA484900675EC4 /* NavigationControllerObserverTest.swift */,
-				EC626C6A1FA06DB4001C332C /* DynamicFontTest.swift */,
-				E7F92DA71FFBD9B200A85AB4 /* GeometryUtilitiesTest.swift */,
-				49CC380020C048F800CFEDDB /* ArrayFilterTests.swift */,
+				49D85E011E1E6F5300233A3F /* PropertyListArchiverTest.swift */,
+				49EE98A31DE6CAE100DE1CB8 /* RegisterableViewTest.swift */,
+				B0E1495D2694449A00712620 /* Security */,
 				4988CBB921592CAB003A3C08 /* SequenceGroupedByTests.swift */,
-				4988CBBD215931B4003A3C08 /* OptionalStringIsBlankTests.swift */,
-				92DA1F5E2257556800060A32 /* NSLayoutConstraintUtilsTests.swift */,
-				92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */,
-				2A6E273022B2834500B31F40 /* MKMapViewDequeuingTest.swift */,
+				494C99842601FA5A00A1E098 /* StackViewBuilderTests.swift */,
 				491BC3C223C47D29001A3B82 /* StackViewUtilsTests.swift */,
-				4AE8A6D223F563F300ABE095 /* DebouncedTests.swift */,
-				E7D5F496242DED3C0048C0DC /* OptionalGetTests.swift */,
+				49F0F21021625E7000FC8AA4 /* StringLocalizationTests.swift */,
+				49F0F20C2162095F00FC8AA4 /* SynchronizeTests.swift */,
+				495682EE25DBA8F800001624 /* UIButtonBackgroundColorTests.swift */,
+				49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */,
+				495682D625DAD8EC00001624 /* UIImageColorTests.swift */,
 				E7D5F498242DEF120048C0DC /* UINavigationItemBackItemTests.swift */,
 				E7D5F49A242DF01F0048C0DC /* UIScreenPixelDimensionTests.swift */,
 				E7D5F49C242DF0D90048C0DC /* UITableViewDefaultFooterCellsTests.swift */,
-				496EB3BC246003EA0011B4AD /* NavigationControllerPopCompletionTests.swift */,
 				496EB3C0246008E80011B4AD /* UITableViewHeaderFooterViewLayoutTests.swift */,
-				49D1F131216C968E009F87AB /* ADViewLayoutTestsObjc.m */,
-				49D1F133216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m */,
-				921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */,
-				EC626C6C1FA07281001C332C /* HelveticaNeue.plist */,
-				49D1F130216C968E009F87AB /* ADUtilsTests-Bridging-Header.h */,
-				F2F326C02448431300BB5700 /* NSDirectionalEdgeInsetsTests.swift */,
-				57397F7C24CAD105001C6F2E /* LocaleUserPreferredTimeFormatTests.swift */,
-				495682D625DAD8EC00001624 /* UIImageColorTests.swift */,
-				495682EE25DBA8F800001624 /* UIButtonBackgroundColorTests.swift */,
-				494C99842601FA5A00A1E098 /* StackViewBuilderTests.swift */,
+				ECB627011DE33C1100951346 /* ViewInsertionWithMarginTest.swift */,
 			);
 			path = ADUtilsTests;
 			sourceTree = "<group>";
@@ -337,8 +337,8 @@
 		B0E1495D2694449A00712620 /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				B0E1495E269444E600712620 /* SecureArchiverTests.swift */,
 				87C139C22695EFBA00CEE5A1 /* PostInstallationKeychainCleanerTests.swift */,
+				B0E1495E269444E600712620 /* SecureArchiverTests.swift */,
 			);
 			path = Security;
 			sourceTree = "<group>";
