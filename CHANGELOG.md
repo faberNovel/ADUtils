@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - Add a subspec `ADUtils/Security` bundling security related tools.
 - Add `PostInstallationKeychainCleaner` using `UserDefaults`to check if keychain has to be wiped at launch
 - Add `SecureArchiver`, leveraging `CryptoKit` and the `Keychain` to add an encryption layer to `UserDefaults`
+- Add `UIButton+ContentEdgeInsets`, to facilitate the addition of contentInsets inside UIKit's UIButton, especially when title and image need to be separated with a constant value.
 
 ### Fixed
 
