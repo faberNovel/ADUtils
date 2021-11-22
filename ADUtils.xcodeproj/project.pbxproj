@@ -51,6 +51,7 @@
 		921907DF21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */; };
 		92DA1F5F2257556800060A32 /* NSLayoutConstraintUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA1F5E2257556800060A32 /* NSLayoutConstraintUtilsTests.swift */; };
 		92FAEA942271DF0D0090A2C7 /* FailableDecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */; };
+		B0481927274B9E4B00C74FB4 /* UIButtonContentEdgeInsetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0481926274B9E4B00C74FB4 /* UIButtonContentEdgeInsetsTests.swift */; };
 		B0E1495F269444E600712620 /* SecureArchiverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1495E269444E600712620 /* SecureArchiverTests.swift */; };
 		E7D5F497242DED3C0048C0DC /* OptionalGetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5F496242DED3C0048C0DC /* OptionalGetTests.swift */; };
 		E7D5F499242DEF120048C0DC /* UINavigationItemBackItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5F498242DEF120048C0DC /* UINavigationItemBackItemTests.swift */; };
@@ -136,6 +137,7 @@
 		92DA1F5E2257556800060A32 /* NSLayoutConstraintUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintUtilsTests.swift; sourceTree = "<group>"; };
 		92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableDecodableTests.swift; sourceTree = "<group>"; };
 		9C9220CDCE8C495437E023DB /* Pods-ADUtilsTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.stubs.xcconfig"; sourceTree = "<group>"; };
+		B0481926274B9E4B00C74FB4 /* UIButtonContentEdgeInsetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonContentEdgeInsetsTests.swift; sourceTree = "<group>"; };
 		B0E1495E269444E600712620 /* SecureArchiverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureArchiverTests.swift; sourceTree = "<group>"; };
 		D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADUtilsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7D5F496242DED3C0048C0DC /* OptionalGetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalGetTests.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				49F0F21021625E7000FC8AA4 /* StringLocalizationTests.swift */,
 				49F0F20C2162095F00FC8AA4 /* SynchronizeTests.swift */,
 				495682EE25DBA8F800001624 /* UIButtonBackgroundColorTests.swift */,
+				B0481926274B9E4B00C74FB4 /* UIButtonContentEdgeInsetsTests.swift */,
 				49EE98A11DE5F2DC00DE1CB8 /* UIEdgeInsetsTest.swift */,
 				495682D625DAD8EC00001624 /* UIImageColorTests.swift */,
 				E7D5F498242DEF120048C0DC /* UINavigationItemBackItemTests.swift */,
@@ -687,6 +690,7 @@
 				87C139C32695EFBA00CEE5A1 /* PostInstallationKeychainCleanerTests.swift in Sources */,
 				F2F326C12448431300BB5700 /* NSDirectionalEdgeInsetsTests.swift in Sources */,
 				0C8CFF12242B6A510009FA88 /* SimpleAutoSizingCollectionView.swift in Sources */,
+				B0481927274B9E4B00C74FB4 /* UIButtonContentEdgeInsetsTests.swift in Sources */,
 				49F0F20D2162095F00FC8AA4 /* SynchronizeTests.swift in Sources */,
 				B0E1495F269444E600712620 /* SecureArchiverTests.swift in Sources */,
 				92DA1F5F2257556800060A32 /* NSLayoutConstraintUtilsTests.swift in Sources */,
