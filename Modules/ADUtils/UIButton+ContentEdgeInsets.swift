@@ -42,17 +42,18 @@ public extension UIButton {
                       left: CGFloat,
                       right: CGFloat,
                       spaceBetweenImageAndTitle: CGFloat) {
+        let isContentDisplayedLeftToRight: CGFloat = self.semanticContentAttribute == .forceRightToLeft ? -1.0 : 1.0
         contentEdgeInsets = UIEdgeInsets(
             top: top,
-            left: left,
+            left: left + spaceBetweenImageAndTitle * (isContentDisplayedLeftToRight - 1.0) / -2.0,
             bottom: bottom,
-            right: right + spaceBetweenImageAndTitle
+            right: right + spaceBetweenImageAndTitle * (isContentDisplayedLeftToRight + 1.0) / 2.0
         )
         titleEdgeInsets = UIEdgeInsets(
             top: 0,
-            left: spaceBetweenImageAndTitle,
+            left: spaceBetweenImageAndTitle * isContentDisplayedLeftToRight,
             bottom: 0,
-            right: -spaceBetweenImageAndTitle
+            right: spaceBetweenImageAndTitle * -isContentDisplayedLeftToRight
         )
     }
 

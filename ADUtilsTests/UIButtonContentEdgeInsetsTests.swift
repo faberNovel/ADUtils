@@ -116,6 +116,13 @@ class UIButtonContentEdgeInsetsTests: QuickSpec {
                 button.ad_setInsets(vertical: 5.0, horizontal: 5.0, spaceBetweenImageAndTitle: 10.0)
                 expect(button) == snapshot("UIButtonContentEdgeInsetsImageVerticalHorizontalBetweenInset")
             }
+
+            it("should properly handle right to left layout") {
+                button.semanticContentAttribute = .forceRightToLeft
+                button.setImage(UIImage(systemName: "faceid"), for: .normal)
+                button.ad_setInsets(vertical: 5.0, horizontal: 5.0, spaceBetweenImageAndTitle: 10.0)
+                expect(button) == snapshot("UIButtonContentEdgeInsetsImageRightToLeftLayout")
+            }
         }
         
     }
