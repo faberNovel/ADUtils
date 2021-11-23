@@ -1,5 +1,5 @@
 //
-//  UIDirectionalRectEdgeTest.swift
+//  NSDirectionalRectEdgeTest.swift
 //  ADUtils
 //
 //  Created by Gaétan Zanella on 18/11/21.
@@ -13,12 +13,12 @@ import ADUtils
 
 @available(iOS 13.0, *)
 @available(tvOSApplicationExtension 13.0, *)
-class UIDirectionalRectEdgeTest: QuickSpec {
+class NSDirectionalRectEdgeTest: QuickSpec {
 
     override func spec() {
 
         describe("horizontal edges") {
-            let horizontalEdge: UIDirectionalRectEdge = .horizontal
+            let horizontalEdge: NSDirectionalRectEdge = .horizontal
             it("should contain horizontal values") {
                 expect(horizontalEdge).to(contain(.trailing))
                 expect(horizontalEdge).to(contain(.leading))
@@ -31,7 +31,7 @@ class UIDirectionalRectEdgeTest: QuickSpec {
         }
 
         describe("vertical edges") {
-            let verticalEdge: UIDirectionalRectEdge = .vertical
+            let verticalEdge: NSDirectionalRectEdge = .vertical
             it("should contain vertical values") {
                 expect(verticalEdge).to(contain(.bottom))
                 expect(verticalEdge).to(contain(.top))

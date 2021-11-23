@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C8CFF10242B69BA0009FA88 /* AutoSizingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CFF0F242B69BA0009FA88 /* AutoSizingCollectionView.swift */; };
 		0C8CFF12242B6A510009FA88 /* SimpleAutoSizingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CFF11242B6A510009FA88 /* SimpleAutoSizingCollectionView.swift */; };
+		0F2654AB0B93FF9FEB86A1FE /* NSDirectionalRectEdgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CA673B2E1192F220168486 /* NSDirectionalRectEdgeTest.swift */; };
 		2A6E273122B2834500B31F40 /* MKMapViewDequeuingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6E273022B2834500B31F40 /* MKMapViewDequeuingTest.swift */; };
 		42CDDA9C8179B9F9824C64F2 /* Pods_ADUtilsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EFE73855C87585926C10E6 /* Pods_ADUtilsApp.framework */; };
 		47E17214F9A4009CF12359D7 /* Pods_ADUtilsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */; };
@@ -52,7 +53,6 @@
 		92DA1F5F2257556800060A32 /* NSLayoutConstraintUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA1F5E2257556800060A32 /* NSLayoutConstraintUtilsTests.swift */; };
 		92FAEA942271DF0D0090A2C7 /* FailableDecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FAEA932271DF0D0090A2C7 /* FailableDecodableTests.swift */; };
 		ACD166862A45C0A700374A7E /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = ACD166852A45C0A700374A7E /* SnapshotTesting */; };
-		AF82C0DFCF734153A136AB4D /* UIDirectionalRectEdgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78DB9453D52CEF171A5FBA6 /* UIDirectionalRectEdgeTest.swift */; };
 		B0E1495F269444E600712620 /* SecureArchiverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1495E269444E600712620 /* SecureArchiverTests.swift */; };
 		E7D5F497242DED3C0048C0DC /* OptionalGetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5F496242DED3C0048C0DC /* OptionalGetTests.swift */; };
 		E7D5F499242DEF120048C0DC /* UINavigationItemBackItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5F498242DEF120048C0DC /* UINavigationItemBackItemTests.swift */; };
@@ -86,6 +86,7 @@
 		0C8CFF0F242B69BA0009FA88 /* AutoSizingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingCollectionView.swift; sourceTree = "<group>"; };
 		0C8CFF11242B6A510009FA88 /* SimpleAutoSizingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAutoSizingCollectionView.swift; sourceTree = "<group>"; };
 		0DA2083431F4C16E69ED219E /* Pods-ADUtilsApp.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.preproduction.xcconfig"; sourceTree = "<group>"; };
+		11CA673B2E1192F220168486 /* NSDirectionalRectEdgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalRectEdgeTest.swift; sourceTree = "<group>"; };
 		28EFE73855C87585926C10E6 /* Pods_ADUtilsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADUtilsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A6E273022B2834500B31F40 /* MKMapViewDequeuingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapViewDequeuingTest.swift; sourceTree = "<group>"; };
 		32D3D6308F00B6B8059A24E8 /* Pods-ADUtilsTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.production.xcconfig"; sourceTree = "<group>"; };
@@ -142,7 +143,6 @@
 		9C9220CDCE8C495437E023DB /* Pods-ADUtilsTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsTests/Pods-ADUtilsTests.stubs.xcconfig"; sourceTree = "<group>"; };
 		B0E1495E269444E600712620 /* SecureArchiverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureArchiverTests.swift; sourceTree = "<group>"; };
 		D06C6332AC4E8FBA4930E980 /* Pods_ADUtilsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADUtilsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D78DB9453D52CEF171A5FBA6 /* UIDirectionalRectEdgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDirectionalRectEdgeTest.swift; sourceTree = "<group>"; };
 		E7D5F496242DED3C0048C0DC /* OptionalGetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalGetTests.swift; sourceTree = "<group>"; };
 		E7D5F498242DEF120048C0DC /* UINavigationItemBackItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationItemBackItemTests.swift; sourceTree = "<group>"; };
 		E7D5F49A242DF01F0048C0DC /* UIScreenPixelDimensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenPixelDimensionTests.swift; sourceTree = "<group>"; };
@@ -253,7 +253,7 @@
 				495682EE25DBA8F800001624 /* UIButtonBackgroundColorTests.swift */,
 				494C99842601FA5A00A1E098 /* StackViewBuilderTests.swift */,
 				6423630AD4B44DC50EA87D8A /* UIRectEdgeTest.swift */,
-				D78DB9453D52CEF171A5FBA6 /* UIDirectionalRectEdgeTest.swift */,
+				11CA673B2E1192F220168486 /* NSDirectionalRectEdgeTest.swift */,
 			);
 			path = ADUtilsTests;
 			sourceTree = "<group>";
@@ -720,7 +720,7 @@
 				49CEC4A51EFA484900675EC4 /* NavigationControllerObserverTest.swift in Sources */,
 				921907DF21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m in Sources */,
 				F12A754809FE724A783EF192 /* UIRectEdgeTest.swift in Sources */,
-				AF82C0DFCF734153A136AB4D /* UIDirectionalRectEdgeTest.swift in Sources */,
+				0F2654AB0B93FF9FEB86A1FE /* NSDirectionalRectEdgeTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
