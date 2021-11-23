@@ -15,31 +15,12 @@ class UIRectEdgeTest: QuickSpec {
 
     override func spec() {
 
-        describe("horizontal edges") {
-            let horizontalEdge: UIRectEdge = .horizontal
-            it("should contain horizontal values") {
-                expect(horizontalEdge).to(contain(.left))
-                expect(horizontalEdge).to(contain(.right))
-            }
-
-            it("should not contain vertical values") {
-                expect(horizontalEdge).toNot(contain(.bottom))
-                expect(horizontalEdge).toNot(contain(.top))
-            }
+        it("should only contain vertical values") {
+            expect(UIRectEdge.vertical).to(equal([.top, .bottom]))
         }
 
-        describe("vertical edges") {
-            let verticalEdge: UIRectEdge = .vertical
-            it("should contain vertical values") {
-                expect(verticalEdge).to(contain(.bottom))
-                expect(verticalEdge).to(contain(.top))
-            }
-
-            it("should not contain horizontal values") {
-                expect(verticalEdge).toNot(contain(.left))
-                expect(verticalEdge).toNot(contain(.right))
-            }
+        it("should only contain horizontal values") {
+            expect(UIRectEdge.horizontal).to(equal([.left, .right]))
         }
     }
-
 }

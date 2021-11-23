@@ -17,31 +17,12 @@ class NSDirectionalRectEdgeTest: QuickSpec {
 
     override func spec() {
 
-        describe("horizontal edges") {
-            let horizontalEdge: NSDirectionalRectEdge = .horizontal
-            it("should contain horizontal values") {
-                expect(horizontalEdge).to(contain(.trailing))
-                expect(horizontalEdge).to(contain(.leading))
-            }
-
-            it("should not contain vertical values") {
-                expect(horizontalEdge).toNot(contain(.bottom))
-                expect(horizontalEdge).toNot(contain(.top))
-            }
+        it("should only contain vertical values") {
+            expect(NSDirectionalRectEdge.vertical).to(equal([.top, .bottom]))
         }
 
-        describe("vertical edges") {
-            let verticalEdge: NSDirectionalRectEdge = .vertical
-            it("should contain vertical values") {
-                expect(verticalEdge).to(contain(.bottom))
-                expect(verticalEdge).to(contain(.top))
-            }
-
-            it("should not contain horizontal values") {
-                expect(verticalEdge).toNot(contain(.trailing))
-                expect(verticalEdge).toNot(contain(.leading))
-            }
+        it("should only contain horizontal values") {
+            expect(NSDirectionalRectEdge.horizontal).to(equal([.trailing, .leading]))
         }
     }
-
 }
