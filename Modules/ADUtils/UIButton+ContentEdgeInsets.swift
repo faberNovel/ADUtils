@@ -17,6 +17,7 @@ public extension UIButton {
      - parameter left: The padding to apply left to the title.
      - parameter right: The padding to apply right to the title.
      */
+    @available(iOS, deprecated: 15.0, message: "Use UIButton.Configuration instead")
     func ad_setInsets(top: CGFloat,
                       bottom: CGFloat,
                       left: CGFloat,
@@ -37,6 +38,7 @@ public extension UIButton {
      - parameter right: The padding to apply right to the title.
      - parameter spaceBetweenImageAndTitle: The space to apply between the image and the title.
      */
+    @available(iOS, deprecated: 15.0, message: "Use UIButton.Configuration instead")
     func ad_setInsets(top: CGFloat,
                       bottom: CGFloat,
                       left: CGFloat,
@@ -62,6 +64,7 @@ public extension UIButton {
      - parameter vertical: The padding to apply above and under the title.
      - parameter horizontal: The padding to apply left and right to the title.
      */
+    @available(iOS, deprecated: 15.0, message: "Use UIButton.Configuration instead")
     func ad_setInsets(vertical: CGFloat, horizontal: CGFloat) {
         ad_setInsets(top: vertical, bottom: vertical, left: horizontal, right: horizontal)
     }
@@ -72,6 +75,7 @@ public extension UIButton {
      - parameter horizontal: The padding to apply left and right to the title.
      - parameter spaceBetweenImageAndTitle: The space to apply between the image and the title.
      */
+    @available(iOS, deprecated: 15.0, message: "Use UIButton.Configuration instead")
     func ad_setInsets(vertical: CGFloat,
                       horizontal: CGFloat,
                       spaceBetweenImageAndTitle: CGFloat) {
