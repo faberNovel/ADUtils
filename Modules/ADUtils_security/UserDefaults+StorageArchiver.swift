@@ -5,6 +5,7 @@
 //  Created by Benjamin Lavialle on 08/07/2021.
 //
 
+#if canImport(CryptoKit)
 import Foundation
 
 extension UserDefaults: StorageArchiver {
@@ -21,3 +22,4 @@ extension UserDefaults: StorageArchiver {
         removeObject(forKey: key)
     }
 }
+#endif
