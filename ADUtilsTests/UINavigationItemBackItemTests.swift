@@ -20,7 +20,12 @@ class UINavigationItemBackItemTests: QuickSpec {
             item.ad_hideBackButtonTitle()
 
             // Then
-            expect(item.backBarButtonItem?.title).to(beEmpty())
+            if #available(iOS 14.0, *) {
+                expect(item.backButtonTitle).to(beNil())
+            } else {
+                expect(item.backBarButtonItem?.title).to(beEmpty())
+            }
         }
     }
+
 }

@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'ADUtils'
-  spec.version      = '11.0.0'
+  spec.version      = '11.2.0'
   spec.authors      = 'Fabernovel'
   spec.homepage     = 'https://github.com/faberNovel/ADUtils'
   spec.summary      = 'Fabernovel\'s toolbox for iOS'
@@ -16,6 +16,10 @@ Pod::Spec.new do |spec|
   spec.subspec 'Swift' do |subspec|
     # Subspec compliant with App extensions
     subspec.source_files = 'Modules/ADUtils/*.{h,m,swift}'
+  end
+
+  spec.subspec 'Security' do |subspec|
+    subspec.source_files = 'Modules/ADUtils_security/*.{h,m,swift}'
   end
 
   spec.subspec 'objc' do |subspec|

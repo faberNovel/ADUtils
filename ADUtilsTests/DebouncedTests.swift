@@ -43,7 +43,7 @@ class DebouncerTests: QuickSpec {
                 counter += 1
             }
             expect(counter).to(equal(0))
-            waitUntil(timeout: 2 * Constants.delay) { done in
+            waitUntil(timeout: .seconds(2 * Int(Constants.delay))) { done in
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Int(Constants.delay))) {
                     expect(counter).to(equal(1))
                     done()
@@ -58,7 +58,7 @@ class DebouncerTests: QuickSpec {
             }
 
             let reducedDelay = Int(Constants.delay) / 2
-            waitUntil(timeout: 2 * Constants.delay) { done in
+            waitUntil(timeout: .seconds(2 * Int(Constants.delay))) { done in
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(reducedDelay)) {
                     expect(counter).to(equal(0))
                     debouncer?.debounce {
@@ -68,7 +68,7 @@ class DebouncerTests: QuickSpec {
                 }
             }
 
-            waitUntil(timeout: 2 * Constants.delay) { done in
+            waitUntil(timeout: .seconds(2 * Int(Constants.delay))) { done in
                 let deadline: DispatchTime = .now()
                     + .seconds(Int(Constants.delay))
                     + .seconds(reducedDelay)
@@ -106,7 +106,7 @@ class DebouncedTests: QuickSpec {
         it("should wait end of delay before execution") {
             expect(self.actionExecuted).to(beFalse())
             self.toggleAction()
-            waitUntil(timeout: 2 * Constants.delay) { done in
+            waitUntil(timeout: .seconds(2 * Int(Constants.delay))) { done in
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Int(Constants.delay))) {
                     expect(self.actionExecuted).to(beTrue())
                     done()
@@ -119,7 +119,7 @@ class DebouncedTests: QuickSpec {
             self.toggleAction()
 
             let reducedDelay = Int(Constants.delay) / 2
-            waitUntil(timeout: 2 * Constants.delay) { done in
+            waitUntil(timeout: .seconds(2 * Int(Constants.delay))) { done in
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(reducedDelay)) {
                     expect(self.actionExecuted).to(beFalse())
                     self.toggleAction()
@@ -128,7 +128,7 @@ class DebouncedTests: QuickSpec {
                 }
             }
 
-            waitUntil(timeout: 2 * Constants.delay) { done in
+            waitUntil(timeout: .seconds(2 * Int(Constants.delay))) { done in
                 let deadline: DispatchTime = .now()
                     + .seconds(Int(Constants.delay))
                     + .seconds(reducedDelay)
@@ -137,6 +137,21 @@ class DebouncedTests: QuickSpec {
                     done()
                 }
             }
+        }
+
+        it("should not have retain cycle") {
+            class ObjectWithDebouncedWrapper {
+                @Debounced(delay: Constants.delay, queue: .main)
+                var debounced: () -> Void
+                var debouncedWrapper: Debounced { _debounced }
+            }
+            var object: ObjectWithDebouncedWrapper? = ObjectWithDebouncedWrapper()
+            object?.debounced = {}
+            weak var weakReference: Debouncer? = object?.debouncedWrapper
+
+            expect(weakReference).notTo(beNil())
+            object = nil
+            expect(weakReference).to(beNil())
         }
     }
 }

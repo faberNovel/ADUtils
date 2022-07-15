@@ -19,7 +19,11 @@ class OptionalGetTests: QuickSpec {
             let optional = nil as String?
 
             // Then
-            expect { _ = try optional.get() }.to(throwError(Optional<String>.Error.isNil))
+            expect {
+                let toto = try optional.get()
+                expect(toto).to(beNil())
+            }
+            .to(throwError(Optional<String>.Error.isNil))
         }
 
         it("should return the wrapped value") {
@@ -29,7 +33,7 @@ class OptionalGetTests: QuickSpec {
             // Then
             expect {
                 let toto = try optional.get()
-                return expect(toto).to(equal("toto"))
+                expect(toto).to(equal("toto"))
             }
             .toNot(throwError())
         }

@@ -9,10 +9,12 @@
 import Foundation
 import UIKit
 
+// swiftlint:disable implicitly_unwrapped_optional
+
 /**
  Protocol NavigationControllerObserverDelegate provides methods to observe `NavigationControllerObserver` actions
  */
-public protocol NavigationControllerObserverDelegate : class {
+public protocol NavigationControllerObserverDelegate: AnyObject {
     /**
      Callback when a `viewController` is popped from the `navigationController` stack
      - parameter observer: the observer that observed the pop transition
@@ -47,7 +49,7 @@ private class NavigationControllerObserverDelegateContainer {
  - important: The `NavigationControllerObserver` will observe only *animated* pop transitions.
  Indeed, if you call `popViewController(animated: false)` you won't be notified.
  */
-public class NavigationControllerObserver : NSObject, UINavigationControllerDelegate {
+public class NavigationControllerObserver: NSObject, UINavigationControllerDelegate {
 
     /**
      All calls from `UINavigationControllerDelegate` methods are forwarded to this object
@@ -76,7 +78,7 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
         navigationController.delegate = self
     }
 
-    //MARK: - NSObject
+    // MARK: - NSObject
 
     override public func responds(to aSelector: Selector!) -> Bool {
         if shouldForwardSelector(aSelector) {
@@ -92,7 +94,7 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
         return super.forwardingTarget(for: aSelector)
     }
 
-    //MARK: - Public
+    // MARK: - Public
 
     /**
      Observe a pop transition in the `navigationController` stack
@@ -133,7 +135,7 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
         viewControllersToDelegates.removeAllObjects()
     }
 
-    //MARK: - UINavigationControllerDelegate
+    // MARK: - UINavigationControllerDelegate
 
     public func navigationController(_ navigationController: UINavigationController,
                                      didShow viewController: UIViewController,
@@ -157,7 +159,7 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
         delegateToCall?.navigationControllerObserver(self, didObservePopTransitionFor: fromViewController)
     }
 
-    //MARK: - Private
+    // MARK: - Private
 
     private func shouldForwardSelector(_ aSelector: Selector!) -> Bool {
         let description = protocol_getMethodDescription(UINavigationControllerDelegate.self, aSelector, false, true)

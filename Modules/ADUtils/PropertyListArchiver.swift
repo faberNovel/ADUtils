@@ -88,7 +88,7 @@ public class PropertyListArchiver {
      - parameter value: The object to store in the user defaults.
      - parameter key: The key to use in the user defaults.
      */
-    public func set<C : Codable>(_ value: C, forKey key: String) throws {
+    public func set<C: Codable>(_ value: C, forKey key: String) throws {
         let data = try encoder.encode(value)
         defaults.set(data, forKey: key)
     }
@@ -98,7 +98,7 @@ public class PropertyListArchiver {
      - parameter key: The key to read in the user defaults.
      - returns: The value associated to the key if it exists or nil
      */
-    public func value<C : Codable>(forKey key: String) throws -> C? {
+    public func value<C: Codable>(forKey key: String) throws -> C? {
         return try defaults.data(forKey: key).flatMap { try decoder.decode(C.self, from: $0) }
     }
 
@@ -161,7 +161,7 @@ public class PropertyListArchiver {
      - parameter key: The key to read in the user defaults.
      - returns: The array associated to the key if it exists or an empty array
      */
-    public func array<C : Codable>(forKey key: String) throws -> [C] {
+    public func array<C: Codable>(forKey key: String) throws -> [C] {
         return try value(forKey: key) ?? []
     }
 

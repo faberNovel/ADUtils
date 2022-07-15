@@ -4,6 +4,38 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Created
+
+- Add a subspec `ADUtils/Security` bundling security related tools.
+- Add `PostInstallationKeychainCleaner` using `UserDefaults`to check if keychain has to be wiped at launch
+- Add `SecureArchiver`, leveraging `CryptoKit` and the `Keychain` to add an encryption layer to `UserDefaults`
+
+### Fixed
+
+- iOS 14.0+ gives a new property on navigationItem : `backButtonDisplayMode`. `ad_hideBackButtonTitle` now uses it.
+
+## [11.2.0] - 2021-05-18
+
+### Created
+
+- Add SPM support [#21](https://github.com/faberNovel/ADUtils/pull/21) via Alexandre Podlewski
+
+## [11.1.0] - 2021-03-22
+
+### Created
+
+- `verifyOrNil(_:over:)`
+- `Optional.verifying(_:)`
+- `UIImage.ad_filled(with:size:)`
+- `UIButton.ad_setBackgroundColor(:forState:)`
+- `UICollectionView.dequeueSupplementaryView<U: ClassIdentifiable>(_:ofKind:at:)` dequeue generic reusable view from `UICollectionView`
+- `UICollectionView.register(supplementaryView:kind:)` register generic reusable view from `UICollectionView`
+- `HStackView(spacing:alignment:distribution:arrangedSubviews:)`
+- `VStackView(spacing:alignment:distribution:arrangedSubviews:)`
+
+### Fixed
+- `Debounced` property wrapper no longer has a retain cycle
+
 ## [11.0.0] - 2020-06-19
 
 ### Created

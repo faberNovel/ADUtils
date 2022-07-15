@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+// swiftlint:disable force_cast
+
 /*
  * Usage example:
  *
@@ -31,7 +33,7 @@ public protocol ClassIdentifiable {
     static func identifier() -> String
 }
 
-extension NSObject : ClassIdentifiable {
+extension NSObject: ClassIdentifiable {
     public static func identifier() -> String {
         return String(describing: self)
     }
@@ -45,22 +47,28 @@ public enum RegisterableView {
 public extension RegisterableView {
     var nib: UINib? {
         switch self {
-        case let .nib(cellClass): return UINib(nibName: String(describing: cellClass), bundle: nil)
-        default: return nil
+        case let .nib(cellClass):
+            return UINib(nibName: String(describing: cellClass), bundle: nil)
+        default:
+            return nil
         }
     }
 
     var identifier: String {
         switch self {
-        case let .nib(cellClass): return cellClass.identifier()
-        case let .class(cellClass): return cellClass.identifier()
+        case let .nib(cellClass):
+            return cellClass.identifier()
+        case let .class(cellClass):
+            return cellClass.identifier()
         }
     }
 
     var cellClass: AnyClass? {
         switch self {
-        case let .class(cellClass): return cellClass
-        default: return nil
+        case let .class(cellClass):
+            return cellClass
+        default:
+            return nil
         }
     }
 }
@@ -85,7 +93,7 @@ public extension CollectionView {
     }
 }
 
-extension UITableView : CollectionView {
+extension UITableView: CollectionView {
     public func register(cell: RegisterableView) {
         switch cell {
         case .nib:
@@ -109,7 +117,7 @@ extension UITableView : CollectionView {
     }
 }
 
-extension UICollectionView : CollectionView {
+extension UICollectionView: CollectionView {
     public func register(cell: RegisterableView) {
         switch cell {
         case .nib:
@@ -119,21 +127,21 @@ extension UICollectionView : CollectionView {
         }
     }
 
+    public func register(supplementaryView view: RegisterableView, kind: String) {
+        switch view {
+        case .nib:
+            register(view.nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: view.identifier)
+        case .class:
+            register(view.cellClass, forSupplementaryViewOfKind: kind, withReuseIdentifier: view.identifier)
+        }
+    }
+
     public func register(header: RegisterableView) {
         register(supplementaryView: header, kind: UICollectionView.elementKindSectionHeader)
     }
 
     public func register(footer: RegisterableView) {
         register(supplementaryView: footer, kind: UICollectionView.elementKindSectionFooter)
-    }
-
-    private func register(supplementaryView view: RegisterableView, kind: String) {
-        switch view {
-        case .nib:
-            register(view.nib, forSupplementaryViewOfKind:kind , withReuseIdentifier: view.identifier)
-        case .class:
-            register(view.cellClass, forSupplementaryViewOfKind:kind , withReuseIdentifier: view.identifier)
-        }
     }
 }
 
@@ -156,11 +164,17 @@ extension UICollectionView {
         return dequeueReusableCell(withReuseIdentifier: U.identifier(), for: indexPath) as! U
     }
 
+    public func dequeueSupplementaryView<U: ClassIdentifiable>(_ viewClass: U.Type = U.self,
+                                                               ofKind kind: String,
+                                                               at indexPath: IndexPath) -> U {
+        return dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: U.identifier(), for: indexPath) as! U
+    }
+
     public func dequeueHeader<U: ClassIdentifiable>(_ headerClass: U.Type = U.self, at indexPath: IndexPath) -> U {
-        return dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: U.identifier(), for: indexPath) as! U
+        return dequeueSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, at: indexPath)
     }
 
     public func dequeueFooter<U: ClassIdentifiable>(_ footerClass: U.Type = U.self, at indexPath: IndexPath) -> U {
-        return dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: U.identifier(), for: indexPath) as! U
+        return dequeueSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, at: indexPath)
     }
 }

@@ -19,7 +19,8 @@ public extension Optional {
        self.unwrap { $0.delegate.useSelf($0, with: args) }
      }
 
-     The block returns intentionnally Void to avoid using the unwrap to execute a block and map the value which could be messy,
+     The block returns intentionnally Void to avoid using the unwrap
+     to execute a block and map the value which could be messy,
      this may change to a generic function if we find interesting use cases
 
      - parameter block: The possibly executed block

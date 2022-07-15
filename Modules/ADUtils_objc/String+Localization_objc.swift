@@ -7,7 +7,8 @@
 
 import Foundation
 
-//???: (Claire Peyron) 2018/03/08 extensions over String are not usable in objc, this is why we need an extension on NSString
+// (Claire Peyron) 2018/03/08 extensions over String are not usable in objc,
+// this is why we need an extension on NSString
 
 extension NSString {
 

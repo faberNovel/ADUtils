@@ -1,18 +1,17 @@
-source 'https://github.com/CocoaPods/Specs.git'
-
 platform :ios, '10.0'
 use_frameworks!
 
-
 target 'ADUtilsApp' do
+    pod 'SwiftLint', '~> 0.42.0'
 end
 
 target 'ADUtilsTests' do
     pod 'Quick', '~> 2.2'
-    pod 'Nimble', '~> 8.0'
-    pod 'Nimble-Snapshots', '~> 8.0'
+    pod 'Nimble', '~> 9.0'
+    pod 'Nimble-Snapshots', '~> 9.0'
     pod 'OCMock', '~> 3.5'
     pod 'ADUtils', :path => './'
+    pod 'ADUtils/Security', :path => './'
 end
 
 post_install do |installer|
