@@ -20,6 +20,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'Security' do |subspec|
     subspec.source_files = 'Modules/ADUtils_security/*.{h,m,swift}'
+    subspec.framework    = 'CryptoKit'
   end
 
   spec.subspec 'objc' do |subspec|
