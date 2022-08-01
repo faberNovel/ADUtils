@@ -4,9 +4,21 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [11.3.0] - 2022-08-01Z
+
+### Created
+
+- Add a subspec `ADUtils/Security` bundling security related tools.
+- Add `PostInstallationKeychainCleaner` using `UserDefaults`to check if keychain has to be wiped at launch
+- Add `SecureArchiver`, leveraging `CryptoKit` and the `Keychain` to add an encryption layer to `UserDefaults`
+
+### Fixed
+
+- iOS 14.0+ gives a new property on navigationItem : `backButtonDisplayMode`. `ad_hideBackButtonTitle` now uses it.
+
 ## [11.2.0] - 2021-05-18
 
-## Created
+### Created
 
 - Add SPM support [#21](https://github.com/faberNovel/ADUtils/pull/21) via Alexandre Podlewski
 

@@ -1,34 +1,36 @@
 PODS:
-  - ADUtils (11.2.0):
-    - ADUtils/objc (= 11.2.0)
-  - ADUtils/objc (11.2.0):
+  - ADUtils (11.3.0):
+    - ADUtils/objc (= 11.3.0)
+  - ADUtils/objc (11.3.0):
     - ADUtils/Swift
-  - ADUtils/Swift (11.2.0)
-  - iOSSnapshotTestCase (6.2.0):
-    - iOSSnapshotTestCase/SwiftSupport (= 6.2.0)
-  - iOSSnapshotTestCase/Core (6.2.0)
-  - iOSSnapshotTestCase/SwiftSupport (6.2.0):
+  - ADUtils/Security (11.3.0)
+  - ADUtils/Swift (11.3.0)
+  - iOSSnapshotTestCase (8.0.0):
+    - iOSSnapshotTestCase/SwiftSupport (= 8.0.0)
+  - iOSSnapshotTestCase/Core (8.0.0)
+  - iOSSnapshotTestCase/SwiftSupport (8.0.0):
     - iOSSnapshotTestCase/Core
-  - Nimble (8.0.4)
-  - Nimble-Snapshots (8.0.0):
-    - Nimble-Snapshots/Core (= 8.0.0)
-  - Nimble-Snapshots/Core (8.0.0):
-    - iOSSnapshotTestCase (~> 6.0)
-    - Nimble (~> 8.0)
+  - Nimble (10.0.0)
+  - Nimble-Snapshots (9.4.0):
+    - Nimble-Snapshots/Core (= 9.4.0)
+  - Nimble-Snapshots/Core (9.4.0):
+    - iOSSnapshotTestCase (~> 8.0)
+    - Nimble
   - OCMock (3.5)
   - Quick (2.2.0)
   - SwiftLint (0.42.0)
 
 DEPENDENCIES:
   - ADUtils (from `./`)
-  - Nimble (~> 8.0)
-  - Nimble-Snapshots (~> 8.0)
+  - ADUtils/Security (from `./`)
+  - Nimble (~> 10.0)
+  - Nimble-Snapshots (~> 9.4)
   - OCMock (~> 3.5)
   - Quick (~> 2.2)
   - SwiftLint (~> 0.42.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - iOSSnapshotTestCase
     - Nimble
     - Nimble-Snapshots
@@ -41,14 +43,14 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADUtils: 38c95c84a73cd019f799b9bc30f6944b6559a75b
-  iOSSnapshotTestCase: 9ab44cb5aa62b84d31847f40680112e15ec579a6
-  Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
-  Nimble-Snapshots: 8ec63f41ce6c7229a17be9a64edbc123b181f75b
+  ADUtils: 094de41bd0d4b1ea6f620a62e87fa6dded0bad7b
+  iOSSnapshotTestCase: a670511f9ee3829c2b9c23e6e68f315fd7b6790f
+  Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
+  Nimble-Snapshots: ef281b908c604f78c8313587e25ea92c8ab513d7
   OCMock: 4ab4577fc941af31f4a0398f6e7e230cf21fc72a
   Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
   SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
 
-PODFILE CHECKSUM: b7888da75f7ae105abfa660c933c8104f25a1f1c
+PODFILE CHECKSUM: f5c75c5a2afe6743b996d26eefe0ea3251125287
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.11.3
