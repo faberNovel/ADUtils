@@ -2,7 +2,7 @@ platform :ios, '13.0'
 use_frameworks!
 
 target 'ADUtilsApp' do
-    pod 'SwiftLint', '~> 0.42.0'
+    pod 'SwiftLint', '~> 0.36'
 end
 
 target 'ADUtilsTests' do

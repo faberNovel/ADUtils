@@ -5,8 +5,8 @@ import PackageDescription
 let package = Package(
     name: "ADUtils",
     platforms: [
-        .iOS(.v10),
-        .tvOS(.v10)
+        .iOS(.v13),
+        .tvOS(.v13)
     ],
     products: [
         .library(
