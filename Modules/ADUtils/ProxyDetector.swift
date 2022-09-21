@@ -8,24 +8,17 @@
 import Foundation
 import UIKit
 
-public typealias ProxyDetectorWindowProvider = () -> UIWindow?
-
 /// ProxyDetector check on proxy use and display notification if in use
-public class ProxyDetector {
+public class ProxyDetector: Sendable {
 
-    private var windowProvider: ProxyDetectorWindowProvider
+    private let windowProvider: @MainActor () -> UIWindow?
 
     /**
     Check on proxy use and display an alert view if activated
     - parameter windowProvider defines the way proxy detector is receiving a window to display a possible alert
     */
-    public init(windowProvider: @escaping ProxyDetectorWindowProvider) {
+    public init(windowProvider: @MainActor @escaping () -> UIWindow?) {
         self.windowProvider = windowProvider
-    }
-
-    /// Defines if a proxy is currently in use on the device
-    public var isProxyActivated: Bool {
-        return proxyName != nil
     }
 
     /**
@@ -36,16 +29,15 @@ public class ProxyDetector {
      - note: The alert view is presented on the application top most view controller
      - note: The alert view is dismissed on its own after one second
      */
-    public func handleProxyNotification(after delay: TimeInterval) {
+    @MainActor
+    public func handleProxyNotification(after delay: TimeInterval) async {
         guard TARGET_OS_SIMULATOR == 0 else {
             // (Benjamin Lavialle) 2018-01-18 Do not notify proxy on simulator
             return
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
-            // (Benjamin Lavialle) 2017-10-03 Do not weak self, we need to keep self to complete action
-            guard let topMostViewController = self.topMostViewController else { return }
-            self.notifyIfProxyActivated(in: topMostViewController)
-        })
+        try? await Task.sleep(nanoseconds: NSEC_PER_SEC * UInt64(delay))
+        guard let topMostViewController = self.topMostViewController else { return }
+        self.notifyIfProxyActivated(in: topMostViewController)
     }
 
     /**
@@ -54,10 +46,11 @@ public class ProxyDetector {
      - note: The alert view is dismissed on its own after one second
      */
     public func notifyIfProxyActivated(in viewController: UIViewController) {
-        guard isProxyActivated else { return }
+        let name = proxyName
+        guard name != nil else { return }
         let alertController = UIAlertController(
             title: "Proxy",
-            message: "HTTP PRoxy is activated (\(proxyName ?? "unknown"))",
+            message: "HTTP PRoxy is activated (\(name ?? "unknown"))",
             preferredStyle: .alert
         )
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -78,6 +71,7 @@ public class ProxyDetector {
         return httpProxy ?? httpsProxy
     }
 
+    @MainActor
     private var topMostViewController: UIViewController? {
         var viewController = windowProvider()?.rootViewController
         while let presentedViewController = viewController?.presentedViewController {
