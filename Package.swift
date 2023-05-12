@@ -12,6 +12,10 @@ let package = Package(
         .library(
             name: "ADUtils",
             targets: ["ADUtils"]
+        ),
+        .library(
+            name: "ADUtilsSecurity",
+            targets: ["ADUtilsSecurity"]
         )
     ],
     dependencies: [],
@@ -19,7 +23,13 @@ let package = Package(
         .target(
             name: "ADUtils",
             dependencies: [],
-            path: "Modules"
+            path: "Modules",
+            exclude: ["ADUtils_security"]
+        ),
+        .target(
+            name: "ADUtilsSecurity",
+            dependencies: [],
+            path: "Modules/ADUtils_security"
         )
     ]
 )
