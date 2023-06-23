@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-public typealias ProxyDetectorWindowProvider = () -> UIWindow?
+public typealias ProxyDetectorWindowProvider = @MainActor @Sendable () -> UIWindow?
 
 /// ProxyDetector check on proxy use and display notification if in use
-public class ProxyDetector {
+public final class ProxyDetector: Sendable {
 
-    private var windowProvider: ProxyDetectorWindowProvider
+    private let windowProvider: ProxyDetectorWindowProvider
 
     /**
     Check on proxy use and display an alert view if activated
@@ -41,11 +41,13 @@ public class ProxyDetector {
             // (Benjamin Lavialle) 2018-01-18 Do not notify proxy on simulator
             return
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
-            // (Benjamin Lavialle) 2017-10-03 Do not weak self, we need to keep self to complete action
-            guard let topMostViewController = self.topMostViewController else { return }
-            self.notifyIfProxyActivated(in: topMostViewController)
-        })
+        Task { [weak self] in
+            do {
+                try await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
+                guard let topMostViewController = await self?.topMostViewController else { return }
+                await self?.notifyIfProxyActivated(in: topMostViewController)
+            } catch {}
+        }
     }
 
     /**
@@ -53,6 +55,7 @@ public class ProxyDetector {
      - parameter viewController: the view controller presenting the alert view
      - note: The alert view is dismissed on its own after one second
      */
+    @MainActor
     public func notifyIfProxyActivated(in viewController: UIViewController) {
         guard isProxyActivated else { return }
         let alertController = UIAlertController(
@@ -78,6 +81,7 @@ public class ProxyDetector {
         return httpProxy ?? httpsProxy
     }
 
+    @MainActor
     private var topMostViewController: UIViewController? {
         var viewController = windowProvider()?.rootViewController
         while let presentedViewController = viewController?.presentedViewController {

@@ -12,6 +12,7 @@ import SwiftUI
 /**
  The DynamicFontProvider protocol provides a font depending on parameters
  */
+@MainActor
 public protocol DynamicFontProvider {
 
     /**
@@ -34,6 +35,7 @@ public protocol DynamicFontProvider {
  The DynamicFont provides an implemementation of DynamicFontProvider depending on a plist resource
  and/or a default implementation, meaning providing the system preferred font for each font
  */
+@MainActor
 public struct DynamicFont: DynamicFontProvider {
 
     private let provider: DynamicFontProvider
@@ -85,6 +87,7 @@ private struct DefaultDynamicFontProvider: DynamicFontProvider {
     }
 }
 
+@MainActor
 private struct CustomFontDynamicFontProvider: DynamicFontProvider {
 
     let fontDescription: FontDescription
