@@ -41,7 +41,7 @@ private class NavigationControllerDelegate: NSObject, UINavigationControllerDele
 
 class NavigationControllerObserverTest : QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         let rootViewController = UIViewController()
         let navigationController = UINavigationController(rootViewController: rootViewController)

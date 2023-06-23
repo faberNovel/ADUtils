@@ -47,7 +47,7 @@ private struct StrictFolder: Codable {
 
 class KeyedDecodingContainerTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         // Slack, Candidates and My-CV are valids, other are invalids
         let desktopJSON = """
             {

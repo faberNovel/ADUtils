@@ -9,11 +9,11 @@ import Foundation
 import Nimble
 import Quick
 import ADUtils
-import Nimble_Snapshots
+import SnapshotTesting
 
 class UIImageColorTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         it("should have correct snapshot with size") {
             // Given
@@ -25,7 +25,7 @@ class UIImageColorTests: QuickSpec {
 
             // Then
             let imageView = UIImageView(image: image)
-            expect(imageView).to(haveValidSnapshot(named: "UIImageColorRedWithSize"))
+            assertSnapshot(matching: imageView, as: .image, named: "UIImageColorRedWithSize")
         }
 
         it("should have correct snapshot without size") {
@@ -37,7 +37,7 @@ class UIImageColorTests: QuickSpec {
 
             // Then
             let imageView = UIImageView(image: image)
-            expect(imageView).to(haveValidSnapshot(named: "UIImageColorRedPixel"))
+            assertSnapshot(matching: imageView, as: .image, named: "UIImageColorRedPixel")
         }
 
         if #available(iOS 13.0, *) {

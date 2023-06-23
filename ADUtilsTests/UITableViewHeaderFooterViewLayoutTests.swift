@@ -95,7 +95,7 @@ class HeaderFooterBehavior: Behavior<ExtremityViewType> {
 
 class UITableViewHeaderFooterViewLayoutTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         itBehavesLike(HeaderFooterBehavior.self) { .header }
         itBehavesLike(HeaderFooterBehavior.self) { .footer }
     }

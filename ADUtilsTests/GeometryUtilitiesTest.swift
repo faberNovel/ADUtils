@@ -11,7 +11,7 @@ import Nimble
 import ADUtils
 
 class GeometryUtilitiesTest : QuickSpec {
-    override func spec() {
+    override class func spec() {
         it("should update the origin of rectangle") {
             var rect = CGRect(x: 20, y: 20, width: 40, height: 60)
             rect.center = CGPoint(x: 0, y: 0)

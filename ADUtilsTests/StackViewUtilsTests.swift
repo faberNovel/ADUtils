@@ -13,7 +13,7 @@ import UIKit
 
 class StackViewUtilsTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         var stackView: UIStackView!
 
         beforeEach {

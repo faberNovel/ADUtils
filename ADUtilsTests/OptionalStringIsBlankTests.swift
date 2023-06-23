@@ -12,7 +12,7 @@ import ADUtils
 
 class OptionalStringIsBlankTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         it("should be blank") {
             // Given

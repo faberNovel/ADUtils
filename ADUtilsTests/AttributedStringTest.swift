@@ -8,14 +8,14 @@
 
 import Foundation
 import Nimble
-import Nimble_Snapshots
+import SnapshotTesting
 import Quick
 import ADUtils
 @testable import ADUtilsApp
 
 class AttributedStringTest: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         let stringTest = { (string: String, arguments: [String], imageName: String) -> Void in
             guard
@@ -50,7 +50,7 @@ class AttributedStringTest: QuickSpec {
             let label = UILabel()
             label.attributedText = attributedString
             label.sizeToFit()
-            expect(label).to(haveValidSnapshot(named: imageName))
+            assertSnapshot(matching: label, as: .image, named: imageName)
         }
 
         it("Snapshots should match") {

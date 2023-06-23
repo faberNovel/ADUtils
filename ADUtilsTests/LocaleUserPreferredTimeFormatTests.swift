@@ -12,7 +12,7 @@ import ADUtils
 
 class LocaleUserPreferredTimeFormatTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         describe("When using an US region locale") {
             it("should return a 12 hours format for en_US locale") {
                 let locale = Locale(identifier: "en_US")

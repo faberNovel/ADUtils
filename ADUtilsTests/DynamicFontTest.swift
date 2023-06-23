@@ -9,7 +9,7 @@ import Foundation
 import Quick
 import ADUtils
 import Nimble
-import Nimble_Snapshots
+import SnapshotTesting
 
 private extension UIFont {
 
@@ -34,7 +34,7 @@ private class FontHelper {
 
 class DynamicFontTest: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         describe("display fonts") {
 
@@ -68,7 +68,7 @@ class DynamicFontTest: QuickSpec {
 
             it("should layout labels properly") {
                 stackView.layoutIfNeeded()
-                expect(stackView).to(haveValidSnapshot(named: "DynamicFontLayoutTest"))
+                assertSnapshot(matching: stackView, as: .image, named: "DynamicFontLayoutTest")
             }
         }
     }

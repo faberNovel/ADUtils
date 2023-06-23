@@ -13,7 +13,7 @@ import UIKit
 
 class NSLayoutConstraintUtilsTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         it("should be higher than default priorities") {
             expect(UILayoutPriority.applyIfPossible.rawValue).to(beGreaterThan(UILayoutPriority.defaultLow.rawValue))

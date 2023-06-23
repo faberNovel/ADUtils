@@ -18,7 +18,7 @@ private enum Constants {
 /// Test for regular Debouncer class
 class DebouncerTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         var debouncer: Debouncer?
         var counter: Int = 0
@@ -85,10 +85,10 @@ class DebouncerTests: QuickSpec {
 class DebouncedTests: QuickSpec {
 
     @Debounced(delay: Constants.delay, queue: .main)
-    private var toggleAction: () -> Void
-    private var actionExecuted: Bool = false
+    private static var toggleAction: () -> Void
+    private static var actionExecuted: Bool = false
 
-    override func spec() {
+    override class func spec() {
 
         beforeEach {
             self.actionExecuted = false
