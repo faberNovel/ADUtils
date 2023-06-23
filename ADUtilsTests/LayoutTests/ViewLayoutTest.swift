@@ -12,6 +12,7 @@ import ADUtils
 import Nimble
 import UIKit
 
+@MainActor
 class ViewLayout: QuickSpec {
 
     override class func spec() {

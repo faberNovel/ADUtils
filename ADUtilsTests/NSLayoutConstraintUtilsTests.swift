@@ -11,6 +11,7 @@ import Nimble
 import ADUtils
 import UIKit
 
+@MainActor
 class NSLayoutConstraintUtilsTests: QuickSpec {
 
     override class func spec() {

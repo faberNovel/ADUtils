@@ -39,6 +39,7 @@ private class NavigationControllerDelegate: NSObject, UINavigationControllerDele
     }
 }
 
+@MainActor
 class NavigationControllerObserverTest : QuickSpec {
 
     override class func spec() {

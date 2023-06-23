@@ -11,6 +11,7 @@ import SnapshotTesting
 import Quick
 import ADUtils
 
+@MainActor
 class LayoutGuideConstraintsTests: QuickSpec {
 
     override class func spec() {

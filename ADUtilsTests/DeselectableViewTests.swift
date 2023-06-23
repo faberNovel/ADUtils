@@ -65,6 +65,7 @@ private class TransitionCoordinator: NSObject, UIViewControllerTransitionCoordin
     }
 }
 
+@MainActor
 class DeselectableViewTests: QuickSpec {
 
     override class func spec() {

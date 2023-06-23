@@ -29,6 +29,7 @@ class IntrinsicContentSizeView : UIView {
     }
 }
 
+@MainActor
 class ViewInsertionWithMargin: QuickSpec {
 
     override class func spec() {
@@ -215,9 +216,7 @@ class ViewInsertionWithMargin: QuickSpec {
         if #available(iOS 11.0, *) {
             describe("Constrain in superview's safe area layout guide") {
                 var viewController: UIViewController!
-                var view: UIView {
-                    return viewController.view
-                }
+                var view: UIView!
                 var subview: UIView!
                 let insets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 30.0, right: 40.0)
 
@@ -225,6 +224,7 @@ class ViewInsertionWithMargin: QuickSpec {
                     viewController = UIViewController()
                     viewController.additionalSafeAreaInsets = UIEdgeInsets(top: 40, left: 30, bottom: 20, right: 10)
                     viewController.view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
+                    view = viewController.view
                     view.backgroundColor = UIColor.white
                     subview = IntrinsicContentSizeView(contentSize: CGSize(width: 500, height: 500))
                     subview.backgroundColor = UIColor.red
@@ -497,9 +497,7 @@ class ViewInsertionWithMargin: QuickSpec {
 
         describe("Constrain in superview's safe area layout guide with directional edges") {
             var viewController: UIViewController!
-            var view: UIView {
-                return viewController.view
-            }
+            var view: UIView!
             var subview: UIView!
             let insets = NSDirectionalEdgeInsets(top: 10.0, leading: 20.0, bottom: 30.0, trailing: 40.0)
 
@@ -507,6 +505,7 @@ class ViewInsertionWithMargin: QuickSpec {
                 viewController = UIViewController()
                 viewController.additionalSafeAreaInsets = UIEdgeInsets(top: 40, left: 30, bottom: 20, right: 10)
                 viewController.view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
+                view = viewController.view
                 view.backgroundColor = UIColor.white
                 subview = IntrinsicContentSizeView(contentSize: CGSize(width: 500, height: 500))
                 subview.backgroundColor = UIColor.red

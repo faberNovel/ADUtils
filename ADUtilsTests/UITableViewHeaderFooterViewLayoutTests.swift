@@ -59,7 +59,7 @@ extension UITableView {
     }
 }
 
-class HeaderFooterBehavior: Behavior<ExtremityViewType> {
+class HeaderFooterBehavior: AsyncBehavior<ExtremityViewType> {
 
     override class func spec(_ context: @escaping () -> ExtremityViewType) {
         var viewType: ExtremityViewType!
@@ -68,7 +68,7 @@ class HeaderFooterBehavior: Behavior<ExtremityViewType> {
             viewType = context()
         }
 
-        it("should set and layout the extremity view") {
+        it("should set and layout the extremity view") { @MainActor in
             // Given
             let tableView = UITableView(
                 frame: CGRect(origin: .zero, size: CGSize(width: 320.0, height: 528.0)),
@@ -93,7 +93,7 @@ class HeaderFooterBehavior: Behavior<ExtremityViewType> {
 }
 
 
-class UITableViewHeaderFooterViewLayoutTests: QuickSpec {
+class UITableViewHeaderFooterViewLayoutTests: AsyncSpec {
 
     override class func spec() {
         itBehavesLike(HeaderFooterBehavior.self) { .header }

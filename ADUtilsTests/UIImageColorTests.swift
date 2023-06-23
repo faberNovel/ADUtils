@@ -11,6 +11,7 @@ import Quick
 import ADUtils
 import SnapshotTesting
 
+@MainActor
 class UIImageColorTests: QuickSpec {
 
     override class func spec() {
