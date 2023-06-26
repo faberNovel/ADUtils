@@ -60,7 +60,7 @@ public final class ProxyDetector: Sendable {
         guard isProxyActivated else { return }
         let alertController = UIAlertController(
             title: "Proxy",
-            message: "HTTP PRoxy is activated (\(proxyName ?? "unknown"))",
+            message: "HTTP Proxy is activated (\(proxyName ?? "unknown"))",
             preferredStyle: .alert
         )
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
