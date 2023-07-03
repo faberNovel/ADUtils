@@ -5,7 +5,8 @@
 //  Created by Benjamin Lavialle on 25/10/2017.
 //
 
-import Foundation
+import UIKit
+import SwiftUI
 import Quick
 import ADUtils
 import Nimble
@@ -14,6 +15,13 @@ import SnapshotTesting
 private extension UIFont {
 
     class func ad_mainFont(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
+        return FontHelper.shared.helveticaNeueDynamicFont.font(forTextStyle: textStyle)
+    }
+}
+
+private extension Font {
+
+    static func ad_mainFont(forTextStyle textStyle: Font.TextStyle) -> Font {
         return FontHelper.shared.helveticaNeueDynamicFont.font(forTextStyle: textStyle)
     }
 }
@@ -36,7 +44,7 @@ class DynamicFontTest: QuickSpec {
 
     override class func spec() {
 
-        describe("display fonts") {
+        describe("display UIKit fonts") {
 
             let types: [UIFont.TextStyle] = [
                 .title1,
@@ -69,6 +77,46 @@ class DynamicFontTest: QuickSpec {
             it("should layout labels properly") {
                 stackView.layoutIfNeeded()
                 assertSnapshot(matching: stackView, as: .image, named: "DynamicFontLayoutTest")
+            }
+        }
+
+        describe("display SwiftUI fonts") {
+
+            @available(iOS 14.0, *)
+            struct DynamicFontsView: View {
+
+                let types: [Font.TextStyle] = [
+                    .title,
+                    .title2,
+                    .title3,
+                    .headline,
+                    .subheadline,
+                    .body,
+                    .callout,
+                    .footnote,
+                    .caption,
+                    .caption2
+                ]
+
+                var body: some View {
+                    VStack(alignment: .leading, spacing: 8) {
+                        ForEach(types.indices, id: \.self) { index in
+                            Text("Lorem sizzle pimpin' sit amizzle").font(.ad_mainFont(forTextStyle: types[index]))
+                        }
+                    }
+                }
+            }
+            it("should layout labels properly") {
+                if #available(iOS 14.0, *) {
+                    let view = DynamicFontsView()
+                    assertSnapshot(
+                        matching: view,
+                        as: .image(layout: .fixed(width: 200, height: 1000)),
+                        named: "SwiftUIDynamicFontLayoutTest"
+                    )
+                } else {
+                    throw XCTSkip("title2, title3, caption2 are only available on iOS 14")
+                }
             }
         }
     }
