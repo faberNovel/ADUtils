@@ -26,7 +26,7 @@ public protocol DynamicFontProvider {
      - Note: On iOS 13 the font will scale like the body text style.
              From iOS 14 it will scale like the provided text style.
      */
-    @available(iOS 13.0, *)
+    @available(iOS 13.0, tvOS 13.0, *)
     func font(forTextStyle textStyle: Font.TextStyle) -> Font
 }
 
@@ -65,7 +65,7 @@ public struct DynamicFont: DynamicFontProvider {
         return provider.font(forTextStyle: textStyle)
     }
 
-    @available(iOS 13.0, *)
+    @available(iOS 13.0, tvOS 13.0, *)
     public func font(forTextStyle textStyle: Font.TextStyle) -> Font {
         return provider.font(forTextStyle: textStyle)
     }
@@ -79,7 +79,7 @@ private struct DefaultDynamicFontProvider: DynamicFontProvider {
         return UIFont.preferredFont(forTextStyle: textStyle)
     }
 
-    @available(iOS 13.0, *)
+    @available(iOS 13.0, tvOS 13.0, *)
     func font(forTextStyle textStyle: Font.TextStyle) -> Font {
         return Font.system(textStyle)
     }
@@ -101,7 +101,7 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
         }
     }
 
-    @available(iOS 13.0, *)
+    @available(iOS 13.0, tvOS 13.0, *)
     func font(forTextStyle textStyle: Font.TextStyle) -> Font {
         do {
             return try throwingFont(forTextStyle: textStyle)
@@ -122,11 +122,11 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
         return currentContentSizeCategory
     }
 
-    @available(iOS 13.0, *)
+    @available(iOS 13.0, tvOS 13.0, *)
     private func throwingFont(forTextStyle textStyle: Font.TextStyle) throws -> Font {
         let styleDescription = try fontDescription.fontStyleDescription(for: textStyle)
         let customFont: Font
-        if #available(iOS 14.0, *) {
+        if #available(iOS 14.0, tvOS 14.0, *) {
             customFont = Font.custom(styleDescription.name, size: styleDescription.size, relativeTo: textStyle)
         } else {
             customFont = Font.custom(styleDescription.name, size: styleDescription.size)
