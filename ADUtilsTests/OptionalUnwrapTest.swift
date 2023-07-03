@@ -26,7 +26,7 @@ private func delay(_ duration: TimeInterval, block: @escaping () -> ()) {
 
 class OptionalUnwrap: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         describe("unwrap") {
             it("Should unwrap properly") {

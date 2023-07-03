@@ -17,7 +17,7 @@ private struct Vendor {
 
 class ArrayFilterTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         it("should filter the array") {
             let vendors = [

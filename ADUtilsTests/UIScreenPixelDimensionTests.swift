@@ -19,7 +19,7 @@ private class TestScreen: UIScreen {
 
 class UIScreenPixelDimensionTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         it("should have an empty title") {
             // Given

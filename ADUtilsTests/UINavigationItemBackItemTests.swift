@@ -12,7 +12,7 @@ import ADUtils
 
 class UINavigationItemBackItemTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         it("should have an empty title") {
             // Given

@@ -12,7 +12,7 @@ import ADUtils
 
 class OptionalVerifyOrNilTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         it("should return a valid object") {
             // Given

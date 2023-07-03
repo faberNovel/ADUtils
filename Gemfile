@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.6.5'
+ruby '3.1.4'
 
-gem 'cocoapods', '1.11.3'
-gem 'CFPropertyList', '3.0.0'
+gem 'cocoapods', '~> 1.12'
+gem 'CFPropertyList', '~> 3.0.0'
 gem 'fastlane', '<3.0'
 gem 'danger'
 gem 'danger-swiftlint'

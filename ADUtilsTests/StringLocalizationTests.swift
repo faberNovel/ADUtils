@@ -12,7 +12,7 @@ import ADUtils
 
 class StringLocalizationTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         it("should return the correct localized string") {
             // Given

@@ -1,4 +1,4 @@
-platform :ios, '10.0'
+platform :ios, '13.0'
 use_frameworks!
 
 target 'ADUtilsApp' do
@@ -6,10 +6,9 @@ target 'ADUtilsApp' do
 end
 
 target 'ADUtilsTests' do
-    pod 'Quick', '~> 2.2'
-    pod 'Nimble', '~> 10.0'
-    pod 'Nimble-Snapshots', '~> 9.4'
-    pod 'OCMock', '~> 3.5'
+    pod 'Quick', '~> 7.0'
+    pod 'Nimble', '~> 12.0'
+    pod 'OCMock', '~> 3.9'
     pod 'ADUtils', :path => './'
     pod 'ADUtils/Security', :path => './'
 end

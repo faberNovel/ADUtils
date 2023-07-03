@@ -14,7 +14,7 @@ import ADUtils
 @available(tvOSApplicationExtension 13.0, *)
 class NSDirectionalEdgeInsetsTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         it("should init directional insets with only one value") {
             let value: CGFloat = 10
             let inset = NSDirectionalEdgeInsets(value: value)

@@ -99,7 +99,7 @@ private enum Constants {
 
 class RegisterableViewTest: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         describe("UITableView") {
 

@@ -14,7 +14,7 @@ import UIKit
 
 class ViewLayout: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         let veryLongText = "Lorem sizzle pimpin' sit amizzle, yippiyo adipiscing izzle. Nullizzle bling bling velit, away ghetto, suscipit dang, gravida vel, ass. Pellentesque eget tortor. Bow wow wow erizzle. Own yo' uhuh ... yih! sizzle dapibizzle turpis tempus shut the shizzle up. Maurizzle fo shizzle my nizzle crunk et turpizzle. Phat in tortizzle. Fizzle eleifend rhoncizzle i'm in the shizzle. In shut the shizzle up habitasse platea dictumst. Sheezy dapibizzle. Fo tellizzle urna, pretizzle eu, stuff shut the shizzle up, you son of a bizzle boofron, nunc. Fo suscipizzle. Integer sempizzle shizzle my nizzle crocodizzle ass purus"
 

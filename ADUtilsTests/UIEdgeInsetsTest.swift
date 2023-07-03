@@ -13,7 +13,7 @@ import ADUtils
 
 class UIEdgeInsetsTest: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         it("should init insets with only one value") {
             let value: CGFloat = 10
             let inset = UIEdgeInsets(value: value)
