@@ -77,6 +77,11 @@ class DynamicFontTest: QuickSpec {
             it("should layout labels properly") {
                 stackView.layoutIfNeeded()
                 assertSnapshot(matching: stackView, as: .image, named: "DynamicFontLayoutTest")
+                assertSnapshot(
+                    matching: stackView,
+                    as: .image(traits: UITraitCollection(preferredContentSizeCategory: .extraExtraExtraLarge)),
+                    named: "DynamicFontLayoutXXLTest"
+                )
             }
         }
 
@@ -113,6 +118,14 @@ class DynamicFontTest: QuickSpec {
                         matching: view,
                         as: .image(layout: .fixed(width: 200, height: 1000)),
                         named: "SwiftUIDynamicFontLayoutTest"
+                    )
+                    assertSnapshot(
+                        matching: view,
+                        as: .image(
+                            layout: .fixed(width: 200, height: 1000),
+                            traits: UITraitCollection(preferredContentSizeCategory: .extraExtraExtraLarge)
+                        ),
+                        named: "SwiftUIDynamicFontLayoutXXLTest"
                     )
                 } else {
                     throw XCTSkip("title2, title3, caption2 are only available on iOS 14")
