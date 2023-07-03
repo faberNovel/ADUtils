@@ -23,6 +23,8 @@ public protocol DynamicFontProvider {
     /**
      Provides a SwiftUI font for the given textStyle
      - parameter textStyle: The font text style
+     - Note: On iOS 13 the font will scale like the body text style.
+             From iOS 14 it will scale like the provided text style.
      */
     @available(iOS 13.0, *)
     func font(forTextStyle textStyle: Font.TextStyle) -> Font
@@ -123,7 +125,12 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
     @available(iOS 13.0, *)
     private func throwingFont(forTextStyle textStyle: Font.TextStyle) throws -> Font {
         let styleDescription = try fontDescription.fontStyleDescription(for: textStyle)
-        let customFont = Font.custom(styleDescription.name, size: styleDescription.size)
+        let customFont: Font
+        if #available(iOS 14.0, *) {
+            customFont = Font.custom(styleDescription.name, size: styleDescription.size, relativeTo: textStyle)
+        } else {
+            customFont = Font.custom(styleDescription.name, size: styleDescription.size)
+        }
         return customFont
     }
 
