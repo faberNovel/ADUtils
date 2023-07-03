@@ -689,7 +689,7 @@ extension UILayoutGuide {
     }
 }
 
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0, *)
 @available(tvOSApplicationExtension 13.0, *)
 extension UILayoutGuide {
     /**
