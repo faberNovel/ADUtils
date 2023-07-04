@@ -27,8 +27,10 @@ post_install do |installer|
             config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
             config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
 
-            # Enable complete concurrency checks
-            config.build_settings['SWIFT_STRICT_CONCURRENCY'] = "complete"
+            if target.name.include?("ADUtils")
+                # Enable complete concurrency checks
+                config.build_settings['SWIFT_STRICT_CONCURRENCY'] = "complete"
+            end
         end
     end
 end
