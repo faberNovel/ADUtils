@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Created
+
+- Add a SwiftUI Font provider in `DynamicFont`
+
 ## [11.3.0] - 2022-08-01Z
 
 ### Created
