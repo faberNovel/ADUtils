@@ -67,7 +67,7 @@ private class TransitionCoordinator: NSObject, UIViewControllerTransitionCoordin
 
 class DeselectableViewTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         let selectedIndexPath = IndexPath(row: 0, section: 0)
         var transitionCoordinator: TransitionCoordinator!

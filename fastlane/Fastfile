@@ -5,7 +5,7 @@ lane :tests do
     configuration: "Stubs",
     scheme: "ADUtilsApp",
     clean: true,
-    devices: ["iPhone 8"]
+    devices: ["iPhone SE (3rd generation)"]
   )
 end
 

@@ -63,7 +63,7 @@ private class KeychainArchiverImplementation: KeychainArchiver {
 @available(iOS 13.0, *)
 class SecureArchiverTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         var storageArchiver: StorageArchiverImplementation!
         var keychainArchiver: KeychainArchiverImplementation!

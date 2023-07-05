@@ -41,7 +41,7 @@ class CompletionBehavior: Behavior<Bool> {
 
 class NavigationControllerPopCompletionTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         let isAnimated = true
         let isNotAnimated = false
         itBehavesLike(CompletionBehavior.self) { isAnimated }

@@ -10,7 +10,7 @@ import Foundation
 
 import Foundation
 import Nimble
-import Nimble_Snapshots
+import SnapshotTesting
 import Quick
 import ADUtils
 @testable import ADUtilsApp
@@ -31,7 +31,7 @@ class IntrinsicContentSizeView : UIView {
 
 class ViewInsertionWithMargin: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         standardEdgesSpec()
         if #available(iOS 13, *) {
             directionalEdgesSpec()
@@ -40,7 +40,7 @@ class ViewInsertionWithMargin: QuickSpec {
 
     // MARK: - Private
 
-    private func standardEdgesSpec() {
+    private class func standardEdgesSpec() {
 
         describe("Pin to superview") {
 
@@ -58,52 +58,52 @@ class ViewInsertionWithMargin: QuickSpec {
 
             it("should pin all edges with insets") {
                 subview.ad_pinToSuperview(insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinAllEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinAllEdgesWithInsets")
             }
 
             it("should pin top right with insets") {
                 subview.ad_pinToSuperview(edges: [.top, .right], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinTopRightEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinTopRightEdgesWithInsets")
             }
 
             it("should pin top left with insets") {
                 subview.ad_pinToSuperview(edges: [.top, .left], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinTopLeftEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinTopLeftEdgesWithInsets")
             }
 
             it("should pin bottom right with insets") {
                 subview.ad_pinToSuperview(edges: [.bottom, .right], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinBottomRightEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinBottomRightEdgesWithInsets")
             }
 
             it("should pin bottom left with insets") {
                 subview.ad_pinToSuperview(edges: [.bottom, .left], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinBottomLeftEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinBottomLeftEdgesWithInsets")
             }
 
             it("should pin all edges without insets") {
                 subview.ad_pinToSuperview()
-                expect(view).to(haveValidSnapshot(named: "PinAllEdgesWithoutInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinAllEdgesWithoutInsets")
             }
 
             it("should pin top right without insets") {
                 subview.ad_pinToSuperview(edges: [.top, .right])
-                expect(view).to(haveValidSnapshot(named: "PinTopRightEdgesWithoutInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinTopRightEdgesWithoutInsets")
             }
 
             it("should pin top left without insets") {
                 subview.ad_pinToSuperview(edges: [.top, .left])
-                expect(view).to(haveValidSnapshot(named: "PinTopLeftEdgesWithoutInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinTopLeftEdgesWithoutInsets")
             }
 
             it("should pin bottom right without insets") {
                 subview.ad_pinToSuperview(edges: [.bottom, .right])
-                expect(view).to(haveValidSnapshot(named: "PinBottomRightEdgesWithoutInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinBottomRightEdgesWithoutInsets")
             }
 
             it("should pin bottom left without insets") {
                 subview.ad_pinToSuperview(edges: [.bottom, .left])
-                expect(view).to(haveValidSnapshot(named: "PinBottomLeftEdgesWithoutInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinBottomLeftEdgesWithoutInsets")
             }
         }
 
@@ -121,19 +121,19 @@ class ViewInsertionWithMargin: QuickSpec {
 
             it("should center in superview") {
                 subview.ad_centerInSuperview()
-                expect(view).to(haveValidSnapshot(named: "CenterInSuperview"))
+                assertSnapshot(matching: view, as: .image, named: "CenterInSuperview")
             }
 
             it("should center X in superview") {
                 subview.ad_pinToSuperview(edges: [.top, .bottom])
                 subview.ad_centerInSuperview(along: .horizontal)
-                expect(view).to(haveValidSnapshot(named: "CenterXInSuperview"))
+                assertSnapshot(matching: view, as: .image, named: "CenterXInSuperview")
             }
 
             it("should center Y in superview") {
                 subview.ad_pinToSuperview(edges: [.left, .right])
                 subview.ad_centerInSuperview(along: .vertical)
-                expect(view).to(haveValidSnapshot(named: "CenterYInSuperview"))
+                assertSnapshot(matching: view, as: .image, named: "CenterYInSuperview")
             }
         }
 
@@ -152,7 +152,7 @@ class ViewInsertionWithMargin: QuickSpec {
             it("should constrain to size") {
                 subview.ad_constrain(to: CGSize(width: 50, height: 50))
                 subview.ad_pinToSuperview(edges: [.top, .left])
-                expect(view).to(haveValidSnapshot(named: "ConstrainToSize"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainToSize")
             }
         }
 
@@ -172,43 +172,43 @@ class ViewInsertionWithMargin: QuickSpec {
             it("should constrain in superview pin bottom left") {
                 subview.ad_pinToSuperview(edges: [.bottom, .left], insets: insets)
                 subview.ad_constrainInSuperview(edges: [.top, .right], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinBottomLeft"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewPinBottomLeft")
             }
 
             it("should constrain in superview pin bottom right") {
                 subview.ad_pinToSuperview(edges: [.bottom, .right], insets: insets)
                 subview.ad_constrainInSuperview(edges: [.top, .left], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinBottomRight"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewPinBottomRight")
             }
 
             it("should constrain in superview pin top left") {
                 subview.ad_pinToSuperview(edges: [.top, .left], insets: insets)
                 subview.ad_constrainInSuperview(edges: [.bottom, .right], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinTopLeft"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewPinTopLeft")
             }
 
             it("should constrain in superview pin top right") {
                 subview.ad_pinToSuperview(edges: [.top, .right], insets: insets)
                 subview.ad_constrainInSuperview(edges: [.bottom, .left], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinTopRight"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewPinTopRight")
             }
 
             it("should constrain in superview") {
                 subview.ad_centerInSuperview()
                 subview.ad_constrainInSuperview()
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperview"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperview")
             }
 
             it("should constrain in superview with insets") {
                 subview.ad_centerInSuperview()
                 subview.ad_constrainInSuperview(insets: UIEdgeInsets(value: 10.0))
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewWithInsets")
             }
 
             it("should constrain in superview with left edge") {
                 subview.ad_centerInSuperview()
                 subview.ad_constrainInSuperview(edges: [.left])
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewWithLeftEdge"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewWithLeftEdge")
             }
         }
 
@@ -238,43 +238,43 @@ class ViewInsertionWithMargin: QuickSpec {
                 it("should constrain in superview pin bottom left") {
                     subview.ad_pinToSuperviewSafeAreaLayoutGuide(edges: [.bottom, .left], insets: insets)
                     subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.top, .right], insets: insets)
-                    expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomLeft"))
+                    assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaPinBottomLeft")
                 }
 
                 it("should constrain in superview pin bottom right") {
                     subview.ad_pinToSuperviewSafeAreaLayoutGuide(edges: [.bottom, .right], insets: insets)
                     subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.top, .left], insets: insets)
-                    expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomRight"))
+                    assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaPinBottomRight")
                 }
 
                 it("should constrain in superview pin top left") {
                     subview.ad_pinToSuperviewSafeAreaLayoutGuide(edges: [.top, .left], insets: insets)
                     subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.bottom, .right], insets: insets)
-                    expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopLeft"))
+                    assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaPinTopLeft")
                 }
 
                 it("should constrain in superview pin top right") {
                     subview.ad_pinToSuperviewSafeAreaLayoutGuide(edges: [.top, .right], insets: insets)
                     subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.bottom, .left], insets: insets)
-                    expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopRight"))
+                    assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaPinTopRight")
                 }
 
                 it("should constrain in superview") {
                     subview.ad_centerInSuperviewSafeAreaLayoutGuide()
                     subview.ad_constrainInSuperviewSafeAreaLayoutGuide()
-                    expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeArea"))
+                    assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeArea")
                 }
 
                 it("should constrain in superview with insets") {
                     subview.ad_centerInSuperviewSafeAreaLayoutGuide()
                     subview.ad_constrainInSuperviewSafeAreaLayoutGuide(insets: UIEdgeInsets(value: 100))
-                    expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaWithInsets"))
+                    assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaWithInsets")
                 }
 
                 it("should constrain in superview with left edge") {
                     subview.ad_centerInSuperviewSafeAreaLayoutGuide()
                     subview.ad_constrainInSuperviewSafeAreaLayoutGuide(edges: [.left])
-                    expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaWithLeftEdge"))
+                    assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaWithLeftEdge")
                 }
             }
         }
@@ -282,7 +282,7 @@ class ViewInsertionWithMargin: QuickSpec {
 
     @available(iOS 13.0, *)
     @available(tvOSApplicationExtension 13.0, *)
-    private func directionalEdgesSpec() {
+    private static func directionalEdgesSpec() {
 
         describe("Pin to superview") {
 
@@ -300,72 +300,72 @@ class ViewInsertionWithMargin: QuickSpec {
 
             it("should pin all edges with insets") {
                 subview.ad_pinToSuperview(insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinAllEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinAllEdgesWithInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinAllEdgesWithInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinAllEdgesWithInsetsRTLForced")
             }
 
             it("should pin top right with insets") {
                 subview.ad_pinToSuperview(directionalEdges: [.top, .trailing], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinTopRightEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinTopRightEdgesWithInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinTopRightEdgesWithInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinTopRightEdgesWithInsetsRTLForced")
             }
 
             it("should pin top left with insets") {
                 subview.ad_pinToSuperview(directionalEdges: [.top, .leading], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinTopLeftEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinTopLeftEdgesWithInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinTopLeftEdgesWithInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinTopLeftEdgesWithInsetsRTLForced")
             }
 
             it("should pin bottom right with insets") {
                 subview.ad_pinToSuperview(directionalEdges: [.bottom, .trailing], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinBottomRightEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinBottomRightEdgesWithInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinBottomRightEdgesWithInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinBottomRightEdgesWithInsetsRTLForced")
             }
 
             it("should pin bottom left with insets") {
                 subview.ad_pinToSuperview(directionalEdges: [.bottom, .leading], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinBottomLeftEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinBottomLeftEdgesWithInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinBottomLeftEdgesWithInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinBottomLeftEdgesWithInsetsRTLForced")
             }
 
             it("should pin all edges without insets") {
                 subview.ad_pinToSuperview()
-                expect(view).to(haveValidSnapshot(named: "PinAllEdgesWithoutInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinAllEdgesWithoutInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinAllEdgesWithoutInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinAllEdgesWithoutInsetsRTLForced")
             }
 
             it("should pin top right without insets") {
                 subview.ad_pinToSuperview(directionalEdges: [.top, .trailing])
-                expect(view).to(haveValidSnapshot(named: "PinTopRightEdgesWithoutInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinTopRightEdgesWithoutInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinTopRightEdgesWithoutInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinTopRightEdgesWithoutInsetsRTLForced")
             }
 
             it("should pin top left without insets") {
                 subview.ad_pinToSuperview(directionalEdges: [.top, .leading])
-                expect(view).to(haveValidSnapshot(named: "PinTopLeftEdgesWithoutInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinTopLeftEdgesWithoutInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinTopLeftEdgesWithoutInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinTopLeftEdgesWithoutInsetsRTLForced")
             }
 
             it("should pin bottom right without insets") {
                 subview.ad_pinToSuperview(directionalEdges: [.bottom, .trailing])
-                expect(view).to(haveValidSnapshot(named: "PinBottomRightEdgesWithoutInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinBottomRightEdgesWithoutInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinBottomRightEdgesWithoutInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinBottomRightEdgesWithoutInsetsRTLForced")
             }
 
             it("should pin bottom left without insets") {
                 subview.ad_pinToSuperview(directionalEdges: [.bottom, .leading])
-                expect(view).to(haveValidSnapshot(named: "PinBottomLeftEdgesWithoutInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinBottomLeftEdgesWithoutInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinBottomLeftEdgesWithoutInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinBottomLeftEdgesWithoutInsetsRTLForced")
             }
         }
 
@@ -383,24 +383,24 @@ class ViewInsertionWithMargin: QuickSpec {
 
             it("should center in superview") {
                 subview.ad_centerInSuperview()
-                expect(view).to(haveValidSnapshot(named: "CenterInSuperview"))
-                expect(view).to(haveValidSnapshot(named: "CenterInSuperviewRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "CenterInSuperview")
+                assertSnapshot(matching: view, as: .image, named: "CenterInSuperviewRTLForced")
             }
 
             it("should center X in superview") {
                 subview.ad_pinToSuperview(directionalEdges: [.top, .bottom])
                 subview.ad_centerInSuperview(along: .horizontal)
-                expect(view).to(haveValidSnapshot(named: "CenterXInSuperview"))
+                assertSnapshot(matching: view, as: .image, named: "CenterXInSuperview")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "CenterXInSuperviewRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "CenterXInSuperviewRTLForced")
             }
 
             it("should center Y in superview") {
                 subview.ad_pinToSuperview(directionalEdges: [.leading, .trailing])
                 subview.ad_centerInSuperview(along: .vertical)
-                expect(view).to(haveValidSnapshot(named: "CenterYInSuperview"))
+                assertSnapshot(matching: view, as: .image, named: "CenterYInSuperview")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "CenterYInSuperviewRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "CenterYInSuperviewRTLForced")
             }
         }
 
@@ -419,9 +419,9 @@ class ViewInsertionWithMargin: QuickSpec {
             it("should constrain to size") {
                 subview.ad_constrain(to: CGSize(width: 50, height: 50))
                 subview.ad_pinToSuperview(directionalEdges: [.top, .leading])
-                expect(view).to(haveValidSnapshot(named: "ConstrainToSize"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainToSize")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainToSizeRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainToSizeRTLForced")
             }
         }
 
@@ -441,57 +441,57 @@ class ViewInsertionWithMargin: QuickSpec {
             it("should constrain in superview pin bottom left") {
                 subview.ad_pinToSuperview(directionalEdges: [.bottom, .leading], insets: insets)
                 subview.ad_constrainInSuperview(directionalEdges: [.top, .trailing], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinBottomLeft"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewPinBottomLeft")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinBottomLeftRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewPinBottomLeftRTLForced")
             }
 
             it("should constrain in superview pin bottom right") {
                 subview.ad_pinToSuperview(directionalEdges: [.bottom, .trailing], insets: insets)
                 subview.ad_constrainInSuperview(directionalEdges: [.top, .leading], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinBottomRight"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewPinBottomRight")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinBottomRightRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewPinBottomRightRTLForced")
             }
 
             it("should constrain in superview pin top left") {
                 subview.ad_pinToSuperview(directionalEdges: [.top, .leading], insets: insets)
                 subview.ad_constrainInSuperview(directionalEdges: [.bottom, .trailing], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinTopLeft"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewPinTopLeft")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinTopLeftRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewPinTopLeftRTLForced")
             }
 
             it("should constrain in superview pin top right") {
                 subview.ad_pinToSuperview(directionalEdges: [.top, .trailing], insets: insets)
                 subview.ad_constrainInSuperview(directionalEdges: [.bottom, .leading], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinTopRight"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewPinTopRight")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewPinTopRightRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewPinTopRightRTLForced")
             }
 
             it("should constrain in superview") {
                 subview.ad_centerInSuperview()
                 subview.ad_constrainInSuperview()
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperview"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperview")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewRTLForced")
             }
 
             it("should constrain in superview with insets") {
                 subview.ad_centerInSuperview()
                 subview.ad_constrainInSuperview(insets: NSDirectionalEdgeInsets(value: 10.0))
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewWithInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewWithInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewWithInsetsRTLForced")
             }
 
             it("should constrain in superview with left edge") {
                 subview.ad_centerInSuperview()
                 subview.ad_constrainInSuperview(directionalEdges: [.leading])
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewWithLeftEdge"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewWithLeftEdge")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewWithLeftEdgeRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewWithLeftEdgeRTLForced")
             }
         }
 
@@ -520,13 +520,13 @@ class ViewInsertionWithMargin: QuickSpec {
             it("should constrain in superview pin bottom leading") {
                 subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.bottom, .leading], insets: insets)
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .trailing], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomLeft"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaPinBottomLeft")
             }
 
             it("should constrain in superview pin bottom trailing") {
                 subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.bottom, .trailing], insets: insets)
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .leading], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomRight"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaPinBottomRight")
             }
 
             it("should constrain in superview pin top leading") {
@@ -535,7 +535,7 @@ class ViewInsertionWithMargin: QuickSpec {
                     directionalEdges: [.bottom, .trailing],
                     insets: insets
                 )
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopLeft"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaPinTopLeft")
             }
 
             it("should constrain in superview pin top trailing") {
@@ -544,33 +544,33 @@ class ViewInsertionWithMargin: QuickSpec {
                     directionalEdges: [.bottom, .leading],
                     insets: insets
                 )
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopRight"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaPinTopRight")
             }
 
             it("should constrain in superview with directional insets") {
                 subview.ad_centerInSuperviewSafeAreaLayoutGuide()
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(insets: NSDirectionalEdgeInsets(value: 100))
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaWithInsets")
             }
 
             it("should constrain in superview with leading edge") {
                 subview.ad_centerInSuperviewSafeAreaLayoutGuide()
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.leading])
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaWithLeftEdge"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaWithLeftEdge")
             }
 
             it("should constrain in superview pin bottom leading") {
                 subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.bottom, .leading], insets: insets)
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .trailing], insets: insets)
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomLeading"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaPinBottomLeading")
             }
 
             it("should constrain in superview pin bottom trailing") {
                 subview.ad_pinToSuperviewSafeAreaLayoutGuide(directionalEdges: [.bottom, .trailing], insets: insets)
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.top, .leading], insets: insets)
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinBottomTrailing"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaPinBottomTrailing")
             }
 
             it("should constrain in superview pin top leading") {
@@ -580,7 +580,7 @@ class ViewInsertionWithMargin: QuickSpec {
                     insets: insets
                 )
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopLeading"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaPinTopLeading")
             }
 
             it("should constrain in superview pin top trailing") {
@@ -590,21 +590,21 @@ class ViewInsertionWithMargin: QuickSpec {
                     insets: insets
                 )
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaPinTopTrailing"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaPinTopTrailing")
             }
 
             it("should constrain in superview with directional insets") {
                 subview.ad_centerInSuperviewSafeAreaLayoutGuide()
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(insets: NSDirectionalEdgeInsets(value: 100))
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaWithInsets")
             }
 
             it("should constrain in superview with leading edge") {
                 subview.ad_centerInSuperviewSafeAreaLayoutGuide()
                 subview.ad_constrainInSuperviewSafeAreaLayoutGuide(directionalEdges: [.leading])
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInSuperviewSafeAreaWithLeftEdge"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInSuperviewSafeAreaWithLeftEdge")
             }
         }
     }

@@ -21,7 +21,7 @@ private class KeychainWiperMock: KeychainWiper {
 
 class PostInstallationKeychainCleanerTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         var keychainWiper: KeychainWiperMock!
         var userDefaults: UserDefaults!

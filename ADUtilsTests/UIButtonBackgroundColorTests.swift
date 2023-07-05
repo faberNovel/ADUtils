@@ -9,11 +9,11 @@ import Foundation
 import Nimble
 import Quick
 import ADUtils
-import Nimble_Snapshots
+import SnapshotTesting
 
 class UIButtonBackgroundColorTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         it("should have correct snapshot") {
             // Given
@@ -28,12 +28,12 @@ class UIButtonBackgroundColorTests: QuickSpec {
             button.ad_setBackgroundColor(.green, for: .disabled)
 
             // Then
-            expect(button).to(haveValidSnapshot(named: "UIButtonBackgroundColorNormal"))
+            assertSnapshot(matching: button, as: .image, named: "UIButtonBackgroundColorNormal")
             button.isEnabled = false
-            expect(button).to(haveValidSnapshot(named: "UIButtonBackgroundColorDisabled"))
+            assertSnapshot(matching: button, as: .image, named: "UIButtonBackgroundColorDisabled")
 
             button.ad_setBackgroundColor(nil, for: .disabled)
-            expect(button).to(haveValidSnapshot(named: "UIButtonBackgroundColorDisabledNoColor"))
+            assertSnapshot(matching: button, as: .image, named: "UIButtonBackgroundColorDisabledNoColor")
         }
     }
 }

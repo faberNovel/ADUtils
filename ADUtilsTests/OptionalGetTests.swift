@@ -12,7 +12,7 @@ import ADUtils
 
 class OptionalGetTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         it("should throw an error") {
             // Given

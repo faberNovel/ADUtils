@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 /**
  The DynamicFontProvider protocol provides a font depending on parameters
@@ -14,10 +15,19 @@ import UIKit
 public protocol DynamicFontProvider {
 
     /**
-     Provides a font for the given textStyle
+     Provides a UIKit font for the given textStyle
      - parameter textStyle: The font text style
      */
     func font(forTextStyle textStyle: UIFont.TextStyle) -> UIFont
+
+    /**
+     Provides a SwiftUI font for the given textStyle
+     - parameter textStyle: The font text style
+     - Note: On iOS 13 the font will scale like the body text style.
+             From iOS 14 it will scale like the provided text style.
+     */
+    @available(iOS 13.0, tvOS 13.0, *)
+    func font(forTextStyle textStyle: Font.TextStyle) -> Font
 }
 
 /**
@@ -54,6 +64,11 @@ public struct DynamicFont: DynamicFontProvider {
     public func font(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
         return provider.font(forTextStyle: textStyle)
     }
+
+    @available(iOS 13.0, tvOS 13.0, *)
+    public func font(forTextStyle textStyle: Font.TextStyle) -> Font {
+        return provider.font(forTextStyle: textStyle)
+    }
 }
 
 private struct DefaultDynamicFontProvider: DynamicFontProvider {
@@ -62,6 +77,11 @@ private struct DefaultDynamicFontProvider: DynamicFontProvider {
 
     func font(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
         return UIFont.preferredFont(forTextStyle: textStyle)
+    }
+
+    @available(iOS 13.0, tvOS 13.0, *)
+    func font(forTextStyle textStyle: Font.TextStyle) -> Font {
+        return Font.system(textStyle)
     }
 }
 
@@ -81,6 +101,16 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
         }
     }
 
+    @available(iOS 13.0, tvOS 13.0, *)
+    func font(forTextStyle textStyle: Font.TextStyle) -> Font {
+        do {
+            return try throwingFont(forTextStyle: textStyle)
+        } catch {
+            assertionFailure("[DynamicFont] Missing font for \(fontDescription.name) with style : \(textStyle)")
+            return Font.system(textStyle)
+        }
+    }
+
     // MARK: - Private
 
     private var currentSpecifiedContentSizeCategory: UIContentSizeCategory {
@@ -90,6 +120,18 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
             currentContentSizeCategory = .large
         }
         return currentContentSizeCategory
+    }
+
+    @available(iOS 13.0, tvOS 13.0, *)
+    private func throwingFont(forTextStyle textStyle: Font.TextStyle) throws -> Font {
+        let styleDescription = try fontDescription.fontStyleDescription(for: textStyle)
+        let customFont: Font
+        if #available(iOS 14.0, tvOS 14.0, *) {
+            customFont = Font.custom(styleDescription.name, size: styleDescription.size, relativeTo: textStyle)
+        } else {
+            customFont = Font.custom(styleDescription.name, size: styleDescription.size)
+        }
+        return customFont
     }
 
     private func throwingFont(forTextStyle textStyle: UIFont.TextStyle) throws -> UIFont {

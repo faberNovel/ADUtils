@@ -14,7 +14,7 @@ import ADUtils
 
 class NibLoaderTest: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         it("should return a view") {
             let testView = TestView.ad_fromNib()
             expect(testView).toNot(beNil())

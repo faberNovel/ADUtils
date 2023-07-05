@@ -7,7 +7,7 @@
 [![Twitter](https://img.shields.io/badge/twitter-@FabernovelTech-blue.svg?style=flat)](https://twitter.com/FabernovelTech)
 ![](https://github.com/faberNovel/ADUtils/workflows/CI/badge.svg)
 
-ADUtils is a set of helpers, shortcuts or other tools providing simplified interactions with UIKit and more generally with Swift.
+ADUtils is a set of helpers, shortcuts or other tools providing simplified interactions with UIKit and SwiftUI.
 
 - [Features](#features)
   - [ADUtils](#adutils)

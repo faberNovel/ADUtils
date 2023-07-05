@@ -9,7 +9,7 @@ import Foundation
 import Nimble
 import Quick
 import ADUtils
-import Nimble_Snapshots
+import SnapshotTesting
 
 private extension UIView {
     convenience init(color: UIColor) {
@@ -20,7 +20,7 @@ private extension UIView {
 
 class StackViewBuilderTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         describe("HStackView") {
 
@@ -41,7 +41,7 @@ class StackViewBuilderTests: QuickSpec {
                 )
 
                 // Then
-                expect(stackView).to(haveValidSnapshot(named: "HStackViewDefault"))
+                assertSnapshot(matching: stackView, as: .image, named: "HStackViewDefault")
             }
 
             it("should have correct snapshot with custom parameters") {
@@ -63,7 +63,7 @@ class StackViewBuilderTests: QuickSpec {
                 )
 
                 // Then
-                expect(stackView).to(haveValidSnapshot(named: "HStackViewCustom"))
+                assertSnapshot(matching: stackView, as: .image, named: "HStackViewCustom")
             }
 
         } // HStackView
@@ -87,7 +87,7 @@ class StackViewBuilderTests: QuickSpec {
                 )
 
                 // Then
-                expect(stackView).to(haveValidSnapshot(named: "VStackViewDefault"))
+                assertSnapshot(matching: stackView, as: .image, named: "VStackViewDefault")
             }
 
             it("should have correct snapshot with custom parameters") {
@@ -109,7 +109,7 @@ class StackViewBuilderTests: QuickSpec {
                 )
 
                 // Then
-                expect(stackView).to(haveValidSnapshot(named: "VStackViewCustom"))
+                assertSnapshot(matching: stackView, as: .image, named: "VStackViewCustom")
             }
 
         } // VStackView

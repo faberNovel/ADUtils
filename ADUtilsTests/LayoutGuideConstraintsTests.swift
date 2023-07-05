@@ -7,13 +7,13 @@
 
 import Foundation
 import Nimble
-import Nimble_Snapshots
+import SnapshotTesting
 import Quick
 import ADUtils
 
 class LayoutGuideConstraintsTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         standardEdgesSpec()
         if #available(iOS 13, *) {
             directionalEdgesSpec()
@@ -22,7 +22,7 @@ class LayoutGuideConstraintsTests: QuickSpec {
 
     // MARK: - Private
 
-    private func standardEdgesSpec() {
+    private static func standardEdgesSpec() {
         describe("Pin to layout guide using UIRectEdge and UIEdgeInsets") {
 
             let insets = UIEdgeInsets(top: 12.0, left: 13.0, bottom: 20.0, right: 45.0)
@@ -40,28 +40,28 @@ class LayoutGuideConstraintsTests: QuickSpec {
 
             it("should pin all edges no insets") {
                 subview.ad_pin(to: view.layoutMarginsGuide)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideAllEdgesNoInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideAllEdgesNoInsets")
             }
 
             it("should pin all edges with insets") {
                 subview.ad_pin(to: view.layoutMarginsGuide, insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideAllEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideAllEdgesWithInsets")
             }
 
             it("should pin top left edges no insets") {
                 subview.ad_pin(to: view.layoutMarginsGuide, edges: [.top, .left])
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesNoInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesNoInsets")
             }
 
             it("should pin top left edges with insets") {
                 subview.ad_pin(to: view.layoutMarginsGuide, edges: [.top, .left], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesWithInsets")
             }
 
             it("should have no effet with wrong layout guide") {
                 let extraView = UIView()
                 subview.ad_pin(to: extraView.layoutMarginsGuide)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideNoSubview"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideNoSubview")
             }
 
             it("should pin top left with high priorities") {
@@ -79,7 +79,7 @@ class LayoutGuideConstraintsTests: QuickSpec {
                     insets: insets,
                     priority: .defaultHigh
                 )
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesHighPriority"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesHighPriority")
             }
         }
 
@@ -100,19 +100,19 @@ class LayoutGuideConstraintsTests: QuickSpec {
                 subview.ad_center(in: view.layoutMarginsGuide)
                 // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
                 subview.ad_constrain(to: subview.intrinsicContentSize)
-                expect(view).to(haveValidSnapshot(named: "CenterInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "CenterInLayoutGuide")
             }
 
             it("should center X in layout guide") {
                 subview.ad_pin(to: view.layoutMarginsGuide, edges: [.top, .bottom])
                 subview.ad_center(in: view.layoutMarginsGuide, along: .horizontal)
-                expect(view).to(haveValidSnapshot(named: "CenterXInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "CenterXInLayoutGuide")
             }
 
             it("should center Y in layout guide") {
                 subview.ad_pin(to: view.layoutMarginsGuide, edges: [.left, .right])
                 subview.ad_center(in: view.layoutMarginsGuide, along: .vertical)
-                expect(view).to(haveValidSnapshot(named: "CenterYInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "CenterYInLayoutGuide")
             }
         }
 
@@ -133,31 +133,31 @@ class LayoutGuideConstraintsTests: QuickSpec {
             it("should constrain in layout guide pin bottom left") {
                 subview.ad_pin(to: view.layoutMarginsGuide, edges: [.bottom, .left], insets: insets)
                 subview.ad_constrain(in: view.layoutMarginsGuide, edges: [.top, .right], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinBottomLeft"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinBottomLeft")
             }
 
             it("should constrain in layout guide pin bottom right") {
                 subview.ad_pin(to: view.layoutMarginsGuide, edges: [.bottom, .right], insets: insets)
                 subview.ad_constrain(in: view.layoutMarginsGuide, edges: [.top, .left], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinBottomRight"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinBottomRight")
             }
 
             it("should constrain in layout guide top left") {
                 subview.ad_pin(to: view.layoutMarginsGuide, edges: [.top, .left], insets: insets)
                 subview.ad_constrain(in: view.layoutMarginsGuide, edges: [.bottom, .right], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinTopLeft"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinTopLeft")
             }
 
             it("should constrain in layout guide pin top right") {
                 subview.ad_pin(to: view.layoutMarginsGuide, edges: [.top, .right], insets: insets)
                 subview.ad_constrain(in: view.layoutMarginsGuide, edges: [.bottom, .left], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinTopRight"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinTopRight")
             }
 
             it("should constrain in layout guide") {
                 subview.ad_center(in: view.layoutMarginsGuide)
                 subview.ad_constrain(in: view.layoutMarginsGuide)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuide")
             }
 
             it("should constrain in layout guide with insets") {
@@ -165,7 +165,7 @@ class LayoutGuideConstraintsTests: QuickSpec {
                 // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
                 subview.ad_constrain(to: subview.intrinsicContentSize, priority: .defaultLow)
                 subview.ad_constrain(in: view.layoutMarginsGuide, insets: UIEdgeInsets(value: 10.0))
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuideWithInsets")
             }
 
             it("should constrain in layout guide with left edge") {
@@ -173,7 +173,7 @@ class LayoutGuideConstraintsTests: QuickSpec {
                 // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
                 subview.ad_constrain(to: subview.intrinsicContentSize, priority: .defaultLow)
                 subview.ad_constrain(in: view.layoutMarginsGuide, edges: [.left])
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideWithLeftEdge"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuideWithLeftEdge")
             }
         }
 
@@ -197,31 +197,31 @@ class LayoutGuideConstraintsTests: QuickSpec {
             it("should pin all edges no insets") {
                 subview.ad_pin(to: layoutGuide)
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideAllEdgesNoInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideAllEdgesNoInsets")
             }
 
             it("should pin all edges with insets") {
                 subview.ad_pin(to: layoutGuide)
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideAllEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideAllEdgesWithInsets")
             }
 
             it("should pin top left edges no insets") {
                 subview.ad_pin(to: layoutGuide)
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, edges: [.top, .left])
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesNoInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesNoInsets")
             }
 
             it("should pin top left edges with insets") {
                 subview.ad_pin(to: layoutGuide)
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, edges: [.top, .left], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesWithInsets")
             }
 
             it("should have no effet with wrong layout guide") {
                 let extraView = UIView()
                 layoutGuide.ad_pin(to: extraView.layoutMarginsGuide)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideNoSubview"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideNoSubview")
             }
 
             it("should pin top left with high priorities") {
@@ -240,7 +240,7 @@ class LayoutGuideConstraintsTests: QuickSpec {
                     insets: insets,
                     priority: .defaultHigh
                 )
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesHighPriority"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesHighPriority")
             }
         }
 
@@ -264,19 +264,19 @@ class LayoutGuideConstraintsTests: QuickSpec {
                 layoutGuide.ad_center(in: view.layoutMarginsGuide)
                 // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
                 layoutGuide.ad_constrain(to: subview.intrinsicContentSize)
-                expect(view).to(haveValidSnapshot(named: "CenterInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "CenterInLayoutGuide")
             }
 
             it("should center X in layout guide") {
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, edges: [.top, .bottom])
                 layoutGuide.ad_center(in: view.layoutMarginsGuide, along: .horizontal)
-                expect(view).to(haveValidSnapshot(named: "CenterXInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "CenterXInLayoutGuide")
             }
 
             it("should center Y in layout guide") {
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, edges: [.left, .right])
                 layoutGuide.ad_center(in: view.layoutMarginsGuide, along: .vertical)
-                expect(view).to(haveValidSnapshot(named: "CenterYInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "CenterYInLayoutGuide")
             }
         }
 
@@ -300,31 +300,31 @@ class LayoutGuideConstraintsTests: QuickSpec {
             it("should constrain in layout guide pin bottom left") {
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, edges: [.bottom, .left], insets: insets)
                 layoutGuide.ad_constrain(in: view.layoutMarginsGuide, edges: [.top, .right], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinBottomLeft"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinBottomLeft")
             }
 
             it("should constrain in layout guide pin bottom right") {
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, edges: [.bottom, .right], insets: insets)
                 layoutGuide.ad_constrain(in: view.layoutMarginsGuide, edges: [.top, .left], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinBottomRight"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinBottomRight")
             }
 
             it("should constrain in layout guide top left") {
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, edges: [.top, .left], insets: insets)
                 layoutGuide.ad_constrain(in: view.layoutMarginsGuide, edges: [.bottom, .right], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinTopLeft"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinTopLeft")
             }
 
             it("should constrain in layout guide pin top right") {
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, edges: [.top, .right], insets: insets)
                 layoutGuide.ad_constrain(in: view.layoutMarginsGuide, edges: [.bottom, .left], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinTopRight"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinTopRight")
             }
 
             it("should constrain in layout guide") {
                 layoutGuide.ad_center(in: view.layoutMarginsGuide)
                 layoutGuide.ad_constrain(in: view.layoutMarginsGuide)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuide")
             }
 
             it("should constrain in layout guide with insets") {
@@ -332,7 +332,7 @@ class LayoutGuideConstraintsTests: QuickSpec {
                 // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
                 layoutGuide.ad_constrain(to: subview.intrinsicContentSize, priority: .defaultLow)
                 layoutGuide.ad_constrain(in: view.layoutMarginsGuide, insets: UIEdgeInsets(value: 10.0))
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuideWithInsets")
             }
 
             it("should constrain in layout guide with left edge") {
@@ -340,14 +340,14 @@ class LayoutGuideConstraintsTests: QuickSpec {
                 // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
                 layoutGuide.ad_constrain(to: subview.intrinsicContentSize, priority: .defaultLow)
                 layoutGuide.ad_constrain(in: view.layoutMarginsGuide, edges: [.left])
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideWithLeftEdge"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuideWithLeftEdge")
             }
         }
     }
 
     @available(iOS 13.0, *)
     @available(tvOSApplicationExtension 13.0, *)
-    private func directionalEdgesSpec() {
+    private static func directionalEdgesSpec() {
         describe("Pin to layout guide using NSDirectionalRectEdge and NSDirectionalRectEdge") {
 
             let insets = NSDirectionalEdgeInsets(top: 12.0, leading: 13.0, bottom: 20.0, trailing: 45.0)
@@ -365,38 +365,38 @@ class LayoutGuideConstraintsTests: QuickSpec {
 
             it("should pin all edges no insets") {
                 subview.ad_pin(to: view.layoutMarginsGuide, usingDirectionalEdges: true)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideAllEdgesNoInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideAllEdgesNoInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideAllEdgesNoInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideAllEdgesNoInsetsRTLForced")
             }
 
             it("should pin all edges with insets") {
                 subview.ad_pin(to: view.layoutMarginsGuide, insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideAllEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideAllEdgesWithInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideAllEdgesWithInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideAllEdgesWithInsetsRTLForced")
             }
 
             it("should pin top left edges no insets") {
                 subview.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.top, .leading])
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesNoInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesNoInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesNoInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesNoInsetsRTLForced")
             }
 
             it("should pin top left edges with insets") {
                 subview.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.top, .leading], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesWithInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesWithInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesWithInsetsRTLForced")
             }
 
             it("should have no effet with wrong layout guide") {
                 let extraView = UIView()
                 subview.ad_pin(to: extraView.layoutMarginsGuide, usingDirectionalEdges: true)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideNoSubview"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideNoSubview")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideNoSubviewRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideNoSubviewRTLForced")
             }
 
             it("should pin top left with high priorities") {
@@ -414,9 +414,9 @@ class LayoutGuideConstraintsTests: QuickSpec {
                     insets: insets,
                     priority: .defaultHigh
                 )
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesHighPriority"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesHighPriority")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesHighPriorityRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesHighPriorityRTLForced")
             }
         }
 
@@ -437,25 +437,25 @@ class LayoutGuideConstraintsTests: QuickSpec {
                 subview.ad_center(in: view.layoutMarginsGuide)
                 // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
                 subview.ad_constrain(to: subview.intrinsicContentSize)
-                expect(view).to(haveValidSnapshot(named: "CenterInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "CenterInLayoutGuide")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "CenterInLayoutGuideRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "CenterInLayoutGuideRTLForced")
             }
 
             it("should center X in layout guide") {
                 subview.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.top, .bottom])
                 subview.ad_center(in: view.layoutMarginsGuide, along: .horizontal)
-                expect(view).to(haveValidSnapshot(named: "CenterXInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "CenterXInLayoutGuide")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "CenterXInLayoutGuideRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "CenterXInLayoutGuideRTLForced")
             }
 
             it("should center Y in layout guide") {
                 subview.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.leading, .trailing])
                 subview.ad_center(in: view.layoutMarginsGuide, along: .vertical)
-                expect(view).to(haveValidSnapshot(named: "CenterYInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "CenterYInLayoutGuide")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "CenterYInLayoutGuideRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "CenterYInLayoutGuideRTLForced")
             }
         }
 
@@ -476,41 +476,41 @@ class LayoutGuideConstraintsTests: QuickSpec {
             it("should constrain in layout guide pin bottom left") {
                 subview.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.bottom, .leading], insets: insets)
                 subview.ad_constrain(in: view.layoutMarginsGuide, directionalEdges: [.top, .trailing], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinBottomLeft"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinBottomLeft")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinBottomLeftRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinBottomLeftRTLForced")
             }
 
             it("should constrain in layout guide pin bottom right") {
                 subview.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.bottom, .trailing], insets: insets)
                 subview.ad_constrain(in: view.layoutMarginsGuide, directionalEdges: [.top, .leading], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinBottomRight"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinBottomRight")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinBottomRightRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinBottomRightRTLForced")
             }
 
             it("should constrain in layout guide top left") {
                 subview.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.top, .leading], insets: insets)
                 subview.ad_constrain(in: view.layoutMarginsGuide, directionalEdges: [.bottom, .trailing], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinTopLeft"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinTopLeft")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinTopLeftRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinTopLeftRTLForced")
             }
 
             it("should constrain in layout guide pin top right") {
                 subview.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.top, .trailing], insets: insets)
                 subview.ad_constrain(in: view.layoutMarginsGuide, directionalEdges: [.bottom, .leading], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinTopRight"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinTopRight")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinTopRightRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinTopRightRTLForced")
             }
 
             it("should constrain in layout guide") {
                 subview.ad_center(in: view.layoutMarginsGuide)
                 subview.ad_constrain(in: view.layoutMarginsGuide)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuide")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuideRTLForced")
             }
 
             it("should constrain in layout guide with insets") {
@@ -518,9 +518,9 @@ class LayoutGuideConstraintsTests: QuickSpec {
                 // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
                 subview.ad_constrain(to: subview.intrinsicContentSize, priority: .defaultLow)
                 subview.ad_constrain(in: view.layoutMarginsGuide, insets: NSDirectionalEdgeInsets(value: 10.0))
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuideWithInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideWithInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuideWithInsetsRTLForced")
             }
 
             it("should constrain in layout guide with left edge") {
@@ -528,9 +528,9 @@ class LayoutGuideConstraintsTests: QuickSpec {
                 // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
                 subview.ad_constrain(to: subview.intrinsicContentSize, priority: .defaultLow)
                 subview.ad_constrain(in: view.layoutMarginsGuide, directionalEdges: [.leading])
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideWithLeftEdge"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuideWithLeftEdge")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideWithLeftEdgeRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuideWithLeftEdgeRTLForced")
             }
         }
 
@@ -554,41 +554,41 @@ class LayoutGuideConstraintsTests: QuickSpec {
             it("should pin all edges no insets") {
                 subview.ad_pin(to: layoutGuide, usingDirectionalEdges: true)
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideAllEdgesNoInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideAllEdgesNoInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideAllEdgesNoInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideAllEdgesNoInsetsRTLForced")
             }
 
             it("should pin all edges with insets") {
                 subview.ad_pin(to: layoutGuide, usingDirectionalEdges: true)
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideAllEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideAllEdgesWithInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideAllEdgesWithInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideAllEdgesWithInsetsRTLForced")
             }
 
             it("should pin top left edges no insets") {
                 subview.ad_pin(to: layoutGuide, usingDirectionalEdges: true)
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.top, .leading])
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesNoInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesNoInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesNoInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesNoInsetsRTLForced")
             }
 
             it("should pin top left edges with insets") {
                 subview.ad_pin(to: layoutGuide, usingDirectionalEdges: true)
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.top, .leading], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesWithInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesWithInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesWithInsetsRTLForced")
             }
 
             it("should have no effet with wrong layout guide") {
                 let extraView = UIView()
                 layoutGuide.ad_pin(to: extraView.layoutMarginsGuide, usingDirectionalEdges: true)
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideNoSubview"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideNoSubview")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideNoSubviewRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideNoSubviewRTLForced")
             }
 
             it("should pin top left with high priorities") {
@@ -607,9 +607,9 @@ class LayoutGuideConstraintsTests: QuickSpec {
                     insets: insets,
                     priority: .defaultHigh
                 )
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesHighPriority"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesHighPriority")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "PinToLayoutGuideTopLeftEdgesHighPriorityRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "PinToLayoutGuideTopLeftEdgesHighPriorityRTLForced")
             }
         }
 
@@ -633,25 +633,25 @@ class LayoutGuideConstraintsTests: QuickSpec {
                 layoutGuide.ad_center(in: view.layoutMarginsGuide)
                 // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
                 layoutGuide.ad_constrain(to: subview.intrinsicContentSize)
-                expect(view).to(haveValidSnapshot(named: "CenterInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "CenterInLayoutGuide")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "CenterInLayoutGuideRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "CenterInLayoutGuideRTLForced")
             }
 
             it("should center X in layout guide") {
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.top, .bottom])
                 layoutGuide.ad_center(in: view.layoutMarginsGuide, along: .horizontal)
-                expect(view).to(haveValidSnapshot(named: "CenterXInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "CenterXInLayoutGuide")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "CenterXInLayoutGuideRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "CenterXInLayoutGuideRTLForced")
             }
 
             it("should center Y in layout guide") {
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.leading, .trailing])
                 layoutGuide.ad_center(in: view.layoutMarginsGuide, along: .vertical)
-                expect(view).to(haveValidSnapshot(named: "CenterYInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "CenterYInLayoutGuide")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "CenterYInLayoutGuideRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "CenterYInLayoutGuideRTLForced")
             }
         }
 
@@ -675,41 +675,41 @@ class LayoutGuideConstraintsTests: QuickSpec {
             it("should constrain in layout guide pin bottom left") {
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.bottom, .leading], insets: insets)
                 layoutGuide.ad_constrain(in: view.layoutMarginsGuide, directionalEdges: [.top, .trailing], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinBottomLeft"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinBottomLeft")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinBottomLeftRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinBottomLeftRTLForced")
             }
 
             it("should constrain in layout guide pin bottom right") {
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.bottom, .trailing], insets: insets)
                 layoutGuide.ad_constrain(in: view.layoutMarginsGuide, directionalEdges: [.top, .leading], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinBottomRight"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinBottomRight")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinBottomRightRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinBottomRightRTLForced")
             }
 
             it("should constrain in layout guide top left") {
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.top, .leading], insets: insets)
                 layoutGuide.ad_constrain(in: view.layoutMarginsGuide, directionalEdges: [.bottom, .trailing], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinTopLeft"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinTopLeft")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinTopLeftRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinTopLeftRTLForced")
             }
 
             it("should constrain in layout guide pin top right") {
                 layoutGuide.ad_pin(to: view.layoutMarginsGuide, directionalEdges: [.top, .trailing], insets: insets)
                 layoutGuide.ad_constrain(in: view.layoutMarginsGuide, directionalEdges: [.bottom, .leading], insets: insets)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinTopRight"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinTopRight")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuidePinTopRightRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuidePinTopRightRTLForced")
             }
 
             it("should constrain in layout guide") {
                 layoutGuide.ad_center(in: view.layoutMarginsGuide)
                 layoutGuide.ad_constrain(in: view.layoutMarginsGuide)
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuide"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuide")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuideRTLForced")
             }
 
             it("should constrain in layout guide with insets") {
@@ -717,9 +717,9 @@ class LayoutGuideConstraintsTests: QuickSpec {
                 // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
                 layoutGuide.ad_constrain(to: subview.intrinsicContentSize, priority: .defaultLow)
                 layoutGuide.ad_constrain(in: view.layoutMarginsGuide, insets: NSDirectionalEdgeInsets(value: 10.0))
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideWithInsets"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuideWithInsets")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideWithInsetsRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuideWithInsetsRTLForced")
             }
 
             it("should constrain in layout guide with left edge") {
@@ -727,9 +727,9 @@ class LayoutGuideConstraintsTests: QuickSpec {
                 // ???: (Pierre Felgines) 08/10/2018 Intrinsic content size is not enough here
                 layoutGuide.ad_constrain(to: subview.intrinsicContentSize, priority: .defaultLow)
                 layoutGuide.ad_constrain(in: view.layoutMarginsGuide, directionalEdges: [.leading])
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideWithLeftEdge"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuideWithLeftEdge")
                 view.semanticContentAttribute = .forceRightToLeft
-                expect(view).to(haveValidSnapshot(named: "ConstrainInLayoutGuideWithLeftEdgeRTLForced"))
+                assertSnapshot(matching: view, as: .image, named: "ConstrainInLayoutGuideWithLeftEdgeRTLForced")
             }
         }
     }

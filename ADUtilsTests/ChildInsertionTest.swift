@@ -14,7 +14,7 @@ import ADUtils
 
 class ChildInsertionTest: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         it("should insert a view controller in a subview") {
             let viewController = UIViewController()
             let child = UIViewController()

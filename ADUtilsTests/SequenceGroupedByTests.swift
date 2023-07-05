@@ -17,7 +17,7 @@ private struct Person {
 
 class SequenceGroupedByTests: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         it("should group the sequence") {
             let persons = [

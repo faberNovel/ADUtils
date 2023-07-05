@@ -53,7 +53,7 @@ extension User : PropertyListReadable {
 
 class PropertyListArchiverTest: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         var defaults: UserDefaults!
         var archiver: PropertyListArchiver!
