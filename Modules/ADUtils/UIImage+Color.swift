@@ -16,16 +16,19 @@ public extension UIImage {
      - parameter size: The size of the final image
      */
     static func ad_filled(with color: UIColor,
-                          size: CGSize = CGSize(width: 1, height: 1)) -> UIImage? {
+                          size: CGSize = CGSize(width: 1, height: 1),
+                          scale: CGFloat = 1.0) -> UIImage? {
         if #available(iOS 13.0, tvOS 13.0, *) {
             let lightModeImage = generateImage(
                 withColor: color,
                 size: size,
+                scale: scale,
                 userInterfaceStyle: .light
             )
             let darkModeImage = generateImage(
                 withColor: color,
                 size: size,
+                scale: scale,
                 userInterfaceStyle: .dark
             )
             if let darkImage = darkModeImage {
@@ -36,7 +39,7 @@ public extension UIImage {
             }
             return lightModeImage
         } else {
-            return generateImage(withColor: color, size: size)
+            return generateImage(withColor: color, size: size, scale: scale)
         }
     }
 
@@ -45,23 +48,23 @@ public extension UIImage {
     @available(iOS 13.0, tvOS 13.0, *)
     private static func generateImage(withColor color: UIColor,
                                       size: CGSize,
+                                      scale: CGFloat,
                                       userInterfaceStyle: UIUserInterfaceStyle) -> UIImage? {
         var image: UIImage?
-            UITraitCollection(userInterfaceStyle: userInterfaceStyle).performAsCurrent {
-                image = generateImage(withColor: color, size: size)
-            }
+        UITraitCollection(userInterfaceStyle: userInterfaceStyle).performAsCurrent {
+            image = generateImage(withColor: color, size: size, scale: scale)
+        }
         return image
     }
 
     private static func generateImage(withColor color: UIColor,
-                                      size: CGSize) -> UIImage? {
-        let rect = CGRect(origin: .zero, size: size)
-        UIGraphicsBeginImageContext(rect.size)
-        let context = UIGraphicsGetCurrentContext()
-        context?.setFillColor(color.cgColor)
-        context?.fill(rect)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
+                                      size: CGSize,
+                                      scale: CGFloat) -> UIImage? {
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = scale
+        return UIGraphicsImageRenderer(size: size, format: format).image { context in
+            context.cgContext.setFillColor(color.cgColor)
+            context.fill(CGRect(origin: .zero, size: size))
+        }
     }
 }

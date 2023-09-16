@@ -40,6 +40,22 @@ class UIImageColorTests: QuickSpec {
             assertSnapshot(matching: imageView, as: .image, named: "UIImageColorRedPixel")
         }
 
+        it("should have correct snapshot with scale") {
+            // Given
+            let size = CGSize(width: 10, height: 20)
+            let scale: CGFloat = 3.0
+            let color = UIColor.red
+
+            // When
+            let image = UIImage.ad_filled(with: color, size: size, scale: scale)
+
+            // Then
+            XCTAssertEqual(image?.scale, 3.0)
+            XCTAssertEqual(image?.size, size)
+            let imageView = UIImageView(image: image)
+            assertSnapshot(matching: imageView, as: .image(traits: UITraitCollection(displayScale: scale)), named: "UIImageColorRedWithScale")
+        }
+
         if #available(iOS 13.0, *) {
 
             it("should create images for light and dark modes") {
