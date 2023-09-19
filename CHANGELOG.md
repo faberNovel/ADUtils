@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [11.5.0] - 2023-09-19
+
 ### Updated
 
 - Add scale parameter to `UIImage.ad_filled`.
