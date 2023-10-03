@@ -3,10 +3,13 @@ name: Create release PRs
 on:
   create
 
+env:
+  DEVELOPER_DIR: /Applications/Xcode_15.0.app/Contents/Developer
+
 jobs:
   build:
 
-    runs-on: macOS-latest
+    runs-on: macos-13
 
     if: contains(github.ref, 'release') # allow to filter on release branches only
     steps:

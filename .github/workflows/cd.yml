@@ -5,10 +5,13 @@ on:
     branches:
       - master
 
+env:
+  DEVELOPER_DIR: /Applications/Xcode_15.0.app/Contents/Developer
+
 jobs:
   build:
 
-    runs-on: macOS-latest
+    runs-on: macos-13
 
     steps:
     - uses: actions/checkout@v2
