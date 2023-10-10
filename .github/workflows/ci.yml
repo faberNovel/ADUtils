@@ -2,13 +2,10 @@ name: CI
 
 on: [pull_request]
 
-# ???: (Alexandre Podlewski) 10/10/2023 Tests about NavigationObserver are failing when using Xcode 15.0 on CI,
-# but pass locally, so we force Xcode 14.3.1 for now.
-
 # See this page for available Xcode versions:
 # https://github.com/actions/runner-images/blob/main/images/macos/macos-13-Readme.md
 env:
-  DEVELOPER_DIR: /Applications/Xcode_14.3.1.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_15.0.app/Contents/Developer
 
 jobs:
   build:
