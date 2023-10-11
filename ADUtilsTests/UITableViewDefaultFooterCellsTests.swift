@@ -10,6 +10,7 @@ import Nimble
 import Quick
 import ADUtils
 
+@MainActor
 class UITableViewDefaultFooterCellsTests: QuickSpec {
 
     override class func spec() {

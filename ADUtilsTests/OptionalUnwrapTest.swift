@@ -11,15 +11,23 @@ import Quick
 import ADUtils
 import Nimble
 
-private class Test {
-    var testValue = 0.0
+private class Test: @unchecked Sendable {
+    private var _testValue = 0.0
+    var testValue: Double {
+        get {
+            return synchronize(self) { _testValue }
+        }
+        set {
+            synchronize(self) { _testValue = newValue }
+        }
+    }
 
     func increaseValue(in test: Test) {
         test.testValue += 1.0
     }
 }
 
-private func delay(_ duration: TimeInterval, block: @escaping () -> ()) {
+private func delay(_ duration: TimeInterval, block: @Sendable @escaping () -> ()) {
     let time = DispatchTime.now() + duration
     DispatchQueue.main.asyncAfter(deadline: time, execute: block)
 }

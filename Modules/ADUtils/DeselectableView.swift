@@ -15,6 +15,7 @@ import UIKit
  * This is a protocol to factorize table and collection view selection methods
  */
 
+@MainActor
 protocol DeselectableView: AnyObject {
     var selectedIndexPaths: [IndexPath]? { get }
     func deselect(atIndexPath indexPath: IndexPath, animated: Bool)

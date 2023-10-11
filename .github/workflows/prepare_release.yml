@@ -3,10 +3,15 @@ name: Create release PRs
 on:
   create
 
+# See this page for available Xcode versions:
+# https://github.com/actions/runner-images/blob/main/images/macos/macos-13-Readme.md
+env:
+  DEVELOPER_DIR: /Applications/Xcode_15.0.app/Contents/Developer
+
 jobs:
   build:
 
-    runs-on: macOS-latest
+    runs-on: macos-13
 
     if: contains(github.ref, 'release') # allow to filter on release branches only
     steps:

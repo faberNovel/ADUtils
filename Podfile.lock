@@ -1,10 +1,10 @@
 PODS:
-  - ADUtils (11.5.0):
-    - ADUtils/objc (= 11.5.0)
-  - ADUtils/objc (11.5.0):
+  - ADUtils (12.0.0):
+    - ADUtils/objc (= 12.0.0)
+  - ADUtils/objc (12.0.0):
     - ADUtils/Swift
-  - ADUtils/Security (11.5.0)
-  - ADUtils/Swift (11.5.0)
+  - ADUtils/Security (12.0.0)
+  - ADUtils/Swift (12.0.0)
   - Nimble (12.0.1)
   - OCMock (3.9.1)
   - Quick (7.0.2)
@@ -16,7 +16,7 @@ DEPENDENCIES:
   - Nimble (~> 12.0)
   - OCMock (~> 3.9)
   - Quick (~> 7.0)
-  - SwiftLint (~> 0.42.0)
+  - SwiftLint (~> 0.36)
 
 SPEC REPOS:
   trunk:
@@ -30,12 +30,12 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADUtils: 8b9f64a118d331268d20e67617c7f037f6c59000
+  ADUtils: 12fd5ba501a61bddfbf8ae68b335b1cfdbece393
   Nimble: b279b3ca9e094508778aab5c76417be158d3ad04
   OCMock: 9491e4bec59e0b267d52a9184ff5605995e74be8
   Quick: efab97aca76d60be86c15daa533b2cdfbe1a74d3
   SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
 
-PODFILE CHECKSUM: a085ff0ceae15032eb100393c6df98696f11d7af
+PODFILE CHECKSUM: 6914b9ce5e1410eb72fa1a28f44d2a94b4424fca
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.13.0

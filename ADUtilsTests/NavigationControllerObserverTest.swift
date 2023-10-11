@@ -39,6 +39,7 @@ private class NavigationControllerDelegate: NSObject, UINavigationControllerDele
     }
 }
 
+@MainActor
 class NavigationControllerObserverTest : QuickSpec {
 
     override class func spec() {
@@ -51,7 +52,12 @@ class NavigationControllerObserverTest : QuickSpec {
         beforeSuite {
             UIApplication.shared.keyWindow?.rootViewController = navigationController
             UIApplication.shared.keyWindow?.makeKeyAndVisible()
-            UIApplication.shared.keyWindow?.layer.speed = 100 // speed up animations
+            navigationController.view.window?.layer.speed = 100 // speed up animations
+            // ???: (Alexandre Podlewski) 10/10/2023 setting the layer speed of the ViewController's view is more
+            //      reliable than setting it on the window because it does not involve global state.
+            //      When setting the key window speed, there can be some race condition with the afterSuite {} where
+            //      the speed is reseted to 1.
+            navigationController.view.layer.speed = 100
             let viewController = UIViewController()
             navigationController.pushViewController(viewController, animated: false)
             waitUntil(timeout: .seconds(1)) { done in
@@ -61,10 +67,6 @@ class NavigationControllerObserverTest : QuickSpec {
                     done()
                 }
             }
-        }
-
-        afterSuite {
-            UIApplication.shared.keyWindow?.layer.speed = 1 // reset default animations speed
         }
 
         beforeEach {
@@ -86,9 +88,8 @@ class NavigationControllerObserverTest : QuickSpec {
             waitUntil(timeout: .seconds(1)) { done in
                 // When
                 navigationController.popViewController(animated: true)
-
-                // We need to wait the end of the animation
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                navigationController.executeAfterTransition {
+                    // We need to wait the end of the animation
                     // Then
                     expect(navigationController.viewControllers.count).to(equal(1))
                     expect(observerDelegate.observedViewControllers).to(contain(viewControllerToObserve))
@@ -119,16 +120,15 @@ class NavigationControllerObserverTest : QuickSpec {
             waitUntil(timeout: .seconds(1)) { done in
                 // When
                 navigationController.popViewController(animated: true)
-
-                // We need to wait the end of the animation
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                navigationController.executeAfterTransition {
+                    // We need to wait the end of the animation
                     // Then
                     expect(navigationController.viewControllers.count).to(equal(2))
                     expect(observerDelegate2.observedViewControllers).to(contain(viewControllerToObserve2))
 
                     // When
                     navigationController.popViewController(animated: true)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    navigationController.executeAfterTransition {
                         // Then
                         expect(navigationController.viewControllers.count).to(equal(1))
                         expect(observerDelegate.observedViewControllers).to(contain(viewControllerToObserve1))
@@ -151,9 +151,8 @@ class NavigationControllerObserverTest : QuickSpec {
                 // When
                 removeObserverAction(viewControllerToObserve)
                 navigationController.popViewController(animated: true)
-
-                // We need to wait the end of the animation
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                navigationController.executeAfterTransition {
+                    // We need to wait the end of the animation
                     // Then
                     expect(navigationController.viewControllers.count).to(equal(1))
                     expect(observerDelegate.observedViewControllers).to(beEmpty())
@@ -180,6 +179,7 @@ class NavigationControllerObserverTest : QuickSpec {
             }
         }
 
+        // Passed 100 times
         it("should forward navigation controller delegate methods") {
             // Given
             let viewControllerToObserve = UIViewController()
@@ -195,9 +195,8 @@ class NavigationControllerObserverTest : QuickSpec {
             waitUntil(timeout: .seconds(1)) { done in
                 // When
                 navigationController.popViewController(animated: true)
-
-                // We need to wait the end of the animation
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                navigationController.executeAfterTransition {
+                    // We need to wait the end of the animation
                     // Then
                     expect(navigationControllerDelegate.willShowViewControllers).toNot(beEmpty())
                     expect(navigationControllerDelegate.didShowViewControllers).toNot(beEmpty())
@@ -206,6 +205,7 @@ class NavigationControllerObserverTest : QuickSpec {
             }
         }
 
+        // Passed 100 times
         it("should clean observer of view controllers not in the stack") {
             // Given
             let viewControllerToObserve = UIViewController()
@@ -224,27 +224,37 @@ class NavigationControllerObserverTest : QuickSpec {
             waitUntil(timeout: .seconds(1)) { done in
                 // When
                 navigationController.popViewController(animated: true)
-
+                XCTAssertNotNil(navigationController.transitionCoordinator)
                 // We need to wait the end of the animation
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                navigationController.executeAfterTransition {
                     // Then
-
                     expect(navigationController.viewControllers.count).to(equal(1))
                     expect(observerDelegate.observedViewControllers).to(equal([viewControllerToObserve]))
 
                     // We now try to push/pop the viewControllerNotInTheStack
                     navigationController.pushViewController(viewControllerNotInTheStack, animated: false)
-                    navigationController.popViewController(animated: true)
-
-                    // We need to wait the end of the animation
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        // The viewControllerNotInTheStack should not be observed anymore
-                        expect(navigationController.viewControllers.count).to(equal(1))
-                        expect(observerDelegate.observedViewControllers).to(equal([viewControllerToObserve]))
-                        done()
+                    DispatchQueue.main.async {
+                        navigationController.popViewController(animated: true)
+                        XCTAssertNotNil(navigationController.transitionCoordinator)
+                        navigationController.executeAfterTransition {
+                            // We need to wait the end of the animation
+                            // The viewControllerNotInTheStack should not be observed anymore
+                            expect(navigationController.viewControllers.count).to(equal(1))
+                            expect(observerDelegate.observedViewControllers).to(equal([viewControllerToObserve]))
+                            done()
+                        }
                     }
                 }
             }
         }
+    }
+}
+
+extension UINavigationController {
+    func executeAfterTransition(_ block: @escaping () -> Void, file: StaticString = #file, line: UInt = #line) {
+        XCTAssertNotNil(transitionCoordinator, "no transition is in progress", file: file, line: line)
+        transitionCoordinator?.animate(alongsideTransition: nil, completion: { _ in
+            block()
+        })
     }
 }

@@ -11,6 +11,7 @@ import Nimble
 import ADUtils
 import UIKit
 
+@MainActor
 class StackViewUtilsTests: QuickSpec {
 
     override class func spec() {

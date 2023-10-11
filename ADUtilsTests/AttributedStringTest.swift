@@ -13,6 +13,7 @@ import Quick
 import ADUtils
 @testable import ADUtilsApp
 
+@MainActor
 class AttributedStringTest: QuickSpec {
 
     override class func spec() {

@@ -18,6 +18,7 @@ private extension UIView {
     }
 }
 
+@MainActor
 class StackViewBuilderTests: QuickSpec {
 
     override class func spec() {

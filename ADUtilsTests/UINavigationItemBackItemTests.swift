@@ -10,6 +10,7 @@ import Nimble
 import Quick
 import ADUtils
 
+@MainActor
 class UINavigationItemBackItemTests: QuickSpec {
 
     override class func spec() {
