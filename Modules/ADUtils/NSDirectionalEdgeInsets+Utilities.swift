@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-@available(iOS 13.0, *)
-@available(tvOSApplicationExtension 13.0, *)
 extension NSDirectionalEdgeInsets {
 
     /**

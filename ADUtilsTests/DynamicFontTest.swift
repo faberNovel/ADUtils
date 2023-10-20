@@ -92,7 +92,6 @@ class DynamicFontTest: QuickSpec {
 
         describe("display SwiftUI fonts") {
 
-            @available(iOS 14.0, *)
             struct DynamicFontsView: View {
 
                 let types: [Font.TextStyle] = [

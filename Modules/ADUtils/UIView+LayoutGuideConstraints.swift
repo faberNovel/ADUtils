@@ -395,7 +395,6 @@ extension UIView {
      - parameter priority: The layout priority used for the constraints created
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithEdges:insets:priority:)
     @discardableResult
     public func ad_pinToSuperviewSafeAreaLayoutGuide(edges: UIRectEdge,
@@ -415,7 +414,6 @@ extension UIView {
      - parameter priority: The layout priority used for the constraints created
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithInsets:priority:)
     @discardableResult
     public func ad_pinToSuperviewSafeAreaLayoutGuide(insets: UIEdgeInsets,
@@ -430,7 +428,6 @@ extension UIView {
      Add constraints to pin self in superview's safe area layout guide
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_pinToSuperviewSafeAreaLayoutGuide)
     @discardableResult
     public func ad_pinToSuperviewSafeAreaLayoutGuide() -> [NSLayoutConstraint] {
@@ -446,7 +443,6 @@ extension UIView {
      - parameter insets: UIEdgeInsets to apply for each edge
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithInsets:)
     @discardableResult
     public func ad_pinToSuperviewSafeAreaLayoutGuide(insets: UIEdgeInsets) -> [NSLayoutConstraint] {
@@ -462,7 +458,6 @@ extension UIView {
      - parameter edges: Edges to pin the view in the layout guide
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithEdges:)
     @discardableResult
     public func ad_pinToSuperviewSafeAreaLayoutGuide(edges: UIRectEdge) -> [NSLayoutConstraint] {
@@ -480,7 +475,6 @@ extension UIView {
      - parameter insets: UIEdgeInsets to apply for each edge
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_pinToSuperviewSafeAreaLayoutGuideWithEdges:insets:)
     @discardableResult
     public func ad_pinToSuperviewSafeAreaLayoutGuide(edges: UIRectEdge,
@@ -499,7 +493,6 @@ extension UIView {
      - parameter priority: The layout priority used for the constraint created
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_centerInSuperviewSafeAreaLayoutGuideAlongAxis:priority:)
     @discardableResult
     public func ad_centerInSuperviewSafeAreaLayoutGuide(along axis: NSLayoutConstraint.Axis,
@@ -516,7 +509,6 @@ extension UIView {
      - parameter axis: Axis to center the view along in layout guide
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_centerInSuperviewSafeAreaLayoutGuideAlongAxis:)
     @discardableResult
     public func ad_centerInSuperviewSafeAreaLayoutGuide(along axis: NSLayoutConstraint.Axis) -> [NSLayoutConstraint] {
@@ -532,7 +524,6 @@ extension UIView {
      - parameter priority: The layout priority used for the constraint created
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_centerInSuperviewSafeAreaLayoutGuideWithPriority:)
     @discardableResult
     public func ad_centerInSuperviewSafeAreaLayoutGuide(priority: UILayoutPriority) -> [NSLayoutConstraint] {
@@ -546,7 +537,6 @@ extension UIView {
      Add constraints to center self in superview's safe area layout guide along specified axis
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_centerInSuperviewSafeAreaLayoutGuide)
     @discardableResult
     public func ad_centerInSuperviewSafeAreaLayoutGuide() -> [NSLayoutConstraint] {
@@ -566,7 +556,6 @@ extension UIView {
      - parameter priority: The layout priority used for the constraint created
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_constrainInSuperviewSafeAreaLayoutGuideWithEdges:insets:priority:)
     @discardableResult
     public func ad_constrainInSuperviewSafeAreaLayoutGuide(edges: UIRectEdge,
@@ -582,7 +571,6 @@ extension UIView {
      Add max constraints to edges of superview's safe area layout guide
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_constrainInSuperviewSafeAreaLayoutGuide)
     @discardableResult
     public func ad_constrainInSuperviewSafeAreaLayoutGuide() -> [NSLayoutConstraint] {
@@ -598,7 +586,6 @@ extension UIView {
      - parameter insets: UIEdgeInsets to apply for each edge
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_constrainInSuperviewSafeAreaLayoutGuideWithInsets:)
     @discardableResult
     public func ad_constrainInSuperviewSafeAreaLayoutGuide(insets: UIEdgeInsets) -> [NSLayoutConstraint] {
@@ -614,7 +601,6 @@ extension UIView {
      - parameter edges: Edges to pin the view in layout guide
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_constrainInSuperviewSafeAreaLayoutGuideWithEdges:)
     @discardableResult
     public func ad_constrainInSuperviewSafeAreaLayoutGuide(edges: UIRectEdge) -> [NSLayoutConstraint] {
@@ -632,7 +618,6 @@ extension UIView {
      - parameter insets: UIEdgeInsets to apply for each edge
 
      */
-    @available(iOS 11.0, tvOS 11.0, *)
     @objc(ad_constrainInSuperviewSafeAreaLayoutGuideWithEdges:insets:)
     @discardableResult
     public func ad_constrainInSuperviewSafeAreaLayoutGuide(edges: UIRectEdge,
@@ -644,8 +629,6 @@ extension UIView {
     }
 }
 
-@available(iOS 13.0, tvOS 13.0, *)
-@available(tvOSApplicationExtension 13.0, *)
 extension UIView {
 
     /**

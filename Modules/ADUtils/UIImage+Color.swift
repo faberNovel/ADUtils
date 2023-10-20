@@ -18,34 +18,29 @@ public extension UIImage {
     static func ad_filled(with color: UIColor,
                           size: CGSize = CGSize(width: 1, height: 1),
                           scale: CGFloat = 1.0) -> UIImage? {
-        if #available(iOS 13.0, tvOS 13.0, *) {
-            let lightModeImage = generateImage(
-                withColor: color,
-                size: size,
-                scale: scale,
-                userInterfaceStyle: .light
+        let lightModeImage = generateImage(
+            withColor: color,
+            size: size,
+            scale: scale,
+            userInterfaceStyle: .light
+        )
+        let darkModeImage = generateImage(
+            withColor: color,
+            size: size,
+            scale: scale,
+            userInterfaceStyle: .dark
+        )
+        if let darkImage = darkModeImage {
+            lightModeImage?.imageAsset?.register(
+                darkImage,
+                with: UITraitCollection(userInterfaceStyle: .dark)
             )
-            let darkModeImage = generateImage(
-                withColor: color,
-                size: size,
-                scale: scale,
-                userInterfaceStyle: .dark
-            )
-            if let darkImage = darkModeImage {
-                lightModeImage?.imageAsset?.register(
-                    darkImage,
-                    with: UITraitCollection(userInterfaceStyle: .dark)
-                )
-            }
-            return lightModeImage
-        } else {
-            return generateImage(withColor: color, size: size, scale: scale)
         }
+        return lightModeImage
     }
 
     // MARK: - Private
 
-    @available(iOS 13.0, tvOS 13.0, *)
     private static func generateImage(withColor color: UIColor,
                                       size: CGSize,
                                       scale: CGFloat,

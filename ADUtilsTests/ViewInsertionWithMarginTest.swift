@@ -280,8 +280,6 @@ class ViewInsertionWithMargin: QuickSpec {
         }
     }
 
-    @available(iOS 13.0, *)
-    @available(tvOSApplicationExtension 13.0, *)
     private static func directionalEdgesSpec() {
 
         describe("Pin to superview") {
