@@ -16,9 +16,7 @@ class LayoutGuideConstraintsTests: QuickSpec {
 
     override class func spec() {
         standardEdgesSpec()
-        if #available(iOS 13, *) {
-            directionalEdgesSpec()
-        }
+        directionalEdgesSpec()
     }
 
     // MARK: - Private

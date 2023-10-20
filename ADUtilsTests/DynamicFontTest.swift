@@ -67,9 +67,7 @@ class DynamicFontTest: QuickSpec {
                 let labels = types.map { (type) -> UILabel in
                     let label = UILabel()
                     label.font = UIFont.ad_mainFont(forTextStyle: type)
-                    if #available(iOS 11.0, *) {
-                        label.adjustsFontForContentSizeCategory = true
-                    }
+                    label.adjustsFontForContentSizeCategory = true
                     label.text = "Lorem sizzle pimpin' sit amizzle"
                     label.numberOfLines = 0
                     return label
@@ -116,24 +114,20 @@ class DynamicFontTest: QuickSpec {
                 }
             }
             it("should layout labels properly") {
-                if #available(iOS 14.0, *) {
-                    let view = DynamicFontsView()
-                    assertSnapshot(
-                        matching: view,
-                        as: .image(layout: .fixed(width: 200, height: 1000)),
-                        named: "SwiftUIDynamicFontLayoutTest"
-                    )
-                    assertSnapshot(
-                        matching: view,
-                        as: .image(
-                            layout: .fixed(width: 200, height: 1000),
-                            traits: UITraitCollection(preferredContentSizeCategory: .extraExtraExtraLarge)
-                        ),
-                        named: "SwiftUIDynamicFontLayoutXXLTest"
-                    )
-                } else {
-                    throw XCTSkip("title2, title3, caption2 are only available on iOS 14")
-                }
+                let view = DynamicFontsView()
+                assertSnapshot(
+                    matching: view,
+                    as: .image(layout: .fixed(width: 200, height: 1000)),
+                    named: "SwiftUIDynamicFontLayoutTest"
+                )
+                assertSnapshot(
+                    matching: view,
+                    as: .image(
+                        layout: .fixed(width: 200, height: 1000),
+                        traits: UITraitCollection(preferredContentSizeCategory: .extraExtraExtraLarge)
+                    ),
+                    named: "SwiftUIDynamicFontLayoutXXLTest"
+                )
             }
         }
     }
