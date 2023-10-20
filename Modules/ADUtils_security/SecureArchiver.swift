@@ -23,7 +23,6 @@ public class SecureArchiver {
 
     private enum Constants {
         static let passphrasePrefix = "cryptoKeyPassphrase_"
-        static let installedPrefix = "appIsInstalled_"
     }
 
     private enum SecureArchiverError: Error {
