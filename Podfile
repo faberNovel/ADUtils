@@ -1,4 +1,4 @@
-platform :ios, '13.0'
+platform :ios, '14.0'
 use_frameworks!
 
 target 'ADUtilsApp' do
@@ -31,6 +31,9 @@ post_install do |installer|
                 # Enable complete concurrency checks
                 config.build_settings['SWIFT_STRICT_CONCURRENCY'] = "complete"
             end
+
+            # Use same iOS target version on all pods
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = "14.0"
         end
     end
 end

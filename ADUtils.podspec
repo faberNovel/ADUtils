@@ -4,8 +4,8 @@ Pod::Spec.new do |spec|
   spec.authors      = 'Fabernovel'
   spec.homepage     = 'https://github.com/faberNovel/ADUtils'
   spec.summary      = 'Fabernovel\'s toolbox for iOS'
-  spec.ios.deployment_target = '13.0'
-  spec.tvos.deployment_target = '13.0'
+  spec.ios.deployment_target = '14.0'
+  spec.tvos.deployment_target = '14.0'
   spec.license      = { :type => 'MIT', :text => 'Created and licensed by Fabernovel Technologies. Copyright 2014-2018 Fabernovel Technologies. All rights reserved.' }
   spec.source       = { :git => 'https://github.com/faberNovel/ADUtils.git', :tag => "v#{spec.version}" }
   spec.framework    = 'Foundation', 'UIKit'

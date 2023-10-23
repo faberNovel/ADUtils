@@ -68,7 +68,6 @@ struct FontDescription {
      - parameter fontTextStyle: the text style
      - returns: the FontStyleDescription corresponding to the text style, as specified in the plist
      */
-    @available(iOS 13.0, tvOS 13.0, *)
     func fontStyleDescription(for fontTextStyle: Font.TextStyle) throws -> FontStyleDescription {
         try fontStyleDescription(for: fontTextStyle.rawValue)
     }
@@ -103,7 +102,6 @@ enum FontDescriptionError: Error {
     case fontMissing
 }
 
-@available(iOS 13.0, tvOS 13.0, *)
 fileprivate extension Font.TextStyle {
 
     // MARK: - Font

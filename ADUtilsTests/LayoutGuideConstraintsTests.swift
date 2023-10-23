@@ -16,9 +16,7 @@ class LayoutGuideConstraintsTests: QuickSpec {
 
     override class func spec() {
         standardEdgesSpec()
-        if #available(iOS 13, *) {
-            directionalEdgesSpec()
-        }
+        directionalEdgesSpec()
     }
 
     // MARK: - Private
@@ -346,8 +344,6 @@ class LayoutGuideConstraintsTests: QuickSpec {
         }
     }
 
-    @available(iOS 13.0, *)
-    @available(tvOSApplicationExtension 13.0, *)
     private static func directionalEdgesSpec() {
         describe("Pin to layout guide using NSDirectionalRectEdge and NSDirectionalRectEdge") {
 

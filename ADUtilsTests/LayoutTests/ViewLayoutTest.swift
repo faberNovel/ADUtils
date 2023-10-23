@@ -95,7 +95,6 @@ class ViewLayout: QuickSpec {
             addLabelInView(headerFooter.contentView)
             let expectedHeight = 1218.0
             // When
-            let height = headerFooter.ad_preferredContentViewLayoutHeight(fittingWidth: width)
             let layoutEngineHeight = headerFooter.ad_preferredContentViewLayoutHeight(
                 fittingWidth: width,
                 computationType: .layoutEngine

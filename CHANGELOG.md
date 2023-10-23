@@ -8,7 +8,8 @@ All notable changes to this project will be documented in this file.
 - Add Swift Concurrency support
 
 ### Removed
-- Drop support for iOS 11 and iOS 12
+- Drop support for iOS 11, 12 and 13
+- Drop support for tvOS 11, 12 and 13
 - Drop support for Swift below 5.7
 
 ## [11.5.0] - 2023-09-19
