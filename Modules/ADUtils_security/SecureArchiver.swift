@@ -5,8 +5,6 @@
 //  Created by Thomas Esterlin on 02/07/2021.
 // Methods inspired by these : "https://fred.appelman.net/?p=119", "https://developer.apple.com/videos/play/wwdc2019/709"
 
-#if canImport(CryptoKit)
-
 import Foundation
 import CryptoKit
 
@@ -156,4 +154,3 @@ public class SecureArchiver {
     }
 
 }
-#endif

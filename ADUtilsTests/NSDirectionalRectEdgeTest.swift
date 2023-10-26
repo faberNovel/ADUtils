@@ -11,7 +11,6 @@ import Quick
 import Nimble
 import ADUtils
 
-@available(iOS 13.0, tvOS 13.0, *)
 class NSDirectionalRectEdgeTest: QuickSpec {
 
     override class func spec() {
