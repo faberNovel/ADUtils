@@ -14,7 +14,7 @@ import ADUtils
 @available(iOS 13.0, tvOS 13.0, *)
 class NSDirectionalRectEdgeTest: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         it("should only contain vertical values") {
             expect(NSDirectionalRectEdge.vertical).to(equal([.top, .bottom]))

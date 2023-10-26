@@ -13,7 +13,7 @@ import ADUtils
 
 class UIRectEdgeTest: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         it("should only contain vertical values") {
             expect(UIRectEdge.vertical).to(equal([.top, .bottom]))
