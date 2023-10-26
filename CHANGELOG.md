@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - Add Swift Concurrency support
+- Add `UIRectEdge.horizontal` and `UIRectEdge.vertical` utility static variables.
+- Add `NSDirectionalRectEdge.horizontal` and `NSDirectionalRectEdge.vertical` utility static variables.
 
 ### Removed
 - Drop support for iOS 11, 12 and 13
