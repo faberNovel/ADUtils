@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [12.0.0] - 2023-11-08Z
+
 ### Added
 - Add Swift Concurrency support
 - Add `UIRectEdge.horizontal` and `UIRectEdge.vertical` utility static variables.
