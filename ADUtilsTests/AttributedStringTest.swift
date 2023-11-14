@@ -11,7 +11,7 @@ import SwiftUI
 import Nimble
 import SnapshotTesting
 import Quick
-import ADUtils
+@testable import ADUtils
 @testable import ADUtilsApp
 
 @MainActor

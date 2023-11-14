@@ -36,4 +36,11 @@ post_install do |installer|
             config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = "14.0"
         end
     end
+
+    installer.pods_project.build_configurations.each do |config|
+        # Enable testability of Pods to have access to ADUtils internal methods during tests
+        if config.name == "Stubs"
+            config.build_settings['ENABLE_TESTABILITY'] = 'YES'
+        end
+    end
 end
