@@ -84,15 +84,18 @@ class AttributedStringTest: QuickSpec {
             return
         }
 
-        var attributes = AttributeContainer()
-        attributes.foregroundColor = .red
-        attributes.font = smallFont
-        var attributes1 = AttributeContainer()
-        attributes1.foregroundColor = .green
-        attributes1.font = smallFont
-        var attributes2 = AttributeContainer()
-        attributes2.foregroundColor = .blue
-        attributes2.font = bigFont
+        let attributes = AttributeContainer {
+            $0.foregroundColor = .red
+            $0.font = smallFont
+        }
+        let attributes1 = AttributeContainer {
+            $0.foregroundColor = .green
+            $0.font = smallFont
+        }
+        let attributes2 = AttributeContainer {
+            $0.foregroundColor = .blue
+            $0.font = bigFont
+        }
 
         let arguments = ["11", "22", "33", "44"]
         let alternatingFormatAttributes = [attributes1, attributes2, attributes1, attributes2]
