@@ -14,7 +14,6 @@ import SnapshotTesting
 
 private extension UIFont {
 
-    @MainActor
     class func ad_mainFont(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
         return FontHelper.shared.helveticaNeueDynamicFont.font(forTextStyle: textStyle)
     }
@@ -22,13 +21,11 @@ private extension UIFont {
 
 private extension Font {
 
-    @MainActor 
     static func ad_mainFont(forTextStyle textStyle: Font.TextStyle) -> Font {
         return FontHelper.shared.helveticaNeueDynamicFont.font(forTextStyle: textStyle)
     }
 }
 
-@MainActor
 private class FontHelper {
 
     static let shared = FontHelper()
