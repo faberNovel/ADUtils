@@ -17,6 +17,7 @@ private class TestScreen: UIScreen {
     }
 }
 
+@MainActor
 class UIScreenPixelDimensionTests: QuickSpec {
 
     override class func spec() {

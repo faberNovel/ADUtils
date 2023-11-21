@@ -11,7 +11,7 @@ import Nimble
 import Quick
 import ADUtils
 
-class CompletionBehavior: Behavior<Bool> {
+class CompletionBehavior: AsyncBehavior<Bool> {
 
     override class func spec(_ context: @escaping () -> Bool) {
         var isAnimated: Bool!
@@ -20,7 +20,7 @@ class CompletionBehavior: Behavior<Bool> {
             isAnimated = context()
         }
 
-        it("should call completion once pop is done") {
+        it("should call completion once pop is done") { @MainActor in
             // Given
             let rootViewController = UIViewController()
             let navigationController = UINavigationController(rootViewController: rootViewController)
@@ -34,12 +34,12 @@ class CompletionBehavior: Behavior<Bool> {
             }
 
             // Then
-            expect(completionCalled).toEventually(beTrue())
+            await expect(completionCalled).toEventually(beTrue())
         }
     }
 }
 
-class NavigationControllerPopCompletionTests: QuickSpec {
+class NavigationControllerPopCompletionTests: AsyncSpec {
 
     override class func spec() {
         let isAnimated = true

@@ -7,8 +7,7 @@
 
 import UIKit
 
-// Update with @resultBuilder once Swift 5.4 is available
-@_functionBuilder
+@resultBuilder
 public struct UIViewBuilder { // swiftlint:disable:this convenience_type
 
     public static func buildBlock(_ views: UIView...) -> [UIView] {
@@ -23,6 +22,7 @@ public struct UIViewBuilder { // swiftlint:disable:this convenience_type
  * - parameter distribution: The distribution of the arranged views along the stack view’s axis.
  * - parameter arrangedSubviews: The view builder for arranged subviews
  */
+@MainActor
 public func HStackView(spacing: CGFloat = 0,
                        alignment: UIStackView.Alignment = .fill,
                        distribution: UIStackView.Distribution = .fill,
@@ -42,6 +42,7 @@ public func HStackView(spacing: CGFloat = 0,
  * - parameter distribution: The distribution of the arranged views along the stack view’s axis.
  * - parameter arrangedSubviews: The view builder for arranged subviews
  */
+@MainActor
 public func VStackView(spacing: CGFloat = 0,
                        alignment: UIStackView.Alignment = .fill,
                        distribution: UIStackView.Distribution = .fill,

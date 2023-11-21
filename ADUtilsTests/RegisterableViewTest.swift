@@ -97,6 +97,7 @@ private enum Constants {
     static let supplementaryKind = "supplementaryKind"
 }
 
+@MainActor
 class RegisterableViewTest: QuickSpec {
 
     override class func spec() {

@@ -45,6 +45,7 @@ public enum RegisterableView {
 }
 
 public extension RegisterableView {
+    @MainActor
     var nib: UINib? {
         switch self {
         case let .nib(cellClass):
@@ -73,6 +74,7 @@ public extension RegisterableView {
     }
 }
 
+@MainActor
 public protocol CollectionView {
     func register(cell: RegisterableView)
     func register(header: RegisterableView)

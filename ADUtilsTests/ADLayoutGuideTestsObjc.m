@@ -118,79 +118,77 @@
         });
     });
 
-    if (@available(iOS 13.0, *)) {
-        describe(@"Should not translate autoresizing mask into constaints", ^{
+    describe(@"Should not translate autoresizing mask into constaints", ^{
 
-            __block UIView * view;
-            __block UILayoutGuide * layoutGuide;
+        __block UIView * view;
+        __block UILayoutGuide * layoutGuide;
 
-            beforeEach(^{
-                view = [UIView new];
-                layoutGuide = [UILayoutGuide new];
-                [view addLayoutGuide:layoutGuide];
-            });
-
-            // Pin to superview
-
-            it(@"Pin to superview", ^{
-                [layoutGuide ad_pinToOwningViewUsingDirectionalEdges:YES];
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Pin to superview edges", ^{
-                [layoutGuide ad_pinToOwningViewWithDirectionalEdges:NSDirectionalRectEdgeAll];
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Pin to superview insets", ^{
-                [layoutGuide ad_pinToOwningViewWithDirectionalInsets:NSDirectionalEdgeInsetsZero];
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Pin to superview edges insets", ^{
-                [layoutGuide ad_pinToOwningViewWithDirectionalEdges:NSDirectionalRectEdgeAll
-                                                             insets:NSDirectionalEdgeInsetsZero];
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Pin to superview edges insets priority", ^{
-                [layoutGuide ad_pinToOwningViewWithDirectionalEdges:NSDirectionalRectEdgeAll
-                                                             insets:NSDirectionalEdgeInsetsZero
-                                                           priority:UILayoutPriorityRequired];
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            // Constrain in superview
-
-            it(@"Constrain in superview", ^{
-                [layoutGuide ad_constrainInOwningViewUsingDirectionalEdges:YES];
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Constrain in superview edges", ^{
-                [layoutGuide ad_constrainInOwningViewWithDirectionalEdges:NSDirectionalRectEdgeAll];
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Constrain in superview insets", ^{
-                [layoutGuide ad_constrainInOwningViewWithDirectionalInsets:NSDirectionalEdgeInsetsZero];
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Constrain in superview edges insets", ^{
-                [layoutGuide ad_constrainInOwningViewWithDirectionalEdges:NSDirectionalRectEdgeAll
-                                                                   insets:NSDirectionalEdgeInsetsZero];
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Constrain in superview edges insets priority", ^{
-                [layoutGuide ad_constrainInOwningViewWithDirectionalEdges:NSDirectionalRectEdgeAll
-                                                                   insets:NSDirectionalEdgeInsetsZero
-                                                                 priority:UILayoutPriorityRequired];
-                expect(view.constraints.count).to(equal(4));
-            });
+        beforeEach(^{
+            view = [UIView new];
+            layoutGuide = [UILayoutGuide new];
+            [view addLayoutGuide:layoutGuide];
         });
-    }
+
+        // Pin to superview
+
+        it(@"Pin to superview", ^{
+            [layoutGuide ad_pinToOwningViewUsingDirectionalEdges:YES];
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Pin to superview edges", ^{
+            [layoutGuide ad_pinToOwningViewWithDirectionalEdges:NSDirectionalRectEdgeAll];
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Pin to superview insets", ^{
+            [layoutGuide ad_pinToOwningViewWithDirectionalInsets:NSDirectionalEdgeInsetsZero];
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Pin to superview edges insets", ^{
+            [layoutGuide ad_pinToOwningViewWithDirectionalEdges:NSDirectionalRectEdgeAll
+                                                         insets:NSDirectionalEdgeInsetsZero];
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Pin to superview edges insets priority", ^{
+            [layoutGuide ad_pinToOwningViewWithDirectionalEdges:NSDirectionalRectEdgeAll
+                                                         insets:NSDirectionalEdgeInsetsZero
+                                                       priority:UILayoutPriorityRequired];
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        // Constrain in superview
+
+        it(@"Constrain in superview", ^{
+            [layoutGuide ad_constrainInOwningViewUsingDirectionalEdges:YES];
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Constrain in superview edges", ^{
+            [layoutGuide ad_constrainInOwningViewWithDirectionalEdges:NSDirectionalRectEdgeAll];
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Constrain in superview insets", ^{
+            [layoutGuide ad_constrainInOwningViewWithDirectionalInsets:NSDirectionalEdgeInsetsZero];
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Constrain in superview edges insets", ^{
+            [layoutGuide ad_constrainInOwningViewWithDirectionalEdges:NSDirectionalRectEdgeAll
+                                                               insets:NSDirectionalEdgeInsetsZero];
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Constrain in superview edges insets priority", ^{
+            [layoutGuide ad_constrainInOwningViewWithDirectionalEdges:NSDirectionalRectEdgeAll
+                                                               insets:NSDirectionalEdgeInsetsZero
+                                                             priority:UILayoutPriorityRequired];
+            expect(view.constraints.count).to(equal(4));
+        });
+    });
 }
 
 @end

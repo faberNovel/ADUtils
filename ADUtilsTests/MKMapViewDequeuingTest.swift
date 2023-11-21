@@ -22,6 +22,7 @@ class MapViewAnnotationView: MKAnnotationView {
 
 }
 
+@MainActor
 class MKMapViewDequeuingTest: QuickSpec {
     override class func spec() {
         describe("Dequeuing") {

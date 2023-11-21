@@ -20,6 +20,7 @@ public extension NSLayoutConstraint {
 }
 
 public extension Collection where Element == NSLayoutConstraint {
+    @MainActor
     func activate() {
         guard let array = self as? [NSLayoutConstraint] else {
             NSLayoutConstraint.activate(self.map { $0 })
@@ -28,6 +29,7 @@ public extension Collection where Element == NSLayoutConstraint {
         NSLayoutConstraint.activate(array)
     }
 
+    @MainActor
     func deactivate() {
         guard let array = self as? [NSLayoutConstraint] else {
             NSLayoutConstraint.deactivate(self.map { $0 })

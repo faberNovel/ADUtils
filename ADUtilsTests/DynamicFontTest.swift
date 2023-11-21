@@ -14,6 +14,7 @@ import SnapshotTesting
 
 private extension UIFont {
 
+    @MainActor
     class func ad_mainFont(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
         return FontHelper.shared.helveticaNeueDynamicFont.font(forTextStyle: textStyle)
     }
@@ -21,11 +22,13 @@ private extension UIFont {
 
 private extension Font {
 
+    @MainActor 
     static func ad_mainFont(forTextStyle textStyle: Font.TextStyle) -> Font {
         return FontHelper.shared.helveticaNeueDynamicFont.font(forTextStyle: textStyle)
     }
 }
 
+@MainActor
 private class FontHelper {
 
     static let shared = FontHelper()
@@ -40,6 +43,7 @@ private class FontHelper {
     }()
 }
 
+@MainActor
 class DynamicFontTest: QuickSpec {
 
     override class func spec() {
@@ -58,23 +62,22 @@ class DynamicFontTest: QuickSpec {
                 .caption1,
                 .caption2
             ]
-            let labels = types.map { (type) -> UILabel in
-                let label = UILabel()
-                label.font = UIFont.ad_mainFont(forTextStyle: type)
-                if #available(iOS 11.0, *) {
-                    label.adjustsFontForContentSizeCategory = true
-                }
-                label.text = "Lorem sizzle pimpin' sit amizzle"
-                label.numberOfLines = 0
-                return label
-            }
-
-            let stackView = UIStackView(arrangedSubviews: labels)
-            stackView.frame = CGRect(x: 0.0, y: 0.0, width: 200.0, height: 1000.0)
-            stackView.axis = .vertical
-            stackView.distribution = .fillEqually
 
             it("should layout labels properly") {
+                let labels = types.map { (type) -> UILabel in
+                    let label = UILabel()
+                    label.font = UIFont.ad_mainFont(forTextStyle: type)
+                    label.adjustsFontForContentSizeCategory = true
+                    label.text = "Lorem sizzle pimpin' sit amizzle"
+                    label.numberOfLines = 0
+                    return label
+                }
+
+                let stackView = UIStackView(arrangedSubviews: labels)
+                stackView.frame = CGRect(x: 0.0, y: 0.0, width: 200.0, height: 1000.0)
+                stackView.axis = .vertical
+                stackView.distribution = .fillEqually
+
                 stackView.layoutIfNeeded()
                 assertSnapshot(matching: stackView, as: .image, named: "DynamicFontLayoutTest")
                 assertSnapshot(
@@ -87,7 +90,6 @@ class DynamicFontTest: QuickSpec {
 
         describe("display SwiftUI fonts") {
 
-            @available(iOS 14.0, *)
             struct DynamicFontsView: View {
 
                 let types: [Font.TextStyle] = [
@@ -112,24 +114,20 @@ class DynamicFontTest: QuickSpec {
                 }
             }
             it("should layout labels properly") {
-                if #available(iOS 14.0, *) {
-                    let view = DynamicFontsView()
-                    assertSnapshot(
-                        matching: view,
-                        as: .image(layout: .fixed(width: 200, height: 1000)),
-                        named: "SwiftUIDynamicFontLayoutTest"
-                    )
-                    assertSnapshot(
-                        matching: view,
-                        as: .image(
-                            layout: .fixed(width: 200, height: 1000),
-                            traits: UITraitCollection(preferredContentSizeCategory: .extraExtraExtraLarge)
-                        ),
-                        named: "SwiftUIDynamicFontLayoutXXLTest"
-                    )
-                } else {
-                    throw XCTSkip("title2, title3, caption2 are only available on iOS 14")
-                }
+                let view = DynamicFontsView()
+                assertSnapshot(
+                    matching: view,
+                    as: .image(layout: .fixed(width: 200, height: 1000)),
+                    named: "SwiftUIDynamicFontLayoutTest"
+                )
+                assertSnapshot(
+                    matching: view,
+                    as: .image(
+                        layout: .fixed(width: 200, height: 1000),
+                        traits: UITraitCollection(preferredContentSizeCategory: .extraExtraExtraLarge)
+                    ),
+                    named: "SwiftUIDynamicFontLayoutXXLTest"
+                )
             }
         }
     }

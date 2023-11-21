@@ -12,6 +12,7 @@ import Quick
 import ADUtils
 @testable import ADUtilsApp
 
+@MainActor
 class ChildInsertionTest: QuickSpec {
 
     override class func spec() {

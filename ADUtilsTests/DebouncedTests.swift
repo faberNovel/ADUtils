@@ -16,6 +16,7 @@ private enum Constants {
 }
 
 /// Test for regular Debouncer class
+@MainActor
 class DebouncerTests: QuickSpec {
 
     override class func spec() {
@@ -82,6 +83,7 @@ class DebouncerTests: QuickSpec {
 }
 
 /// Test for property wrapper
+@MainActor
 class DebouncedTests: QuickSpec {
 
     @Debounced(delay: Constants.delay, queue: .main)

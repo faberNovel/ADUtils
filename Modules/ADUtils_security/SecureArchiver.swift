@@ -19,12 +19,10 @@ public protocol StorageArchiver {
     func deleteValue(forKey key: String)
 }
 
-@available(iOS 13.0, tvOS 13.0, *)
 public class SecureArchiver {
 
     private enum Constants {
         static let passphrasePrefix = "cryptoKeyPassphrase_"
-        static let installedPrefix = "appIsInstalled_"
     }
 
     private enum SecureArchiverError: Error {

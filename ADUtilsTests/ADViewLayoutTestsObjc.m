@@ -141,95 +141,93 @@
         });
      });
 
-    if (@available(iOS 13.0, *)) {
-        describe(@"Should not translate autoresizing mask into constaints using directional edges and insets", ^{
+    describe(@"Should not translate autoresizing mask into constaints using directional edges and insets", ^{
 
-            __block UIView * view;
-            __block UIView * subview;
+        __block UIView * view;
+        __block UIView * subview;
 
-            beforeEach(^{
-                view = [UIView new];
-                subview = [UIView new];
-                [view addSubview:subview];
-                expect(subview.translatesAutoresizingMaskIntoConstraints).to(beTrue());
-            });
-
-            // Pin to superview
-
-            it(@"Pin to superview", ^{
-                [subview ad_pinToSuperviewUsingDirectionalEdges:YES];
-                expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Pin to superview edges", ^{
-                [subview ad_pinToSuperviewWithDirectionalEdges:NSDirectionalRectEdgeAll];
-                expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Pin to superview insets", ^{
-                [subview ad_pinToSuperviewWithDirectionalInsets:NSDirectionalEdgeInsetsZero];
-                expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Pin to superview edges insets", ^{
-                [subview ad_pinToSuperviewWithDirectionalEdges:NSDirectionalRectEdgeAll insets:NSDirectionalEdgeInsetsZero];
-                expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Pin to superview edges priority", ^{
-                [subview ad_pinToSuperviewWithDirectionalEdges:NSDirectionalRectEdgeAll priority: UILayoutPriorityRequired];
-                expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Pin to superview edges insets priority", ^{
-                [subview ad_pinToSuperviewWithDirectionalEdges:NSDirectionalRectEdgeAll
-                                                        insets:NSDirectionalEdgeInsetsZero
-                                                      priority:UILayoutPriorityRequired];
-                expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            // Constrain in superview
-
-            it(@"Constrain in superview", ^{
-                [subview ad_constrainInSuperviewUsingDirectionalEdges:YES];
-                expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Constrain in superview edges", ^{
-                [subview ad_constrainInSuperviewWithDirectionalEdges:NSDirectionalRectEdgeAll];
-                expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Constrain in superview insets", ^{
-                [subview ad_constrainInSuperviewWithDirectionalInsets:NSDirectionalEdgeInsetsZero];
-                expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Constrain in superview edges insets", ^{
-                [subview ad_constrainInSuperviewWithDirectionalEdges:NSDirectionalRectEdgeAll
-                                                              insets:NSDirectionalEdgeInsetsZero];
-                expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
-                expect(view.constraints.count).to(equal(4));
-            });
-
-            it(@"Constrain in superview edges insets priority", ^{
-                [subview ad_constrainInSuperviewWithDirectionalEdges:NSDirectionalRectEdgeAll
-                                                              insets:NSDirectionalEdgeInsetsZero
-                                                            priority:UILayoutPriorityRequired];
-                expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
-                expect(view.constraints.count).to(equal(4));
-            });
+        beforeEach(^{
+            view = [UIView new];
+            subview = [UIView new];
+            [view addSubview:subview];
+            expect(subview.translatesAutoresizingMaskIntoConstraints).to(beTrue());
         });
-    }
+
+        // Pin to superview
+
+        it(@"Pin to superview", ^{
+            [subview ad_pinToSuperviewUsingDirectionalEdges:YES];
+            expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Pin to superview edges", ^{
+            [subview ad_pinToSuperviewWithDirectionalEdges:NSDirectionalRectEdgeAll];
+            expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Pin to superview insets", ^{
+            [subview ad_pinToSuperviewWithDirectionalInsets:NSDirectionalEdgeInsetsZero];
+            expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Pin to superview edges insets", ^{
+            [subview ad_pinToSuperviewWithDirectionalEdges:NSDirectionalRectEdgeAll insets:NSDirectionalEdgeInsetsZero];
+            expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Pin to superview edges priority", ^{
+            [subview ad_pinToSuperviewWithDirectionalEdges:NSDirectionalRectEdgeAll priority: UILayoutPriorityRequired];
+            expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Pin to superview edges insets priority", ^{
+            [subview ad_pinToSuperviewWithDirectionalEdges:NSDirectionalRectEdgeAll
+                                                    insets:NSDirectionalEdgeInsetsZero
+                                                  priority:UILayoutPriorityRequired];
+            expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        // Constrain in superview
+
+        it(@"Constrain in superview", ^{
+            [subview ad_constrainInSuperviewUsingDirectionalEdges:YES];
+            expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Constrain in superview edges", ^{
+            [subview ad_constrainInSuperviewWithDirectionalEdges:NSDirectionalRectEdgeAll];
+            expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Constrain in superview insets", ^{
+            [subview ad_constrainInSuperviewWithDirectionalInsets:NSDirectionalEdgeInsetsZero];
+            expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Constrain in superview edges insets", ^{
+            [subview ad_constrainInSuperviewWithDirectionalEdges:NSDirectionalRectEdgeAll
+                                                          insets:NSDirectionalEdgeInsetsZero];
+            expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+            expect(view.constraints.count).to(equal(4));
+        });
+
+        it(@"Constrain in superview edges insets priority", ^{
+            [subview ad_constrainInSuperviewWithDirectionalEdges:NSDirectionalRectEdgeAll
+                                                          insets:NSDirectionalEdgeInsetsZero
+                                                        priority:UILayoutPriorityRequired];
+            expect(subview.translatesAutoresizingMaskIntoConstraints).to(beFalse());
+            expect(view.constraints.count).to(equal(4));
+        });
+    });
 }
 
 @end
