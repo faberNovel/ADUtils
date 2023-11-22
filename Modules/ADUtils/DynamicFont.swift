@@ -12,7 +12,6 @@ import SwiftUI
 /**
  The DynamicFontProvider protocol provides a font depending on parameters
  */
-@MainActor
 public protocol DynamicFontProvider {
 
     /**
@@ -32,7 +31,6 @@ public protocol DynamicFontProvider {
  The DynamicFont provides an implemementation of DynamicFontProvider depending on a plist resource
  and/or a default implementation, meaning providing the system preferred font for each font
  */
-@MainActor
 public struct DynamicFont: DynamicFontProvider {
 
     private let provider: DynamicFontProvider
@@ -82,7 +80,6 @@ private struct DefaultDynamicFontProvider: DynamicFontProvider {
     }
 }
 
-@MainActor
 private struct CustomFontDynamicFontProvider: DynamicFontProvider {
 
     let fontDescription: FontDescription
@@ -108,15 +105,6 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
     }
 
     // MARK: - Private
-
-    private var currentSpecifiedContentSizeCategory: UIContentSizeCategory {
-        var currentContentSizeCategory = UIScreen.main.traitCollection.preferredContentSizeCategory
-        if currentContentSizeCategory == .unspecified {
-            // (Benjamin Lavialle) 2017-10-20 fallback on default category
-            currentContentSizeCategory = .large
-        }
-        return currentContentSizeCategory
-    }
 
     private func throwingFont(forTextStyle textStyle: Font.TextStyle) throws -> Font {
         let styleDescription = try fontDescription.fontStyleDescription(for: textStyle)

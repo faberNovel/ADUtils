@@ -4,7 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [12.0.0] - 2023-11-08Z
+## [12.0.1] - 2023-11-21
+
+### Fixed
+- Fix iOS and tvOS supported versions in Package.swift
+- Remove MainActor attribute from `DynamicFontProvider` as it is not required
+
+## [12.0.0] - 2023-11-08
 
 ### Added
 - Add Swift Concurrency support
@@ -28,7 +34,7 @@ All notable changes to this project will be documented in this file.
 
 - Add a SwiftUI Font provider in `DynamicFont`
 
-## [11.3.0] - 2022-08-01Z
+## [11.3.0] - 2022-08-01
 
 ### Created
 
