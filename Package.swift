@@ -1,12 +1,12 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.7
 
 import PackageDescription
 
 let package = Package(
     name: "ADUtils",
     platforms: [
-        .iOS(.v13),
-        .tvOS(.v13)
+        .iOS(.v14),
+        .tvOS(.v14)
     ],
     products: [
         .library(
