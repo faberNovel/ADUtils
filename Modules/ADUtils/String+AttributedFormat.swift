@@ -243,7 +243,7 @@ extension String {
         var lastIndex = self.startIndex
         var previousImplicitParameterIndex: Int?
         // swiftlint:disable:next operator_usage_whitespace
-        self.matches(of: /%(?:([1-9][0-9]*)\$)?@/).forEach { (match) in
+        self.matches(of: #/%(?:([1-9][0-9]*)\$)?@/#).forEach { (match) in
             attributedString.append(
                 AttributedString(
                     self[lastIndex..<match.range.lowerBound],
