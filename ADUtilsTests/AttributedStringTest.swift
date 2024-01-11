@@ -145,6 +145,39 @@ class AttributedStringTest: QuickSpec {
                 imageName: "string with emojis"
             )
         }
+
+        it("should allow to create an AttributedString from a format and multiple AttributedString") {
+            let baseFormat = "This is a simple text followed by %1$@."
+            let defaultAttributes = AttributeContainer {
+                $0.font = UIFont.systemFont(ofSize: 14)
+            }
+            
+            let subPartFormat = "a bold text containing a %1$@ and then finishing"
+            let boldAttributes = AttributeContainer {
+                $0.font = UIFont.boldSystemFont(ofSize: 14)
+            }
+
+            let linkArgument = "link"
+            let linkAttributes = AttributeContainer {
+                $0.underlineStyle = .single
+                $0.link = URL(string: "https://www.fabernovel.com")
+                $0.font = UIFont.boldSystemFont(ofSize: 14)
+            }
+
+            let attributedLink = AttributedString(linkArgument, attributes: linkAttributes)
+
+            let subPartArgument = subPartFormat.attributedString(
+                arguments: [attributedLink],
+                defaultAttributes: boldAttributes
+            )
+
+            testAllAttributedStringImplementations(
+                format: baseFormat,
+                arguments: [subPartArgument],
+                defaultAttributes: defaultAttributes,
+                imageName: "combined attributed strings"
+            )
+        }
     }
 
     @available(iOS 15.0, *)
