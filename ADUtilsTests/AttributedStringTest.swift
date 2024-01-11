@@ -156,24 +156,44 @@ class AttributedStringTest: QuickSpec {
                                                                file: StaticString = #file,
                                                                testName: String = #function,
                                                                line: UInt = #line) {
+        assert(arguments.count == differentFormatAttributes.count)
+        let attributedArguments = zip(arguments, differentFormatAttributes).map {
+            AttributedString($0.0, attributes: $0.1)
+        }
+        return testAllAttributedStringImplementations(
+            format: format,
+            arguments: attributedArguments,
+            defaultAttributes: defaultAttributes,
+            imageName: imageName,
+            file: file,
+            testName: testName,
+            line: line
+        )
+    }
+
+    @available(iOS 15.0, *)
+    private static func testAllAttributedStringImplementations(format: String,
+                                                               arguments: [AttributedString],
+                                                               defaultAttributes: AttributeContainer,
+                                                               imageName: String,
+                                                               file: StaticString = #file,
+                                                               testName: String = #function,
+                                                               line: UInt = #line) {
         let attributedString = format.attributedString(
             arguments: arguments,
-            defaultAttributes: defaultAttributes,
-            differentFormatAttributes: differentFormatAttributes
+            defaultAttributes: defaultAttributes
         )
         assertAttributedStringSnapshot(attributedString, imageName, file: file, testName: testName, line: line)
         if #available(iOS 16.0, *) {
             let attributedStringUsingRegex = format.attributedStringUsingRegex(
                 arguments: arguments,
-                defaultAttributes: defaultAttributes,
-                differentFormatAttributes: differentFormatAttributes
+                defaultAttributes: defaultAttributes
             )
             assertAttributedStringSnapshot(attributedStringUsingRegex, imageName, file: file, testName: testName, line: line)
         }
         let attributedStringUsingNSRegularExpression = format.attributedStringUsingNSRegularExpression(
             arguments: arguments,
-            defaultAttributes: defaultAttributes,
-            differentFormatAttributes: differentFormatAttributes
+            defaultAttributes: defaultAttributes
         )
         assertAttributedStringSnapshot(
             attributedStringUsingNSRegularExpression,

@@ -152,21 +152,40 @@ extension String {
             )
             return AttributedString()
         }
+        let attributedArguments = zip(arguments, differentFormatAttributes).map {
+            AttributedString($0.0, attributes: $0.1)
+        }
+        return attributedString(
+            arguments: attributedArguments,
+            defaultAttributes: defaultAttributes
+        )
+    }
+
+    /**
+     Create an AttributedString using self as format
+
+     - parameter arguments: Arguments that match format (self)
+
+     - parameter defaultAttributes: Attributes to apply to whole string by default
+
+     - returns: AttributedString with differents attributes for each argument
+     */
+    public func attributedString(
+        arguments: [AttributedString],
+        defaultAttributes: AttributeContainer
+    ) -> AttributedString {
         if #available(iOS 16.0, tvOS 16.0, *) {
             return attributedStringUsingRegex(
                 arguments: arguments,
-                defaultAttributes: defaultAttributes,
-                differentFormatAttributes: differentFormatAttributes
+                defaultAttributes: defaultAttributes
             )
         } else {
             return attributedStringUsingNSRegularExpression(
                 arguments: arguments,
-                defaultAttributes: defaultAttributes,
-                differentFormatAttributes: differentFormatAttributes
+                defaultAttributes: defaultAttributes
             )
         }
     }
-
 }
 
 @available(iOS 15, tvOS 15.0, *)
@@ -175,9 +194,8 @@ extension String {
     // MARK: - Internal
 
     internal func attributedStringUsingNSRegularExpression(
-        arguments: [String],
-        defaultAttributes: AttributeContainer,
-        differentFormatAttributes: [AttributeContainer]
+        arguments: [AttributedString],
+        defaultAttributes: AttributeContainer
     ) -> AttributedString {
         do {
             let nsString = self as NSString
@@ -195,11 +213,7 @@ extension String {
                     for: match,
                     previousImplicitParameterIndex: &previousImplicitParameterIndex
                 )
-                let argument = arguments[matchIndex]
-                let format = differentFormatAttributes[matchIndex]
-
-                let attributedArgument = AttributedString(argument, attributes: format)
-                attributedString.append(attributedArgument)
+                attributedString.append(arguments[matchIndex])
                 lastIndex = match.range.upperBound
             }
             attributedString.append(
@@ -233,11 +247,13 @@ extension String {
 
 @available(iOS 16.0, tvOS 16.0, *)
 extension String {
+
+    // MARK: - Internal
+
     @available(iOS 16.0, tvOS 16.0, *)
     internal func attributedStringUsingRegex(
-        arguments: [String],
-        defaultAttributes: AttributeContainer,
-        differentFormatAttributes: [AttributeContainer]
+        arguments: [AttributedString],
+        defaultAttributes: AttributeContainer
     ) -> AttributedString {
         var attributedString = AttributedString()
         var lastIndex = self.startIndex
@@ -254,10 +270,7 @@ extension String {
                 for: match.output,
                 previousImplicitParameterIndex: &previousImplicitParameterIndex
             )
-            let argument = arguments[matchIndex]
-            let format = differentFormatAttributes[matchIndex]
-            let attributedArgument = AttributedString(argument, attributes: format)
-            attributedString.append(attributedArgument)
+            attributedString.append(arguments[matchIndex])
             lastIndex = match.range.upperBound
         }
         attributedString.append(
