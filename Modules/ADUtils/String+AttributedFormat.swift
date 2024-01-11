@@ -42,7 +42,7 @@ extension String {
 
      - parameter differentFormatAttributes: Attributes to apply for each argument
 
-     - returns: NSAttributedString with differents attributes for each argument
+     - returns: NSAttributedString with different attributes for each argument
      */
     public func attributedString(arguments: [String],
                                  defaultAttributes: [NSAttributedString.Key: Any],
@@ -138,7 +138,7 @@ extension String {
 
      - parameter differentFormatAttributes: Attributes to apply for each argument
 
-     - returns: AttributedString with differents attributes for each argument
+     - returns: AttributedString with different attributes for each argument
      */
     public func attributedString(
         arguments: [String],
@@ -168,7 +168,7 @@ extension String {
 
      - parameter defaultAttributes: Attributes to apply to whole string by default
 
-     - returns: AttributedString with differents attributes for each argument
+     - returns: AttributedString with different attributes for each argument
      */
     public func attributedString(
         arguments: [AttributedString],
