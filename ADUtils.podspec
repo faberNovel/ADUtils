@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'ADUtils'
-  spec.version      = '12.0.1'
+  spec.version      = '12.1.0'
   spec.authors      = 'Fabernovel'
   spec.homepage     = 'https://github.com/faberNovel/ADUtils'
   spec.summary      = 'Fabernovel\'s toolbox for iOS'

@@ -6,11 +6,12 @@
 //
 //
 
-import Foundation
+import UIKit
+import SwiftUI
 import Nimble
 import SnapshotTesting
 import Quick
-import ADUtils
+@testable import ADUtils
 @testable import ADUtilsApp
 
 @MainActor
@@ -54,7 +55,7 @@ class AttributedStringTest: QuickSpec {
             assertSnapshot(matching: label, as: .image, named: imageName)
         }
 
-        it("Snapshots should match") {
+        it("NSAttributedString snapshots should match") {
             let format = "Test %1$@ %2$@"
             let value1 = "Toto"
             let value2 = "Testi testo"
@@ -67,5 +68,182 @@ class AttributedStringTest: QuickSpec {
             let formatWithEmoji = "Test 🦁 %1$@ %2$@"
             stringTest(formatWithEmoji, [value1, value2], "EmojiInFormat")
         }
+
+        if #available(iOS 15.0, *) {
+            testAttributedString()
+        }
+    }
+
+    @available(iOS 15.0, tvOS 15.0, *)
+    class func testAttributedString() {
+
+        guard
+            let smallFont = UIFont(name: "HelveticaNeue", size: 12.0),
+            let bigFont = UIFont(name: "HelveticaNeue", size: 24.0) else {
+            fail("Font HelveticaNeue do not exists")
+            return
+        }
+
+        let attributes = AttributeContainer {
+            $0.foregroundColor = .red
+            $0.font = smallFont
+        }
+        let attributes1 = AttributeContainer {
+            $0.foregroundColor = .green
+            $0.font = smallFont
+        }
+        let attributes2 = AttributeContainer {
+            $0.foregroundColor = .blue
+            $0.font = bigFont
+        }
+
+        let arguments = ["11", "22", "33", "44"]
+        let alternatingFormatAttributes = [attributes1, attributes2, attributes1, attributes2]
+
+
+        it("AttributedString snapshot should match") {
+            testAllAttributedStringImplementations(
+                format: "%@-%@-%@-%@",
+                arguments: arguments,
+                defaultAttributes: attributes,
+                differentFormatAttributes: alternatingFormatAttributes,
+                imageName: "differentAttributes"
+            )
+            testAllAttributedStringImplementations(
+                format: "%@-%@-%@-%@",
+                arguments: arguments,
+                defaultAttributes: attributes,
+                differentFormatAttributes: [attributes1, attributes1, attributes1, attributes1],
+                imageName: "sameAttributes"
+            )
+            testAllAttributedStringImplementations(
+                format: "%1$@-%2$@-%3$@-%4$@",
+                arguments: arguments,
+                defaultAttributes: attributes,
+                differentFormatAttributes: alternatingFormatAttributes,
+                imageName: "explicitIndexInOrder"
+            )
+            testAllAttributedStringImplementations(
+                format: "%4$@-%3$@-%2$@-%1$@",
+                arguments: arguments,
+                defaultAttributes: attributes,
+                differentFormatAttributes: alternatingFormatAttributes,
+                imageName: "explicitIndexReversed"
+            )
+            testAllAttributedStringImplementations(
+                format: "%2$@-%1$@-%@-%@",
+                arguments: arguments,
+                defaultAttributes: attributes,
+                differentFormatAttributes: alternatingFormatAttributes,
+                imageName: "mixedImplicitExplicitOrder"
+            )
+            testAllAttributedStringImplementations(
+                format: "begin 🦁%1$@🦁-🦁%2$@🦁-🦁%3$@🦁-🦁%4$@🦁 end",
+                arguments: arguments,
+                defaultAttributes: attributes,
+                differentFormatAttributes: alternatingFormatAttributes,
+                imageName: "string with emojis"
+            )
+        }
+
+        it("should allow to create an AttributedString from a format and multiple AttributedString") {
+            let baseFormat = "This is a simple text followed by %1$@."
+            let defaultAttributes = AttributeContainer {
+                $0.font = UIFont.systemFont(ofSize: 14)
+            }
+            
+            let subPartFormat = "a bold text containing a %1$@ and then finishing"
+            let boldAttributes = AttributeContainer {
+                $0.font = UIFont.boldSystemFont(ofSize: 14)
+            }
+
+            let linkArgument = "link"
+            let linkAttributes = AttributeContainer {
+                $0.underlineStyle = .single
+                $0.link = URL(string: "https://www.fabernovel.com")
+                $0.font = UIFont.boldSystemFont(ofSize: 14)
+            }
+
+            let attributedLink = AttributedString(linkArgument, attributes: linkAttributes)
+
+            let subPartArgument = subPartFormat.attributedString(
+                arguments: [attributedLink],
+                defaultAttributes: boldAttributes
+            )
+
+            testAllAttributedStringImplementations(
+                format: baseFormat,
+                arguments: [subPartArgument],
+                defaultAttributes: defaultAttributes,
+                imageName: "combined attributed strings"
+            )
+        }
+    }
+
+    @available(iOS 15.0, *)
+    private static func testAllAttributedStringImplementations(format: String,
+                                                               arguments: [String],
+                                                               defaultAttributes: AttributeContainer,
+                                                               differentFormatAttributes: [AttributeContainer],
+                                                               imageName: String,
+                                                               file: StaticString = #file,
+                                                               testName: String = #function,
+                                                               line: UInt = #line) {
+        assert(arguments.count == differentFormatAttributes.count)
+        let attributedArguments = zip(arguments, differentFormatAttributes).map {
+            AttributedString($0.0, attributes: $0.1)
+        }
+        return testAllAttributedStringImplementations(
+            format: format,
+            arguments: attributedArguments,
+            defaultAttributes: defaultAttributes,
+            imageName: imageName,
+            file: file,
+            testName: testName,
+            line: line
+        )
+    }
+
+    @available(iOS 15.0, *)
+    private static func testAllAttributedStringImplementations(format: String,
+                                                               arguments: [AttributedString],
+                                                               defaultAttributes: AttributeContainer,
+                                                               imageName: String,
+                                                               file: StaticString = #file,
+                                                               testName: String = #function,
+                                                               line: UInt = #line) {
+        let attributedString = format.attributedString(
+            arguments: arguments,
+            defaultAttributes: defaultAttributes
+        )
+        assertAttributedStringSnapshot(attributedString, imageName, file: file, testName: testName, line: line)
+        if #available(iOS 16.0, *) {
+            let attributedStringUsingRegex = format.attributedStringUsingRegex(
+                arguments: arguments,
+                defaultAttributes: defaultAttributes
+            )
+            assertAttributedStringSnapshot(attributedStringUsingRegex, imageName, file: file, testName: testName, line: line)
+        }
+        let attributedStringUsingNSRegularExpression = format.attributedStringUsingNSRegularExpression(
+            arguments: arguments,
+            defaultAttributes: defaultAttributes
+        )
+        assertAttributedStringSnapshot(
+            attributedStringUsingNSRegularExpression,
+            imageName,
+            file: file,
+            testName: testName,
+            line: line
+        )
+    }
+
+    @available(iOS 15.0, *)
+    private static func assertAttributedStringSnapshot(_ attributedString: AttributedString,
+                                                       _ imageName: String,
+                                                       file: StaticString = #file,
+                                                       testName: String = #function,
+                                                       line: UInt = #line) {
+        let label = Text(attributedString).fixedSize()
+        assertSnapshot(matching: label, as: .image, named: imageName, file: file, testName: testName, line: line)
     }
 }
