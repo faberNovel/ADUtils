@@ -1,10 +1,10 @@
 PODS:
-  - ADUtils (12.0.1):
-    - ADUtils/objc (= 12.0.1)
-  - ADUtils/objc (12.0.1):
+  - ADUtils (12.1.0):
+    - ADUtils/objc (= 12.1.0)
+  - ADUtils/objc (12.1.0):
     - ADUtils/Swift
-  - ADUtils/Security (12.0.1)
-  - ADUtils/Swift (12.0.1)
+  - ADUtils/Security (12.1.0)
+  - ADUtils/Swift (12.1.0)
   - Nimble (12.0.1)
   - OCMock (3.9.1)
   - Quick (7.0.2)
@@ -30,7 +30,7 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADUtils: c41598aac077f54d909c9fcd95e06927c00ad85a
+  ADUtils: dc0a66494ee1853cb2b78476773755bd244ded7e
   Nimble: b279b3ca9e094508778aab5c76417be158d3ad04
   OCMock: 9491e4bec59e0b267d52a9184ff5605995e74be8
   Quick: efab97aca76d60be86c15daa533b2cdfbe1a74d3
