@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+- Add `String.attributedString(arguments:defaultAttributes:formatAttributes:)` and `String.attributedString(arguments:defaultAttributes:differentFormatAttributes:)` utility methods to create `AttributedString` from a list of strings and attributes.
+- Add `String.attributedString(arguments:defaultAttributes:)` utility method to create `AttributedString` from a `String` format and a list of `AttributedString`.
+- Add helper init for `AttributeContainer` to create one with a configuration closure.
+
 ## [12.0.1] - 2023-11-21
 
 ### Fixed
