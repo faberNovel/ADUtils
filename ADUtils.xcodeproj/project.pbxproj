@@ -43,6 +43,7 @@
 		57E1CD491C884F8900A7DFFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1CD481C884F8900A7DFFB /* AppDelegate.swift */; };
 		57F7ECC41BB0042D0095AEEC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 57F7ECC31BB0042D0095AEEC /* Localizable.strings */; };
 		57F7ECC61BB004510095AEEC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 57F7ECC51BB004500095AEEC /* InfoPlist.strings */; };
+		73865A2F2B8760BD00214C69 /* SystemFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73865A2E2B8760BD00214C69 /* SystemFont.plist */; };
 		7A0EC6541535D8ED00E5F54A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6531535D8ED00E5F54A /* UIKit.framework */; };
 		7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6551535D8ED00E5F54A /* Foundation.framework */; };
 		7A0EC6581535D8ED00E5F54A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */; };
@@ -128,6 +129,7 @@
 		57F7ECC51BB004500095AEEC /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		5DE795FD4906461A70860D2B /* Pods-ADUtilsApp.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADUtilsApp.production.xcconfig"; path = "Pods/Target Support Files/Pods-ADUtilsApp/Pods-ADUtilsApp.production.xcconfig"; sourceTree = "<group>"; };
 		6423630AD4B44DC50EA87D8A /* UIRectEdgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRectEdgeTest.swift; sourceTree = "<group>"; };
+		73865A2E2B8760BD00214C69 /* SystemFont.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SystemFont.plist; sourceTree = "<group>"; };
 		7A0EC64F1535D8ED00E5F54A /* ADUtilsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADUtilsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0EC6531535D8ED00E5F54A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7A0EC6551535D8ED00E5F54A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -246,6 +248,7 @@
 				49D1F133216CCEF4009F87AB /* ADViewLayoutGuideTestsObjc.m */,
 				921907DE21F7AE4400EF2B67 /* ADLayoutGuideTestsObjc.m */,
 				EC626C6C1FA07281001C332C /* HelveticaNeue.plist */,
+				73865A2E2B8760BD00214C69 /* SystemFont.plist */,
 				49D1F130216C968E009F87AB /* ADUtilsTests-Bridging-Header.h */,
 				F2F326C02448431300BB5700 /* NSDirectionalEdgeInsetsTests.swift */,
 				57397F7C24CAD105001C6F2E /* LocaleUserPreferredTimeFormatTests.swift */,
@@ -503,6 +506,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73865A2F2B8760BD00214C69 /* SystemFont.plist in Resources */,
 				EC626C6D1FA07281001C332C /* HelveticaNeue.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
