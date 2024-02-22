@@ -133,6 +133,7 @@ class DynamicFontTest: QuickSpec {
                 let fontProvider: (Font.TextStyle) -> Font
 
                 let types: [Font.TextStyle] = [
+                    .largeTitle,
                     .title,
                     .title2,
                     .title3,
