@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+- Handle default system font weights for SwiftUI
+- Add largeTitle style in font tests
+
 ## [12.1.0] - 2024-01-15
 
 ### Added
