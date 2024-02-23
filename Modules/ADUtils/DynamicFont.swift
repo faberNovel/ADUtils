@@ -108,6 +108,9 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
 
     private func throwingFont(forTextStyle textStyle: Font.TextStyle) throws -> Font {
         let styleDescription = try fontDescription.fontStyleDescription(for: textStyle)
+        guard UIFont(name: styleDescription.name, size: styleDescription.size) != nil else {
+            return try systemFont(weightName: styleDescription.name, size: styleDescription.size)
+        }
         return Font.custom(styleDescription.name, size: styleDescription.size, relativeTo: textStyle)
     }
 
@@ -125,9 +128,44 @@ private struct CustomFontDynamicFontProvider: DynamicFontProvider {
         }
         return UIFont.systemFont(ofSize: size, weight: weight)
     }
+
+    private func systemFont(weightName: String, size: CGFloat) throws -> Font {
+        guard let weight = Font.Weight(name: weightName) else {
+                throw FontDescriptionError.fontMissing
+        }
+        return Font.system(size: size, weight: weight)
+    }
 }
 
 private extension UIFont.Weight {
+
+    init?(name: String) {
+        switch name.lowercased() {
+        case "black":
+            self = .black
+        case "bold":
+            self = .bold
+        case "heavy":
+            self = .heavy
+        case "light":
+            self = .light
+        case "medium":
+            self = .medium
+        case "regular":
+            self = .regular
+        case "semibold":
+            self = .semibold
+        case "thin":
+            self = .thin
+        case "ultralight":
+            self = .ultraLight
+        default:
+            return nil
+        }
+    }
+}
+
+private extension Font.Weight {
 
     init?(name: String) {
         switch name.lowercased() {
