@@ -38,9 +38,6 @@ xcuserdata
 
 Pods/
 
-## Gemfile
-.ruby-version
-
 ##Fastlane
 # fastlane specific
 fastlane/report.xml

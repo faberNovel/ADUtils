@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [12.2.0] - 2024-04-22
+
+### Added
+- Add `PrivacyInfo.xcprivacy` to comply with Apple new privacy requirements
+
 ## [12.1.1] - 2024-02-22
 
 ### Fixed
