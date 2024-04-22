@@ -19,7 +19,8 @@ let package = Package(
         .target(
             name: "ADUtils",
             dependencies: [],
-            path: "Modules"
+            path: "Modules",
+            resources: [.copy("PrivacyInfo.xcprivacy")]
         )
     ]
 )
