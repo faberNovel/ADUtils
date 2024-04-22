@@ -15,17 +15,23 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'Swift' do |subspec|
     # Subspec compliant with App extensions
+    subspec.dependency 'ADUtils/Privacy'
     subspec.source_files = 'Modules/ADUtils/*.{h,m,swift}'
   end
 
   spec.subspec 'Security' do |subspec|
+    subspec.dependency 'ADUtils/Privacy'
     subspec.source_files = 'Modules/ADUtils_security/*.{h,m,swift}'
     subspec.framework    = 'CryptoKit'
   end
 
   spec.subspec 'objc' do |subspec|
     subspec.dependency 'ADUtils/Swift'
-	subspec.source_files = 'Modules/ADUtils_objc/*.{h,m,swift}'
+    subspec.source_files = 'Modules/ADUtils_objc/*.{h,m,swift}'
+  end
+
+  spec.subspec 'Privacy' do |subspec|
+    subspec.resource_bundles = {'ADUtilsPrivacy' => ['Modules/PrivacyInfo.xcprivacy']}
   end
 
 end
