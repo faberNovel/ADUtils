@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 `ADUtils` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- Remove TARGET_OS_SIMULATOR use
 
 ## [12.2.0] - 2024-04-22
 
