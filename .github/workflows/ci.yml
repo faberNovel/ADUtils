@@ -23,7 +23,7 @@ jobs:
         bundler-cache: true
 
     - name: Pods cache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: Pods
         key: ${{ runner.os }}-cocoapods-${{ hashFiles('**/Podfile.lock') }}
