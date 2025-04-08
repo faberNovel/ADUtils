@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [12.2.1] - 2025-04-08
+
 ### Fixed
 - Fix compilation for Xcode 16.3 beta
 
