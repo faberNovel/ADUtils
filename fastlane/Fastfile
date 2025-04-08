@@ -5,7 +5,8 @@ lane :tests do
     configuration: "Stubs",
     scheme: "ADUtilsApp",
     clean: true,
-    devices: ["iPhone SE (3rd generation)"]
+    devices: ["iPhone SE (3rd generation)"],
+    derived_data_path: "ci_derived_data"
   )
 end
 

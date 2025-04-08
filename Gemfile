@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '3.3.0'
 
-gem 'cocoapods', '~> 1.12'
+gem 'cocoapods', '~> 1.16'
 gem 'CFPropertyList', '~> 3.0.0'
 gem 'fastlane', '<3.0'
 gem 'danger'
