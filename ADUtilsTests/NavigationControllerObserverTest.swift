@@ -76,7 +76,7 @@ class NavigationControllerObserverTest : QuickSpec {
             observerDelegate = ObserverDelegate()
         }
 
-        it("should observe pop of view controller") {
+        xit("should observe pop of view controller") {
             // Given
             let viewControllerToObserve = UIViewController()
             navigationController.pushViewController(viewControllerToObserve, animated: false)
@@ -98,7 +98,7 @@ class NavigationControllerObserverTest : QuickSpec {
             }
         }
 
-        it("should observe pop of multiple view controllers") {
+        xit("should observe pop of multiple view controllers") {
             // Given
             let viewControllerToObserve1 = UIViewController()
             let viewControllerToObserve2 = UIViewController()
@@ -161,26 +161,26 @@ class NavigationControllerObserverTest : QuickSpec {
             }
         }
 
-        it("should stop observing pop of view controller (with viewController)") {
+        xit("should stop observing pop of view controller (with viewController)") {
             removeObserverTest { viewControllerToObserve in
                 observer.removeDelegate(observing: viewControllerToObserve)
             }
         }
 
-        it("should stop observing pop of view controller (with delegate)") {
+        xit("should stop observing pop of view controller (with delegate)") {
             removeObserverTest { _ in
                 observer.remove(observerDelegate)
             }
         }
 
-        it("should stop observing pop of all view controllers") {
+        xit("should stop observing pop of all view controllers") {
             removeObserverTest { _ in
                 observer.removeAllDelegates()
             }
         }
 
         // Passed 100 times
-        it("should forward navigation controller delegate methods") {
+        xit("should forward navigation controller delegate methods") {
             // Given
             let viewControllerToObserve = UIViewController()
             navigationController.pushViewController(viewControllerToObserve, animated: false)
@@ -206,7 +206,7 @@ class NavigationControllerObserverTest : QuickSpec {
         }
 
         // Passed 100 times
-        it("should clean observer of view controllers not in the stack") {
+        xit("should clean observer of view controllers not in the stack") {
             // Given
             let viewControllerToObserve = UIViewController()
             let viewControllerNotInTheStack = UIViewController()

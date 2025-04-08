@@ -37,10 +37,10 @@ public final class ProxyDetector: Sendable {
      - note: The alert view is dismissed on its own after one second
      */
     public func handleProxyNotification(after delay: TimeInterval) {
-        guard TARGET_OS_SIMULATOR == 0 else {
-            // (Benjamin Lavialle) 2018-01-18 Do not notify proxy on simulator
-            return
-        }
+        #if targetEnvironment(simulator)
+        // (Benjamin Lavialle) 2018-01-18 Do not notify proxy on simulator
+        return
+        #else
         Task { [weak self] in
             do {
                 try await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
@@ -48,6 +48,7 @@ public final class ProxyDetector: Sendable {
                 await self?.notifyIfProxyActivated(in: topMostViewController)
             } catch {}
         }
+        #endif
     }
 
     /**

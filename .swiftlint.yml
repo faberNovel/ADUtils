@@ -258,3 +258,4 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
   - ADUtilsTests
   - vendor
+  - ci_derived_data
